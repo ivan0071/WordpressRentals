@@ -320,11 +320,12 @@
                 var $this = $('[name="floors_enable"][checked]', '.property-floors-control'),
                     enable_val = $this.val(),
                     floor_data = $this.closest('.property-floors-control').next('.property-floors-data');
-               /* if (enable_val == 1) {
+                //This is a test example of modifying the JavaScript file
+                if (enable_val == 1) {
                     floor_data.slideDown('slow');
                 } else if (enable_val == 0) {
                     floor_data.slideUp('slow');
-                }*/
+                }
                 $('input[name="floors_enable"]', '.property-floors-control').each(function () {
                     $(this).on('click', function () {
                         enable_val = $(this).val();
