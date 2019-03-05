@@ -1,0 +1,292 @@
+/*
+  @package verso-lite
+*/
+/*
+  Mixins
+  ---------------------
+*/
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin animate ( $attr, $time ){
+  -webkit-transition: $attr $time ease 0s;
+  -moz-transition: $attr $time ease 0s;
+  -ms-transition: $attr $time ease 0s;
+  -o-transition: $attr $time ease 0s;
+  transition: $attr $time ease 0s;
+}
+@mixin trans( $attr, $time ){
+  -webkit-transition: $attr $time ease 0s !important;
+  -moz-transition: $attr $time ease 0s !important;
+  -ms-transition: $attr $time ease 0s !important;
+  -o-transition: $attr $time ease 0s !important;
+  transition: $attr $time ease 0s !important;
+}
+@mixin transform ( $val ){
+  -webkit-transform: $val;
+  -moz-transform: $val;
+  -ms-transform: $val;
+  -o-transform: $val;
+  transform: $val;
+}
+@mixin transformimp ( $val ){
+  -webkit-transform: $val !important;
+  -moz-transform: $val !important;
+  -ms-transform: $val !important;
+  -o-transform: $val !important;
+  transform: $val !important;
+}
+@mixin alpha-attribute($attribute, $color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  #{$attribute}: $solid-color;
+  #{$attribute}: $color;
+}
+@mixin fullwidth() {
+  width: 100%;
+  height: auto;
+}
+@mixin filter($filter-type,$filter-amount) {
+  -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
+  -moz-filter: $filter-type+unquote('(#{$filter-amount})');
+  -ms-filter: $filter-type+unquote('(#{$filter-amount})');
+  -o-filter: $filter-type+unquote('(#{$filter-amount})');
+  filter: $filter-type+unquote('(#{$filter-amount})');
+}
+
+@mixin admin-sticky-fix( $offset: 0 ) {
+  $narrow-offset: 46px;
+  $wide-offset: 32px;
+  @if $offset != 0 and type-of($offset) == 'number' {
+    $narrow-offset: $narrow-offset + $offset;
+    $wide-offset: $wide-offset + $offset;
+  }
+  .admin-bar & {
+    top: $narrow-offset;
+    @media screen and (min-width: 783px) {
+      top: $wide-offset;
+    }
+  }
+}
+@mixin mapfilter($deg) {
+	-webkit-filter: hue-rotate($deg);
+	-moz-filter: hue-rotate($deg);
+	-ms-filter: hue-rotate($deg);
+	-o-filter: hue-rotate($deg);
+	filter: hue-rotate($deg);
+}
+@mixin mapgrayscale($per) {
+	-webkit-filter: grayscale($per);
+	-moz-filter: grayscale($per);
+	-ms-filter: grayscale($per);
+	-o-filter: grayscale($per);
+	filter: grayscale($per);
+}
+@mixin mapinverted($per) {
+	-webkit-filter: invert($per);
+	-moz-filter: invert($per);
+	-ms-filter: invert($per);
+	-o-filter: invert($per);
+	filter: invert($per);
+}
+
+//Keyframes
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes blend-anim {
+	0% {
+		transform: scale(0.01, 0.01) rotateY(0);
+		animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+	}
+	50% {
+		transform: scale(1, 1) rotateY(0);
+		animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+	}
+	100% {
+		transform: scale(0.01, 0.01) rotateY(0);
+	}
+}
+
+@-o-keyframes blend-anim {
+	0% {
+		-o-transform: scale(0.01, 0.01) rotateY(0);
+		-o-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+	}
+	50% {
+		-o-transform: scale(1, 1) rotateY(0);
+		-o-animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+	}
+	100% {
+		-o-transform: scale(0.01, 0.01) rotateY(0);
+	}
+}
+
+@-ms-keyframes blend-anim {
+	0% {
+		-ms-transform: scale(0.01, 0.01) rotateY(0);
+		-ms-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+	}
+	50% {
+		-ms-transform: scale(1, 1) rotateY(0);
+		-ms-animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+	}
+	100% {
+		-ms-transform: scale(0.01, 0.01) rotateY(0);
+	}
+}
+
+@-webkit-keyframes blend-anim {
+	0% {
+		-webkit-transform: scale(0.01, 0.01) rotateY(0);
+		-webkit-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+	}
+	50% {
+		-webkit-transform: scale(1, 1) rotateY(0);
+		-webkit-animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+	}
+	100% {
+		-webkit-transform: scale(0.01, 0.01) rotateY(0);
+	}
+}
+
+@-moz-keyframes blend-anim {
+	0% {
+		-moz-transform: scale(0.01, 0.01) rotateY(0);
+		-moz-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+	}
+	50% {
+		-moz-transform: scale(1, 1) rotateY(0);
+		-moz-animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+	}
+	100% {
+		-moz-transform: scale(0.01, 0.01) rotateY(0);
+	}
+}
+
+@keyframes cssload-part-anim {
+	0% {
+		transform: translate3d(-10px, -10px, 0);
+	}
+	100% {
+		transform: translate3d(10px, 10px, 0);
+	}
+}
+
+@-o-keyframes cssload-part-anim {
+	0% {
+		-o-transform: translate3d(-10px, -10px, 0);
+	}
+	100% {
+		-o-transform: translate3d(10px, 10px, 0);
+	}
+}
+
+@-ms-keyframes cssload-part-anim {
+	0% {
+		-ms-transform: translate3d(-10px, -10px, 0);
+	}
+	100% {
+		-ms-transform: translate3d(10px, 10px, 0);
+	}
+}
+
+@-webkit-keyframes cssload-part-anim {
+	0% {
+		-webkit-transform: translate3d(-10px, -10px, 0);
+	}
+	100% {
+		-webkit-transform: translate3d(10px, 10px, 0);
+	}
+}
+
+@-moz-keyframes cssload-part-anim {
+	0% {
+		-moz-transform: translate3d(-10px, -10px, 0);
+	}
+	100% {
+		-moz-transform: translate3d(10px, 10px, 0);
+	}
+}
+
+@mixin angle($pseudo, $flip: false, $angle: 1.5deg) {
+  // Possible values for $pseudo are: before, after, both
+  @if $pseudo == 'before' or $pseudo == 'after' or $pseudo == 'both' {
+    position: relative;
+    z-index: 1;
+    $selector: if($pseudo == 'both', '&:before,&:after', '&:#{$pseudo}');
+
+    #{$selector} {
+      background: inherit;
+      content: '';
+      display: block;
+      height: 50%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      z-index: -1;
+      -webkit-backface-visibility: hidden; // for Chrome Windows
+    }
+
+    @if $pseudo == 'before' {
+      #{$selector} {
+        top: 0;
+
+        @if $flip {
+          transform: skewY($angle * -1);
+          transform-origin: 0 0;
+        } @else {
+          transform: skewY($angle);
+          transform-origin: 100% 0;
+        }
+      }
+    }
+
+    @if $pseudo == 'after' {
+      #{$selector} {
+        bottom: 0;
+
+        @if $flip {
+          transform: skewY($angle);
+          transform-origin: 0 100%;
+        } @else {
+          transform: skewY($angle * -1);
+          transform-origin: 100%;
+        }
+      }
+    }
+
+    @if $pseudo == 'both' {
+      &:before {
+        top: 0;
+
+        @if $flip {
+          transform: skewY($angle * -1);
+          transform-origin: 0 0;
+        } @else {
+          transform: skewY($angle);
+          transform-origin: 100% 0;
+        }
+      }
+
+      &:after {
+        bottom: 0;
+
+        @if $flip {
+          transform: skewY($angle);
+          transform-origin: 0 0;
+        } @else {
+          transform: skewY($angle * -1);
+          transform-origin: 100%;
+        }
+      }
+    }
+  }
+}

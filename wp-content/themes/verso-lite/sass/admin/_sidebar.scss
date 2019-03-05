@@ -1,0 +1,53 @@
+h1.verso-username,
+h2.verso-description {
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 1.8;
+	color: #222;
+}
+h1.verso-username {
+	font-size: 24px;
+	margin: 0 0 10px;
+}
+p.verso-description {
+	font-size: 14px;
+	margin: 0 0 20px;
+	color: inherit;
+}
+
+.verso-icon-sidebar {
+	margin: 0 5px;
+	&:before {
+		width: 18px;
+		height: 18px;
+		font-size: 18px;
+	}
+
+}
+.verso-icon-sidebar--gplus {
+	margin-left: 8px;
+}
+
+.verso-icon-button:before {
+	margin-top: 3px;
+	margin-left: -3px;
+}
+
+.image-container {
+	display: block;
+	width: 100%;
+	overflow: hidden;
+	margin: 20px auto;
+}
+.profile-picture {
+	display: inline-block;
+}
+.profile-picture img{
+	height: auto;
+    max-width: 220px;
+    width: 100%;
+}
+.icon-wrapper-title{
+	font-size: 18px;
+	margin-bottom: 20px;
+}

@@ -1,0 +1,18 @@
+/*
+	@package verso-lite
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# admin
+    ## Normalize
+    ## Base
+	## Sidebar
+/*
+/*
+	Import
+	------------------------------------------------
+*/
+@import "base/normalize"; //normalize
+@import 'admin/base';
+@import 'admin/sidebar';
