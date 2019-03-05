@@ -739,7 +739,7 @@ if (!class_exists('ERE_Admin')) {
                                         ),
                                         array(
                                             'id' => "{$meta_prefix}property_other_contact_phone",
-                                            'title' => esc_html__('Other contact Phone 1', 'essential-real-estate'),
+                                            'title' => esc_html__('Other contact Phone', 'essential-real-estate'),
                                             'type' => 'text',
                                             'default' => '',
                                             'required' => array("{$meta_prefix}agent_display_option", '=', 'other_info')

@@ -42,7 +42,7 @@ global $hide_property_fields;
                 </div>
                 <div class="form-group">
                     <label
-                        for="property_other_contact_phone"><?php esc_html_e('Other contact Phone 4', 'essential-real-estate'); ?></label>
+                        for="property_other_contact_phone"><?php esc_html_e('Other contact Phone', 'essential-real-estate'); ?></label>
                     <input type="text" id="property_other_contact_phone" class="form-control" name="property_other_contact_phone" value="">
                 </div>
                 <div class="form-group">

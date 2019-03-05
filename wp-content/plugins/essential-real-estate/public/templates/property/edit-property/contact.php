@@ -52,7 +52,7 @@ $property_agent = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_agent
                 </div>
                 <div class="form-group">
                     <label
-                        for="property_other_contact_phone"><?php esc_html_e('Other contact Phone 3', 'essential-real-estate'); ?></label>
+                        for="property_other_contact_phone"><?php esc_html_e('Other contact Phone', 'essential-real-estate'); ?></label>
                     <input type="text" id="property_other_contact_phone" class="form-control" name="property_other_contact_phone"
                            value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_other_contact_phone'])) {
                                echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_other_contact_phone'][0]);
