@@ -32,8 +32,8 @@ global $hide_property_fields;
     <div class="property-fields-wrap">
         <div class="property-fields property-short-description">
             <div class="form-group">
-                <label for="property_short_description"><?php esc_html_e('Property short description', 'essential-real-estate'); ?></label>
-                <input type="text" id="property_short_description" class="form-control" name="property_short_description"/>
+                <label for="property_short_des"><?php esc_html_e('Property short description', 'essential-real-estate'); ?></label>
+                <input type="text" id="property_short_des" class="form-control" name="property_short_des"/>
             </div>
         </div>
     </div>
@@ -64,3 +64,13 @@ global $hide_property_fields;
         </div>
     </div>
 <?php } ?>
+
+<div class="col-sm-12">
+    <div class="form-group">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="property_is_exclusive" name="property_is_exclusive"><?php esc_html_e('Is Exclusive', 'essential-real-estate'); ?>
+            </label>
+        </div>
+    </div>
+</div>

@@ -36,8 +36,8 @@ $property_meta_data = get_post_custom($property_data->ID);
     <div class="property-fields-wrap">
         <div class="property-fields property-short-description">
             <div class="form-group">
-                <label for="property_short_description"><?php esc_html_e('Property short description', 'essential-real-estate'); ?></label>
-                <input type="text" id="property_short_description" class="form-control" name="property_short_description"
+                <label for="property_short_des"><?php esc_html_e('Property short description', 'essential-real-estate'); ?></label>
+                <input type="text" id="property_short_des" class="form-control" name="property_short_des"
                        value="<?php print sanitize_text_field($property_short_des); ?>"/>
             </div>
         </div>
@@ -68,3 +68,15 @@ $property_meta_data = get_post_custom($property_data->ID);
         </div>
     </div>
 <?php } ?>
+
+<div class="col-sm-12">
+    <div class="form-group">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="property_is_exclusive" name="property_is_exclusive" <?php
+                if( isset( $property_meta_data[ERE_METABOX_PREFIX. 'property_is_exclusive'] ) && $property_meta_data[ERE_METABOX_PREFIX. 'property_is_exclusive'][0]=='1') echo ' checked="checked"'?>
+                    ><?php esc_html_e('Is Exclusive', 'essential-real-estate'); ?>
+            </label>
+        </div>
+    </div>
+</div>

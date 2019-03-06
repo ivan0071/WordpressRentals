@@ -259,6 +259,9 @@ if (!class_exists('ERE_Property')) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_short_des', sanitize_text_field($_POST['property_short_des']));
                 }                
 
+                $property_is_exclusive = (isset($_POST['property_is_exclusive']) && ($_POST['property_is_exclusive'][0] == '1')) ? 1 : 0;
+                update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_is_exclusive', $property_is_exclusive);
+
                 $property_price_on_call = isset($_POST['property_price_on_call']) ? 1 : 0;
                 update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_on_call', $property_price_on_call);
                 if ($property_price_on_call == 1) {

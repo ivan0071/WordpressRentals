@@ -294,6 +294,22 @@ if (!class_exists('ERE_Admin')) {
                                         ),
                                         array(
                                             'type' => 'row',
+                                            'col' => '12',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_is_exclusive",
+                                                    'title' => esc_html__('Is Exclusive?', 'essential-real-estate'),
+                                                    'type' => 'button_set',
+                                                    'options' => array(
+                                                        '1' => esc_html__('Yes', 'essential-real-estate'),
+                                                        '0' => esc_html__('No', 'essential-real-estate'),
+                                                    ),
+                                                    'default' => '0',
+                                                ),
+                                            )
+                                        ),
+                                        array(
+                                            'type' => 'row',
                                             'col' => '6',
                                             'fields' => array(
                                                 array(
@@ -2502,6 +2518,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_identity' => esc_html__('Property ID', 'essential-real-estate'),                                        
                                         'property_short_des' => esc_html__('Short Description', 'essential-real-estate'),
                                         'property_des' => esc_html__('Full Description', 'essential-real-estate'),
+                                        'property_is_exclusive' => esc_html__('Is Exclusive', 'essential-real-estate'),
                                         //Type
                                         'property_type' => esc_html__('Type', 'essential-real-estate'),
                                         'property_status' => esc_html__('Status', 'essential-real-estate'),
