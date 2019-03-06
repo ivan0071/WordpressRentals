@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 global $property_data, $property_meta_data, $hide_property_fields;
+$property_meta_data = get_post_custom($property_data->ID);
 ?>
     <div class="property-fields-wrap">
         <div class="ere-heading-style2 property-fields-title">
@@ -29,12 +30,15 @@ global $property_data, $property_meta_data, $hide_property_fields;
         </div>
     </div>
 <?php }  ?>
-<?php if (!in_array("property_short_des", $hide_property_fields)) { ?>
+<?php if (!in_array("property_short_des", $hide_property_fields)) { 
+    $property_short_des = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_short_des']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_short_des'][0] : '';
+?>
     <div class="property-fields-wrap">
         <div class="property-fields property-short-description">
             <div class="form-group">
                 <label for="property_short_description"><?php esc_html_e('Property short description', 'essential-real-estate'); ?></label>
-                <input type="text" id="property_short_description" class="form-control" name="property_short_description"/>
+                <input type="text" id="property_short_description" class="form-control" name="property_short_description"
+                       value="<?php print sanitize_text_field($property_short_des); ?>"/>
             </div>
         </div>
     </div>
