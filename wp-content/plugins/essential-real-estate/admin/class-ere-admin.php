@@ -282,6 +282,18 @@ if (!class_exists('ERE_Admin')) {
                                     'fields' => array(
                                         array(
                                             'type' => 'row',
+                                            'col' => '12',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_short_des",
+                                                    'title' => esc_html__('Property Short Description', 'essential-real-estate'),
+                                                    'type' => 'textarea',
+                                                    'default' => '',
+                                                )
+                                            )
+                                        ),
+                                        array(
+                                            'type' => 'row',
                                             'col' => '6',
                                             'fields' => array(
                                                 array(
@@ -2487,8 +2499,9 @@ if (!class_exists('ERE_Admin')) {
                                     'title' => esc_html__('Hide Submit Form Fields', 'essential-real-estate'),
                                     'subtitle' => esc_html__('Choose which fields you want to hide on New Property page?', 'essential-real-estate'),
                                     'options' => array(
-                                        'property_identity' => esc_html__('Property ID', 'essential-real-estate'),
-                                        'property_des' => esc_html__('Description', 'essential-real-estate'),
+                                        'property_identity' => esc_html__('Property ID', 'essential-real-estate'),                                        
+                                        'property_short_des' => esc_html__('Short Description', 'essential-real-estate'),
+                                        'property_des' => esc_html__('Full Description', 'essential-real-estate'),
                                         //Type
                                         'property_type' => esc_html__('Type', 'essential-real-estate'),
                                         'property_status' => esc_html__('Status', 'essential-real-estate'),

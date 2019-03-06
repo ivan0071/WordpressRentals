@@ -22,11 +22,26 @@ global $property_data, $property_meta_data, $hide_property_fields;
             </div>
         </div>
     </div>
-<?php if (!in_array("property_des", $hide_property_fields)) { ?>
+<?php if (!in_array("property_short_des", $hide_property_fields) || !in_array("property_des", $hide_property_fields)) { ?>
     <div class="property-fields-wrap">
         <div class="ere-heading-style2 property-fields-title">
             <h2><?php esc_html_e('Property Description', 'essential-real-estate'); ?></h2>
         </div>
+    </div>
+<?php }  ?>
+<?php if (!in_array("property_short_des", $hide_property_fields)) { ?>
+    <div class="property-fields-wrap">
+        <div class="property-fields property-short-description">
+            <div class="form-group">
+                <label for="property_short_description"><?php esc_html_e('Property short description', 'essential-real-estate'); ?></label>
+                <input type="text" id="property_short_description" class="form-control" name="property_short_description"/>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+<?php if (!in_array("property_des", $hide_property_fields)) { ?>
+    <div class="property-fields-wrap">
+        <label for="property_des"><?php esc_html_e('Property full description', 'essential-real-estate'); ?></label>
         <div class="property-fields property-description">
             <?php
             $content = $property_data->post_content;

@@ -254,6 +254,11 @@ if (!class_exists('ERE_Property')) {
 
             }
             if ($property_id > 0) {
+                
+                if (isset($_POST['property_short_des'])) {
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_short_des', sanitize_text_field($_POST['property_short_des']));
+                }                
+
                 $property_price_on_call = isset($_POST['property_price_on_call']) ? 1 : 0;
                 update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_on_call', $property_price_on_call);
                 if ($property_price_on_call == 1) {

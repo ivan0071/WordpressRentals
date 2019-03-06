@@ -76,6 +76,7 @@ $price_short = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_sh
 $price_unit = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_unit']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_unit'][0] : '';
 $price_prefix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_prefix']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_prefix'][0] : '';
 $price_postfix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix'][0] : '';
+$property_short_des = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_short_des']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_short_des'][0] : '';
 $property_address = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_address']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_address'][0] : '';
 $property_rooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rooms'][0] : '0';
 $property_bedrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms'][0] : '0';
@@ -297,7 +298,13 @@ $measurement_units = ere_get_measurement_units();
                             echo get_the_ID();
                         }
                         ?></span>
-                    </li>
+                    </li>                    
+                    <?php if (!empty($property_short_des)): ?>
+                        <li>
+                            <strong><?php esc_html_e('Property Short Description', 'essential-real-estate'); ?></strong>
+                            <span><?php echo esc_html($property_short_des) ?></span>
+                        </li>
+                    <?php endif; ?>
                     <?php if (!empty($price)): ?>
                         <li>
                             <strong><?php esc_html_e('Price', 'essential-real-estate'); ?></strong>
