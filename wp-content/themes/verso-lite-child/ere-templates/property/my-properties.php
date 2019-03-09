@@ -32,8 +32,8 @@ if (!empty($request_new_id)) {
 $request_edit_id = isset($_GET['edit_id']) ? $_GET['edit_id'] : '';
 if (!empty($request_edit_id)) {
     //debug ivan note: uncomment "custom_file.php" line if you want to debug the posted property data, while editing on front-end
-    //ere_get_template('property/property-submitted.php', array('property' => get_post($request_edit_id), 'action' => 'edit'));
-    ere_get_template('custom_file.php', array('property' => get_post($request_edit_id), 'action' => 'edit', 'request' => $_REQUEST));
+    ere_get_template('property/property-submitted.php', array('property' => get_post($request_edit_id), 'action' => 'edit'));
+    //ere_get_template('custom_file.php', array('property' => get_post($request_edit_id), 'action' => 'edit', 'request' => $_REQUEST));
 }
 $my_properties_page_link = ere_get_permalink('my_properties');
 $ere_property = new ERE_Property();
