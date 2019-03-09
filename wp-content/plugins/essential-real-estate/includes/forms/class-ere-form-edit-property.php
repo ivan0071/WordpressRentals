@@ -98,7 +98,7 @@ if (!class_exists('ERE_Form_Edit_Property')) {
 					ere_send_email( $admin_email, 'admin_mail_new_modification_listing', $args);
 				}
 				$my_properties_page_link = ere_get_permalink('my_properties');
-				$return_link = add_query_arg(array('edit_id' => $this->property_id), $my_properties_page_link);
+				$return_link = add_query_arg(array('edit_id' => $this->property_id, 'post' => $_POST), $my_properties_page_link);
 				wp_redirect($return_link);
 
 			} catch (Exception $e) {
