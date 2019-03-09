@@ -68,14 +68,13 @@ $property_meta_data = get_post_custom($property_data->ID);
         </div>
     </div>
 <?php } ?>
-
 <div class="col-sm-12">
     <div class="form-group">
         <div class="checkbox">
             <label>
                 <input type="checkbox" id="property_is_exclusive" name="property_is_exclusive" <?php
                 if( isset( $property_meta_data[ERE_METABOX_PREFIX. 'property_is_exclusive'] ) && $property_meta_data[ERE_METABOX_PREFIX. 'property_is_exclusive'][0]=='1') echo ' checked="checked"'?>
-                    ><?php esc_html_e('Is Exclusive', 'essential-real-estate'); ?>
+                    ><?php esc_html_e('Is Exclusive', 'essential-real-estate'); echo ere_required_field('property_is_exclusive'); ?>
             </label>
         </div>
     </div>

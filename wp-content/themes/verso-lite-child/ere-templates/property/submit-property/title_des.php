@@ -64,12 +64,11 @@ global $hide_property_fields;
         </div>
     </div>
 <?php } ?>
-
 <div class="col-sm-12">
     <div class="form-group">
         <div class="checkbox">
             <label>
-                <input type="checkbox" id="property_is_exclusive" name="property_is_exclusive"><?php esc_html_e('Is Exclusive', 'essential-real-estate'); ?>
+                <input type="checkbox" id="property_is_exclusive" name="property_is_exclusive"><?php esc_html_e('Is Exclusive', 'essential-real-estate'); echo ere_required_field('property_is_exclusive'); ?>
             </label>
         </div>
     </div>

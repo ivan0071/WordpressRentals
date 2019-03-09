@@ -542,6 +542,7 @@ if (!class_exists('ERE_Admin_Setup_Metaboxes')) {
             if (empty($property_identity)) {
                 update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_identity', $post_id);
             }
+            $property_is_exclusive = get_post_meta($post_id, ERE_METABOX_PREFIX . 'property_is_exclusive', true);
             $property_price_on_call = get_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_on_call', true);
             if($property_price_on_call=='1')
             {
