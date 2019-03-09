@@ -52,6 +52,7 @@ if (!empty($property_ids)) {
 			}
 		}
 
+		$property_is_exclusive = (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_is_exclusive']) && ($property_meta_data[ERE_METABOX_PREFIX . 'property_is_exclusive'][0] == '1')) ? 1 : 0;
 		$property_year = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_year']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_year'][0] : '';
 		$property_size = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_size']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_size'][0] : '';
 		$property_rooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rooms'][0] : '';
@@ -134,6 +135,17 @@ if (!empty($property_ids)) {
 								</div>
 							</div>';
 		$property_item .= '</div></th>';
+		
+		if (!in_array("property_is_exclusive", $hide_compare_fields)) {
+			if (!empty($property_is_exclusive)) {
+				if ($property_is_exclusive == 1) 
+					$is_exclusive .= '<td><div class="check-yes"><i class="fa fa-check"></i></div></td>';
+				else 
+					$is_exclusive .= '<td><div class="check-no"><i class="fa fa-minus"></i></div></td>';
+			} else {
+				$is_exclusive .= $empty_field;
+			}
+		}
 		if (!in_array("property_type", $hide_compare_fields)) {
 			if (!empty($property_types)) {
 				$types .= '<td>' . join(', ', $property_type_arr) . '</td>';
@@ -217,6 +229,12 @@ if (!empty($property_ids)) {
 				</tr>
 				</thead>
 				<tbody>
+				<?php if (!empty($is_exclusive)) { ?>
+					<tr>
+						<td class="title-list-check"><?php esc_html_e('Is Exclusive', 'essential-real-estate'); ?></td>
+						<?php echo wp_kses_post($is_exclusive); ?>
+					</tr>
+				<?php } ?>
 				<?php if (!empty($types)) { ?>
 					<tr>
 						<td class="title-list-check"><?php esc_html_e('Type', 'essential-real-estate'); ?></td>
