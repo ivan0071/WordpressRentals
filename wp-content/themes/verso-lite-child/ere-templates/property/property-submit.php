@@ -135,7 +135,7 @@ wp_print_styles(ERE_PLUGIN_PREFIX . 'submit-property');
                     <button class="ere-btn-next" aria-controls="step-<?php echo esc_attr($next_key); ?>"
                         type="button" title="<?php esc_html_e('Next', 'essential-real-estate') ?>"><span><?php esc_html_e('Next', 'essential-real-estate') ?></span><i class="fa fa-angle-right"></i></button>
                 <?php else:?>
-                    <input type="submit" name="submit_property" class="button btn-submit-property"
+                    <input type="submit" name="submit_property" class="button btn-submit-property verso_frontend_edit_property_submit"
                            value="<?php esc_attr_e($submit_button_text); ?>"/>
                 <?php endif;?>
                 </div>

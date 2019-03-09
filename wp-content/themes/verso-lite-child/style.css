@@ -12,3 +12,8 @@ License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Verso Lite is distributed under the terms of the GNU GPL v2 or later
 */
+
+.ere-property-multi-step .ere-step-nav input[type='submit'].verso_frontend_edit_property_submit
+{
+	float: initial;
+}
