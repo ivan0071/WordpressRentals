@@ -162,7 +162,15 @@ wp_print_styles(ERE_PLUGIN_PREFIX . 'dashboard');
     $enable_submit_property_via_frontend = ere_get_option('enable_submit_property_via_frontend', 1);
     $user_can_submit = ere_get_option('user_can_submit', 1);
     $is_agent = ere_is_agent();
-    if ($paid_submission_type == 'per_package' && $enable_submit_property_via_frontend == 1 && ($is_agent || $user_can_submit == 1)): ?>
+
+    $user = wp_get_current_user();
+    $allowed_roles = array('administrator'); //'editor', 'administrator', 'author'
+    $userIsAdmin = false;
+    if( array_intersect($allowed_roles, $user->roles ) ) {
+        $userIsAdmin = true;
+    }        
+
+    if ($paid_submission_type == 'per_package' && $enable_submit_property_via_frontend == 1 && ($is_agent || $user_can_submit == 1 || $userIsAdmin)): ?>
         <div class="panel panel-default">
             <div
                 class="panel-heading"><?php esc_html_e('My Listing Package', 'essential-real-estate'); ?></div>
