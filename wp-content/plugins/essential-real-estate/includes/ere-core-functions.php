@@ -161,13 +161,6 @@ if (!function_exists('ere_allow_submit')){
         $user_can_submit = ere_get_option('user_can_submit', 1);
         $is_agent = ere_is_agent();
 
-        $user = wp_get_current_user();
-        $allowed_roles = array('administrator'); //'editor', 'administrator', 'author'
-        $userIsAdmin = false;
-        if( array_intersect($allowed_roles, $user->roles ) ) {
-            $userIsAdmin = true;
-        }
-
         $allow_submit=true;
         if($enable_submit_property_via_frontend!=1)
         {
@@ -176,9 +169,7 @@ if (!function_exists('ere_allow_submit')){
         else{
             if(!$is_agent && $user_can_submit!=1)
             {
-                if (!$userIsAdmin) {
-                    $allow_submit=false;
-                }
+                $allow_submit=false;
             }
         }
         return $allow_submit;

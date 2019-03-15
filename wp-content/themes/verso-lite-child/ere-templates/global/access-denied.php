@@ -27,28 +27,14 @@ do_action('ere_access_denied_before', sanitize_title($type), $type);
                 $enable_submit_property_via_frontend = ere_get_option('enable_submit_property_via_frontend', 1);
                 $user_can_submit = ere_get_option('user_can_submit', 1);
                 $is_agent = ere_is_agent();
-
-                $user = wp_get_current_user();
-                $allowed_roles = array('administrator'); //'editor', 'administrator', 'author'
-                $userIsAdmin = false;
-                if( array_intersect($allowed_roles, $user->roles ) ) {
-                    $userIsAdmin = true;
-                }        
-
                 if($enable_submit_property_via_frontend!=1)
                 {
-                    if (!$userIsAdmin) 
-                    {
-                        echo __('<strong>Access Denied!</strong> You can\'t access this feature', 'essential-real-estate');
-                    }
+                    echo __('<strong>Access Denied!</strong> You can\'t access this feature', 'essential-real-estate');
                 }
                 else{
                     if($user_can_submit!=1)
                     {
-                        if (!$userIsAdmin)
-                        {
-                            echo __('<strong>Access Denied!</strong> You need to become an agent to access this feature.', 'essential-real-estate');
-                        }
+                        echo __('<strong>Access Denied!</strong> You need to become an agent to access this feature.', 'essential-real-estate');
                     }
                 }
                 break;
