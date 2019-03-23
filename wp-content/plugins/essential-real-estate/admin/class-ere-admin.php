@@ -322,6 +322,9 @@ if (!class_exists('ERE_Admin')) {
                                             )
                                         ),
                                         array(
+                                            'type' => 'divide'
+                                        ),
+                                        array(
                                             'id' => "{$meta_prefix}property_group",
                                             'title' => __('Please choose the property group:', 'essential-real-estate'),
                                             'type' => 'radio',
@@ -333,7 +336,7 @@ if (!class_exists('ERE_Admin')) {
                                         ),
                                         array(
                                             'type' => 'row',
-                                            'col' => '12',
+                                            'col' => '6',
                                             'fields' => array(
                                                 array(
                                                     'id' => "{$meta_prefix}property_residential_type",
@@ -348,22 +351,8 @@ if (!class_exists('ERE_Admin')) {
                                                             'order' => 'ASC'
                                                         )
                                                     ),
-                                                    // 'data' => 'taxonomy',
-                                                    // 'data_args' => array(
-                                                    //     'taxonomy' => 'property-residential-type', 
-                                                    //     'hide_empty' => 0,
-                                                    //     'meta_key'=>'property_residential_type_order_number',
-                                                    //     'orderby'=>'meta_value_num',
-                                                    //     'order' => 'ASC'
-                                                    // ),
                                                     'required' => array("{$meta_prefix}property_group", '=', 'property_is_residential')
                                                 ),
-                                            )
-                                        ),
-                                        array(
-                                            'type' => 'row',
-                                            'col' => '12',
-                                            'fields' => array(
                                                 array(
                                                     'id' => "{$meta_prefix}property_resid_furnished_type",
                                                     'title' => esc_html__('Furnished Type:', 'essential-real-estate'),
@@ -378,12 +367,12 @@ if (!class_exists('ERE_Admin')) {
                                                         )
                                                     ),
                                                     'required' => array("{$meta_prefix}property_group", '=', 'property_is_residential')
-                                                ),
+                                                ),                                               
                                             )
                                         ),
                                         array(
                                             'type' => 'row',
-                                            'col' => '12',
+                                            'col' => '6',
                                             'fields' => array(
                                                 array(
                                                     'id' => "{$meta_prefix}property_commer_offices",
@@ -400,12 +389,6 @@ if (!class_exists('ERE_Admin')) {
                                                     ),
                                                     'required' => array("{$meta_prefix}property_group", '=', 'property_is_commercial')
                                                 ),
-                                            )
-                                        ),
-                                        array(
-                                            'type' => 'row',
-                                            'col' => '12',
-                                            'fields' => array(
                                                 array(
                                                     'id' => "{$meta_prefix}property_commer_retail",
                                                     'title' => esc_html__('Commercial Retail:', 'essential-real-estate'),
@@ -420,12 +403,12 @@ if (!class_exists('ERE_Admin')) {
                                                         )
                                                     ),
                                                     'required' => array("{$meta_prefix}property_group", '=', 'property_is_commercial')
-                                                ),
+                                                ),                                                
                                             )
                                         ),
                                         array(
                                             'type' => 'row',
-                                            'col' => '12',
+                                            'col' => '6',
                                             'fields' => array(
                                                 array(
                                                     'id' => "{$meta_prefix}property_commer_leisure",
@@ -442,12 +425,6 @@ if (!class_exists('ERE_Admin')) {
                                                     ),
                                                     'required' => array("{$meta_prefix}property_group", '=', 'property_is_commercial')
                                                 ),
-                                            )
-                                        ),
-                                        array(
-                                            'type' => 'row',
-                                            'col' => '12',
-                                            'fields' => array(
                                                 array(
                                                     'id' => "{$meta_prefix}property_commer_industrial",
                                                     'title' => esc_html__('Commercial Industrial/Warehousing:', 'essential-real-estate'),
@@ -462,12 +439,12 @@ if (!class_exists('ERE_Admin')) {
                                                         )
                                                     ),
                                                     'required' => array("{$meta_prefix}property_group", '=', 'property_is_commercial')
-                                                ),
+                                                ),                                                
                                             )
                                         ),
                                         array(
                                             'type' => 'row',
-                                            'col' => '12',
+                                            'col' => '6',
                                             'fields' => array(
                                                 array(
                                                     'id' => "{$meta_prefix}property_commer_land",
@@ -484,12 +461,6 @@ if (!class_exists('ERE_Admin')) {
                                                     ),
                                                     'required' => array("{$meta_prefix}property_group", '=', 'property_is_commercial')
                                                 ),
-                                            )
-                                        ),
-                                        array(
-                                            'type' => 'row',
-                                            'col' => '12',
-                                            'fields' => array(
                                                 array(
                                                     'id' => "{$meta_prefix}property_commer_other",
                                                     'title' => esc_html__('Other:', 'essential-real-estate'),
@@ -504,9 +475,28 @@ if (!class_exists('ERE_Admin')) {
                                                         )
                                                     ),
                                                     'required' => array("{$meta_prefix}property_group", '=', 'property_is_commercial')
-                                                ),
+                                                ),                                                
                                             )
                                         ),
+                                        array(
+                                            'type' => 'divide'
+                                        ),
+                                        array(
+                                            'type' => 'row',
+                                            'col' => '12',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_price_on_call",
+                                                    'title' => esc_html__('Price on Call ?', 'essential-real-estate'),
+                                                    'type' => 'button_set',
+                                                    'options' => array(
+                                                        '1' => esc_html__('Yes', 'essential-real-estate'),
+                                                        '0' => esc_html__('No', 'essential-real-estate'),
+                                                    ),
+                                                    'default' => '0',
+                                                ),
+                                            )
+                                        ),                                        
                                         array(
                                             'type' => 'row',
                                             'col' => '6',
@@ -543,22 +533,6 @@ if (!class_exists('ERE_Admin')) {
                                                     'type' => 'text',
                                                     'default' => '',
                                                     'required' => array("{$meta_prefix}property_price_on_call", '=', '0'),
-                                                ),
-                                            )
-                                        ),
-                                        array(
-                                            'type' => 'row',
-                                            'col' => '12',
-                                            'fields' => array(
-                                                array(
-                                                    'id' => "{$meta_prefix}property_price_on_call",
-                                                    'title' => esc_html__('Price on Call ?', 'essential-real-estate'),
-                                                    'type' => 'button_set',
-                                                    'options' => array(
-                                                        '1' => esc_html__('Yes', 'essential-real-estate'),
-                                                        '0' => esc_html__('No', 'essential-real-estate'),
-                                                    ),
-                                                    'default' => '0',
                                                 ),
                                             )
                                         ),
