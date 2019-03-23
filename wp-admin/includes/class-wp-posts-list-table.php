@@ -104,6 +104,19 @@ class WP_Posts_List_Table extends WP_List_Table {
 	}
 
 	/**
+	 * Returns the list of names, where key is the slug.
+	 */
+	private function get_all_taxonomies($taxonomy_options)
+	{
+		$list_tax_item = array();
+		$taxonomy_items = get_categories($taxonomy_options);
+		foreach($taxonomy_items as $item){
+			$list_tax_item[$item->slug] = $item->name;
+		}
+		return $list_tax_item;
+	}
+
+	/**
 	 * Sets whether the table layout should be hierarchical or not.
 	 *
 	 * @since 4.2.0
@@ -1595,12 +1608,50 @@ class WP_Posts_List_Table extends WP_List_Table {
 	<?php foreach ( $flat_taxonomies as $taxonomy ) : ?>
 		<?php if ( current_user_can( $taxonomy->cap->assign_terms ) ) :
 			$taxonomy_name = esc_attr( $taxonomy->name );
+			$taxonomy_names_selectlist = [
+				'property-resid-furnished-type',
+				'property-residential-type'
+			];
+			$taxonomy_order_num_selectlist = [
+				'property_resid_furnished_type_order_number',
+				'property_residential_type_order_number'
+			];
 
-			?>
+			$key = array_search($taxonomy_name, $taxonomy_names_selectlist);
+			if ($key > -1 && $key < count($taxonomy_order_num_selectlist)) :
+				$all_taxonomies = $this->get_all_taxonomies(
+					array(
+						'taxonomy' => $taxonomy_name, 
+						'hide_empty' => 0,
+						'meta_key'=> $taxonomy_order_num_selectlist[$key],
+						'orderby'=> 'meta_value_num',
+						'order' => 'ASC'
+					)
+				);
+		?>
+		<?php 
+			echo $taxonomy_name." is not completed - need to take the value and to select it + ";
+			echo "we need to manage the visibility depending if residential or commercial.";
+			echo "for dispalying it, just search for 'show_in_quick_edit' in the code";
+		?>
+			<label class="inline-edit-tags">
+				<span class="title"><?php echo esc_html( $taxonomy->labels->name ) ?></span>
+				<select name="tax_input[<?php echo $taxonomy_name; ?>]" class="tax_input_<?php echo $taxonomy_name; ?>" style="width: 100%">
+					<?php foreach ( $all_taxonomies as $key => $value ) :
+						echo '<option value="'.$key.'"';
+						//if ($taxonomy_name == $key) echo ' selected';
+						echo '>'.$value.'</option>';
+					endforeach; //$all_taxonomies as $key => $value ?>
+				</select>
+			</label>
+		<?php
+			else : 
+		?>
 			<label class="inline-edit-tags">
 				<span class="title"><?php echo esc_html( $taxonomy->labels->name ) ?></span>
 				<textarea data-wp-taxonomy="<?php echo $taxonomy_name; ?>" cols="22" rows="1" name="tax_input[<?php echo $taxonomy_name; ?>]" class="tax_input_<?php echo $taxonomy_name; ?>"></textarea>
 			</label>
+			<?php endif; ?>
 		<?php endif; ?>
 
 	<?php endforeach; //$flat_taxonomies as $taxonomy ?>

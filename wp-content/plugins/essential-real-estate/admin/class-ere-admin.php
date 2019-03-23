@@ -1235,8 +1235,9 @@ if (!class_exists('ERE_Admin')) {
                 'post_type' => 'property',
                 'hierarchical' => false,
                 'meta_box_cb' => array($this, 'taxonomy_select_meta_box'),
-                'label' => esc_html__('Residential type', 'essential-real-estate'),
-                'singular_name' => esc_html__('Residential type', 'essential-real-estate'),
+                'label' => esc_html__('Residential Type', 'essential-real-estate'),
+                'show_in_quick_edit' => false,
+                'singular_name' => esc_html__('Residential Type', 'essential-real-estate'),
                 'rewrite' => array(
                     'slug' => apply_filters('ere_property_residential_type_slug', 'property-residential-type'),
                 ),
@@ -1246,6 +1247,7 @@ if (!class_exists('ERE_Admin')) {
                 'hierarchical' => false,
                 'meta_box_cb' => array($this, 'taxonomy_select_meta_box'),
                 'label' => esc_html__('Furnished Type', 'essential-real-estate'),
+                'show_in_quick_edit' => false,
                 'singular_name' => esc_html__('Furnished Type', 'essential-real-estate'),
                 'rewrite' => array(
                     'slug' => apply_filters('ere_property_resid_furnished_type_slug', 'property-resid-furnished-type'),
