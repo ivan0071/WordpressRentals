@@ -446,6 +446,27 @@ if (!class_exists('ERE_Admin')) {
                                         ),
                                         array(
                                             'type' => 'row',
+                                            'col' => '12',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_commer_industrial",
+                                                    'title' => esc_html__('Commercial Industrial/Warehousing:', 'essential-real-estate'),
+                                                    'type' => 'select',
+                                                    'options' => $this->get_all_taxonomies(
+                                                        array(
+                                                            'taxonomy' => 'property-commer-industrial', 
+                                                            'hide_empty' => 0,
+                                                            'meta_key'=>'property_commer_industrial_order_number',
+                                                            'orderby'=>'meta_value_num',
+                                                            'order' => 'ASC'
+                                                        )
+                                                    ),
+                                                    'required' => array("{$meta_prefix}property_group", '=', 'property_is_commercial')
+                                                ),
+                                            )
+                                        ),
+                                        array(
+                                            'type' => 'row',
                                             'col' => '6',
                                             'fields' => array(
                                                 array(
@@ -1349,6 +1370,17 @@ if (!class_exists('ERE_Admin')) {
                     'slug' => apply_filters('ere_property_commer_leisure_slug', 'property-commer-leisure'),
                 ),
             ));
+            $taxonomies['property-commer-industrial'] = apply_filters('ere_register_taxonomy_property_commer_industrial', array(
+                'post_type' => 'property',
+                'hierarchical' => false,
+                'meta_box_cb' => array($this, 'taxonomy_select_meta_box'),
+                'label' => esc_html__('Commer. Industrial/Warehousing', 'essential-real-estate'),
+                'show_in_quick_edit' => false,
+                'singular_name' => esc_html__('Commercial Industrial', 'essential-real-estate'),
+                'rewrite' => array(
+                    'slug' => apply_filters('ere_property_commer_industrial_slug', 'property-commer-industrial'),
+                ),
+            ));
             $taxonomies['property-status'] = apply_filters('ere_register_taxonomy_property_status', array(
                 'post_type' => 'property',
                 'hierarchical' => true,
@@ -1425,7 +1457,7 @@ if (!class_exists('ERE_Admin')) {
             if (!in_array($_GET['taxonomy'], 
                 array('property-type', 
                     'property-residential-type', 'property-resid-furnished-type', 
-                    'property-commer-offices', 'property-commer-retail', 'property-commer-leisure',
+                    'property-commer-offices', 'property-commer-retail', 'property-commer-leisure', 'property-commer-industrial',
                     'property-status', 'property-feature', 'property-label')
             )) {
                 return;
@@ -1642,6 +1674,28 @@ if (!class_exists('ERE_Admin')) {
                         'title' => __('Order Number', 'essential-real-estate'),
                         'subtitle' => esc_html__('The number to set orderby', 'essential-real-estate'),
                         'id' => "property_commer_leisure_order_number",
+                        'type' => 'text',
+                        'default' => '1',
+                        'pattern' => '[0-9]*'
+                    ),
+                )
+            ));
+            $configs['property-commer-industrial-settings'] = apply_filters('ere_register_term_meta_property_commer_industrial', array(
+                'name' => esc_html__('Taxonomy Setting', 'essential-real-estate'),
+                'layout' => 'horizontal',
+                'taxonomy' => array('property-commer-industrial'),
+                'fields' => array(
+                    array(
+                        'id' => 'property_commer_industrial_icon',
+                        'title' => esc_html__('Icon image', 'essential-real-estate'),
+                        'desc' => esc_html__('Icon display on map', 'essential-real-estate'),
+                        'type' => 'image',
+                        'default' => '',
+                    ),
+                    array(
+                        'title' => __('Order Number', 'essential-real-estate'),
+                        'subtitle' => esc_html__('The number to set orderby', 'essential-real-estate'),
+                        'id' => "property_commer_industrial_order_number",
                         'type' => 'text',
                         'default' => '1',
                         'pattern' => '[0-9]*'
@@ -2374,6 +2428,12 @@ if (!class_exists('ERE_Admin')) {
                             'default' => 'property-commer-leisure',
                         ),
                         array(
+                            'id' => 'property-commer-industrial_url_slug',
+                            'title' => esc_html__('Property Commercial industrial Slug', 'essential-real-estate'),
+                            'type' => 'text',
+                            'default' => 'property-commer-industrial',
+                        ),
+                        array(
                             'id' => 'property_status_url_slug',
                             'title' => esc_html__('Property Status Slug', 'essential-real-estate'),
                             'type' => 'text',
@@ -2864,6 +2924,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_commer_offices' => esc_html__('Commercial Offices', 'essential-real-estate'),
                                         'property_commer_retail' => esc_html__('Commercial Retail', 'essential-real-estate'),
                                         'property_commer_leisure' => esc_html__('Commercial Leisure/Hospitality', 'essential-real-estate'),
+                                        'property_commer_industrial' => esc_html__('Commercial Industrial/Warehousing', 'essential-real-estate'),
                                         'property_status' => esc_html__('Status', 'essential-real-estate'),
                                         'property_label' => esc_html__('Label', 'essential-real-estate'),
                                         //Price
@@ -2919,6 +2980,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_commer_offices' => esc_html__('Commercial Offices', 'essential-real-estate'),
                                         'property_commer_retail' => esc_html__('Commercial Retail', 'essential-real-estate'),
                                         'property_commer_leisure' => esc_html__('Commercial Leisure/Hospitality', 'essential-real-estate'),
+                                        'property_commer_industrial' => esc_html__('Commercial Industrial/Warehousing', 'essential-real-estate'),
                                         'property_label' => esc_html__('Label', 'essential-real-estate'),
                                         'property_price' => esc_html__('Price', 'essential-real-estate'),
                                         'property_price_prefix' => esc_html__('Before Price Label', 'essential-real-estate'),
@@ -2942,6 +3004,7 @@ if (!class_exists('ERE_Admin')) {
                                         //'property_commer_offices'
                                         //'property_commer_retail',
                                         //'property_commer_leisure',
+                                        //'property_commer_industrial',
                                         'property_price',
                                         'property_map_address',
                                     )
@@ -3043,6 +3106,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_commer_offices' => esc_html__('Commercial Offices', 'essential-real-estate'),
                                         'property_commer_retail' => esc_html__('Commercial Retail', 'essential-real-estate'),
                                         'property_commer_leisure' => esc_html__('Commercial Leisure/Hospitality', 'essential-real-estate'),
+                                        'property_commer_industrial' => esc_html__('Commercial Industrial/Warehousing', 'essential-real-estate'),
                                         'property_title' => esc_html__('Title', 'essential-real-estate'),
                                         'property_address' => esc_html__('Address', 'essential-real-estate'),
                                         'property_country' => esc_html__('Country', 'essential-real-estate'),
@@ -3062,7 +3126,7 @@ if (!class_exists('ERE_Admin')) {
                                     'default' => array(
                                         'property_status', 'property_type', 
                                         'property_residential_type', 'property_resid_furnished_type', 
-                                        'property_commer_offices', 'property_commer_retail', 'property_commer_leisure',
+                                        'property_commer_offices', 'property_commer_retail', 'property_commer_leisure', 'property_commer_industrial',
                                         'property_title', 'property_address', 'property_country', 'property_state', 'property_city', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms', 'property_price', 'property_size', 'property_land', 'property_label', 'property_garage', 'property_identity', 'property_feature'
                                     )
                                 ),
@@ -4268,6 +4332,7 @@ if (!class_exists('ERE_Admin')) {
                                 'property_commer_offices' => esc_html__('Commercial Offices', 'essential-real-estate'),
                                 'property_commer_retail' => esc_html__('Commercial Retail', 'essential-real-estate'),
                                 'property_commer_leisure' => esc_html__('Commercial Leisure/Hospitality', 'essential-real-estate'),
+                                'property_commer_industrial' => esc_html__('Commercial Industrial/Warehousing', 'essential-real-estate'),
                                 'property_status' => esc_html__('Status', 'essential-real-estate'),
                                 'property_label' => esc_html__('Label', 'essential-real-estate'),
                                 'property_price' => esc_html__('Price', 'essential-real-estate'),
@@ -4477,6 +4542,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_commer_offices' => esc_html__('Commercial Offices', 'essential-real-estate'),
                                         'property_commer_retail' => esc_html__('Commercial Retail', 'essential-real-estate'),
                                         'property_commer_leisure' => esc_html__('Commercial Leisure/Hospitality', 'essential-real-estate'),
+                                        'property_commer_industrial' => esc_html__('Commercial Industrial/Warehousing', 'essential-real-estate'),
                                         'property_title' => esc_html__('Title', 'essential-real-estate'),
                                         'property_address' => esc_html__('Address', 'essential-real-estate'),
                                         'property_country' => esc_html__('Country', 'essential-real-estate'),
