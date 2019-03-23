@@ -60,6 +60,9 @@ if (!class_exists('ERE_Admin_Property')) {
                 case 'commer-offices':
                     echo ere_admin_taxonomy_terms($post->ID, 'property-commer-offices', 'property');
                     break;
+                case 'commer-retail':
+                    echo ere_admin_taxonomy_terms($post->ID, 'property-commer-retail', 'property');
+                    break;
                 case 'status':
                     echo ere_admin_taxonomy_terms($post->ID, 'property-status', 'property');
                     break;
@@ -209,6 +212,20 @@ if (!class_exists('ERE_Admin_Property')) {
             $property_commer_offices_url_slug = ere_get_option('property_commer_offices_url_slug');
             if ($property_commer_offices_url_slug) {
                 return $property_commer_offices_url_slug;
+            }
+            return $existing_slug;
+        }
+
+        /**
+         * Modify commercial retail slug
+         * @param $existing_slug
+         * @return string
+         */
+        public function modify_property_commer_retail_slug($existing_slug)
+        {
+            $property_commer_retail_url_slug = ere_get_option('property_commer_retail_url_slug');
+            if ($property_commer_retail_url_slug) {
+                return $property_commer_retail_url_slug;
             }
             return $existing_slug;
         }
@@ -393,7 +410,7 @@ if (!class_exists('ERE_Admin_Property')) {
                 $taxonomy_arr = array(
                     'property-status','property-type',
                     'property-residential-type','property-resid-furnished-type',
-                    'property-commer-offices'
+                    'property-commer-offices', 'property-commer-retail'
                 );
                 foreach($taxonomy_arr as $taxonomy){
                     $selected      = isset($_GET[$taxonomy]) ? $_GET[$taxonomy] : '';
@@ -428,7 +445,7 @@ if (!class_exists('ERE_Admin_Property')) {
                 $taxonomy_arr = array(
                     'property-status','property-type',
                     'property-residential-type','property-resid-furnished-type',
-                    'property-commer-offices'
+                    'property-commer-offices', 'property-commer-retail'
                 );
                 foreach($taxonomy_arr as $taxonomy) {
                     if (isset($q_vars[$taxonomy]) && is_numeric($q_vars[$taxonomy]) && $q_vars[$taxonomy] != 0) {

@@ -1611,12 +1611,14 @@ class WP_Posts_List_Table extends WP_List_Table {
 			$taxonomy_names_selectlist = [
 				'property-resid-furnished-type',
 				'property-residential-type',
-				'property-commer-offices',				
+				'property-commer-offices',
+				'property-commer-retail',
 			];
 			$taxonomy_order_num_selectlist = [
 				'property_resid_furnished_type_order_number',
 				'property_residential_type_order_number',
-				'property_commer_offices_order_number',				
+				'property_commer_offices_order_number',
+				'property_commer_retail_order_number',				
 			];
 
 			$key = array_search($taxonomy_name, $taxonomy_names_selectlist);
