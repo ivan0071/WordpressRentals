@@ -1235,7 +1235,7 @@ if (!class_exists('ERE_Admin')) {
                 'post_type' => 'property',
                 'hierarchical' => false,
                 'meta_box_cb' => array($this, 'taxonomy_select_meta_box'),
-                'label' => esc_html__('Residential Type', 'essential-real-estate'),
+                'label' => esc_html__('Resid. Type', 'essential-real-estate'),
                 'show_in_quick_edit' => false,
                 'singular_name' => esc_html__('Residential Type', 'essential-real-estate'),
                 'rewrite' => array(
@@ -1246,7 +1246,7 @@ if (!class_exists('ERE_Admin')) {
                 'post_type' => 'property',
                 'hierarchical' => false,
                 'meta_box_cb' => array($this, 'taxonomy_select_meta_box'),
-                'label' => esc_html__('Furnished Type', 'essential-real-estate'),
+                'label' => esc_html__('Resid. Furnished Type', 'essential-real-estate'),
                 'show_in_quick_edit' => false,
                 'singular_name' => esc_html__('Furnished Type', 'essential-real-estate'),
                 'rewrite' => array(

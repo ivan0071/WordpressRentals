@@ -54,7 +54,7 @@ if (!class_exists('ERE_Admin_Property')) {
                 case 'residential-type':
                     echo ere_admin_taxonomy_terms($post->ID, 'property-residential-type', 'property');
                     break;
-                case 'residential-furnished-type':
+                case 'resid-furnished-type':
                     echo ere_admin_taxonomy_terms($post->ID, 'property-resid-furnished-type', 'property');
                     break;                    
                 case 'status':
