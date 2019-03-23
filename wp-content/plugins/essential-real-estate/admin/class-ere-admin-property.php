@@ -54,6 +54,9 @@ if (!class_exists('ERE_Admin_Property')) {
                 case 'residential-type':
                     echo ere_admin_taxonomy_terms($post->ID, 'property-residential-type', 'property');
                     break;
+                case 'residential-furnished-type':
+                    echo ere_admin_taxonomy_terms($post->ID, 'property-resid-furnished-type', 'property');
+                    break;                    
                 case 'status':
                     echo ere_admin_taxonomy_terms($post->ID, 'property-status', 'property');
                     break;
@@ -166,7 +169,7 @@ if (!class_exists('ERE_Admin_Property')) {
         }
 
         /**
-         * Modify property type slug
+         * Modify property residential type slug
          * @param $existing_slug
          * @return string
          */
@@ -175,6 +178,20 @@ if (!class_exists('ERE_Admin_Property')) {
             $property_residential_type_url_slug = ere_get_option('property_residential_type_url_slug');
             if ($property_residential_type_url_slug) {
                 return $property_residential_type_url_slug;
+            }
+            return $existing_slug;
+        }
+
+        /**
+         * Modify residential furnished type slug
+         * @param $existing_slug
+         * @return string
+         */
+        public function modify_property_resid_furnished_type_slug($existing_slug)
+        {
+            $property_resid_furnished_type_url_slug = ere_get_option('property_resid_furnished_type_url_slug');
+            if ($property_resid_furnished_type_url_slug) {
+                return $property_resid_furnished_type_url_slug;
             }
             return $existing_slug;
         }
@@ -356,7 +373,7 @@ if (!class_exists('ERE_Admin_Property')) {
             global $typenow;
             $post_type = 'property';
             if ($typenow == $post_type) {
-                $taxonomy_arr  = array('property-status','property-type','property-residential-type');
+                $taxonomy_arr  = array('property-status','property-type','property-residential-type','property-resid-furnished-type');
                 foreach($taxonomy_arr as $taxonomy){
                     $selected      = isset($_GET[$taxonomy]) ? $_GET[$taxonomy] : '';
                     $info_taxonomy = get_taxonomy($taxonomy);
@@ -387,7 +404,7 @@ if (!class_exists('ERE_Admin_Property')) {
             $q_vars    = &$query->query_vars;
             if ($pagenow == 'edit.php' && isset($q_vars['post_type']) && $q_vars['post_type'] == $post_type)
             {
-                $taxonomy_arr  = array('property-status','property-type','property-residential-type');
+                $taxonomy_arr  = array('property-status','property-type','property-residential-type','property-resid-furnished-type');
                 foreach($taxonomy_arr as $taxonomy) {
                     if (isset($q_vars[$taxonomy]) && is_numeric($q_vars[$taxonomy]) && $q_vars[$taxonomy] != 0) {
                         $term = get_term_by('id', $q_vars[$taxonomy], $taxonomy);

@@ -332,27 +332,54 @@ if (!class_exists('ERE_Admin')) {
                                             'default' => 'property_is_residential',
                                         ),
                                         array(
-                                            'id' => "{$meta_prefix}property_residential_type",
-                                            'title' => esc_html__('Residential type:', 'essential-real-estate'),
-                                            'type' => 'select',
-                                            'options' => $this->get_all_taxonomies(
+                                            'type' => 'row',
+                                            'col' => '12',
+                                            'fields' => array(
                                                 array(
-                                                    'taxonomy' => 'property-residential-type', 
-                                                    'hide_empty' => 0,
-                                                    'meta_key'=>'property_residential_type_order_number',
-                                                    'orderby'=>'meta_value_num',
-                                                    'order' => 'ASC'
-                                                )
-                                            ),
-                                            // 'data' => 'taxonomy',
-                                            // 'data_args' => array(
-                                            //     'taxonomy' => 'property-residential-type', 
-                                            //     'hide_empty' => 0,
-                                            //     'meta_key'=>'property_residential_type_order_number',
-                                            //     'orderby'=>'meta_value_num',
-                                            //     'order' => 'ASC'
-                                            // ),
-                                            'required' => array("{$meta_prefix}property_group", '=', 'property_is_residential')
+                                                    'id' => "{$meta_prefix}property_residential_type",
+                                                    'title' => esc_html__('Residential Type:', 'essential-real-estate'),
+                                                    'type' => 'select',
+                                                    'options' => $this->get_all_taxonomies(
+                                                        array(
+                                                            'taxonomy' => 'property-residential-type', 
+                                                            'hide_empty' => 0,
+                                                            'meta_key'=>'property_residential_type_order_number',
+                                                            'orderby'=>'meta_value_num',
+                                                            'order' => 'ASC'
+                                                        )
+                                                    ),
+                                                    // 'data' => 'taxonomy',
+                                                    // 'data_args' => array(
+                                                    //     'taxonomy' => 'property-residential-type', 
+                                                    //     'hide_empty' => 0,
+                                                    //     'meta_key'=>'property_residential_type_order_number',
+                                                    //     'orderby'=>'meta_value_num',
+                                                    //     'order' => 'ASC'
+                                                    // ),
+                                                    'required' => array("{$meta_prefix}property_group", '=', 'property_is_residential')
+                                                ),
+                                            )
+                                        ),
+                                        array(
+                                            'type' => 'row',
+                                            'col' => '12',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_resid_furnished_type",
+                                                    'title' => esc_html__('Furnished Type:', 'essential-real-estate'),
+                                                    'type' => 'select',
+                                                    'options' => $this->get_all_taxonomies(
+                                                        array(
+                                                            'taxonomy' => 'property-resid-furnished-type', 
+                                                            'hide_empty' => 0,
+                                                            'meta_key'=>'property_resid_furnished_type_order_number',
+                                                            'orderby'=>'meta_value_num',
+                                                            'order' => 'ASC'
+                                                        )
+                                                    ),
+                                                    'required' => array("{$meta_prefix}property_group", '=', 'property_is_residential')
+                                                ),
+                                            )
                                         ),
                                         array(
                                             'type' => 'row',
@@ -1208,12 +1235,22 @@ if (!class_exists('ERE_Admin')) {
                 'post_type' => 'property',
                 'hierarchical' => false,
                 'meta_box_cb' => array($this, 'taxonomy_select_meta_box'),
-                'label' => esc_html__('Property Residential Type', 'essential-real-estate'),
-                'singular_name' => esc_html__('Property Residential Type', 'essential-real-estate'),
+                'label' => esc_html__('Residential type', 'essential-real-estate'),
+                'singular_name' => esc_html__('Residential type', 'essential-real-estate'),
                 'rewrite' => array(
                     'slug' => apply_filters('ere_property_residential_type_slug', 'property-residential-type'),
                 ),
             ));
+            $taxonomies['property-resid-furnished-type'] = apply_filters('ere_register_taxonomy_property_resid_furnished_type', array(
+                'post_type' => 'property',
+                'hierarchical' => false,
+                'meta_box_cb' => array($this, 'taxonomy_select_meta_box'),
+                'label' => esc_html__('Furnished Type', 'essential-real-estate'),
+                'singular_name' => esc_html__('Furnished Type', 'essential-real-estate'),
+                'rewrite' => array(
+                    'slug' => apply_filters('ere_property_resid_furnished_type_slug', 'property-resid-furnished-type'),
+                ),
+            ));            
             $taxonomies['property-status'] = apply_filters('ere_register_taxonomy_property_status', array(
                 'post_type' => 'property',
                 'hierarchical' => true,
@@ -1287,7 +1324,7 @@ if (!class_exists('ERE_Admin')) {
          */
         public function remove_taxonomy_parent_category()
         {
-            if (!in_array($_GET['taxonomy'], array('property-type', 'property-residential-type', 'property-status', 'property-feature', 'property-label'))) {
+            if (!in_array($_GET['taxonomy'], array('property-type', 'property-residential-type', 'property-resid-furnished-type', 'property-status', 'property-feature', 'property-label'))) {
                 return;
             }
             $screen = get_current_screen();
@@ -1420,6 +1457,28 @@ if (!class_exists('ERE_Admin')) {
                     ),                    
                 )
             ));
+            $configs['property-resid-furnished-type-settings'] = apply_filters('ere_register_term_meta_property_resid_furnished_type', array(
+                'name' => esc_html__('Taxonomy Setting', 'essential-real-estate'),
+                'layout' => 'horizontal',
+                'taxonomy' => array('property-resid-furnished-type'),
+                'fields' => array(
+                    array(
+                        'id' => 'property_resid_furnished_type_icon',
+                        'title' => esc_html__('Icon image', 'essential-real-estate'),
+                        'desc' => esc_html__('Icon display on map', 'essential-real-estate'),
+                        'type' => 'image',
+                        'default' => '',
+                    ),
+                    array(
+                        'title' => __('Order Number', 'essential-real-estate'),
+                        'subtitle' => esc_html__('The number to set orderby', 'essential-real-estate'),
+                        'id' => "property_resid_furnished_type_order_number",
+                        'type' => 'text',
+                        'default' => '1',
+                        'pattern' => '[0-9]*'
+                    ),                    
+                )
+            ));            
             $configs['property-state-settings'] = apply_filters('ere_register_term_meta_property_state', array(
                 'name' => '',
                 'layout' => 'horizontal',
@@ -2122,6 +2181,12 @@ if (!class_exists('ERE_Admin')) {
                             'default' => 'property-residential-type',
                         ),
                         array(
+                            'id' => 'property-resid-furnished-type_url_slug',
+                            'title' => esc_html__('Property Residential Furnished Type Slug', 'essential-real-estate'),
+                            'type' => 'text',
+                            'default' => 'property-resid-furnished-type',
+                        ),                        
+                        array(
                             'id' => 'property_status_url_slug',
                             'title' => esc_html__('Property Status Slug', 'essential-real-estate'),
                             'type' => 'text',
@@ -2608,6 +2673,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_type' => esc_html__('Type', 'essential-real-estate'),
                                         'property_group' => esc_html__('Property Group', 'essential-real-estate'),
                                         'property_residential_type' => esc_html__('Residential Type', 'essential-real-estate'),
+                                        'property_resid_furnished_type' => esc_html__('Furnished Type', 'essential-real-estate'),
                                         'property_status' => esc_html__('Status', 'essential-real-estate'),
                                         'property_label' => esc_html__('Label', 'essential-real-estate'),
                                         //Price
@@ -2659,6 +2725,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_type' => esc_html__('Type', 'essential-real-estate'),
                                         'property_group' => esc_html__('Property Group', 'essential-real-estate'),
                                         'property_residential_type' => esc_html__('Residential Type', 'essential-real-estate'),
+                                        'property_resid_furnished_type' => esc_html__('Furnished Type', 'essential-real-estate'),
                                         'property_label' => esc_html__('Label', 'essential-real-estate'),
                                         'property_price' => esc_html__('Price', 'essential-real-estate'),
                                         'property_price_prefix' => esc_html__('Before Price Label', 'essential-real-estate'),
@@ -2677,7 +2744,8 @@ if (!class_exists('ERE_Admin')) {
                                         'property_title',
                                         'property_type',
                                         'property_group',
-                                        //'property_residential_type',                                        
+                                        //'property_residential_type',
+                                        //'residential_furnished_type',
                                         'property_price',
                                         'property_map_address',
                                     )
@@ -2775,6 +2843,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_type' => esc_html__('Type', 'essential-real-estate'),
                                         'property_group' => esc_html__('Property Group', 'essential-real-estate'),
                                         'property_residential_type' => esc_html__('Residential Type', 'essential-real-estate'),
+                                        'property_resid_furnished_type' => esc_html__('Furnished Type', 'essential-real-estate'),
                                         'property_title' => esc_html__('Title', 'essential-real-estate'),
                                         'property_address' => esc_html__('Address', 'essential-real-estate'),
                                         'property_country' => esc_html__('Country', 'essential-real-estate'),
@@ -2792,7 +2861,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_feature' => esc_html__('Other Features', 'essential-real-estate'),
                                     ),
                                     'default' => array(
-                                        'property_status', 'property_type', 'property_residential_type', 'property_title', 'property_address', 'property_country', 'property_state', 'property_city', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms', 'property_price', 'property_size', 'property_land', 'property_label', 'property_garage', 'property_identity', 'property_feature'
+                                        'property_status', 'property_type', 'property_residential_type', 'property_resid_furnished_type', 'property_title', 'property_address', 'property_country', 'property_state', 'property_city', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms', 'property_price', 'property_size', 'property_land', 'property_label', 'property_garage', 'property_identity', 'property_feature'
                                     )
                                 ),
                             )
@@ -3993,6 +4062,7 @@ if (!class_exists('ERE_Admin')) {
                                 'property_type' => esc_html__('Type', 'essential-real-estate'),
                                 'property_group' => esc_html__('Property Group', 'essential-real-estate'),
                                 'property_residential_type' => esc_html__('Residential Type', 'essential-real-estate'),
+                                'property_resid_furnished_type' => esc_html__('Furnished Type', 'essential-real-estate'),
                                 'property_status' => esc_html__('Status', 'essential-real-estate'),
                                 'property_label' => esc_html__('Label', 'essential-real-estate'),
                                 'property_price' => esc_html__('Price', 'essential-real-estate'),
@@ -4198,6 +4268,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_type' => esc_html__('Type', 'essential-real-estate'),
                                         'property_group' => esc_html__('Property Group', 'essential-real-estate'),
                                         'property_residential_type' => esc_html__('Residential Type', 'essential-real-estate'),
+                                        'property_resid_furnished_type' => esc_html__('Furnished Type', 'essential-real-estate'),
                                         'property_title' => esc_html__('Title', 'essential-real-estate'),
                                         'property_address' => esc_html__('Address', 'essential-real-estate'),
                                         'property_country' => esc_html__('Country', 'essential-real-estate'),
