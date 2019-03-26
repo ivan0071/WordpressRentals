@@ -462,6 +462,11 @@ if (!class_exists('ERE_Property')) {
                     wp_set_object_terms($property_id, $features_array, 'property-feature');
                 }
 
+                if (isset($_POST['property_group_Residential0_Commercial1'])) {
+                    $property_group_Residential0_Commercial1 = $_POST['property_group_Residential0_Commercial1'];
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_group_Residential0_Commercial1', $property_group_Residential0_Commercial1);
+                }
+
                 if (isset($_POST['floors_enable'])) {
                     $floors_enable = $_POST['floors_enable'];
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'floors_enable', $floors_enable);

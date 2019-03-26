@@ -825,17 +825,21 @@ if (!function_exists('ere_get_taxonomy_slug_by_post_id')) {
  * get_taxonomy
  */
 if (!function_exists('ere_get_taxonomy')) {
-    function ere_get_taxonomy($taxonomy_name, $value_as_slug = false, $show_default_none = true)
+    function ere_get_taxonomy($taxonomy_name, $value_as_slug = false, $show_default_none = true, $props = null)
     {
-        $taxonomy_terms = get_categories(
-            array(
+        if ($props == null) {
+            $paramters = array(
                 'taxonomy'=>$taxonomy_name,
                 'orderby' => 'name',
                 'order' => 'ASC',
                 'hide_empty' => false,
                 'parent' => 0
-            )
-        );
+            );
+        } else {
+            $paramters = $props;
+        }
+
+        $taxonomy_terms = get_categories($paramters);
         if ($show_default_none) {
             echo '<option value="" selected>' . esc_html__('None', 'essential-real-estate') . '</option>';
         }

@@ -897,10 +897,12 @@
     cursor: pointer;
 }
 
-.property-floors-control label {
+.property-floors-control label,
+.property-group-control label {
     margin-right: 20px;
 }
-.property-floors-control label input {
+.property-floors-control label input,
+.property-group-control label input {
     position: relative;
     top: 1.5px;
     margin-right: 5px;
