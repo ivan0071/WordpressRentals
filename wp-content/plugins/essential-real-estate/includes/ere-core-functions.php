@@ -757,21 +757,25 @@ if (!function_exists('ere_get_taxonomy_target_by_name')) {
         }
     }
 }
+
 /**
  * get_taxonomy_by_post_id
  */
 if (!function_exists('ere_get_taxonomy_by_post_id')) {
-    function ere_get_taxonomy_by_post_id($post_id, $taxonomy_name, $is_target_by_name = false, $show_default_none = true)
+    function ere_get_taxonomy_by_post_id($post_id, $taxonomy_name, $is_target_by_name = false, $show_default_none = true, $props = null)
     {
-        $taxonomy_terms = get_categories(
-            array(
+        if ($props == null) {
+            $paramters = array(
                 'taxonomy'=>$taxonomy_name,
                 'orderby' => 'name',
                 'order' => 'ASC',
                 'hide_empty' => false,
                 'parent' => 0
-            )
-        );
+            );
+        } else {
+            $paramters = $props;
+        }
+        $taxonomy_terms = get_categories($paramters);
         $target_by_name = '';
         $target_by_id = 0;
         $tax_terms = get_the_terms($post_id, $taxonomy_name);
