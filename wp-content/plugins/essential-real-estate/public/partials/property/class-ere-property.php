@@ -403,9 +403,9 @@ if (!class_exists('ERE_Property')) {
                     }
                 }
 
-                if (isset($_POST['property_group_Residential0_Commercial1'])) {
-                    $property_group_Residential0_Commercial1 = $_POST['property_group_Residential0_Commercial1'];
-                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_group_Residential0_Commercial1', $property_group_Residential0_Commercial1);
+                if (isset($_POST['property_group'])) {
+                    $property_group = $_POST['property_group'];
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_group', $property_group);
                 }
 
                 var_dump($_POST);

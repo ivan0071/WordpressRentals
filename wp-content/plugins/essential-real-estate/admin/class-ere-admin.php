@@ -325,7 +325,7 @@ if (!class_exists('ERE_Admin')) {
                                             'type' => 'divide'
                                         ),
                                         array(
-                                            'id' => "{$meta_prefix}property_group_Residential0_Commercial1",
+                                            'id' => "{$meta_prefix}property_group",
                                             'title' => __('Please choose the property group:', 'essential-real-estate'),
                                             'type' => 'radio',
                                             'options' => array(
@@ -351,7 +351,7 @@ if (!class_exists('ERE_Admin')) {
                                                             'order' => 'ASC'
                                                         )
                                                     ),
-                                                    'required' => array("{$meta_prefix}property_group_Residential0_Commercial1", '=', 'property_is_residential')
+                                                    'required' => array("{$meta_prefix}property_group", '=', 'property_is_residential')
                                                 ),
                                                 array(
                                                     'id' => "{$meta_prefix}property_resid_furnished_type",
@@ -366,7 +366,7 @@ if (!class_exists('ERE_Admin')) {
                                                             'order' => 'ASC'
                                                         )
                                                     ),
-                                                    'required' => array("{$meta_prefix}property_group_Residential0_Commercial1", '=', 'property_is_residential')
+                                                    'required' => array("{$meta_prefix}property_group", '=', 'property_is_residential')
                                                 ),                                               
                                             )
                                         ),
@@ -387,7 +387,7 @@ if (!class_exists('ERE_Admin')) {
                                                             'order' => 'ASC'
                                                         )
                                                     ),
-                                                    'required' => array("{$meta_prefix}property_group_Residential0_Commercial1", '=', 'property_is_commercial')
+                                                    'required' => array("{$meta_prefix}property_group", '=', 'property_is_commercial')
                                                 ),
                                                 array(
                                                     'id' => "{$meta_prefix}property_commer_retail",
@@ -402,7 +402,7 @@ if (!class_exists('ERE_Admin')) {
                                                             'order' => 'ASC'
                                                         )
                                                     ),
-                                                    'required' => array("{$meta_prefix}property_group_Residential0_Commercial1", '=', 'property_is_commercial')
+                                                    'required' => array("{$meta_prefix}property_group", '=', 'property_is_commercial')
                                                 ),                                                
                                             )
                                         ),
@@ -423,7 +423,7 @@ if (!class_exists('ERE_Admin')) {
                                                             'order' => 'ASC'
                                                         )
                                                     ),
-                                                    'required' => array("{$meta_prefix}property_group_Residential0_Commercial1", '=', 'property_is_commercial')
+                                                    'required' => array("{$meta_prefix}property_group", '=', 'property_is_commercial')
                                                 ),
                                                 array(
                                                     'id' => "{$meta_prefix}property_commer_industrial",
@@ -438,7 +438,7 @@ if (!class_exists('ERE_Admin')) {
                                                             'order' => 'ASC'
                                                         )
                                                     ),
-                                                    'required' => array("{$meta_prefix}property_group_Residential0_Commercial1", '=', 'property_is_commercial')
+                                                    'required' => array("{$meta_prefix}property_group", '=', 'property_is_commercial')
                                                 ),                                                
                                             )
                                         ),
@@ -459,7 +459,7 @@ if (!class_exists('ERE_Admin')) {
                                                             'order' => 'ASC'
                                                         )
                                                     ),
-                                                    'required' => array("{$meta_prefix}property_group_Residential0_Commercial1", '=', 'property_is_commercial')
+                                                    'required' => array("{$meta_prefix}property_group", '=', 'property_is_commercial')
                                                 ),
                                                 array(
                                                     'id' => "{$meta_prefix}property_commer_other",
@@ -474,7 +474,7 @@ if (!class_exists('ERE_Admin')) {
                                                             'order' => 'ASC'
                                                         )
                                                     ),
-                                                    'required' => array("{$meta_prefix}property_group_Residential0_Commercial1", '=', 'property_is_commercial')
+                                                    'required' => array("{$meta_prefix}property_group", '=', 'property_is_commercial')
                                                 ),                                                
                                             )
                                         ),
@@ -3012,7 +3012,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_is_commercial' => esc_html__('Commercial', 'essential-real-estate'),                                        
                                         //Type
                                         'property_type' => esc_html__('Type', 'essential-real-estate'),
-                                        'property_group_Residential0_Commercial1' => esc_html__('Property Group', 'essential-real-estate'),
+                                        'property_group' => esc_html__('Property Group', 'essential-real-estate'),
                                         'property_residential_type' => esc_html__('Residential Type', 'essential-real-estate'),
                                         'property_resid_furnished_type' => esc_html__('Furnished Type', 'essential-real-estate'),
                                         'property_commer_offices' => esc_html__('Commercial Offices', 'essential-real-estate'),
@@ -3070,7 +3070,7 @@ if (!class_exists('ERE_Admin')) {
                                     'options' => array(
                                         'property_title' => esc_html__('Title', 'essential-real-estate'),
                                         'property_type' => esc_html__('Type', 'essential-real-estate'),
-                                        'property_group_Residential0_Commercial1' => esc_html__('Property Group', 'essential-real-estate'),
+                                        'property_group' => esc_html__('Property Group', 'essential-real-estate'),
                                         'property_residential_type' => esc_html__('Residential Type', 'essential-real-estate'),
                                         'property_resid_furnished_type' => esc_html__('Furnished Type', 'essential-real-estate'),
                                         'property_commer_offices' => esc_html__('Commercial Offices', 'essential-real-estate'),
@@ -3096,7 +3096,7 @@ if (!class_exists('ERE_Admin')) {
                                     'default' => array(
                                         'property_title',
                                         'property_type',
-                                        'property_group_Residential0_Commercial1',
+                                        'property_group',
                                         //'property_residential_type',
                                         //'residential_furnished_type',
                                         //'property_commer_offices'
@@ -3200,7 +3200,7 @@ if (!class_exists('ERE_Admin')) {
                                     'options' => array(
                                         'property_status' => esc_html__('Status', 'essential-real-estate'),
                                         'property_type' => esc_html__('Type', 'essential-real-estate'),
-                                        'property_group_Residential0_Commercial1' => esc_html__('Property Group', 'essential-real-estate'),
+                                        'property_group' => esc_html__('Property Group', 'essential-real-estate'),
                                         'property_residential_type' => esc_html__('Residential Type', 'essential-real-estate'),
                                         'property_resid_furnished_type' => esc_html__('Furnished Type', 'essential-real-estate'),
                                         'property_commer_offices' => esc_html__('Commercial Offices', 'essential-real-estate'),
@@ -4428,7 +4428,7 @@ if (!class_exists('ERE_Admin')) {
                             'type' => 'checkbox_list',
                             'options' => array(
                                 'property_type' => esc_html__('Type', 'essential-real-estate'),
-                                'property_group_Residential0_Commercial1' => esc_html__('Property Group', 'essential-real-estate'),
+                                'property_group' => esc_html__('Property Group', 'essential-real-estate'),
                                 'property_residential_type' => esc_html__('Residential Type', 'essential-real-estate'),
                                 'property_resid_furnished_type' => esc_html__('Furnished Type', 'essential-real-estate'),
                                 'property_commer_offices' => esc_html__('Commercial Offices', 'essential-real-estate'),
@@ -4640,7 +4640,7 @@ if (!class_exists('ERE_Admin')) {
                                     'options' => array(
                                         'property_status' => esc_html__('Status', 'essential-real-estate'),
                                         'property_type' => esc_html__('Type', 'essential-real-estate'),
-                                        'property_group_Residential0_Commercial1' => esc_html__('Property Group', 'essential-real-estate'),
+                                        'property_group' => esc_html__('Property Group', 'essential-real-estate'),
                                         'property_residential_type' => esc_html__('Residential Type', 'essential-real-estate'),
                                         'property_resid_furnished_type' => esc_html__('Furnished Type', 'essential-real-estate'),
                                         'property_commer_offices' => esc_html__('Commercial Offices', 'essential-real-estate'),

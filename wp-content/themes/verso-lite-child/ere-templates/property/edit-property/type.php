@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 global $property_data, $property_meta_data, $hide_property_fields;
-$property_group_Residential0_Commercial1 = get_post_meta($property_data->ID, ERE_METABOX_PREFIX . 'property_group_Residential0_Commercial1', true);
+$property_group = get_post_meta($property_data->ID, ERE_METABOX_PREFIX . 'property_group', true);
 
 $paramtersDefault = array(
     'orderby' => 'meta_value_num',
@@ -56,13 +56,13 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
     <div class="property-fields property-group row">
         <div class="property-group-control">
             <label>
-                <input value="0" <?php checked($property_group_Residential0_Commercial1, 'property_is_residential'); ?> 
-                        type="radio" name="property_group_Residential0_Commercial1">
+                <input value="0" <?php checked($property_group, 'property_is_residential'); ?> 
+                        type="radio" name="property_group">
                 <?php esc_html_e('Residential', 'essential-real-estate'); ?>
             </label>
             <label>
-                <input value="1" <?php checked($property_group_Residential0_Commercial1, 'property_is_commercial'); ?> 
-                        type="radio" name="property_group_Residential0_Commercial1">
+                <input value="1" <?php checked($property_group, 'property_is_commercial'); ?> 
+                        type="radio" name="property_group">
                 <?php esc_html_e('Commercial', 'essential-real-estate'); ?>
             </label>
         </div>
@@ -159,8 +159,7 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
             <?php } ?>
         </div>
     </div>
-<?php
-/*
+<br>----------------------------------------<br>
     <div class="property-fields property-type row">
         <?php if (!in_array("property_type", $hide_property_fields)) {?>
             <div class="col-sm-6">
@@ -199,6 +198,6 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
             </div>
         <?php } ?>
     </div>
-*/
-?>
+
+
 </div>

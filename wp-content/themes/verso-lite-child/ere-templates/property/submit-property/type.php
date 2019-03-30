@@ -55,11 +55,11 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
     <div class="property-fields property-group row">
         <div class="property-group-control">
             <label>
-                <input value="0" checked="checked" type="radio" name="property_group_Residential0_Commercial1">
+                <input value="0" checked="checked" type="radio" name="property_group">
                 <?php esc_html_e('Residential', 'essential-real-estate'); ?>
             </label>
             <label>
-                <input value="1" type="radio" name="property_group_Residential0_Commercial1">
+                <input value="1" type="radio" name="property_group">
                 <?php esc_html_e('Commercial', 'essential-real-estate'); ?>
             </label>
         </div>
