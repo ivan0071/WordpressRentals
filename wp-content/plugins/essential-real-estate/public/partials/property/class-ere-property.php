@@ -403,6 +403,53 @@ if (!class_exists('ERE_Property')) {
                     }
                 }
 
+                if (isset($_POST['property_group_Residential0_Commercial1'])) {
+                    $property_group_Residential0_Commercial1 = $_POST['property_group_Residential0_Commercial1'];
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_group_Residential0_Commercial1', $property_group_Residential0_Commercial1);
+                }
+
+                var_dump($_POST);
+
+                if (isset($_POST['property_residential_type'])) {
+                    $object_id = $_POST['property_residential_type'];
+                    wp_set_object_terms($property_id, intval($object_id), 'property-residential-type');
+                }
+
+                if (isset($_POST['property_resid_furnished_type'])) {
+                    $object_id = $_POST['property_resid_furnished_type'];
+                    wp_set_object_terms($property_id, intval($object_id), 'property-resid-furnished-type');
+                }
+
+                if (isset($_POST['property_commer_offices'])) {
+                    $object_id = $_POST['property_commer_offices'];
+                    wp_set_object_terms($property_id, intval($object_id), 'property-commer-offices');
+                }
+
+                if (isset($_POST['property_commer_retail'])) {
+                    $object_id = $_POST['property_commer_retail'];
+                    wp_set_object_terms($property_id, intval($object_id), 'property-commer-retail');
+                }
+
+                if (isset($_POST['property_commer_leisure'])) {
+                    $object_id = $_POST['property_commer_leisure'];
+                    wp_set_object_terms($property_id, intval($object_id), 'property-commer-leisure');
+                }
+
+                if (isset($_POST['property_commer_industrial'])) {
+                    $object_id = $_POST['property_commer_industrial'];
+                    wp_set_object_terms($property_id, intval($object_id), 'property-commer-industrial');
+                }
+
+                if (isset($_POST['property_commer_land'])) {
+                    $object_id = $_POST['property_commer_land'];
+                    wp_set_object_terms($property_id, intval($object_id), 'property-commer-land');
+                }
+
+                if (isset($_POST['property_commer_other'])) {
+                    $object_id = $_POST['property_commer_other'];
+                    wp_set_object_terms($property_id, intval($object_id), 'property-commer-other');
+                }
+
                 if (isset($_POST['property_type'])) {
                     if($_POST['property_type'] != '-1')
                     {
@@ -460,11 +507,6 @@ if (!class_exists('ERE_Property')) {
                         $features_array[] = intval($feature_id);
                     }
                     wp_set_object_terms($property_id, $features_array, 'property-feature');
-                }
-
-                if (isset($_POST['property_group_Residential0_Commercial1'])) {
-                    $property_group_Residential0_Commercial1 = $_POST['property_group_Residential0_Commercial1'];
-                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_group_Residential0_Commercial1', $property_group_Residential0_Commercial1);
                 }
 
                 if (isset($_POST['floors_enable'])) {
