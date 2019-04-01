@@ -186,6 +186,14 @@ if (!class_exists('Essential_Real_Estate')) {
             $this->loader->add_filter('ere_property_neighborhood_slug', $admin_property, 'modify_property_neighborhood_slug');
             $this->loader->add_filter('ere_property_state_slug', $admin_property, 'modify_property_state_slug');
             $this->loader->add_filter('ere_property_label_slug', $admin_property, 'modify_property_label_slug');
+            $this->loader->add_filter('ere_property_residential_type_slug', $admin_property, 'modify_property_residential_type_slug');
+            $this->loader->add_filter('ere_property_resid_furnished_type_slug', $admin_property, 'modify_property_resid_furnished_type_slug');
+            $this->loader->add_filter('ere_property_commer_offices_slug', $admin_property, 'modify_property_commer_offices_slug');
+            $this->loader->add_filter('ere_property_commer_retail_slug', $admin_property, 'modify_property_commer_retail_slug');
+            $this->loader->add_filter('ere_property_commer_leisure_slug', $admin_property, 'modify_property_commer_leisure_slug');
+            $this->loader->add_filter('ere_property_commer_industrial_slug', $admin_property, 'modify_property_commer_industrial_slug');
+            $this->loader->add_filter('ere_property_commer_land_slug', $admin_property, 'modify_property_commer_land_slug');
+            $this->loader->add_filter('ere_property_commer_other_slug', $admin_property, 'modify_property_commer_other_slug');
             // Agent Post Type
             $admin_agent = new ERE_Admin_Agent();
             $this->loader->add_filter('ere_agent_slug', $admin_agent, 'modify_agent_slug');

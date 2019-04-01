@@ -443,6 +443,7 @@ $measurement_units = ere_get_measurement_units();
             <?php endif; ?>
 
             <?php $property_floors = get_post_meta($property_id, ERE_METABOX_PREFIX . 'floors', true);
+            //to do Ivan: check this when adjusting the property-print
             $property_floor_enable = isset($property_meta_data[ERE_METABOX_PREFIX . 'floors_enable']) ? $property_meta_data[ERE_METABOX_PREFIX . 'floors_enable'][0] : '';
             if ($property_floor_enable && $property_floors): ?>
                 <div class="property-block floors-block">

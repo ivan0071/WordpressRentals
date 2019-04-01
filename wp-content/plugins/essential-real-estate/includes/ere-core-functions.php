@@ -727,14 +727,22 @@ if (!function_exists('ere_enable_captcha')) {
  * get_taxonomy_target_by_id
  */
 if (!function_exists('ere_get_taxonomy_target_by_id')) {
-    function ere_get_taxonomy_target_by_id( $taxonomy_terms, $target_term_id, $prefix = "")
+    function ere_get_taxonomy_target_by_id( $taxonomy_terms, $target_term_id, $prefix = "", $term_slug = false)
     {
         if (!empty($taxonomy_terms)) {
             foreach ($taxonomy_terms as $term) {
-                if ($target_term_id == $term->term_id) {
-                    echo '<option value="' . $term->term_id . '" selected>' . $prefix . $term->name . '</option>';
+                if ($term_slug == true) {
+                    if ($target_term_id == $term->term_id) {
+                        echo '<option value="' . $term->slug . '" selected>' . $prefix . $term->name . '</option>';
+                    } else {
+                        echo '<option value="' . $term->slug . '">' . $prefix . $term->name . '</option>';
+                    }                    
                 } else {
-                    echo '<option value="' . $term->term_id . '">' . $prefix . $term->name . '</option>';
+                    if ($target_term_id == $term->term_id) {
+                        echo '<option value="' . $term->term_id . '" selected>' . $prefix . $term->name . '</option>';
+                    } else {
+                        echo '<option value="' . $term->term_id . '">' . $prefix . $term->name . '</option>';
+                    }
                 }
             }
         }
@@ -762,7 +770,7 @@ if (!function_exists('ere_get_taxonomy_target_by_name')) {
  * get_taxonomy_by_post_id
  */
 if (!function_exists('ere_get_taxonomy_by_post_id')) {
-    function ere_get_taxonomy_by_post_id($post_id, $taxonomy_name, $is_target_by_name = false, $show_default_none = true, $props = null)
+    function ere_get_taxonomy_by_post_id($post_id, $taxonomy_name, $is_target_by_name = false, $show_default_none = true, $props = null, $term_slug = false)
     {
         if ($props == null) {
             $paramters = array(
@@ -793,7 +801,7 @@ if (!function_exists('ere_get_taxonomy_by_post_id')) {
                     echo '<option value="">' . esc_html__('None', 'essential-real-estate') . '</option>';
                 }
             }
-            ere_get_taxonomy_target_by_name($taxonomy_terms, $target_by_name);
+            ere_get_taxonomy_target_by_name($taxonomy_terms, $target_by_name, "");
         } else {
             if (!empty($tax_terms)) {
                 foreach ($tax_terms as $tax_term) {
@@ -809,7 +817,7 @@ if (!function_exists('ere_get_taxonomy_by_post_id')) {
                     echo '<option value="-1">' . esc_html__('None', 'essential-real-estate') . '</option>';
                 }
             }
-            ere_get_taxonomy_target_by_id( $taxonomy_terms, $target_by_id);
+            ere_get_taxonomy_target_by_id($taxonomy_terms, $target_by_id, "", $term_slug);
         }
     }
 }

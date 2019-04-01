@@ -56,12 +56,12 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
     <div class="property-fields property-group row">
         <div class="property-group-control">
             <label>
-                <input value="0" <?php checked($property_group, 'property_is_residential'); ?> 
+                <input value="0" <?php checked($property_group, '0'); ?> 
                         type="radio" name="property_group">
                 <?php esc_html_e('Residential', 'essential-real-estate'); ?>
             </label>
             <label>
-                <input value="1" <?php checked($property_group, 'property_is_commercial'); ?> 
+                <input value="1" <?php checked($property_group, '1'); ?> 
                         type="radio" name="property_group">
                 <?php esc_html_e('Commercial', 'essential-real-estate'); ?>
             </label>
@@ -73,7 +73,7 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
                         <label for="property_residential_type"><?php esc_html_e('Type', 'essential-real-estate');
                             echo ere_required_field('property_residential_type'); ?></label>
                         <select name="property_residential_type" id="property_residential_type" class="form-control">
-                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-residential-type', false, false, $paramtersPropertyResidentialType); ?>
+                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-residential-type', false, false, $paramtersPropertyResidentialType, false); ?>
                         </select>
                     </div>
                 </div>
@@ -84,7 +84,7 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
                         <label for="property_resid_furnished_type"><?php esc_html_e('Furnished Type', 'essential-real-estate');
                             echo ere_required_field('property_resid_furnished_type'); ?></label>
                         <select name="property_resid_furnished_type" id="property_resid_furnished_type" class="form-control">
-                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-resid-furnished-type', false, false, $paramtersPropertyResidFurnishedType); ?>
+                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-resid-furnished-type', false, false, $paramtersPropertyResidFurnishedType, false); ?>
                         </select>
                     </div>
                 </div>
@@ -97,7 +97,7 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
                         <label for="property_commer_offices"><?php esc_html_e('Commercial Offices', 'essential-real-estate');
                             echo ere_required_field('property_commer_offices'); ?></label>
                         <select name="property_commer_offices" id="property_commer_offices" class="form-control">
-                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-commer-offices', false, false, $paramtersPropertyCommerOffices); ?>
+                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-commer-offices', false, false, $paramtersPropertyCommerOffices, false); ?>
                         </select>
                     </div>
                 </div>
@@ -108,7 +108,7 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
                         <label for="property_commer_retail"><?php esc_html_e('Commercial Retail', 'essential-real-estate');
                             echo ere_required_field('property_commer_retail'); ?></label>
                         <select name="property_commer_retail" id="property_commer_retail" class="form-control">
-                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-commer-retail', false, false, $paramtersPropertyCommerRetail); ?>
+                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-commer-retail', false, false, $paramtersPropertyCommerRetail, false); ?>
                         </select>
                     </div>
                 </div>
@@ -119,7 +119,7 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
                         <label for="property_commer_leisure"><?php esc_html_e('Commercial Leisure/Hospitality', 'essential-real-estate');
                             echo ere_required_field('property_commer_leisure'); ?></label>
                         <select name="property_commer_leisure" id="property_commer_leisure" class="form-control">
-                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-commer-leisure', false, false, $paramtersPropertyCommerLeisure); ?>
+                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-commer-leisure', false, false, $paramtersPropertyCommerLeisure, false); ?>
                         </select>
                     </div>
                 </div>
@@ -130,7 +130,7 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
                         <label for="property_commer_industrial"><?php esc_html_e('Commercial Industrial/Warehousing', 'essential-real-estate');
                             echo ere_required_field('property_commer_industrial'); ?></label>
                         <select name="property_commer_industrial" id="property_commer_industrial" class="form-control">
-                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-commer-industrial', false, false, $paramtersPropertyCommerIndustrial); ?>
+                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-commer-industrial', false, false, $paramtersPropertyCommerIndustrial, false); ?>
                         </select>
                     </div>
                 </div>
@@ -141,7 +141,7 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
                         <label for="property_commer_land"><?php esc_html_e('Land/Development', 'essential-real-estate');
                             echo ere_required_field('property_commer_land'); ?></label>
                         <select name="property_commer_land" id="property_commer_land" class="form-control">
-                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-commer-land', false, false, $paramtersPropertyCommerLand); ?>
+                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-commer-land', false, false, $paramtersPropertyCommerLand, false); ?>
                         </select>
                     </div>
                 </div>
@@ -152,7 +152,7 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
                         <label for="property_commer_other"><?php esc_html_e('Other', 'essential-real-estate');
                             echo ere_required_field('property_commer_other'); ?></label>
                         <select name="property_commer_other" id="property_commer_other" class="form-control">
-                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-commer-other', false, false, $paramtersPropertyCommerOther); ?>
+                            <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-commer-other', false, false, $paramtersPropertyCommerOther, false); ?>
                         </select>
                     </div>
                 </div>

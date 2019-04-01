@@ -21,7 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) {
                           name="floors_enable"><?php esc_html_e('Disable', 'essential-real-estate'); ?></label>
         </div>
         <div class="property-floors-data">
-        This is a test example of modifying the HTML file
             <table class="add-sort-table">
                 <tbody id="ere_floors">
                 <tr>
