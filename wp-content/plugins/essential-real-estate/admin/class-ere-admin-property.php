@@ -547,5 +547,262 @@ if (!class_exists('ERE_Admin_Property')) {
                 }
             }
         }
+
+        //property_residential_type
+        public function add_columns_property_residential_type($columns){
+            $columns['cb'] = "<input type=\"checkbox\" />";
+            $columns['name'] = esc_html__('Name', 'essential-real-estate');
+            $columns['description'] = esc_html__('Description', 'essential-real-estate');
+            $columns['slug'] = esc_html__('Slug', 'essential-real-estate');
+            $columns['property_residential_type_order_number'] = esc_html__('Order', 'essential-real-estate');
+            $columns['posts'] = esc_html__('Count', 'essential-real-estate');
+            $new_columns = array();
+            $custom_order = array('cb','name','description', 'slug', 'property_residential_type_order_number','posts');
+            foreach ($custom_order as $colname){
+                $new_columns[$colname] = $columns[$colname];
+            }
+            return $new_columns;
+        }
+        public function add_columns_property_residential_type_content( $content, $column_name, $term_id ){
+            if( $column_name !== 'property_residential_type_order_number' ){
+                return $content;
+            }
+            $term_id = absint( $term_id );
+            $property_residential_type_tax = get_term_meta( $term_id, 'property_residential_type_order_number', true );
+            if ((!empty($property_residential_type_tax) && isset($property_residential_type_tax)) || 
+                (strval($property_residential_type_tax) == '0'))
+            {
+                $content .= esc_html( $property_residential_type_tax );
+            }
+            return $content;
+        }
+        public function add_columns_property_residential_type_sortable( $sortable ){
+            //$sortable[ 'property_residential_type_order_number' ] = 'property_residential_type_order_number';
+            return $sortable;
+        }
+        //property_resid_furnished_type
+        public function add_columns_property_resid_furnished_type($columns){
+            $columns['cb'] = "<input type=\"checkbox\" />";
+            $columns['name'] = esc_html__('Name', 'essential-real-estate');
+            $columns['description'] = esc_html__('Description', 'essential-real-estate');
+            $columns['slug'] = esc_html__('Slug', 'essential-real-estate');
+            $columns['property_resid_furnished_type_order_number'] = esc_html__('Order', 'essential-real-estate');
+            $columns['posts'] = esc_html__('Count', 'essential-real-estate');
+            $new_columns = array();
+            $custom_order = array('cb','name','description', 'slug', 'property_resid_furnished_type_order_number','posts');
+            foreach ($custom_order as $colname){
+                $new_columns[$colname] = $columns[$colname];
+            }
+            return $new_columns;
+        }
+        public function add_columns_property_resid_furnished_type_content( $content, $column_name, $term_id ){
+            if( $column_name !== 'property_resid_furnished_type_order_number' ){
+                return $content;
+            }
+            $term_id = absint( $term_id );
+            $property_resid_furnished_type_tax = get_term_meta( $term_id, 'property_resid_furnished_type_order_number', true );
+            if ((!empty($property_resid_furnished_type_tax) && isset($property_resid_furnished_type_tax)) || 
+                (strval($property_resid_furnished_type_tax) == '0'))
+            {
+                $content .= esc_html( $property_resid_furnished_type_tax );
+            }
+            return $content;
+        }
+        public function add_columns_property_resid_furnished_type_sortable( $sortable ){
+            //$sortable[ 'property_resid_furnished_type_order_number' ] = 'property_resid_furnished_type_order_number';
+            return $sortable;
+        }
+        //property_commer_offices
+        public function add_columns_property_commer_offices($columns){
+            $columns['cb'] = "<input type=\"checkbox\" />";
+            $columns['name'] = esc_html__('Name', 'essential-real-estate');
+            $columns['description'] = esc_html__('Description', 'essential-real-estate');
+            $columns['slug'] = esc_html__('Slug', 'essential-real-estate');
+            $columns['property_commer_offices_order_number'] = esc_html__('Order', 'essential-real-estate');
+            $columns['posts'] = esc_html__('Count', 'essential-real-estate');
+            $new_columns = array();
+            $custom_order = array('cb','name','description', 'slug', 'property_commer_offices_order_number','posts');
+            foreach ($custom_order as $colname){
+                $new_columns[$colname] = $columns[$colname];
+            }
+            return $new_columns;
+        }
+        public function add_columns_property_commer_offices_content( $content, $column_name, $term_id ){
+            if( $column_name !== 'property_commer_offices_order_number' ){
+                return $content;
+            }
+            $term_id = absint( $term_id );
+            $property_commer_offices_tax = get_term_meta( $term_id, 'property_commer_offices_order_number', true );
+            if ((!empty($property_commer_offices_tax) && isset($property_commer_offices_tax)) || 
+                (strval($property_commer_offices_tax) == '0'))
+            {
+                $content .= esc_html( $property_commer_offices_tax );
+            }
+            return $content;
+        }
+        public function add_columns_property_commer_offices_sortable( $sortable ){
+            //$sortable[ 'property_commer_offices_order_number' ] = 'property_commer_offices_order_number';
+            return $sortable;
+        }
+        //property_commer_retail
+        public function add_columns_property_commer_retail($columns){
+            $columns['cb'] = "<input type=\"checkbox\" />";
+            $columns['name'] = esc_html__('Name', 'essential-real-estate');
+            $columns['description'] = esc_html__('Description', 'essential-real-estate');
+            $columns['slug'] = esc_html__('Slug', 'essential-real-estate');
+            $columns['property_commer_retail_order_number'] = esc_html__('Order', 'essential-real-estate');
+            $columns['posts'] = esc_html__('Count', 'essential-real-estate');
+            $new_columns = array();
+            $custom_order = array('cb','name','description', 'slug', 'property_commer_retail_order_number','posts');
+            foreach ($custom_order as $colname){
+                $new_columns[$colname] = $columns[$colname];
+            }
+            return $new_columns;
+        }
+        public function add_columns_property_commer_retail_content( $content, $column_name, $term_id ){
+            if( $column_name !== 'property_commer_retail_order_number' ){
+                return $content;
+            }
+            $term_id = absint( $term_id );
+            $property_commer_retail_tax = get_term_meta( $term_id, 'property_commer_retail_order_number', true );
+            if ((!empty($property_commer_retail_tax) && isset($property_commer_retail_tax)) || 
+                (strval($property_commer_retail_tax) == '0'))
+            {
+                $content .= esc_html( $property_commer_retail_tax );
+            }
+            return $content;
+        }
+        public function add_columns_property_commer_retail_sortable( $sortable ){
+            //$sortable[ 'property_commer_retail_order_number' ] = 'property_commer_retail_order_number';
+            return $sortable;
+        }
+        //property_commer_other
+        public function add_columns_property_commer_other($columns){
+            $columns['cb'] = "<input type=\"checkbox\" />";
+            $columns['name'] = esc_html__('Name', 'essential-real-estate');
+            $columns['description'] = esc_html__('Description', 'essential-real-estate');
+            $columns['slug'] = esc_html__('Slug', 'essential-real-estate');
+            $columns['property_commer_other_order_number'] = esc_html__('Order', 'essential-real-estate');
+            $columns['posts'] = esc_html__('Count', 'essential-real-estate');
+            $new_columns = array();
+            $custom_order = array('cb','name','description', 'slug', 'property_commer_other_order_number','posts');
+            foreach ($custom_order as $colname){
+                $new_columns[$colname] = $columns[$colname];
+            }
+            return $new_columns;
+        }
+        public function add_columns_property_commer_other_content( $content, $column_name, $term_id ){
+            if( $column_name !== 'property_commer_other_order_number' ){
+                return $content;
+            }
+            $term_id = absint( $term_id );
+            $property_commer_other_tax = get_term_meta( $term_id, 'property_commer_other_order_number', true );
+            if ((!empty($property_commer_other_tax) && isset($property_commer_other_tax)) || 
+                (strval($property_commer_other_tax) == '0'))
+            {
+                $content .= esc_html( $property_commer_other_tax );
+            }
+            return $content;
+        }
+        public function add_columns_property_commer_other_sortable( $sortable ){
+            //$sortable[ 'property_commer_other_order_number' ] = 'property_commer_other_order_number';
+            return $sortable;
+        }
+        //property_commer_leisure
+        public function add_columns_property_commer_leisure($columns){
+            $columns['cb'] = "<input type=\"checkbox\" />";
+            $columns['name'] = esc_html__('Name', 'essential-real-estate');
+            $columns['description'] = esc_html__('Description', 'essential-real-estate');
+            $columns['slug'] = esc_html__('Slug', 'essential-real-estate');
+            $columns['property_commer_leisure_order_number'] = esc_html__('Order', 'essential-real-estate');
+            $columns['posts'] = esc_html__('Count', 'essential-real-estate');
+            $new_columns = array();
+            $custom_order = array('cb','name','description', 'slug', 'property_commer_leisure_order_number','posts');
+            foreach ($custom_order as $colname){
+                $new_columns[$colname] = $columns[$colname];
+            }
+            return $new_columns;
+        }
+        public function add_columns_property_commer_leisure_content( $content, $column_name, $term_id ){
+            if( $column_name !== 'property_commer_leisure_order_number' ){
+                return $content;
+            }
+            $term_id = absint( $term_id );
+            $property_commer_leisure_tax = get_term_meta( $term_id, 'property_commer_leisure_order_number', true );
+            if ((!empty($property_commer_leisure_tax) && isset($property_commer_leisure_tax)) || 
+                (strval($property_commer_leisure_tax) == '0'))
+            {
+                $content .= esc_html( $property_commer_leisure_tax );
+            }
+            return $content;
+        }
+        public function add_columns_property_commer_leisure_sortable( $sortable ){
+            //$sortable[ 'property_commer_leisure_order_number' ] = 'property_commer_leisure_order_number';
+            return $sortable;
+        }
+        //property_commer_industrial
+        public function add_columns_property_commer_industrial($columns){
+            $columns['cb'] = "<input type=\"checkbox\" />";
+            $columns['name'] = esc_html__('Name', 'essential-real-estate');
+            $columns['description'] = esc_html__('Description', 'essential-real-estate');
+            $columns['slug'] = esc_html__('Slug', 'essential-real-estate');
+            $columns['property_commer_industrial_order_number'] = esc_html__('Order', 'essential-real-estate');
+            $columns['posts'] = esc_html__('Count', 'essential-real-estate');
+            $new_columns = array();
+            $custom_order = array('cb','name','description', 'slug', 'property_commer_industrial_order_number','posts');
+            foreach ($custom_order as $colname){
+                $new_columns[$colname] = $columns[$colname];
+            }
+            return $new_columns;
+        }
+        public function add_columns_property_commer_industrial_content( $content, $column_name, $term_id ){
+            if( $column_name !== 'property_commer_industrial_order_number' ){
+                return $content;
+            }
+            $term_id = absint( $term_id );
+            $property_commer_industrial_tax = get_term_meta( $term_id, 'property_commer_industrial_order_number', true );
+            if ((!empty($property_commer_industrial_tax) && isset($property_commer_industrial_tax)) || 
+                (strval($property_commer_industrial_tax) == '0'))
+            {
+                $content .= esc_html( $property_commer_industrial_tax );
+            }
+            return $content;
+        }
+        public function add_columns_property_commer_industrial_sortable( $sortable ){
+            //$sortable[ 'property_commer_industrial_order_number' ] = 'property_commer_industrial_order_number';
+            return $sortable;
+        }
+        //property_commer_land
+        public function add_columns_property_commer_land($columns){
+            $columns['cb'] = "<input type=\"checkbox\" />";
+            $columns['name'] = esc_html__('Name', 'essential-real-estate');
+            $columns['description'] = esc_html__('Description', 'essential-real-estate');
+            $columns['slug'] = esc_html__('Slug', 'essential-real-estate');
+            $columns['property_commer_land_order_number'] = esc_html__('Order', 'essential-real-estate');
+            $columns['posts'] = esc_html__('Count', 'essential-real-estate');
+            $new_columns = array();
+            $custom_order = array('cb','name','description', 'slug', 'property_commer_land_order_number','posts');
+            foreach ($custom_order as $colname){
+                $new_columns[$colname] = $columns[$colname];
+            }
+            return $new_columns;
+        }
+        public function add_columns_property_commer_land_content( $content, $column_name, $term_id ){
+            if( $column_name !== 'property_commer_land_order_number' ){
+                return $content;
+            }
+            $term_id = absint( $term_id );
+            $property_commer_land_tax = get_term_meta( $term_id, 'property_commer_land_order_number', true );
+            if ((!empty($property_commer_land_tax) && isset($property_commer_land_tax)) || 
+                (strval($property_commer_land_tax) == '0'))
+            {
+                $content .= esc_html( $property_commer_land_tax );
+            }
+            return $content;
+        }
+        public function add_columns_property_commer_land_sortable( $sortable ){
+            //$sortable[ 'property_commer_land_order_number' ] = 'property_commer_land_order_number';
+            return $sortable;
+        }
     }
 }
