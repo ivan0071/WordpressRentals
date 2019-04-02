@@ -502,17 +502,18 @@ if (!class_exists('ERE_Property')) {
                     wp_set_object_terms($property_id, $statuses_array, 'property-status');
                 }
 
-                if (isset($_POST['property_label'])) {
-                    if($_POST['property_label'] != '-1')
-                    {
-                        $object_id = $_POST['property_label'];
-                        wp_set_object_terms($property_id, intval($object_id), 'property-label');
-                    }
-                    else
-                    {
-                        wp_set_object_terms($property_id, null, 'property-label');
-                    }
-                }
+                // to do ivan: uncomment the following block if need to have propety_label in the front_end form
+                // if (isset($_POST['property_label'])) {
+                //     if($_POST['property_label'] != '-1')
+                //     {
+                //         $object_id = $_POST['property_label'];
+                //         wp_set_object_terms($property_id, intval($object_id), 'property-label');
+                //     }
+                //     else
+                //     {
+                //         wp_set_object_terms($property_id, null, 'property-label');
+                //     }
+                // }
 
                 if (isset($_POST['locality'])) {
                     $property_city = sanitize_text_field($_POST['locality']);

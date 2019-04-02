@@ -186,18 +186,20 @@ if ( $statuses_terms && ! is_wp_error( $statuses_terms ) ) {
         // <?php } 
         ?>
         <?php
-        if (!in_array("property_label", $hide_property_fields)) { ?>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="property_label"><?php esc_html_e('Label', 'essential-real-estate');
-                        echo ere_required_field('property_label'); ?></label>
-                    <select name="property_label" id="property_label" class="form-control">
-                        <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-label'); ?>
-                    </select>
-                </div>
-            </div>
-            <div class="col-sm-6" style="width: 100%"></div>
-        <?php } ?>       
+        // to do ivan: uncomment the following block if need to have propety_label in the front_end form
+        // if (!in_array("property_label", $hide_property_fields)) { ?_>
+        //     <div class="col-sm-6">
+        //         <div class="form-group">
+        //             <label for="property_label"><?php esc_html_e('Label', 'essential-real-estate');
+        //                 echo ere_required_field('property_label'); ?_></label>
+        //             <select name="property_label" id="property_label" class="form-control">
+        //                 <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-label'); ?_>
+        //             </select>
+        //         </div>
+        //     </div>
+        //     <div class="col-sm-6" style="width: 100%"></div>
+        // <?php } 
+        ?>       
         <?php if (!in_array("property_status", $hide_property_fields)) {?>
             <div class="col-sm-6">
                 <?php
