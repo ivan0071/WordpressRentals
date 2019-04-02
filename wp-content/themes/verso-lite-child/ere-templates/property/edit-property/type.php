@@ -159,20 +159,21 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
             <?php } ?>
         </div>
     </div>
-<br>----------------------------------------<br>
-    <div class="property-fields property-type row">
-        <?php if (!in_array("property_type", $hide_property_fields)) {?>
-            <div class="col-sm-6">
-                <div class="form-group">
 
-                    <label for="property_type"><?php esc_html_e('Type', 'essential-real-estate');
-                        echo ere_required_field('property_type'); ?></label>
-                    <select name="property_type" id="property_type" class="form-control">
-                        <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-type'); ?>
-                    </select>
-                </div>
-            </div>
-        <?php } ?>
+    <div class="property-fields property-type row">
+        <?php 
+        // if (!in_array("property_type", $hide_property_fields)) {?_>
+        //     <div class="col-sm-6">
+        //         <div class="form-group">
+        //             <label for="property_type"><?php esc_html_e('Type', 'essential-real-estate');
+        //                 echo ere_required_field('property_type'); ?_></label>
+        //             <select name="property_type" id="property_type" class="form-control">
+        //                 <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-type'); ?_>
+        //             </select>
+        //         </div>
+        //     </div>
+        // <?php } 
+        ?>
 
         <?php if (!in_array("property_status", $hide_property_fields)) {?>
             <div class="col-sm-6">
@@ -198,6 +199,5 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
             </div>
         <?php } ?>
     </div>
-
 
 </div>

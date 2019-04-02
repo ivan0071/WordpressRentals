@@ -228,7 +228,7 @@ if (!class_exists('ERE_Public')) {
                 'ere_metabox_prefix' => ERE_METABOX_PREFIX,
             ));
             wp_register_script(ERE_PLUGIN_PREFIX . 'property_steps', ERE_PLUGIN_URL . 'public/assets/js/property/ere-property-steps' . $min_suffix . '.js', array('jquery', 'jquery-validate', ERE_PLUGIN_PREFIX . 'property'), ERE_PLUGIN_VER, true);
-            $property_req_fields = ere_get_option('required_fields', array('property_title', 'property_type', 'property_price', 'property_map_address'));
+            $property_req_fields = ere_get_option('required_fields', array('property_title', /*'property_type',*/ 'property_price', 'property_map_address'));
             if (!is_array($property_req_fields)) {
                 $property_req_fields = array();
             }
