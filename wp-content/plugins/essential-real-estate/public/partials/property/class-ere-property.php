@@ -407,77 +407,76 @@ if (!class_exists('ERE_Property')) {
                     $property_group = $_POST['property_group'];
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_group', $property_group);
                 }
-/*
-var_dump($_POST);
-/*try {
-    $myfile = fopen("G:/test.txt") or die("Unable to open file!");
-    fwrite($myfile, "test text 1");
-    fclose($myfile);
-} catch (Exception $e) {
-    error_log('Message: '.$e->getMessage());
-}*/
-/*var_dump((isset($_POST['property_resid_furnished_type'])));
-try {
-    wp_set_object_terms($property_id, intval($object_id), 'property-resid-furnished-type');
-    var_dump("success");
-} catch (Exception $e) {
-    var_dump("error");
-    var_dump($e->getMessage());
-}*/
+// var_dump($_POST);
+// try {
+//     $myfile = fopen("G:/test.txt") or die("Unable to open file!");
+//     fwrite($myfile, "test text 1");
+//     fclose($myfile);
+// } catch (Exception $e) {
+//     error_log('Message: '.$e->getMessage());
+// }
                 if (isset($_POST['property_residential_type'])) {
                     $object_id = $_POST['property_residential_type'];
                     wp_set_object_terms($property_id, intval($object_id), 'property-residential-type');
-                    //$property_residential_type = $_POST['property_residential_type'];
-                    //update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_residential_type', $property_residential_type);
+                    
+                    $property_residential_type = get_term_by('id', intval($object_id), 'property-residential-type');
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_residential_type', $property_residential_type->slug);
                 }
 
                 if (isset($_POST['property_resid_furnished_type'])) {
                     $object_id = $_POST['property_resid_furnished_type'];
                     wp_set_object_terms($property_id, intval($object_id), 'property-resid-furnished-type');
-                    //$property_resid_furnished_type = $_POST['property_resid_furnished_type'];
-                    //update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_resid_furnished_type', $property_resid_furnished_type);
+                    
+                    $property_resid_furnished_type = get_term_by('id', intval($object_id), 'property-resid-furnished-type');
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_resid_furnished_type', $property_resid_furnished_type->slug);
                 }
 
                 if (isset($_POST['property_commer_offices'])) {
                     $object_id = $_POST['property_commer_offices'];
                     wp_set_object_terms($property_id, intval($object_id), 'property-commer-offices');
-                    //$property_commer_offices = $_POST['property_commer_offices'];
-                    //update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_offices', $property_commer_offices);
+
+                    $property_commer_offices = get_term_by('id', intval($object_id), 'property-commer-offices');
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_offices', $property_commer_offices->slug);
                 }
 
                 if (isset($_POST['property_commer_retail'])) {
                     $object_id = $_POST['property_commer_retail'];
                     wp_set_object_terms($property_id, intval($object_id), 'property-commer-retail');
-                    //$property_commer_retail = $_POST['property_commer_retail'];
-                    //update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_retail', $property_commer_retail);
+
+                    $property_commer_retail = get_term_by('id', intval($object_id), 'property-commer-retail');
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_retail', $property_commer_retail->slug);
                 }
 
                 if (isset($_POST['property_commer_leisure'])) {
                     $object_id = $_POST['property_commer_leisure'];
                     wp_set_object_terms($property_id, intval($object_id), 'property-commer-leisure');
-                    //$property_commer_leisure = $_POST['property_commer_leisure'];
-                    //update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_leisure', $property_commer_leisure);
+
+                    $property_commer_leisure = get_term_by('id', intval($object_id), 'property-commer-leisure');
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_leisure', $property_commer_leisure->slug);
                 }
 
                 if (isset($_POST['property_commer_industrial'])) {
                     $object_id = $_POST['property_commer_industrial'];
                     wp_set_object_terms($property_id, intval($object_id), 'property-commer-industrial');
-                    //$property_commer_industrial = $_POST['property_commer_industrial'];
-                    //update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_industrial', $property_commer_industrial);
+
+                    $property_commer_industrial = get_term_by('id', intval($object_id), 'property-commer-industrial');
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_industrial', $property_commer_industrial->slug);
                 }
 
                 if (isset($_POST['property_commer_land'])) {
                     $object_id = $_POST['property_commer_land'];
                     wp_set_object_terms($property_id, intval($object_id), 'property-commer-land');
-                    //$property_commer_land = $_POST['property_commer_land'];
-                    //update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_land', $property_commer_land);
+
+                    $property_commer_land = get_term_by('id', intval($object_id), 'property-commer-land');
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_land', $property_commer_land->slug);
                 }
 
                 if (isset($_POST['property_commer_other'])) {
                     $object_id = $_POST['property_commer_other'];
                     wp_set_object_terms($property_id, intval($object_id), 'property-commer-other');
-                    //$property_commer_other = $_POST['property_commer_other'];
-                    //update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_other', $property_commer_other);
+
+                    $property_commer_other = get_term_by('id', intval($object_id), 'property-commer-other');
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_other', $property_commer_other->slug);
                 }
 
                 if (isset($_POST['property_type'])) {
