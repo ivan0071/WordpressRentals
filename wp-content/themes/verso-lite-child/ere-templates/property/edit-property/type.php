@@ -53,7 +53,44 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
     <div class="ere-heading-style2 property-fields-title">
         <h2><?php esc_html_e( 'Property Type', 'essential-real-estate' ); ?></h2>
     </div>
-    <div class="property-fields property-group row">
+    <div class="property-fields property-type row">
+        <?php 
+        // if (!in_array("property_type", $hide_property_fields)) {?_>
+        //     <div class="col-sm-6">
+        //         <div class="form-group">
+        //             <label for="property_type"><?php esc_html_e('Type', 'essential-real-estate');
+        //                 echo ere_required_field('property_type'); ?_></label>
+        //             <select name="property_type" id="property_type" class="form-control">
+        //                 <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-type'); ?_>
+        //             </select>
+        //         </div>
+        //     </div>
+        // <?php } 
+        ?>
+        <?php if (!in_array("property_status", $hide_property_fields)) {?>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="property_status"><?php esc_html_e('Status', 'essential-real-estate');?></label>
+                    <select  name="property_status" id="property_status" class="form-control">
+                        <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-status',false,false); ?>
+                    </select>
+                </div>
+            </div>
+        <?php } ?>
+        <?php
+        if (!in_array("property_label", $hide_property_fields)) { ?>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="property_label"><?php esc_html_e('Label', 'essential-real-estate');
+                        echo ere_required_field('property_label'); ?></label>
+                    <select name="property_label" id="property_label" class="form-control">
+                        <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-label'); ?>
+                    </select>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+    <div class="property-fields property-group row div-border">
         <div class="property-group-control">
             <label>
                 <input value="0" <?php checked($property_group, '0'); ?> 
@@ -159,45 +196,4 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
             <?php } ?>
         </div>
     </div>
-
-    <div class="property-fields property-type row">
-        <?php 
-        // if (!in_array("property_type", $hide_property_fields)) {?_>
-        //     <div class="col-sm-6">
-        //         <div class="form-group">
-        //             <label for="property_type"><?php esc_html_e('Type', 'essential-real-estate');
-        //                 echo ere_required_field('property_type'); ?_></label>
-        //             <select name="property_type" id="property_type" class="form-control">
-        //                 <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-type'); ?_>
-        //             </select>
-        //         </div>
-        //     </div>
-        // <?php } 
-        ?>
-
-        <?php if (!in_array("property_status", $hide_property_fields)) {?>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="property_status"><?php esc_html_e('Status', 'essential-real-estate');?></label>
-                    <select  name="property_status" id="property_status" class="form-control">
-                        <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-status',false,false); ?>
-                    </select>
-                </div>
-            </div>
-        <?php } ?>
-
-        <?php
-        if (!in_array("property_label", $hide_property_fields)) { ?>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="property_label"><?php esc_html_e('Label', 'essential-real-estate');
-                        echo ere_required_field('property_label'); ?></label>
-                    <select name="property_label" id="property_label" class="form-control">
-                        <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-label'); ?>
-                    </select>
-                </div>
-            </div>
-        <?php } ?>
-    </div>
-
 </div>

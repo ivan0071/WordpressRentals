@@ -17,3 +17,12 @@ Verso Lite is distributed under the terms of the GNU GPL v2 or later
 {
 	float: initial;
 }
+
+.div-border {
+	border: #e3e3e3;
+	border-style: solid;
+}
+
+.div-border .property-group-control {
+	padding-left: 20px;
+}
