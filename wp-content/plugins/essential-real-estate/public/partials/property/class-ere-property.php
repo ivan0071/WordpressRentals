@@ -490,9 +490,16 @@ if (!class_exists('ERE_Property')) {
                     }
                 }
 
+                // if (isset($_POST['property_status'])) {
+                //     $object_id = $_POST['property_status'];
+                //     wp_set_object_terms($property_id, intval($object_id), 'property-status');
+                // }
                 if (isset($_POST['property_status'])) {
-                    $object_id = $_POST['property_status'];
-                    wp_set_object_terms($property_id, intval($object_id), 'property-status');
+                    $statuses_array = array();
+                    foreach ($_POST['property_status'] as $status_id) {
+                        $statuses_array[] = intval($status_id);
+                    }
+                    wp_set_object_terms($property_id, $statuses_array, 'property-status');
                 }
 
                 if (isset($_POST['property_label'])) {

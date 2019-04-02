@@ -47,6 +47,10 @@ $paramtersPropertyCommerLand['meta_key'] = 'property_commer_land_order_number';
 $paramtersPropertyCommerOther = $paramtersDefault;
 $paramtersPropertyCommerOther['taxonomy'] = 'property-commer-other';
 $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number';
+
+$paramtersPropertyStatus = $paramtersDefault;
+$paramtersPropertyStatus['taxonomy'] = 'property-status';
+$paramtersPropertyStatus['meta_key'] = 'property_status_order_number';
 ?>
 <div class="property-fields-wrap">
     <div class="ere-heading-style2 property-fields-title">
@@ -182,16 +186,34 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
                 </div>
             </div>
             <div class="col-sm-6" style="width: 100%"></div>
-        <?php } ?>        
+        <?php } ?>
         <?php if (!in_array("property_status", $hide_property_fields)) {?>
             <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="property_status"><?php esc_html_e('Status', 'essential-real-estate');?></label>
-                    <select name="property_status" id="property_status" class="form-control">
-                        <?php ere_get_taxonomy('property-status',false,false); ?>
-                    </select>
-                </div>
-            </div>
+                <?php
+                $property_statuses = get_categories($paramtersPropertyStatus);
+                $parents_items=$child_items=array();
+                if ($property_statuses) {
+                    foreach ($property_statuses as $term) {
+                        if (0 == $term->parent) $parents_items[] = $term;
+                        if ($term->parent) $child_items[] = $term;
+                    };
+                    ?>
+                    <div class="form-group">
+                        <label for="property_status"><?php esc_html_e('Property Status', 'essential-real-estate');
+                            echo ere_required_field('property_status'); ?></label>
+                    </div>
+                    <?php
+                    echo '<div>';
+                    foreach ($parents_items as $parents_item) {
+                        echo '<div class="col-sm-3"><div class="checkbox"><label>';
+                        echo '<input type="checkbox" name="property_status[]" value="' . esc_attr($parents_item->term_id) . '" />';
+                        echo esc_html($parents_item->name);
+                        echo '</label></div></div>';
+                    };
+                    echo '</div>';
+                };
+                ?>
+            </div> 
         <?php } ?>
     </div>
 </div>
