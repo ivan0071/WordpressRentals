@@ -48,9 +48,9 @@ if (!class_exists('ERE_Admin_Property')) {
                         echo '&ndash;';
                     }
                     break;
-                case 'type':
-                    echo ere_admin_taxonomy_terms($post->ID, 'property-type', 'property');
-                    break;
+                // case 'type':
+                //     echo ere_admin_taxonomy_terms($post->ID, 'property-type', 'property');
+                //     break;
                 case 'residential-type':
                     echo ere_admin_taxonomy_terms($post->ID, 'property-residential-type', 'property');
                     break;
@@ -476,7 +476,7 @@ if (!class_exists('ERE_Admin_Property')) {
             $post_type = 'property';
             if ($typenow == $post_type) {
                 $taxonomy_arr = array(
-                    'property-status','property-type',
+                    'property-status',/*'property-type',*/
                     'property-residential-type','property-resid-furnished-type',
                     'property-commer-offices', 'property-commer-retail', 'property-commer-leisure', 'property-commer-industrial', 'property-commer-land', 'property-commer-other'
                 );
@@ -511,7 +511,7 @@ if (!class_exists('ERE_Admin_Property')) {
             if ($pagenow == 'edit.php' && isset($q_vars['post_type']) && $q_vars['post_type'] == $post_type)
             {
                 $taxonomy_arr = array(
-                    'property-status','property-type',
+                    'property-status',/*'property-type',*/
                     'property-residential-type','property-resid-furnished-type',
                     'property-commer-offices', 'property-commer-retail', 'property-commer-leisure', 'property-commer-industrial', 'property-commer-land', 'property-commer-other'
                 );

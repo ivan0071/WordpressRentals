@@ -367,7 +367,7 @@ if (!class_exists('ERE_Insert_Shortcode')) {
 						'default' => 1000,
 						'required' => array('element' => 'autoplay', 'value' => 'true')
 					),
-					'property_type' => $this-> add_narrow_taxonomy('property-type', esc_html__( 'Type', 'essential-real-estate')),
+					//'property_type' => $this-> add_narrow_taxonomy('property-type', esc_html__( 'Type', 'essential-real-estate')),
 					'property_status' =>$this-> add_narrow_taxonomy('property-status', esc_html__( 'Status', 'essential-real-estate')),
 					'property_feature' =>$this-> add_narrow_taxonomy('property-feature', esc_html__( 'Feature', 'essential-real-estate')),
 					'property_city' => $this->add_narrow_taxonomy('property-city', esc_html__( 'City / Town', 'essential-real-estate')),
@@ -437,7 +437,7 @@ if (!class_exists('ERE_Insert_Shortcode')) {
 						'value' => '',
 						'required' => array('element' => 'include_heading', 'value' => 'true')
 					),
-					'property_type' =>$this-> add_narrow_taxonomy('property-type', esc_html__( 'Type', 'essential-real-estate')),
+					//'property_type' =>$this-> add_narrow_taxonomy('property-type', esc_html__( 'Type', 'essential-real-estate')),
 					'property_status' =>$this-> add_narrow_taxonomy('property-status', esc_html__( 'Status', 'essential-real-estate')),
 					'property_feature' =>$this-> add_narrow_taxonomy('property-feature', esc_html__( 'Feature', 'essential-real-estate')),
 					'property_city' => $this->add_narrow_taxonomy('property-city', esc_html__( 'City / Town', 'essential-real-estate')),
@@ -480,7 +480,7 @@ if (!class_exists('ERE_Insert_Shortcode')) {
 						'desc' => esc_html__('Enter image size ("thumbnail" or "full"). Alternatively enter size in pixels (Example: 1200x600 (Not Include Unit, Space)).', 'essential-real-estate'),
 						'default' => '1200x600'
 					),
-					'property_type' => $this->add_narrow_taxonomy('property-type', esc_html__( 'Type', 'essential-real-estate')),
+					//'property_type' => $this->add_narrow_taxonomy('property-type', esc_html__( 'Type', 'essential-real-estate')),
 					'property_status' =>$this-> add_narrow_taxonomy('property-status', esc_html__( 'Status', 'essential-real-estate')),
 					'property_feature' => $this->add_narrow_taxonomy('property-feature', esc_html__( 'Feature', 'essential-real-estate')),
 					'property_city' => $this->add_narrow_taxonomy('property-city', esc_html__( 'City / Town', 'essential-real-estate')),
@@ -601,7 +601,7 @@ if (!class_exists('ERE_Insert_Shortcode')) {
 						'default' => 1000,
 						'required' => array('element' => 'autoplay', 'value' => 'true')
 					),
-					'property_type' => $this->add_narrow_taxonomy('property-type', esc_html__( 'Type', 'essential-real-estate')),
+					//'property_type' => $this->add_narrow_taxonomy('property-type', esc_html__( 'Type', 'essential-real-estate')),
 					'property_status' =>$this-> add_narrow_taxonomy('property-status', esc_html__( 'Status', 'essential-real-estate')),
 					'property_feature' => $this->add_narrow_taxonomy('property-feature', esc_html__( 'Feature', 'essential-real-estate')),
 					'property_city' => $this->add_narrow_taxonomy('property-city', esc_html__( 'City / Town', 'essential-real-estate')),
@@ -705,7 +705,7 @@ if (!class_exists('ERE_Insert_Shortcode')) {
 						),
 						'required' => array('element' => 'include_heading', 'value' => 'true')
 					),
-					'property_type' =>$this-> add_narrow_taxonomy('property-type', esc_html__( 'Type', 'essential-real-estate')),
+					//'property_type' =>$this-> add_narrow_taxonomy('property-type', esc_html__( 'Type', 'essential-real-estate')),
 					'property_status' =>$this-> add_narrow_taxonomy('property-status', esc_html__( 'Status', 'essential-real-estate')),
 					'property_feature' => $this->add_narrow_taxonomy('property-feature', esc_html__( 'Feature', 'essential-real-estate')),
 					'property_city' => $this->add_narrow_taxonomy('property-city', esc_html__( 'City / Town', 'essential-real-estate')),

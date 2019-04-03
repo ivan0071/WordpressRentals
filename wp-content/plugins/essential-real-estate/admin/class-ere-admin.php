@@ -1493,7 +1493,7 @@ if (!class_exists('ERE_Admin')) {
         public function remove_taxonomy_parent_category()
         {
             if (!in_array($_GET['taxonomy'], 
-                array('property-type', 
+                array(/*'property-type',*/
                     'property-residential-type', 'property-resid-furnished-type', 
                     'property-commer-offices', 'property-commer-retail', 'property-commer-leisure', 'property-commer-industrial', 'property-commer-land', 'property-commer-other',
                     'property-status', 'property-feature', 'property-label')
@@ -1594,20 +1594,20 @@ if (!class_exists('ERE_Admin')) {
         {
             $countries = ere_get_selected_countries();
             $default_country = ere_get_option('default_country', 'US');
-            $configs['property-type-settings'] = apply_filters('ere_register_term_meta_property_type', array(
-                'name' => esc_html__('Taxonomy Setting', 'essential-real-estate'),
-                'layout' => 'horizontal',
-                'taxonomy' => array('property-type'),
-                'fields' => array(
-                    array(
-                        'id' => 'property_type_icon',
-                        'title' => esc_html__('Icon image', 'essential-real-estate'),
-                        'desc' => esc_html__('Icon display on map', 'essential-real-estate'),
-                        'type' => 'image',
-                        'default' => '',
-                    ),
-                )
-            ));
+            // $configs['property-type-settings'] = apply_filters('ere_register_term_meta_property_type', array(
+            //     'name' => esc_html__('Taxonomy Setting', 'essential-real-estate'),
+            //     'layout' => 'horizontal',
+            //     'taxonomy' => array('property-type'),
+            //     'fields' => array(
+            //         array(
+            //             'id' => 'property_type_icon',
+            //             'title' => esc_html__('Icon image', 'essential-real-estate'),
+            //             'desc' => esc_html__('Icon display on map', 'essential-real-estate'),
+            //             'type' => 'image',
+            //             'default' => '',
+            //         ),
+            //     )
+            // ));
             $configs['property-residential-type-settings'] = apply_filters('ere_register_term_meta_property_residential_type', array(
                 'name' => esc_html__('Taxonomy Setting', 'essential-real-estate'),
                 'layout' => 'horizontal',
@@ -3011,7 +3011,7 @@ if (!class_exists('ERE_Admin')) {
                                         //'property_is_residential' => esc_html__('Residential', 'essential-real-estate'),
                                         //'property_is_commercial' => esc_html__('Commercial', 'essential-real-estate'),                                        
                                         //Type
-                                        'property_type' => esc_html__('Type', 'essential-real-estate'),
+                                        //'property_type' => esc_html__('Type', 'essential-real-estate'),
                                         //'property_group' => esc_html__('Property Group', 'essential-real-estate'),
                                         'property_residential_type' => esc_html__('Residential Type', 'essential-real-estate'),
                                         'property_resid_furnished_type' => esc_html__('Furnished Type', 'essential-real-estate'),
@@ -4427,7 +4427,7 @@ if (!class_exists('ERE_Admin')) {
                             'subtitle' => esc_html__('Choose which fields you want to hide when compare properties?', 'essential-real-estate'),
                             'type' => 'checkbox_list',
                             'options' => array(
-                                'property_type' => esc_html__('Type', 'essential-real-estate'),
+                                //'property_type' => esc_html__('Type', 'essential-real-estate'),
                                 'property_group' => esc_html__('Property Group', 'essential-real-estate'),
                                 'property_residential_type' => esc_html__('Residential Type', 'essential-real-estate'),
                                 'property_resid_furnished_type' => esc_html__('Furnished Type', 'essential-real-estate'),
@@ -4639,7 +4639,7 @@ if (!class_exists('ERE_Admin')) {
                                     'subtitle' => esc_html__('Choose which fields you want to hide on advanced search page?', 'essential-real-estate'),
                                     'options' => array(
                                         'property_status' => esc_html__('Status', 'essential-real-estate'),
-                                        'property_type' => esc_html__('Type', 'essential-real-estate'),
+                                        //'property_type' => esc_html__('Type', 'essential-real-estate'),
                                         'property_group' => esc_html__('Property Group', 'essential-real-estate'),
                                         'property_residential_type' => esc_html__('Residential Type', 'essential-real-estate'),
                                         'property_resid_furnished_type' => esc_html__('Furnished Type', 'essential-real-estate'),

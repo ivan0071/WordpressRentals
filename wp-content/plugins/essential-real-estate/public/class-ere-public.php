@@ -234,7 +234,7 @@ if (!class_exists('ERE_Public')) {
             }
             wp_localize_script(ERE_PLUGIN_PREFIX . 'property_steps', 'ere_property_steps_vars', array(
                 'property_title' => in_array("property_title", $property_req_fields),
-                'property_type' => in_array("property_type", $property_req_fields),
+                //'property_type' => in_array("property_type", $property_req_fields),
                 'property_label' => in_array("property_label", $property_req_fields),
                 'property_price' => in_array("property_price", $property_req_fields),
                 'property_price_prefix' => in_array("property_price_prefix", $property_req_fields),

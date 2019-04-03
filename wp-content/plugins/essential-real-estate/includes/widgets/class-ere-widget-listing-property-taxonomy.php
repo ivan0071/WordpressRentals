@@ -39,14 +39,14 @@ if (!class_exists('ERE_Widget_Listing_Property_Taxonomy')) {
                             'label' => esc_html__( 'Label', 'essential-real-estate' )
                         )
                     ),
-                    array(
-                        'name' => 'types',
-                        'type' => 'select',
-                        'multiple'=>true,
-                        'title' => esc_html__('Select Types:', 'essential-real-estate'),
-                        'options' => $this->get_all_taxonomies('property-type'),
-                        'require' => array('element' => 'taxonomy', 'compare'=>'=','value' => array('type'))
-                    ),
+                    // array(
+                    //     'name' => 'types',
+                    //     'type' => 'select',
+                    //     'multiple'=>true,
+                    //     'title' => esc_html__('Select Types:', 'essential-real-estate'),
+                    //     'options' => $this->get_all_taxonomies('property-type'),
+                    //     'require' => array('element' => 'taxonomy', 'compare'=>'=','value' => array('type'))
+                    // ),
                     array(
                         'name' => 'status',
                         'type' => 'select',
