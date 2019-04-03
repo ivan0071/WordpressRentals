@@ -32,14 +32,22 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                            } ?>">
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6" style="width: 100%">
+                <?php if ($measurement_units == "SqFt" || $measurement_units == "m2") { ?>
                 <div class="form-group">
-                    <label for="property_size_m2">
-                        <?php printf(__('Size (SqM)', 'essential-real-estate')); ?>
+                    <label for="property_size_auto">
+                        <?php 
+                            if ($measurement_units == "SqFt")
+                                printf(__('Size (m2)', 'essential-real-estate'));
+                            else if ($measurement_units == "m2")
+                                printf(__('Size (SqFt)', 'essential-real-estate'));
+                        ?>
                     </label>
-                    <input type="text" id="property_size_m2" class="form-control" disabled>
+                    <input type="text" id="property_size_auto" class="form-control" disabled
+                        data-from-unit="<?=$measurement_units?>">
                     <i>Auto-generated field</i>
                 </div>
+                <?php } ?>
             </div>
         <?php } ?>
 

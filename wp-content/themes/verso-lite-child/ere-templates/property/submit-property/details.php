@@ -18,13 +18,30 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
     </div>
     <div class="property-fields property-detail row">
         <?php if (!in_array("property_size", $hide_property_fields)) { ?>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="form-group">
                     <label
                         for="property_size"><?php printf(__('Size (%s) %s', 'essential-real-estate'), $measurement_units, ere_required_field('property_size')); ?></label>
                     <input type="number" id="property_size" class="form-control" name="property_size" value="">
                 </div>
             </div>
+            <div class="col-sm-6" style="width: 100%">
+                <?php if ($measurement_units == "SqFt" || $measurement_units == "m2") { ?>
+                <div class="form-group">
+                    <label for="property_size_auto">
+                        <?php 
+                            if ($measurement_units == "SqFt")
+                                printf(__('Size (m2)', 'essential-real-estate'));
+                            else if ($measurement_units == "m2")
+                                printf(__('Size (SqFt)', 'essential-real-estate'));
+                        ?>
+                    </label>
+                    <input type="text" id="property_size_auto" class="form-control" disabled
+                        data-from-unit="<?=$measurement_units?>">
+                    <i>Auto-generated field</i>
+                </div>
+                <?php } ?>
+            </div>            
         <?php } ?>
         <?php 
         // if (!in_array("property_land", $hide_property_fields)) { ?_>

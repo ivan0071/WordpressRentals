@@ -494,8 +494,10 @@ if (!class_exists('ERE_Admin')) {
                                                     'default' => '',
                                                 ),
                                                 array(
-                                                    'id' => "{$meta_prefix}property_size_m2",
-                                                    'title' => sprintf(__('Size (SqM)', 'essential-real-estate')),
+                                                    'id' => "{$meta_prefix}property_size_auto",
+                                                    'title' => (($measurement_units == "SqFt") ? sprintf(__('Size (m2)', 'essential-real-estate')) : 
+                                                               (($measurement_units == "m2") ? sprintf(__('Size (SqFt)', 'essential-real-estate')) : 
+                                                               ('hidden'))),
                                                     'desc' => esc_html__('Auto-generated field', 'essential-real-estate'),
                                                     'type' => 'text',
                                                     'pattern' => "{$format_number}",
@@ -2209,8 +2211,8 @@ if (!class_exists('ERE_Admin')) {
                         array(
                             'id' => 'measurement_units',
                             'type' => 'select',
-                            'title' => esc_html__('Measurement units for Property Size, Garage Size', 'essential-real-estate'),
-                            'subtitle' => esc_html__('Choose Measurement units for Property Size, Garage Size', 'essential-real-estate'),
+                            'title' => esc_html__('Measurement units for Property Size', 'essential-real-estate'),
+                            'subtitle' => esc_html__('Choose Measurement units for Property Size', 'essential-real-estate'),
                             'options' => array(
                                 'SqFt' => esc_html__('Square Feet (SqFt)', 'essential-real-estate'),
                                 'm2' => esc_html__('Square Meters (m2)', 'essential-real-estate'),
@@ -2225,25 +2227,25 @@ if (!class_exists('ERE_Admin')) {
                             'title' => esc_html__('Custom Measurement Units', 'essential-real-estate'),
                             'default' => 'SqFt',
                         ),
-                        array(
-                            'id' => 'measurement_units_land_area',
-                            'type' => 'select',
-                            'title' => esc_html__('Measurement units for Land Area', 'essential-real-estate'),
-                            'subtitle' => esc_html__('Choose Measurement units for Land Area', 'essential-real-estate'),
-                            'options' => array(
-                                'SqFt' => esc_html__('Square Feet (SqFt)', 'essential-real-estate'),
-                                'm2' => esc_html__('Square Meters (m2)', 'essential-real-estate'),
-                                'custom' => esc_html__('Custom Units', 'essential-real-estate'),
-                            ),
-                            'default' => 'SqFt'
-                        ),
-                        array(
-                            'id' => 'custom_measurement_units_land_area',
-                            'type' => 'text',
-                            'required' => array('measurement_units_land_area', '=', 'custom'),
-                            'title' => esc_html__('Custom Measurement Units for Land Area', 'essential-real-estate'),
-                            'default' => 'SqFt',
-                        ),
+                        // array(
+                        //     'id' => 'measurement_units_land_area',
+                        //     'type' => 'select',
+                        //     'title' => esc_html__('Measurement units for Land Area', 'essential-real-estate'),
+                        //     'subtitle' => esc_html__('Choose Measurement units for Land Area', 'essential-real-estate'),
+                        //     'options' => array(
+                        //         'SqFt' => esc_html__('Square Feet (SqFt)', 'essential-real-estate'),
+                        //         'm2' => esc_html__('Square Meters (m2)', 'essential-real-estate'),
+                        //         'custom' => esc_html__('Custom Units', 'essential-real-estate'),
+                        //     ),
+                        //     'default' => 'SqFt'
+                        // ),
+                        // array(
+                        //     'id' => 'custom_measurement_units_land_area',
+                        //     'type' => 'text',
+                        //     'required' => array('measurement_units_land_area', '=', 'custom'),
+                        //     'title' => esc_html__('Custom Measurement Units for Land Area', 'essential-real-estate'),
+                        //     'default' => 'SqFt',
+                        // ),
                         array(
                             'id' => 'ere_other_options',
                             'title' => esc_html__('Other Options', 'essential-real-estate'),
