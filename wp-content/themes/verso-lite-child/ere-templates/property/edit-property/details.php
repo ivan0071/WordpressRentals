@@ -22,7 +22,7 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
     </div>
     <div class="property-fields property-detail row">
         <?php if (!in_array("property_size", $hide_property_fields)) {?>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="form-group">
                     <label
                         for="property_size"><?php printf(__('Size (%s) %s', 'essential-real-estate'),$measurement_units,ere_required_field('property_size')); ?></label>
@@ -32,21 +32,31 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                            } ?>">
                 </div>
             </div>
-        <?php } ?>
-
-        <?php if (!in_array("property_land", $hide_property_fields)) {?>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="form-group">
-                    <label
-                        for="property_land"><?php printf(__('Land Area (%s) %s', 'essential-real-estate'),$measurement_units_land_area, ere_required_field('property_land')); ?></label>
-                    <input type="number" id="property_land" class="form-control" name="property_land"
-                           value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_land'])) {
-                               echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_land'][0]);
-                           } ?>">
+                    <label for="property_size_m2">
+                        <?php printf(__('Size (SqM)', 'essential-real-estate')); ?>
+                    </label>
+                    <input type="text" id="property_size_m2" class="form-control" disabled>
+                    <i>Auto-generated field</i>
                 </div>
             </div>
         <?php } ?>
 
+        <?php 
+        // if (!in_array("property_land", $hide_property_fields)) {?_>
+        //     <div class="col-sm-4">
+        //         <div class="form-group">
+        //             <label
+        //                 for="property_land"><?php printf(__('Land Area (%s) %s', 'essential-real-estate'),$measurement_units_land_area, ere_required_field('property_land')); ?_></label>
+        //             <input type="number" id="property_land" class="form-control" name="property_land"
+        //                    value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_land'])) {
+        //                        echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_land'][0]);
+        //                    } ?_>">
+        //         </div>
+        //     </div>
+        // <?php } 
+        ?>
         <?php if (!in_array("property_rooms", $hide_property_fields)) {?>
             <div class="col-sm-4">
                 <div class="form-group">

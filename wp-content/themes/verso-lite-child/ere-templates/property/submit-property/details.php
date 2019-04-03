@@ -26,16 +26,17 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
                 </div>
             </div>
         <?php } ?>
-
-        <?php if (!in_array("property_land", $hide_property_fields)) { ?>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label
-                        for="property_land"><?php printf(__('Land Area (%s) %s', 'essential-real-estate'), $measurement_units_land_area, ere_required_field('property_land')); ?></label>
-                    <input type="number" id="property_land" class="form-control" name="property_land" value="">
-                </div>
-            </div>
-        <?php } ?>
+        <?php 
+        // if (!in_array("property_land", $hide_property_fields)) { ?_>
+        //     <div class="col-sm-4">
+        //         <div class="form-group">
+        //             <label
+        //                 for="property_land"><?php printf(__('Land Area (%s) %s', 'essential-real-estate'), $measurement_units_land_area, ere_required_field('property_land')); ?_></label>
+        //             <input type="number" id="property_land" class="form-control" name="property_land" value="">
+        //         </div>
+        //     </div>
+        // <?php } 
+        ?>
         <?php if (!in_array("property_rooms", $hide_property_fields)) { ?>
             <div class="col-sm-4">
                 <div class="form-group">

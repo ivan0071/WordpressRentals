@@ -483,6 +483,109 @@ if (!class_exists('ERE_Admin')) {
                                         ),
                                         array(
                                             'type' => 'row',
+                                            'col' => '6',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_size",
+                                                    'title' => sprintf(__('Size (%s)', 'essential-real-estate'), $measurement_units),
+                                                    'desc' => esc_html__('Example Value: 200', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                    'pattern' => "{$format_number}",
+                                                    'default' => '',
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_size_m2",
+                                                    'title' => sprintf(__('Size (SqM)', 'essential-real-estate')),
+                                                    'desc' => esc_html__('Auto-generated field', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                    'pattern' => "{$format_number}",
+                                                    'default' => '',
+                                                ),
+                                                // array(
+                                                //     'id' => "{$meta_prefix}property_land",
+                                                //     'title' => sprintf(__('Land Area (%s)', 'essential-real-estate'), $measurement_units_land_area),
+                                                //     'desc' => esc_html__('Example Value: 2000', 'essential-real-estate'),
+                                                //     'type' => 'text',
+                                                //     'pattern' => "{$format_number}",
+                                                //     'default' => '',
+                                                // ),
+                                                )
+                                        ),                                        
+                                        array(
+                                            'type' => 'row',
+                                            'col' => '6',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_rooms",
+                                                    'title' => esc_html__('Rooms', 'essential-real-estate'),
+                                                    'desc' => esc_html__('Example Value: 6', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                    'pattern' => "{$format_number}",
+                                                    'default' => '',
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_bedrooms",
+                                                    'title' => esc_html__('Bedrooms', 'essential-real-estate'),
+                                                    'desc' => esc_html__('Example Value: 4', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                    'pattern' => "{$format_number}",
+                                                    'default' => '',
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_bathrooms",
+                                                    'title' => esc_html__('Bathrooms', 'essential-real-estate'),
+                                                    'desc' => esc_html__('Example Value: 2', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                    'pattern' => "{$format_number}",
+                                                    'default' => '',
+                                                ),
+                                            )
+                                        ),
+                                        array(
+                                            'type' => 'row',
+                                            'col' => '6',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_garage",
+                                                    'title' => esc_html__('Garages', 'essential-real-estate'),
+                                                    'desc' => esc_html__('Example Value: 1', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                    'pattern' => "{$format_number}",
+                                                    'default' => '',
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_garage_size",
+                                                    'title' => sprintf(__('Garages Size (%s)', 'essential-real-estate'), $measurement_units),
+                                                    'type' => 'text',
+                                                    'pattern' => "{$format_number}",
+                                                    'default' => '',
+                                                ),
+                                            )
+                                        ),
+                                        array(
+                                            'type' => 'row',
+                                            'col' => '6',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_year",
+                                                    'title' => esc_html__('Year Built', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                    'default' => '',
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_identity",
+                                                    'title' => esc_html__('Property ID', 'essential-real-estate'),
+                                                    'desc' => esc_html__('Property ID will help to search property directly (default=postId)', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                    'default' => '',
+                                                ),
+                                            )
+                                        ),
+                                        array(
+                                            'type' => 'divide'
+                                        ),
+                                        array(
+                                            'type' => 'row',
                                             'col' => '12',
                                             'fields' => array(
                                                 array(
@@ -533,103 +636,6 @@ if (!class_exists('ERE_Admin')) {
                                                     'type' => 'text',
                                                     'default' => '',
                                                     'required' => array("{$meta_prefix}property_price_on_call", '=', '0'),
-                                                ),
-                                            )
-                                        ),
-                                        array(
-                                            'type' => 'divide'
-                                        ),
-                                        array(
-                                            'type' => 'row',
-                                            'col' => '6',
-                                            'fields' => array(
-                                                array(
-                                                    'id' => "{$meta_prefix}property_size",
-                                                    'title' => sprintf(__('Size (%s)', 'essential-real-estate'), $measurement_units),
-                                                    'desc' => esc_html__('Example Value: 200', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                    'pattern' => "{$format_number}",
-                                                    'default' => '',
-                                                ),
-                                                array(
-                                                    'id' => "{$meta_prefix}property_land",
-                                                    'title' => sprintf(__('Land Area (%s)', 'essential-real-estate'), $measurement_units_land_area),
-                                                    'desc' => esc_html__('Example Value: 2000', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                    'pattern' => "{$format_number}",
-                                                    'default' => '',
-                                                ),
-                                            )
-                                        ),
-
-                                        array(
-                                            'type' => 'row',
-                                            'col' => '6',
-                                            'fields' => array(
-                                                array(
-                                                    'id' => "{$meta_prefix}property_rooms",
-                                                    'title' => esc_html__('Rooms', 'essential-real-estate'),
-                                                    'desc' => esc_html__('Example Value: 6', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                    'pattern' => "{$format_number}",
-                                                    'default' => '',
-                                                ),
-                                                array(
-                                                    'id' => "{$meta_prefix}property_bedrooms",
-                                                    'title' => esc_html__('Bedrooms', 'essential-real-estate'),
-                                                    'desc' => esc_html__('Example Value: 4', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                    'pattern' => "{$format_number}",
-                                                    'default' => '',
-                                                ),
-                                                array(
-                                                    'id' => "{$meta_prefix}property_bathrooms",
-                                                    'title' => esc_html__('Bathrooms', 'essential-real-estate'),
-                                                    'desc' => esc_html__('Example Value: 2', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                    'pattern' => "{$format_number}",
-                                                    'default' => '',
-                                                ),
-                                            )
-                                        ),
-
-                                        array(
-                                            'type' => 'row',
-                                            'col' => '6',
-                                            'fields' => array(
-                                                array(
-                                                    'id' => "{$meta_prefix}property_garage",
-                                                    'title' => esc_html__('Garages', 'essential-real-estate'),
-                                                    'desc' => esc_html__('Example Value: 1', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                    'pattern' => "{$format_number}",
-                                                    'default' => '',
-                                                ),
-                                                array(
-                                                    'id' => "{$meta_prefix}property_garage_size",
-                                                    'title' => sprintf(__('Garages Size (%s)', 'essential-real-estate'), $measurement_units),
-                                                    'type' => 'text',
-                                                    'pattern' => "{$format_number}",
-                                                    'default' => '',
-                                                ),
-                                            )
-                                        ),
-                                        array(
-                                            'type' => 'row',
-                                            'col' => '6',
-                                            'fields' => array(
-                                                array(
-                                                    'id' => "{$meta_prefix}property_year",
-                                                    'title' => esc_html__('Year Built', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                    'default' => '',
-                                                ),
-                                                array(
-                                                    'id' => "{$meta_prefix}property_identity",
-                                                    'title' => esc_html__('Property ID', 'essential-real-estate'),
-                                                    'desc' => esc_html__('Property ID will help to search property directly (default=postId)', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                    'default' => '',
                                                 ),
                                             )
                                         ),
@@ -3030,7 +3036,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_price_on_call' => esc_html__('Price on Call', 'essential-real-estate'),
                                         //Detail
                                         'property_size' => esc_html__('Size', 'essential-real-estate'),
-                                        'property_land' => esc_html__('Land Area', 'essential-real-estate'),
+                                        //'property_land' => esc_html__('Land Area', 'essential-real-estate'),
                                         'property_rooms' => esc_html__('Rooms', 'essential-real-estate'),
                                         'property_bedrooms' => esc_html__('Bedrooms', 'essential-real-estate'),
                                         'property_bathrooms' => esc_html__('Bathrooms', 'essential-real-estate'),
@@ -3087,7 +3093,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_bedrooms' => esc_html__('Bedrooms', 'essential-real-estate'),
                                         'property_bathrooms' => esc_html__('Bathrooms', 'essential-real-estate'),
                                         'property_size' => esc_html__('Size', 'essential-real-estate'),
-                                        'property_land' => esc_html__('Land Area', 'essential-real-estate'),
+                                        //'property_land' => esc_html__('Land Area', 'essential-real-estate'),
                                         'property_garage' => esc_html__('Garages', 'essential-real-estate'),
                                         'property_year' => esc_html__('Year Built', 'essential-real-estate'),
                                         'property_map_address' => esc_html__('Address', 'essential-real-estate'),
@@ -3219,7 +3225,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_bathrooms' => esc_html__('Bathrooms', 'essential-real-estate'),
                                         'property_price' => esc_html__('Price', 'essential-real-estate'),
                                         'property_size' => esc_html__('Size', 'essential-real-estate'),
-                                        'property_land' => esc_html__('Land Area', 'essential-real-estate'),
+                                        //'property_land' => esc_html__('Land Area', 'essential-real-estate'),
                                         'property_label' => esc_html__('Label', 'essential-real-estate'),
                                         'property_garage' => esc_html__('Garage', 'essential-real-estate'),
                                         'property_identity' => esc_html__('Property ID', 'essential-real-estate'),
@@ -3229,7 +3235,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_status', //'property_type', 
                                         'property_residential_type', 'property_resid_furnished_type', 
                                         'property_commer_offices', 'property_commer_retail', 'property_commer_leisure', 'property_commer_industrial', 'property_commer_land', 'property_commer_other',
-                                        'property_title', 'property_address', 'property_country', 'property_state', 'property_city', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms', 'property_price', 'property_size', 'property_land', 'property_label', 'property_garage', 'property_identity', 'property_feature'
+                                        'property_title', 'property_address', 'property_country', 'property_state', 'property_city', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms', 'property_price', 'property_size', /*'property_land',*/ 'property_label', 'property_garage', 'property_identity', 'property_feature'
                                     )
                                 ),
                             )
@@ -4444,7 +4450,7 @@ if (!class_exists('ERE_Admin')) {
                                 'property_bedrooms' => esc_html__('Bedrooms', 'essential-real-estate'),
                                 'property_bathrooms' => esc_html__('Bathrooms', 'essential-real-estate'),
                                 'property_size' => esc_html__('Size', 'essential-real-estate'),
-                                'property_land' => esc_html__('Land Area', 'essential-real-estate'),
+                                //'property_land' => esc_html__('Land Area', 'essential-real-estate'),
                                 'property_garage' => esc_html__('Garages', 'essential-real-estate'),
                                 'property_garage_size' => esc_html__('Garage Size', 'essential-real-estate'),
                                 'property_year' => esc_html__('Year Built', 'essential-real-estate'),
@@ -4659,7 +4665,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_bathrooms' => esc_html__('Bathrooms', 'essential-real-estate'),
                                         'property_price' => esc_html__('Price', 'essential-real-estate'),
                                         'property_size' => esc_html__('Size', 'essential-real-estate'),
-                                        'property_land' => esc_html__('Land Area', 'essential-real-estate'),
+                                        //'property_land' => esc_html__('Land Area', 'essential-real-estate'),
                                         'property_label' => esc_html__('Label', 'essential-real-estate'),
                                         'property_garage' => esc_html__('Garage', 'essential-real-estate'),
                                         'property_identity' => esc_html__('Property ID', 'essential-real-estate'),
