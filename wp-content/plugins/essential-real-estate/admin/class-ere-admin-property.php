@@ -19,7 +19,7 @@ if (!class_exists('ERE_Admin_Property')) {
             $columns['cb'] = "<input type=\"checkbox\" />";
             $columns['thumb'] = esc_html__('Image', 'essential-real-estate');
             $columns['title'] = esc_html__('Property Title', 'essential-real-estate');
-            $columns['type'] =  esc_html__('Type', 'essential-real-estate');
+            //$columns['type'] =  esc_html__('Type', 'essential-real-estate');
             $columns['status'] =esc_html__('Status', 'essential-real-estate');
             $columns['price'] = esc_html__('Price', 'essential-real-estate');
             $columns['featured'] = '<span data-tip="'.  esc_html__('Featured?', 'essential-real-estate') .'" class="tips dashicons dashicons-star-filled"></span>';

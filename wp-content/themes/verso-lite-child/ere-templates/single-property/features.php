@@ -11,13 +11,13 @@ if (!defined('ABSPATH')) {
 global $post;
 $property_id=get_the_ID();
 $property_meta_data = get_post_custom($property_id);
-$property_types = get_the_terms($property_id, 'property-type');
-$property_type_arr = array();
-if ($property_types) {
-    foreach ($property_types as $property_type) {
-        $property_type_arr[] = $property_type->name;
-    }
-}
+// $property_types = get_the_terms($property_id, 'property-type');
+// $property_type_arr = array();
+// if ($property_types) {
+//     foreach ($property_types as $property_type) {
+//         $property_type_arr[] = $property_type->name;
+//     }
+// }
 
 $property_status = get_the_terms($property_id, 'property-status');
 $property_status_arr = array();
@@ -125,12 +125,14 @@ wp_enqueue_script('bootstrap-tabcollapse');
                             <span><?php echo ere_get_option('empty_price_text', '') ?></span>
                         </li>
                     <?php endif; ?>
-                    <?php if (count($property_type_arr) > 0): ?>
-                        <li>
-                            <strong><?php esc_html_e('Property Type', 'essential-real-estate'); ?></strong>
-                            <span><?php echo join(', ', $property_type_arr) ?></span>
-                        </li>
-                    <?php endif; ?>
+                    <?php 
+                    // if (count($property_type_arr) > 0): ?_>
+                    //     <li>
+                    //         <strong><?php esc_html_e('Property Type', 'essential-real-estate'); ?_></strong>
+                    //         <span><?php echo join(', ', $property_type_arr) ?_></span>
+                    //     </li>
+                    // <?php endif; 
+                    ?>
                     <?php if (count($property_status_arr) > 0): ?>
                         <li>
                             <strong><?php esc_html_e('Property status', 'essential-real-estate'); ?></strong>
