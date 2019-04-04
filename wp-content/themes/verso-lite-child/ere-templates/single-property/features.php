@@ -55,7 +55,9 @@ $property_year = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_year']
 $property_rooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rooms'][0] : '0';
 $property_bathrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms'][0] : '0';
 $property_bedrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms'][0] : '0';
-$property_garage_size = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_garage_size']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_garage_size'][0] : '';
+//$property_garage_size = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_garage_size']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_garage_size'][0] : '';
+$property_story = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_story']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_story'][0] : '';
+$property_pet = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_pet']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_pet'][0] : '';
 $property_size = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_size']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_size'][0] : '';
 $additional_features = isset($property_meta_data[ERE_METABOX_PREFIX . 'additional_features']) ? $property_meta_data[ERE_METABOX_PREFIX . 'additional_features'][0] : '';
 $measurement_units = ere_get_measurement_units();
@@ -66,7 +68,7 @@ if ($additional_features > 0) {
     $additional_feature_title = get_post_meta($property_id, ERE_METABOX_PREFIX . 'additional_feature_title', true);
     $additional_feature_value = get_post_meta($property_id, ERE_METABOX_PREFIX . 'additional_feature_value', true);
 }
-$property_garage = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_garage']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_garage'][0] : '0';
+//$property_garage = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_garage']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_garage'][0] : '0';
 $property_land = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_land']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_land'][0] : '';
 $additional_fields = ere_render_additional_fields();
 wp_enqueue_script('bootstrap-tabcollapse');
@@ -186,7 +188,22 @@ wp_enqueue_script('bootstrap-tabcollapse');
                         </li>
                     <?php endif; ?>
 
-                    <?php if (!empty($property_garage)): ?>
+                    <?php if (!empty($property_story)): ?>
+                        <li>
+                            <strong><?php esc_html_e('Story/Floor Nr.', 'essential-real-estate'); ?></strong>
+                            <span><?php echo esc_html($property_story) ?></span>
+                        </li>
+                    <?php endif; ?>
+                    <?php if (!empty($property_pet)): ?>
+                        <li>
+                            <strong><?php esc_html_e('Pet Policy', 'essential-real-estate'); ?></strong>
+                            <span><?php echo esc_html($property_pet) ?></span>
+                        </li>
+                    <?php endif; ?>
+
+                    <?php
+                    /*
+                    if (!empty($property_garage)): ?>
                         <li>
                             <strong><?php esc_html_e('Garages', 'essential-real-estate'); ?></strong>
                             <span><?php echo esc_html($property_garage) ?></span>
@@ -197,7 +214,9 @@ wp_enqueue_script('bootstrap-tabcollapse');
                             <strong><?php esc_html_e('Garage Size', 'essential-real-estate'); ?></strong>
                             <span><?php echo sprintf('%s %s', $property_garage_size, $measurement_units); ?></span>
                         </li>
-                    <?php endif; ?>
+                    <?php endif; 
+                    */
+                    ?>
                     <?php
                     if (count($additional_fields) > 0):
                         foreach ($additional_fields as $key => $field):

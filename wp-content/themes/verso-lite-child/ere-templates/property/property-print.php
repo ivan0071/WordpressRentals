@@ -82,11 +82,13 @@ $property_address = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_add
 $property_rooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rooms'][0] : '0';
 $property_bedrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms'][0] : '0';
 $property_bathrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms'][0] : '0';
-$property_garage = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_garage']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_garage'][0] : '0';
+//$property_garage = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_garage']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_garage'][0] : '0';
+$property_story = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_story']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_story'][0] : '';
+$property_pet = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_pet']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_pet'][0] : '';
 $property_country = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_country']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_country'][0] : '';
 $property_zip = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_zip']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_zip'][0] : '';
 $property_year = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_year']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_year'][0] : '';
-$property_garage_size = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_garage_size']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_garage_size'][0] : '';
+//$property_garage_size = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_garage_size']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_garage_size'][0] : '';
 
 $property_neighborhood = get_the_terms($property_id, 'property-neighborhood');
 $property_neighborhood_arr = array();
@@ -384,7 +386,22 @@ $measurement_units = ere_get_measurement_units();
                         </li>
                     <?php endif; ?>
 
-                    <?php if (!empty($property_garage)): ?>
+                    <?php if (!empty($property_story)): ?>
+                        <li>
+                            <strong><?php esc_html_e('Story/Floor Nr.', 'essential-real-estate'); ?></strong>
+                            <span><?php echo esc_html($property_story) ?></span>
+                        </li>
+                    <?php endif; ?>                    
+                    <?php if (!empty($property_pet)): ?>
+                        <li>
+                            <strong><?php esc_html_e('Pet Policy', 'essential-real-estate'); ?></strong>
+                            <span><?php echo esc_html($property_pet) ?></span>
+                        </li>
+                    <?php endif; ?>
+
+                    <?php 
+                    /*
+                    if (!empty($property_garage)): ?>
                         <li>
                             <strong><?php esc_html_e('Garages', 'essential-real-estate'); ?></strong>
                             <span><?php echo esc_html($property_garage) ?></span>
@@ -395,7 +412,9 @@ $measurement_units = ere_get_measurement_units();
                             <strong><?php esc_html_e('Garage Size', 'essential-real-estate'); ?></strong>
                             <span><?php echo sprintf('%s %s', $property_garage_size, $measurement_units); ?></span>
                         </li>
-                    <?php endif; ?>
+                    <?php endif; 
+                    */
+                    ?>
                     <?php
                     $additional_fields = ere_render_additional_fields();
                     if (count($additional_fields) > 0):

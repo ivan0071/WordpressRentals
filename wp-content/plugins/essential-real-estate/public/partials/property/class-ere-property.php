@@ -330,6 +330,14 @@ if (!class_exists('ERE_Property')) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_garage_size', sanitize_text_field($_POST['property_garage_size']));
                 }
 
+                if (isset($_POST['property_story'])) {
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_story', sanitize_text_field($_POST['property_story']));
+                }
+
+                if (isset($_POST['property_pet'])) {
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_pet', sanitize_text_field($_POST['property_pet']));
+                }
+
                 if (isset($_POST['property_year'])) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_year', sanitize_text_field($_POST['property_year']));
                 }

@@ -132,7 +132,7 @@ if ($column == '1') {
                     <?php endif; ?>
                     <div class="row">
                         <?php
-                        $search_fields = ere_get_option('search_fields', array('property_status',  'property_type', 'property_title', 'property_address','property_country', 'property_state', 'property_city', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms', 'property_price', 'property_size', 'property_land', 'property_label', 'property_garage', 'property_identity', 'property_feature'));
+                        $search_fields = ere_get_option('search_fields', array('property_status',  'property_type', 'property_title', 'property_address','property_country', 'property_state', 'property_city', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms', 'property_price', 'property_size', 'property_land', 'property_label', /*'property_garage',*/ 'property_identity', 'property_feature'));
                         if ($search_fields): foreach ($search_fields as $field) {
                             switch ($field) {
                                 case 'property_status':
@@ -257,14 +257,15 @@ if ($column == '1') {
                                         ));
                                     }
                                     break;
-                                case 'property_garage':
-                                    if ($garage_enable == 'true') {
-                                        ere_get_template('property/search-fields/' . $field . '.php', array(
-                                            'css_class_field' => $css_class_field,
-                                            'request_garage' => $request_garage
-                                        ));
-                                    }
-                                    break;
+                                // to do: property_pet and property_story
+                                // case 'property_garage':
+                                //     if ($garage_enable == 'true') {
+                                //         ere_get_template('property/search-fields/' . $field . '.php', array(
+                                //             'css_class_field' => $css_class_field,
+                                //             'request_garage' => $request_garage
+                                //         ));
+                                //     }
+                                //     break;
                                 case 'property_identity':
                                     if ($property_identity_enable == 'true') {
                                         ere_get_template('property/search-fields/' . $field . '.php', array(

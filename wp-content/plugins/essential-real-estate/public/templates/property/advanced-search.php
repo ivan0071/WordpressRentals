@@ -221,18 +221,18 @@ if (!empty($bedrooms)) {
     );
     $parameters.=sprintf( __('Bedrooms: <strong>%s</strong>; ', 'essential-real-estate'), $bedrooms );
 }
-
+// to do: property_pet and property_story
 // bedrooms check
-if (!empty($garage)) {
-    $garage = sanitize_text_field($garage);
-    $meta_query[] = array(
-        'key' => ERE_METABOX_PREFIX. 'property_garage',
-        'value' => $garage,
-        'type' => 'CHAR',
-        'compare' => '=',
-    );
-    $parameters.=sprintf( __('Garage: <strong>%s</strong>; ', 'essential-real-estate'), $garage );
-}
+// if (!empty($garage)) {
+//     $garage = sanitize_text_field($garage);
+//     $meta_query[] = array(
+//         'key' => ERE_METABOX_PREFIX. 'property_garage',
+//         'value' => $garage,
+//         'type' => 'CHAR',
+//         'compare' => '=',
+//     );
+//     $parameters.=sprintf( __('Garage: <strong>%s</strong>; ', 'essential-real-estate'), $garage );
+// }
 
 /**
  * Min Max Price & Area Property

@@ -244,7 +244,9 @@ if (!class_exists('ERE_Public')) {
                 'property_bathrooms' => in_array("property_bathrooms", $property_req_fields),
                 'property_size' => in_array("property_size", $property_req_fields),
                 //'property_land' => in_array("property_land", $property_req_fields),
-                'property_garage' => in_array("property_garage", $property_req_fields),
+                //'property_garage' => in_array("property_garage", $property_req_fields),
+                'property_story' => in_array('property_story', $property_req_fields),
+                'property_pet' => in_array('property_pet', $property_req_fields),
                 'property_year' => in_array("property_year", $property_req_fields),
                 'property_address' => in_array("property_map_address", $property_req_fields),
             ));

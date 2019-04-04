@@ -154,17 +154,17 @@ if (!class_exists('ERE_Search')) {
                     'compare' => '=',
                 );
             }
-
+            // to do: property_pet and property_story
             // bedrooms
-            if (!empty($garage)) {
-                $garage = sanitize_text_field($garage);
-                $meta_query[] = array(
-                    'key' => ERE_METABOX_PREFIX. 'property_garage',
-                    'value' => $garage,
-                    'type' => 'CHAR',
-                    'compare' => '=',
-                );
-            }
+            // if (!empty($garage)) {
+            //     $garage = sanitize_text_field($garage);
+            //     $meta_query[] = array(
+            //         'key' => ERE_METABOX_PREFIX. 'property_garage',
+            //         'value' => $garage,
+            //         'type' => 'CHAR',
+            //         'compare' => '=',
+            //     );
+            // }
 
             // min and max price logic
             if (!empty($min_price) && !empty($max_price)) {
@@ -538,17 +538,17 @@ if (!class_exists('ERE_Search')) {
                     'compare' => '=',
                 );
             }
-
+            // to do: property_pet and property_story
             // bedrooms
-            if (!empty($garage)) {
-                $garage = sanitize_text_field($garage);
-                $meta_query[] = array(
-                    'key' => ERE_METABOX_PREFIX. 'property_garage',
-                    'value' => $garage,
-                    'type' => 'CHAR',
-                    'compare' => '=',
-                );
-            }
+            // if (!empty($garage)) {
+            //     $garage = sanitize_text_field($garage);
+            //     $meta_query[] = array(
+            //         'key' => ERE_METABOX_PREFIX. 'property_garage',
+            //         'value' => $garage,
+            //         'type' => 'CHAR',
+            //         'compare' => '=',
+            //     );
+            // }
 
             // min and max price logic
             if (!empty($min_price) && !empty($max_price)) {

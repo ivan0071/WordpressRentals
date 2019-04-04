@@ -25,7 +25,7 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
                     <input type="number" id="property_size" class="form-control" name="property_size" value="">
                 </div>
             </div>
-            <div class="col-sm-6" style="width: 100%">
+            <div class="col-sm-6">
                 <?php if ($measurement_units == "SqFt" || $measurement_units == "m2") { ?>
                 <div class="form-group">
                     <label for="property_size_auto">
@@ -54,6 +54,24 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
         //     </div>
         // <?php } 
         ?>
+        <?php if (!in_array("property_story", $hide_property_fields)) { ?>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label
+                        for="property_story"><?php echo esc_html__('Story/Floor Nr.', 'essential-real-estate') . ere_required_field('property_story'); ?></label>
+                    <input type="text" id="property_story" class="form-control" name="property_story" value="">
+                </div>
+            </div>
+        <?php } ?>
+        <?php if (!in_array("property_pet", $hide_property_fields)) { ?>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label
+                        for="property_pet"><?php echo esc_html__('Pet Policy', 'essential-real-estate') . ere_required_field('property_pet'); ?></label>
+                    <input type="text" id="property_pet" class="form-control" name="property_pet" value="">
+                </div>
+            </div>
+        <?php } ?>
         <?php if (!in_array("property_rooms", $hide_property_fields)) { ?>
             <div class="col-sm-4">
                 <div class="form-group">
@@ -83,7 +101,9 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
             </div>
         <?php } ?>
 
-        <?php if (!in_array("property_garage", $hide_property_fields)) { ?>
+        <?php 
+        /*
+        if (!in_array("property_garage", $hide_property_fields)) { ?>
             <div class="col-sm-4">
                 <div class="form-group">
                     <label
@@ -102,7 +122,9 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
                            value="">
                 </div>
             </div>
-        <?php } ?>
+        <?php } 
+        */
+        ?>
         <?php if (!in_array("property_year", $hide_property_fields)) { ?>
             <div class="col-sm-4">
                 <div class="form-group">

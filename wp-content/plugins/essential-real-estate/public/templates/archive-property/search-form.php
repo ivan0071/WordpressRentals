@@ -21,6 +21,7 @@ $area_enable = !in_array("property_size", $hide_archive_search_fields);
 $land_area_enable = !in_array("property_land", $hide_archive_search_fields);
 $label_enable = !in_array("property_label", $hide_archive_search_fields);
 $garage_enable = !in_array("property_garage", $hide_archive_search_fields);
+// to do: property_pet and property_story
 $property_identity_enable = !in_array("property_identity", $hide_archive_search_fields);
 $other_features_enable = !in_array("property_feature", $hide_archive_search_fields);
 ?>

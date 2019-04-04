@@ -61,7 +61,9 @@ if (!empty($property_ids)) {
 		$property_garage = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_garage']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_garage'][0] : '';
 		$property_garage_size = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_garage_size']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_garage_size'][0] : '';
 		$property_land = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_land']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_land'][0] : '';
-
+		$property_story = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_story']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_story'][0] : '';
+		$property_pet = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_pet']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_pet'][0] : '';
+		
 		$attach_id = get_post_thumbnail_id();
 		$width = 330; $height = 180;
 		$no_image_src= ERE_PLUGIN_URL . 'public/assets/images/no-image.jpg';
@@ -195,6 +197,20 @@ if (!empty($property_ids)) {
 				$bathrooms .= $empty_field;
 			}
 		}
+		if (!in_array("property_story", $hide_compare_fields)) {
+			if (!empty($property_story)) {
+				$bathrooms .= '<td>' . $property_story . '</td>';
+			} else {
+				$bathrooms .= $empty_field;
+			}
+		}
+		if (!in_array("property_pet", $hide_compare_fields)) {
+			if (!empty($property_pet)) {
+				$bathrooms .= '<td>' . $property_pet . '</td>';
+			} else {
+				$bathrooms .= $empty_field;
+			}
+		}		
 		if (!in_array("property_garage", $hide_compare_fields)) {
 			if (!empty($property_garage)) {
 				$garage .= '<td>' . $property_garage . '</td>';

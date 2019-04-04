@@ -32,7 +32,7 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                            } ?>">
                 </div>
             </div>
-            <div class="col-sm-6" style="width: 100%">
+            <div class="col-sm-6">
                 <?php if ($measurement_units == "SqFt" || $measurement_units == "m2") { ?>
                 <div class="form-group">
                     <label for="property_size_auto">
@@ -48,6 +48,28 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                     <i>Auto-generated field</i>
                 </div>
                 <?php } ?>
+            </div>
+        <?php } ?>
+
+        <?php if (!in_array("property_story", $hide_property_fields)) { ?>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="property_story"><?php esc_html_e('Story/Floor Nr.', 'essential-real-estate'); ?></label>
+                    <input type="text" class="form-control" name="property_story" id="property_story" value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_story'])) {
+                               echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_story'][0]);
+                           } ?>">
+                </div>
+            </div>
+        <?php } ?>
+
+        <?php if (!in_array("property_pet", $hide_property_fields)) { ?>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="property_pet"><?php esc_html_e('Pet Policy', 'essential-real-estate'); ?></label>
+                    <input type="text" class="form-control" name="property_pet" id="property_pet" value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_pet'])) {
+                               echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_pet'][0]);
+                           } ?>">
+                </div>
             </div>
         <?php } ?>
 
@@ -104,7 +126,9 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
             </div>
         <?php } ?>
 
-        <?php if (!in_array("property_garage", $hide_property_fields)) { ?>
+        <?php 
+        /*
+        if (!in_array("property_garage", $hide_property_fields)) { ?>
             <div class="col-sm-4">
                 <div class="form-group">
                     <label
@@ -127,7 +151,9 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                            } ?>">
                 </div>
             </div>
-        <?php } ?>
+        <?php } 
+        */
+        ?>
         <?php if (!in_array("property_year", $hide_property_fields)) { ?>
         <div class="col-sm-4">
             <div class="form-group">
