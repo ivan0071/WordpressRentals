@@ -165,9 +165,7 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                            } ?>">
                 </div>
             </div>
-        <?php } 
-        */
-        ?>
+        <?php } ?>
         <?php if (!in_array("property_year", $hide_property_fields)) { ?>
         <div class="col-sm-4">
             <div class="form-group">
@@ -179,7 +177,8 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                        } ?>">
             </div>
         </div>
-        <?php } ?>
+        <?php } 
+        */ ?>
         <?php if (!in_array("property_identity", $hide_property_fields)) { ?>
             <div class="col-sm-4">
                 <div class="form-group">

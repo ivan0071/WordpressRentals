@@ -604,25 +604,25 @@ if (!class_exists('ERE_Admin')) {
                                                 ),
                                             )
                                         ),
-                                        array(
-                                            'type' => 'row',
-                                            'col' => '6',
-                                            'fields' => array(
-                                                array(
-                                                    'id' => "{$meta_prefix}property_year",
-                                                    'title' => esc_html__('Year Built', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                    'default' => '',
-                                                ),
-                                                array(
-                                                    'id' => "{$meta_prefix}property_identity",
-                                                    'title' => esc_html__('Property ID', 'essential-real-estate'),
-                                                    'desc' => esc_html__('Property ID will help to search property directly (default=postId)', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                    'default' => '',
-                                                ),
-                                            )
-                                        ),
+                                        // array(
+                                        //     'type' => 'row',
+                                        //     'col' => '6',
+                                        //     'fields' => array(
+                                        //         array(
+                                        //             'id' => "{$meta_prefix}property_year",
+                                        //             'title' => esc_html__('Year Built', 'essential-real-estate'),
+                                        //             'type' => 'text',
+                                        //             'default' => '',
+                                        //         ),
+                                        //         array(
+                                        //             'id' => "{$meta_prefix}property_identity",
+                                        //             'title' => esc_html__('Property ID', 'essential-real-estate'),
+                                        //             'desc' => esc_html__('Property ID will help to search property directly (default=postId)', 'essential-real-estate'),
+                                        //             'type' => 'text',
+                                        //             'default' => '',
+                                        //         ),
+                                        //     )
+                                        // ),
                                         array(
                                             'type' => 'divide'
                                         ),
@@ -3087,7 +3087,7 @@ if (!class_exists('ERE_Admin')) {
                                         //'property_garage_size' => esc_html__('Garage Size', 'essential-real-estate'),
                                         'property_story' => esc_html__('Story/Floor Nr.', 'essential-real-estate'),
                                         'property_pet' => esc_html__('Pet Policy', 'essential-real-estate'),
-                                        'property_year' => esc_html__('Year Built', 'essential-real-estate'),
+                                        //'property_year' => esc_html__('Year Built', 'essential-real-estate'),
                                         'property_attachments' => esc_html__('Fie Attachments', 'essential-real-estate'),
                                         'property_video_url' => esc_html__('Video Url', 'essential-real-estate'),
                                         'property_image_360' => esc_html__('Image 360', 'essential-real-estate'),
@@ -4504,7 +4504,7 @@ if (!class_exists('ERE_Admin')) {
                                 //'property_garage_size' => esc_html__('Garage Size', 'essential-real-estate'),
                                 'property_story' => esc_html__('Story/Floor Nr.', 'essential-real-estate'),
                                 'property_pet' => esc_html__('Pet Policy', 'essential-real-estate'),
-                                'property_year' => esc_html__('Year Built', 'essential-real-estate'),
+                                //'property_year' => esc_html__('Year Built', 'essential-real-estate'),
                             ),
                             'value_inline' => false,
                             'default' => array()

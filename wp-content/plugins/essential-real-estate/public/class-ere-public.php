@@ -247,7 +247,7 @@ if (!class_exists('ERE_Public')) {
                 //'property_garage' => in_array("property_garage", $property_req_fields),
                 'property_story' => in_array('property_story', $property_req_fields),
                 'property_pet' => in_array('property_pet', $property_req_fields),
-                'property_year' => in_array("property_year", $property_req_fields),
+                //'property_year' => in_array("property_year", $property_req_fields),
                 'property_address' => in_array("property_map_address", $property_req_fields),
             ));
             //Payment

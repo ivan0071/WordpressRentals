@@ -51,7 +51,7 @@ $price_short = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_sh
 $price_unit = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_unit']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_unit'][0] : '';
 $price_prefix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_prefix']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_prefix'][0] : '';
 $price_postfix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix'][0] : '';
-$property_year = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_year']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_year'][0] : '';
+//$property_year = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_year']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_year'][0] : '';
 $property_rooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rooms'][0] : '0';
 $property_bathrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms'][0] : '0';
 $property_bedrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms'][0] : '0';
@@ -159,12 +159,12 @@ wp_enqueue_script('bootstrap-tabcollapse');
                             <span><?php echo esc_html($property_bathrooms) ?></span>
                         </li>
                     <?php endif; ?>
-                    <?php if (!empty($property_year)): ?>
+                    <?php /*if (!empty($property_year)): ?>
                         <li>
                             <strong><?php esc_html_e('Year Built', 'essential-real-estate'); ?></strong>
                             <span><?php echo esc_html($property_year) ?></span>
                         </li>
-                    <?php endif; ?>
+                    <?php endif;*/ ?>
                     <?php if (!empty($property_size)): ?>
                         <li>
                             <strong><?php esc_html_e('Size', 'essential-real-estate'); ?></strong>

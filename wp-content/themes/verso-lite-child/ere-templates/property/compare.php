@@ -22,19 +22,19 @@ if (!empty($property_ids)) {
 
 	$data = New WP_Query($args);
 
-	$property_item = $types = $status = $year = $size = $rooms= $bedrooms = $bathrooms = $garage = $garage_size = $land = $additional='';
+	$property_item = $types = $is_exclusive = $bussiness_for_sale = $status = $year = $size = $rooms= $bedrooms = $bathrooms = $story = $pet = $garage = $garage_size = $land = $additional='';
 	$empty_field='<td class="check-no"><i class="fa fa-minus"></i></td>';
 	if ($data->have_posts()): while ($data->have_posts()): $data->the_post();
 		$property_id=get_the_ID();
 		$property_meta_data = get_post_custom($property_id);
 
-		$property_types = get_the_terms($property_id, 'property-type');
-		$property_type_arr = array();
-		if ($property_types) {
-			foreach ($property_types as $property_type) {
-				$property_type_arr[] = $property_type->name;
-			}
-		}
+		// $property_types = get_the_terms($property_id, 'property-type');
+		// $property_type_arr = array();
+		// if ($property_types) {
+		// 	foreach ($property_types as $property_type) {
+		// 		$property_type_arr[] = $property_type->name;
+		// 	}
+		// }
 
 		$property_status = get_the_terms($property_id, 'property-status');
 		$property_status_arr = array();
@@ -149,13 +149,13 @@ if (!empty($property_ids)) {
 				$is_exclusive .= $empty_field;
 			}
 		}
-		if (!in_array("property_type", $hide_compare_fields)) {
-			if (!empty($property_types)) {
-				$types .= '<td>' . join(', ', $property_type_arr) . '</td>';
-			} else {
-				$types .= $empty_field;
-			}
-		}
+		// if (!in_array("property_type", $hide_compare_fields)) {
+		// 	if (!empty($property_types)) {
+		// 		$types .= '<td>' . join(', ', $property_type_arr) . '</td>';
+		// 	} else {
+		// 		$types .= $empty_field;
+		// 	}
+		// }
 		if (!in_array("property_status", $hide_compare_fields)) {
 			if (!empty($property_status)) {
 				$status .= '<td>' . join(', ', $property_status_arr) . '</td>';
@@ -163,13 +163,13 @@ if (!empty($property_ids)) {
 				$status .= $empty_field;
 			}
 		}
-		if (!in_array("property_year", $hide_compare_fields)) {
-			if (!empty($property_year)) {
-				$year .= '<td>' . $property_year . '</td>';
-			} else {
-				$year .= $empty_field;
-			}
-		}
+		// if (!in_array("property_year", $hide_compare_fields)) {
+		// 	if (!empty($property_year)) {
+		// 		$year .= '<td>' . $property_year . '</td>';
+		// 	} else {
+		// 		$year .= $empty_field;
+		// 	}
+		// }
 		if (!in_array("property_size", $hide_compare_fields)) {
 			if (!empty($property_size)) {
 				$size .= '<td>' . sprintf( '%s %s',ere_get_format_number($property_size), $measurement_units) . '</td>';
@@ -210,32 +210,32 @@ if (!empty($property_ids)) {
 		}
 		if (!in_array("property_story", $hide_compare_fields)) {
 			if (!empty($property_story)) {
-				$bathrooms .= '<td>' . $property_story . '</td>';
+				$story .= '<td>' . $property_story . '</td>';
 			} else {
-				$bathrooms .= $empty_field;
+				$story .= $empty_field;
 			}
 		}
 		if (!in_array("property_pet", $hide_compare_fields)) {
 			if (!empty($property_pet)) {
-				$bathrooms .= '<td>' . $property_pet . '</td>';
+				$pet .= '<td>' . $property_pet . '</td>';
 			} else {
-				$bathrooms .= $empty_field;
+				$pet .= $empty_field;
 			}
 		}		
-		if (!in_array("property_garage", $hide_compare_fields)) {
-			if (!empty($property_garage)) {
-				$garage .= '<td>' . $property_garage . '</td>';
-			} else {
-				$garage .= $empty_field;
-			}
-		}
-		if (!in_array("property_garage_size", $hide_compare_fields)) {
-			if (!empty($property_garage_size)) {
-				$garage_size .= '<td>' . sprintf( '%s %s',$property_garage_size, $measurement_units) . '</td>';
-			} else {
-				$garage_size .= $empty_field;
-			}
-		}
+		// if (!in_array("property_garage", $hide_compare_fields)) {
+		// 	if (!empty($property_garage)) {
+		// 		$garage .= '<td>' . $property_garage . '</td>';
+		// 	} else {
+		// 		$garage .= $empty_field;
+		// 	}
+		// }
+		// if (!in_array("property_garage_size", $hide_compare_fields)) {
+		// 	if (!empty($property_garage_size)) {
+		// 		$garage_size .= '<td>' . sprintf( '%s %s',$property_garage_size, $measurement_units) . '</td>';
+		// 	} else {
+		// 		$garage_size .= $empty_field;
+		// 	}
+		// }
 		if (!in_array("property_land", $hide_compare_fields)) {
 			if (!empty($property_land)) {
 				$measurement_units_land_area = ere_get_measurement_units_land_area();
@@ -262,12 +262,12 @@ if (!empty($property_ids)) {
 						<?php echo wp_kses_post($is_exclusive); ?>
 					</tr>
 				<?php } ?>
-				<?php if (!empty($types)) { ?>
+				<?php /*if (!empty($types)) { ?>
 					<tr>
 						<td class="title-list-check"><?php esc_html_e('Type', 'essential-real-estate'); ?></td>
 						<?php echo wp_kses_post($types); ?>
 					</tr>
-				<?php } ?>
+				<?php }*/ ?>
 
 				<?php if (!empty($status)) { ?>
 					<tr>
@@ -313,7 +313,21 @@ if (!empty($property_ids)) {
 					</tr>
 				<?php } ?>
 
-				<?php if (!empty($garage)) { ?>
+				<?php if (!empty($story)) { ?>
+					<tr>
+						<td class="title-list-check"><?php esc_html_e('Story/Floor Nr.', 'essential-real-estate'); ?></td>
+						<?php echo wp_kses_post($story); ?>
+					</tr>
+				<?php } ?>
+
+				<?php if (!empty($pet)) { ?>
+					<tr>
+						<td class="title-list-check"><?php esc_html_e('Pet Policy', 'essential-real-estate'); ?></td>
+						<?php echo wp_kses_post($pet); ?>
+					</tr>
+				<?php } ?>
+
+				<?php /*if (!empty($garage)) { ?>
 					<tr>
 						<td class="title-list-check"><?php esc_html_e('Garages', 'essential-real-estate'); ?></td>
 						<?php echo wp_kses_post($garage); ?>
@@ -331,7 +345,7 @@ if (!empty($property_ids)) {
 						<td class="title-list-check"><?php esc_html_e('Year Built', 'essential-real-estate'); ?></td>
 						<?php echo wp_kses_post($year); ?>
 					</tr>
-				<?php } ?>
+				<?php } */?>
 				<?php
 				$all_property_feature = get_categories(array(
 					'hide_empty' => 0,

@@ -133,9 +133,7 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
                            value="">
                 </div>
             </div>
-        <?php } 
-        */
-        ?>
+        <?php } ?>
         <?php if (!in_array("property_year", $hide_property_fields)) { ?>
             <div class="col-sm-4">
                 <div class="form-group">
@@ -144,7 +142,9 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
                     <input type="number" id="property_year" class="form-control" name="property_year" value="">
                 </div>
             </div>
-        <?php } ?>
+        <?php } 
+        */
+        ?>
         <?php if (!in_array("property_identity", $hide_property_fields)) { ?>
             <div class="col-sm-4">
                 <div class="form-group">

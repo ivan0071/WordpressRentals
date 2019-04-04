@@ -341,9 +341,9 @@ if (!class_exists('ERE_Property')) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_pet', sanitize_text_field($_POST['property_pet']));
                 }
 
-                if (isset($_POST['property_year'])) {
-                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_year', sanitize_text_field($_POST['property_year']));
-                }
+                // if (isset($_POST['property_year'])) {
+                //     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_year', sanitize_text_field($_POST['property_year']));
+                // }
 
                 if (isset($_POST['property_video_url'])) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_video_url', sanitize_text_field($_POST['property_video_url']));
