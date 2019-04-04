@@ -262,6 +262,9 @@ if (!class_exists('ERE_Property')) {
                 $property_is_exclusive = isset($_POST['property_is_exclusive']) ? 1 : 0;
                 update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_is_exclusive', $property_is_exclusive);
 
+                $property_bussiness_for_sale = isset($_POST['property_bussiness_for_sale']) ? 1 : 0;
+                update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_bussiness_for_sale', $property_bussiness_for_sale);
+
                 $property_price_on_call = isset($_POST['property_price_on_call']) ? 1 : 0;
                 update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_on_call', $property_price_on_call);
                 if ($property_price_on_call == 1) {

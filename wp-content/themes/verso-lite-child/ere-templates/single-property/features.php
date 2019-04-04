@@ -26,7 +26,7 @@ if ($property_status) {
         $property_status_arr[] = $property_stt->name;
     }
 }
-
+$property_bussiness_for_sale = (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bussiness_for_sale']) && ($property_meta_data[ERE_METABOX_PREFIX . 'property_bussiness_for_sale'][0] == '1')) ? 1 : 0;
 $property_features = get_the_terms($property_id, 'property-feature');
 
 $property_label = get_the_terms($property_id, 'property-label');
@@ -172,6 +172,15 @@ wp_enqueue_script('bootstrap-tabcollapse');
                             <span><?php echo sprintf('%s %s', ere_get_format_number($property_size), $measurement_units); ?></span>
                         </li>
                     <?php endif; ?>
+                    <div class="ere-property-element">
+                        <strong><?php esc_html_e('Bussiness for sale:', 'essential-real-estate'); ?></strong>
+                        <?php
+                            if ($property_bussiness_for_sale == 1)
+                                print esc_html_e('Yes', 'essential-real-estate');
+                            else
+                                print esc_html_e('No', 'essential-real-estate'); 
+                        ?>
+                    </div>
                     <?php if (!empty($property_land)): ?>
                         <li>
                             <strong><?php esc_html_e('Land area', 'essential-real-estate'); ?></strong>

@@ -51,6 +51,20 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
             </div>
         <?php } ?>
 
+        <?php if (!in_array("property_bussiness_for_sale", $hide_property_fields)) { ?>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="property_bussiness_for_sale" name="property_bussiness_for_sale" <?php
+                            if( isset( $property_meta_data[ERE_METABOX_PREFIX. 'property_bussiness_for_sale'] ) && $property_meta_data[ERE_METABOX_PREFIX. 'property_bussiness_for_sale'][0]=='1') echo ' checked="checked"'?>
+                                ><?php esc_html_e('Bussiness for sale', 'essential-real-estate'); echo ere_required_field('property_bussiness_for_sale'); ?>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
         <?php if (!in_array("property_story", $hide_property_fields)) { ?>
             <div class="col-sm-4">
                 <div class="form-group">

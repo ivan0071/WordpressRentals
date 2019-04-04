@@ -53,6 +53,7 @@ if (!empty($property_ids)) {
 		}
 
 		$property_is_exclusive = (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_is_exclusive']) && ($property_meta_data[ERE_METABOX_PREFIX . 'property_is_exclusive'][0] == '1')) ? 1 : 0;
+		$property_bussiness_for_sale = (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bussiness_for_sale']) && ($property_meta_data[ERE_METABOX_PREFIX . 'property_bussiness_for_sale'][0] == '1')) ? 1 : 0;
 		$property_year = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_year']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_year'][0] : '';
 		$property_size = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_size']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_size'][0] : '';
 		$property_rooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rooms'][0] : '';
@@ -176,6 +177,16 @@ if (!empty($property_ids)) {
 				$size .= $empty_field;
 			}
 		}
+		if (!in_array("property_bussiness_for_sale", $hide_compare_fields)) {
+			if (!empty($property_bussiness_for_sale)) {
+				if ($property_bussiness_for_sale == 1) 
+					$bussiness_for_sale .= '<td><div class="check-yes"><i class="fa fa-check"></i></div></td>';
+				else 
+					$bussiness_for_sale .= '<td><div class="check-no"><i class="fa fa-minus"></i></div></td>';
+			} else {
+				$bussiness_for_sale .= $empty_field;
+			}
+		}		
 		if (!in_array("property_rooms", $hide_compare_fields)) {
 			if (!empty($property_rooms)) {
 				$rooms .= '<td>' . $property_rooms . '</td>';
@@ -268,6 +279,12 @@ if (!empty($property_ids)) {
 					<tr>
 						<td class="title-list-check"><?php esc_html_e('Size', 'essential-real-estate'); ?></td>
 						<?php echo wp_kses_post($size); ?>
+					</tr>
+				<?php } ?>
+				<?php if (!empty($bussiness_for_sale)) { ?>
+					<tr>
+						<td class="title-list-check"><?php esc_html_e('Bussiness for sale', 'essential-real-estate'); ?></td>
+						<?php echo wp_kses_post($bussiness_for_sale); ?>
 					</tr>
 				<?php } ?>
 				<?php if (!empty($land)) { ?>

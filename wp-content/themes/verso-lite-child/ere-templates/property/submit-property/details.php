@@ -54,6 +54,17 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
         //     </div>
         // <?php } 
         ?>
+        <?php if (!in_array("property_bussiness_for_sale", $hide_property_fields)) { ?>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="property_bussiness_for_sale" name="property_bussiness_for_sale"><?php esc_html_e('Bussiness for sale', 'essential-real-estate'); echo ere_required_field('property_bussiness_for_sale'); ?>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
         <?php if (!in_array("property_story", $hide_property_fields)) { ?>
             <div class="col-sm-4">
                 <div class="form-group">

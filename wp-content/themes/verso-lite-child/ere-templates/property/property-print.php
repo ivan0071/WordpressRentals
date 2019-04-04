@@ -78,6 +78,7 @@ $price_prefix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_p
 $price_postfix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix'][0] : '';
 $property_short_des = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_short_des']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_short_des'][0] : '';
 $property_is_exclusive = (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_is_exclusive']) && ($property_meta_data[ERE_METABOX_PREFIX . 'property_is_exclusive'][0] == '1')) ? 1 : 0;
+$property_bussiness_for_sale = (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bussiness_for_sale']) && ($property_meta_data[ERE_METABOX_PREFIX . 'property_bussiness_for_sale'][0] == '1')) ? 1 : 0;
 $property_address = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_address']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_address'][0] : '';
 $property_rooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rooms'][0] : '0';
 $property_bedrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms'][0] : '0';

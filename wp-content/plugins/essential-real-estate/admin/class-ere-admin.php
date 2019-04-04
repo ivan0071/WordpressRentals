@@ -306,22 +306,6 @@ if (!class_exists('ERE_Admin')) {
                                             )
                                         ),
                                         array(
-                                            'type' => 'row',
-                                            'col' => '12',
-                                            'fields' => array(
-                                                array(
-                                                    'id' => "{$meta_prefix}property_is_exclusive",
-                                                    'title' => esc_html__('Is Exclusive?', 'essential-real-estate'),
-                                                    'type' => 'button_set',
-                                                    'options' => array(
-                                                        '1' => esc_html__('Yes', 'essential-real-estate'),
-                                                        '0' => esc_html__('No', 'essential-real-estate'),
-                                                    ),
-                                                    'default' => '0',
-                                                ),
-                                            )
-                                        ),
-                                        array(
                                             'type' => 'divide'
                                         ),
                                         array(
@@ -524,6 +508,22 @@ if (!class_exists('ERE_Admin')) {
                                                     'default' => '',
                                                 ),
                                             )
+                                        ),
+                                        array(
+                                            'type' => 'row',
+                                            'col' => '12',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_bussiness_for_sale",
+                                                    'title' => esc_html__('Bussiness for sale', 'essential-real-estate'),
+                                                    'type' => 'button_set',
+                                                    'options' => array(
+                                                        '1' => esc_html__('Yes', 'essential-real-estate'),
+                                                        '0' => esc_html__('No', 'essential-real-estate'),
+                                                    ),
+                                                    'default' => '0',
+                                                ),
+                                            )
                                         ),                                        
                                         array(
                                             'type' => 'row',
@@ -588,6 +588,22 @@ if (!class_exists('ERE_Admin')) {
                                         //         ),
                                         //     )
                                         // ),
+                                        array(
+                                            'type' => 'row',
+                                            'col' => '12',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_is_exclusive",
+                                                    'title' => esc_html__('Is Exclusive?', 'essential-real-estate'),
+                                                    'type' => 'button_set',
+                                                    'options' => array(
+                                                        '1' => esc_html__('Yes', 'essential-real-estate'),
+                                                        '0' => esc_html__('No', 'essential-real-estate'),
+                                                    ),
+                                                    'default' => '0',
+                                                ),
+                                            )
+                                        ),
                                         array(
                                             'type' => 'row',
                                             'col' => '6',
@@ -3040,6 +3056,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_short_des' => esc_html__('Short Description', 'essential-real-estate'),
                                         'property_des' => esc_html__('Full Description', 'essential-real-estate'),
                                         'property_is_exclusive' => esc_html__('Is Exclusive', 'essential-real-estate'),
+                                        'property_bussiness_for_sale' => esc_html__('Bussiness for sale', 'essential-real-estate'),
                                         //'property_is_residential' => esc_html__('Residential', 'essential-real-estate'),
                                         //'property_is_commercial' => esc_html__('Commercial', 'essential-real-estate'),                                        
                                         //Type
