@@ -522,6 +522,7 @@ if (!class_exists('ERE_Admin')) {
                                                         '0' => esc_html__('No', 'essential-real-estate'),
                                                     ),
                                                     'default' => '0',
+                                                    'required' => array("{$meta_prefix}property_group", '=', '1'),
                                                 ),
                                             )
                                         ),                                        
@@ -536,12 +537,14 @@ if (!class_exists('ERE_Admin')) {
                                                     'type' => 'text',
                                                     'pattern' => "{$format_number}",
                                                     'default' => '',
+                                                    'required' => array("{$meta_prefix}property_group", '=', '0'),
                                                 ),
                                                 array(
                                                     'id' => "{$meta_prefix}property_pet",
                                                     'title' => esc_html__('Pet Policy', 'essential-real-estate'),
                                                     'type' => 'text',
                                                     'default' => '',
+                                                    'required' => array("{$meta_prefix}property_group", '=', '0'),
                                                 ),
                                             )
                                         ),
@@ -556,6 +559,7 @@ if (!class_exists('ERE_Admin')) {
                                                     'type' => 'text',
                                                     'pattern' => "{$format_number}",
                                                     'default' => '',
+                                                    'required' => array("{$meta_prefix}property_group", '=', '0'),
                                                 ),
                                                 array(
                                                     'id' => "{$meta_prefix}property_bathrooms",
@@ -564,6 +568,7 @@ if (!class_exists('ERE_Admin')) {
                                                     'type' => 'text',
                                                     'pattern' => "{$format_number}",
                                                     'default' => '',
+                                                    'required' => array("{$meta_prefix}property_group", '=', '0'),
                                                 ),
                                             )
                                         ),
