@@ -9,12 +9,65 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 global $hide_property_fields,$property_data, $property_meta_data;
+
+$property_group = get_post_meta($property_data->ID, ERE_METABOX_PREFIX . 'property_group', true);
+
+$paramtersDefault = array(
+    'orderby' => 'meta_value_num',
+    'order' => 'ASC',
+    'hide_empty' => false
+);
+
+$paramtersPropertyStatus = $paramtersDefault;
+$paramtersPropertyStatus['taxonomy'] = 'property-status';
+$paramtersPropertyStatus['meta_key'] = 'property_status_order_number';
+$statuses_terms_id = array();
+$statuses_terms = get_the_terms( $property_data->ID, 'property-status' );
+if ( $statuses_terms && ! is_wp_error( $statuses_terms ) ) {
+    foreach( $statuses_terms as $status ) {
+        $statuses_terms_id[] = intval( $status->term_id );
+    }
+}
 ?>
 <div class="property-fields-wrap">
     <div class="ere-heading-style2 property-fields-title">
         <h2><?php esc_html_e( 'Property Price', 'essential-real-estate' ); ?></h2>
     </div>
     <div class="property-fields property-price row">
+        <?php if (!in_array("property_status", $hide_property_fields)) {?>
+            <div class="col-sm-12">
+                <?php
+                $property_statuses = get_categories($paramtersPropertyStatus);
+                $parents_items=$child_items=array();
+                if ($property_statuses) {
+                    foreach ($property_statuses as $term) {
+                        if (0 == $term->parent) $parents_items[] = $term;
+                        if ($term->parent) $child_items[] = $term;
+                    };
+                    ?>
+                    <div class="form-group">
+                        <label for="property_status"><?php esc_html_e('Property Status', 'essential-real-estate');
+                            echo ere_required_field('property_status'); ?></label>
+                    </div>
+                    <?php
+                    echo '<div>';
+                    foreach ($parents_items as $parents_item) {
+                        echo '<div class="col-sm-3"><div class="checkbox"><label>';
+                        if ( in_array( $parents_item->term_id, $statuses_terms_id ) ) {
+                            echo '<input type="checkbox" name="property_status[]" value="' . esc_attr($parents_item->term_id) . '" checked/>';
+                        }
+                        else
+                        {
+                            echo '<input type="checkbox" name="property_status[]" value="' . esc_attr($parents_item->term_id) . '" />';
+                        }
+                        echo esc_html($parents_item->name);
+                        echo '</label></div></div>';
+                    };
+                    echo '</div>';
+                };
+                ?>
+            </div>
+        <?php } ?>
         <?php
         if (!in_array("property_price", $hide_property_fields)) {
             $enable_price_unit=ere_get_option('enable_price_unit', '1');

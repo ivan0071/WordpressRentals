@@ -22,7 +22,7 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
     </div>
     <div class="property-fields property-detail row">
         <?php if (!in_array("property_size", $hide_property_fields)) {?>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="form-group">
                     <label
                         for="property_size"><?php printf(__('Size (%s) %s', 'essential-real-estate'),$measurement_units,ere_required_field('property_size')); ?></label>
@@ -32,7 +32,7 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                            } ?>">
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <?php if ($measurement_units == "SqFt" || $measurement_units == "m2") { ?>
                 <div class="form-group">
                     <label for="property_size_auto">
@@ -50,6 +50,16 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                 <?php } ?>
             </div>
         <?php } ?>
+        <?php if (!in_array("property_story", $hide_property_fields)) { ?>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="property_story"><?php esc_html_e('Story/Floor Nr.', 'essential-real-estate'); ?></label>
+                    <input type="text" class="form-control" name="property_story" id="property_story" value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_story'])) {
+                               echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_story'][0]);
+                           } ?>">
+                </div>
+            </div>
+        <?php } ?>
 
         <?php if (!in_array("property_bussiness_for_sale", $hide_property_fields)) { ?>
             <div class="col-sm-12">
@@ -61,17 +71,6 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                                 ><?php esc_html_e('Bussiness for sale', 'essential-real-estate'); echo ere_required_field('property_bussiness_for_sale'); ?>
                         </label>
                     </div>
-                </div>
-            </div>
-        <?php } ?>
-
-        <?php if (!in_array("property_story", $hide_property_fields)) { ?>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label for="property_story"><?php esc_html_e('Story/Floor Nr.', 'essential-real-estate'); ?></label>
-                    <input type="text" class="form-control" name="property_story" id="property_story" value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_story'])) {
-                               echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_story'][0]);
-                           } ?>">
                 </div>
             </div>
         <?php } ?>
