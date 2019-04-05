@@ -54,7 +54,7 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
     <div class="ere-heading-style2 property-fields-title">
         <h2><?php esc_html_e( 'Property Type', 'essential-real-estate' ); ?></h2>
     </div>
-    <div class="property-fields property-group row div-border">
+    <div class="property-fields property-group row"><!-- div-border -->
         <div class="property-group-control">
             <label>
                 <input value="0" <?php checked($property_group, '0'); ?> 

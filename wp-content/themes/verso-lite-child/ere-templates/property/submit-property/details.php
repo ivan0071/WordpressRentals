@@ -63,19 +63,8 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
         //     </div>
         // <?php } 
         ?>
-        <?php if (!in_array("property_bussiness_for_sale", $hide_property_fields)) { ?>
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" id="property_bussiness_for_sale" name="property_bussiness_for_sale"><?php esc_html_e('Bussiness for sale', 'essential-real-estate'); echo ere_required_field('property_bussiness_for_sale'); ?>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        <?php } ?>
         <?php if (!in_array("property_pet", $hide_property_fields)) { ?>
-            <div class="col-sm-4">
+            <div class="col-sm-6 residential_custom_fileds">
                 <div class="form-group">
                     <label
                         for="property_pet"><?php echo esc_html__('Pet Policy', 'essential-real-estate') . ere_required_field('property_pet'); ?></label>
@@ -84,7 +73,7 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
             </div>
         <?php } ?>
         <?php if (!in_array("property_rooms", $hide_property_fields)) { ?>
-            <div class="col-sm-4">
+            <div class="col-sm-6 residential_custom_fileds">
                 <div class="form-group">
                     <label
                         for="property_rooms"><?php echo esc_html__('Rooms', 'essential-real-estate') . ere_required_field('property_rooms'); ?></label>
@@ -93,7 +82,7 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
             </div>
         <?php } ?>
         <?php if (!in_array("property_bedrooms", $hide_property_fields)) { ?>
-            <div class="col-sm-4">
+            <div class="col-sm-6 residential_custom_fileds">
                 <div class="form-group">
                     <label
                         for="property_bedrooms"><?php echo esc_html__('Bedrooms', 'essential-real-estate') . ere_required_field('property_bedrooms'); ?></label>
@@ -103,7 +92,7 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
         <?php } ?>
 
         <?php if (!in_array("property_bathrooms", $hide_property_fields)) { ?>
-            <div class="col-sm-4">
+            <div class="col-sm-6 residential_custom_fileds">
                 <div class="form-group">
                     <label
                         for="property_bathrooms"><?php echo esc_html__('Bathrooms', 'essential-real-estate') . ere_required_field('property_bathrooms'); ?></label>
@@ -112,6 +101,18 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
             </div>
         <?php } ?>
 
+        <?php if (!in_array("property_bussiness_for_sale", $hide_property_fields)) { ?>
+            <div class="col-sm-12 commercial_custom_fileds">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="property_bussiness_for_sale" name="property_bussiness_for_sale"><?php esc_html_e('Bussiness for sale', 'essential-real-estate'); echo ere_required_field('property_bussiness_for_sale'); ?>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+        
         <?php 
         /*
         if (!in_array("property_garage", $hide_property_fields)) { ?>
@@ -142,9 +143,7 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
                     <input type="number" id="property_year" class="form-control" name="property_year" value="">
                 </div>
             </div>
-        <?php } 
-        */
-        ?>
+        <?php } ?>
         <?php if (!in_array("property_identity", $hide_property_fields)) { ?>
             <div class="col-sm-4">
                 <div class="form-group">
@@ -152,7 +151,8 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
                     <input type="text" class="form-control" name="property_identity" id="property_identity">
                 </div>
             </div>
-        <?php } ?>
+        <?php } 
+        */?>
         <?php
         $additional_fields = ere_render_additional_fields();
         if(count($additional_fields)>0) {

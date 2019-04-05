@@ -61,22 +61,8 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
             </div>
         <?php } ?>
 
-        <?php if (!in_array("property_bussiness_for_sale", $hide_property_fields)) { ?>
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" id="property_bussiness_for_sale" name="property_bussiness_for_sale" <?php
-                            if( isset( $property_meta_data[ERE_METABOX_PREFIX. 'property_bussiness_for_sale'] ) && $property_meta_data[ERE_METABOX_PREFIX. 'property_bussiness_for_sale'][0]=='1') echo ' checked="checked"'?>
-                                ><?php esc_html_e('Bussiness for sale', 'essential-real-estate'); echo ere_required_field('property_bussiness_for_sale'); ?>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        <?php } ?>
-
         <?php if (!in_array("property_pet", $hide_property_fields)) { ?>
-            <div class="col-sm-4">
+            <div class="col-sm-6 residential_custom_fileds">
                 <div class="form-group">
                     <label for="property_pet"><?php esc_html_e('Pet Policy', 'essential-real-estate'); ?></label>
                     <input type="text" class="form-control" name="property_pet" id="property_pet" value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_pet'])) {
@@ -101,7 +87,7 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
         // <?php } 
         ?>
         <?php if (!in_array("property_rooms", $hide_property_fields)) {?>
-            <div class="col-sm-4">
+            <div class="col-sm-6 residential_custom_fileds">
                 <div class="form-group">
                     <label
                         for="property_rooms"><?php echo esc_html__('Rooms', 'essential-real-estate') . ere_required_field('property_rooms'); ?></label>
@@ -114,7 +100,7 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
         <?php } ?>
 
         <?php if (!in_array("property_bedrooms", $hide_property_fields)) {?>
-            <div class="col-sm-4">
+            <div class="col-sm-6 residential_custom_fileds">
                 <div class="form-group">
                     <label
                         for="property_bedrooms"><?php echo esc_html__('Bedrooms', 'essential-real-estate') . ere_required_field('property_bedrooms'); ?></label>
@@ -127,7 +113,7 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
         <?php } ?>
 
         <?php if (!in_array("property_bathrooms", $hide_property_fields)) { ?>
-            <div class="col-sm-4">
+            <div class="col-sm-6 residential_custom_fileds">
                 <div class="form-group">
                     <label
                         for="property_bathrooms"><?php echo esc_html__('Bathrooms', 'essential-real-estate') . ere_required_field('property_bathrooms'); ?></label>
@@ -135,6 +121,20 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                            value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms'])) {
                                echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms'][0]);
                            } ?>">
+                </div>
+            </div>
+        <?php } ?>
+
+        <?php if (!in_array("property_bussiness_for_sale", $hide_property_fields)) { ?>
+            <div class="col-sm-12 commercial_custom_fileds">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="property_bussiness_for_sale" name="property_bussiness_for_sale" <?php
+                            if( isset( $property_meta_data[ERE_METABOX_PREFIX. 'property_bussiness_for_sale'] ) && $property_meta_data[ERE_METABOX_PREFIX. 'property_bussiness_for_sale'][0]=='1') echo ' checked="checked"'?>
+                                ><?php esc_html_e('Bussiness for sale', 'essential-real-estate'); echo ere_required_field('property_bussiness_for_sale'); ?>
+                        </label>
+                    </div>
                 </div>
             </div>
         <?php } ?>
@@ -176,8 +176,7 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                        } ?>">
             </div>
         </div>
-        <?php } 
-        */ ?>
+        <?php } ?>
         <?php if (!in_array("property_identity", $hide_property_fields)) { ?>
             <div class="col-sm-4">
                 <div class="form-group">
@@ -187,7 +186,8 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                            } ?>">
                 </div>
             </div>
-        <?php } ?>
+        <?php } 
+        */ ?>
         <?php
         $additional_fields = ere_render_additional_fields();
         if(count($additional_fields)>0) {
