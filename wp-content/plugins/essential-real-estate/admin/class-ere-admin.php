@@ -1643,8 +1643,8 @@ if (!class_exists('ERE_Admin')) {
         {
             if (!in_array($_GET['taxonomy'], 
                 array(/*'property-type',*/
-                    'property-residential-type', 'property-resid-furnished-type', 
-                    'property-commer-offices', 'property-commer-retail', 'property-commer-leisure', 'property-commer-industrial', 'property-commer-land', 'property-commer-other',
+                    'property-residential-type', 'property-resid-furnished-type', 'property-resid-rent-type',
+                    'property-commer-offices', 'property-commer-retail', 'property-commer-leisure', 'property-commer-industrial', 'property-commer-land', 'property-commer-other', 'property-commer-rent-type',
                     'property-status', 'property-feature', 'property-label')
             )) {
                 return;
@@ -2703,12 +2703,6 @@ if (!class_exists('ERE_Admin')) {
                             'default' => 'property-commer-retail',
                         ),
                         array(
-                            'id' => 'property_commer_other_url_slug',
-                            'title' => esc_html__('Property Commercial Other Slug', 'essential-real-estate'),
-                            'type' => 'text',
-                            'default' => 'property-commer-other',
-                        ),
-                        array(
                             'id' => 'property_commer_leisure_url_slug',
                             'title' => esc_html__('Property Commercial Leisure Slug', 'essential-real-estate'),
                             'type' => 'text',
@@ -2726,6 +2720,12 @@ if (!class_exists('ERE_Admin')) {
                             'type' => 'text',
                             'default' => 'property-commer-land',
                         ),
+                        array(
+                            'id' => 'property_commer_other_url_slug',
+                            'title' => esc_html__('Property Commercial Other Slug', 'essential-real-estate'),
+                            'type' => 'text',
+                            'default' => 'property-commer-other',
+                        ),                       
                         array(
                             'id' => 'property_commer_rent_type_url_slug',
                             'title' => esc_html__('Property Commercial Rent Type Slug', 'essential-real-estate'),
