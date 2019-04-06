@@ -459,9 +459,22 @@ if (!class_exists('ERE_Admin')) {
                                                         )
                                                     ),
                                                     'required' => array("{$meta_prefix}property_group", '=', '1')
-                                                ),                                                
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_commer_other_custom_hidden",
+                                                    'type' => 'text',
+                                                    'default' => '',
+                                                    'required' => array("{$meta_prefix}property_commer_other", '=', 'other'),
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_commer_other_custom",
+                                                    'type' => 'text',
+                                                    'desc' => esc_html__('Custom typed entry for "Other"', 'essential-real-estate'),
+                                                    'default' => '',
+                                                    'required' => array("{$meta_prefix}property_commer_other", '=', 'other'),
+                                                ),
                                             )
-                                        ),
+                                        ),                                        
                                         array(
                                             'type' => 'divide'
                                         ),

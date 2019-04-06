@@ -153,6 +153,16 @@ $paramtersPropertyCommerOther['meta_key'] = 'property_commer_other_order_number'
                         </select>
                     </div>
                 </div>
+                <div class="col-sm-6 property-commer-other-data" style="visibility: hidden">
+                    <div class="form-group">
+                    </div>
+                </div>
+                <div class="col-sm-6 property-commer-other-data">
+                    <div class="form-group">
+                        <label for="property_commer_other_custom"><?php esc_html_e('Custom typed entry for "Other"', 'essential-real-estate'); ?></label>
+                        <input type="text" id="property_commer_other_custom" class="form-control" name="property_commer_other_custom" value="">
+                    </div>
+                </div>
             <?php } ?>
         </div>
     </div>

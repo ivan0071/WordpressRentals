@@ -488,6 +488,10 @@ if (!class_exists('ERE_Property')) {
 
                     $property_commer_other = get_term_by('id', intval($object_id), 'property-commer-other');
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_other', $property_commer_other->slug);
+                
+                    if (isset($_POST['property_commer_other_custom'])) {
+                        update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_other_custom', sanitize_text_field($_POST['property_commer_other_custom']));
+                    }                
                 }
 
                 if (isset($_POST['property_type'])) {
