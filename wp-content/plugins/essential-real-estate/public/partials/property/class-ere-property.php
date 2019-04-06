@@ -442,6 +442,14 @@ if (!class_exists('ERE_Property')) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_resid_furnished_type', $property_resid_furnished_type->slug);
                 }
 
+                if (isset($_POST['property_resid_rent_type'])) {
+                    $object_id = $_POST['property_resid_rent_type'];
+                    wp_set_object_terms($property_id, intval($object_id), 'property-resid-rent-type');
+
+                    $property_resid_rent_type = get_term_by('id', intval($object_id), 'property-resid-rent-type');
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_resid_rent_type', $property_resid_rent_type->slug);
+                }
+
                 if (isset($_POST['property_commer_offices'])) {
                     $object_id = $_POST['property_commer_offices'];
                     wp_set_object_terms($property_id, intval($object_id), 'property-commer-offices');
@@ -492,6 +500,14 @@ if (!class_exists('ERE_Property')) {
                     if (isset($_POST['property_commer_other_custom'])) {
                         update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_other_custom', sanitize_text_field($_POST['property_commer_other_custom']));
                     }                
+                }
+
+                if (isset($_POST['property_commer_rent_type'])) {
+                    $object_id = $_POST['property_commer_rent_type'];
+                    wp_set_object_terms($property_id, intval($object_id), 'property-commer-rent-type');
+
+                    $property_commer_rent_type = get_term_by('id', intval($object_id), 'property-commer-rent-type');
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_rent_type', $property_commer_rent_type->slug);
                 }
 
                 if (isset($_POST['property_type'])) {

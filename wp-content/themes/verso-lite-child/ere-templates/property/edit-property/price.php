@@ -18,6 +18,14 @@ $paramtersDefault = array(
     'hide_empty' => false
 );
 
+$paramtersPropertyResidRentType = $paramtersDefault;
+$paramtersPropertyResidRentType['taxonomy'] = 'property-resid-rent-type';
+$paramtersPropertyResidRentType['meta_key'] = 'property_resid_rent_type_order_number';
+
+$paramtersPropertyCommerRentType = $paramtersDefault;
+$paramtersPropertyCommerRentType['taxonomy'] = 'property-commer-rent-type';
+$paramtersPropertyCommerRentType['meta_key'] = 'property_commer_rent_type_order_number';
+
 $paramtersPropertyStatus = $paramtersDefault;
 $paramtersPropertyStatus['taxonomy'] = 'property-status';
 $paramtersPropertyStatus['meta_key'] = 'property_status_order_number';
@@ -66,6 +74,28 @@ if ( $statuses_terms && ! is_wp_error( $statuses_terms ) ) {
                     echo '</div>';
                 };
                 ?>
+            </div>
+        <?php } ?>
+        <?php if (!in_array("property_resid_rent_type", $hide_property_fields)) {?>
+            <div class="col-sm-6 residential_custom_fileds">
+                <div class="form-group">
+                    <label for="property_resid_rent_type"><?php esc_html_e('Rent Type', 'essential-real-estate');
+                        echo ere_required_field('property_resid_rent_type'); ?></label>
+                    <select name="property_resid_rent_type" id="property_resid_rent_type" class="form-control">
+                        <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-resid-rent-type', false, false, $paramtersPropertyResidRentType, false); ?>
+                    </select>
+                </div>
+            </div>
+        <?php } ?>
+        <?php if (!in_array("property_commer_rent_type", $hide_property_fields)) {?>
+            <div class="col-sm-6 commercial_custom_fileds">
+                <div class="form-group">
+                    <label for="property_commer_rent_type"><?php esc_html_e('Rent Type', 'essential-real-estate');
+                        echo ere_required_field('property_commer_rent_type'); ?></label>
+                    <select name="property_commer_rent_type" id="property_commer_rent_type" class="form-control">
+                        <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-commer-rent-type', false, false, $paramtersPropertyCommerRentType, false); ?>
+                    </select>
+                </div>
             </div>
         <?php } ?>
         <?php
