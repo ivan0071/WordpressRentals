@@ -304,6 +304,17 @@ if (!class_exists('ERE_Property')) {
                     }
                 }
 
+                if (isset($_POST['property_rent_price'])) {
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_rent_price', sanitize_text_field($_POST['property_rent_price']));
+                }
+
+                if (isset($_POST['property_rent_charges'])) {
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_rent_charges', sanitize_text_field($_POST['property_rent_charges']));
+                }
+
+                if (isset($_POST['property_sale_price'])) {
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_sale_price', sanitize_text_field($_POST['property_sale_price']));
+                }
 
                 if (isset($_POST['property_size'])) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_size', sanitize_text_field($_POST['property_size']));
