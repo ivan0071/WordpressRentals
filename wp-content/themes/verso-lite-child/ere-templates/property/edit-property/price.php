@@ -62,11 +62,11 @@ if ( $statuses_terms && ! is_wp_error( $statuses_terms ) ) {
                     foreach ($parents_items as $parents_item) {
                         echo '<div class="col-sm-3"><div class="checkbox"><label>';
                         if ( in_array( $parents_item->term_id, $statuses_terms_id ) ) {
-                            echo '<input type="checkbox" name="property_status[]" value="' . esc_attr($parents_item->term_id) . '" checked/>';
+                            echo '<input type="checkbox" name="property_status[]" value="' . esc_attr($parents_item->term_id) . '" data-tax-slug="' . esc_attr($parents_item->slug) . '" checked/>';
                         }
                         else
                         {
-                            echo '<input type="checkbox" name="property_status[]" value="' . esc_attr($parents_item->term_id) . '" />';
+                            echo '<input type="checkbox" name="property_status[]" value="' . esc_attr($parents_item->term_id) . '" data-tax-slug="' . esc_attr($parents_item->slug) . '" />';
                         }
                         echo esc_html($parents_item->name);
                         echo '</label></div></div>';
@@ -77,7 +77,7 @@ if ( $statuses_terms && ! is_wp_error( $statuses_terms ) ) {
             </div>
         <?php } ?>
         <?php if (!in_array("property_resid_rent_type", $hide_property_fields)) {?>
-            <div class="col-sm-6 residential_custom_fileds">
+            <div class="col-sm-6 residential_rent_type">
                 <div class="form-group">
                     <label for="property_resid_rent_type"><?php esc_html_e('Rent Type', 'essential-real-estate');
                         echo ere_required_field('property_resid_rent_type'); ?></label>
@@ -86,15 +86,23 @@ if ( $statuses_terms && ! is_wp_error( $statuses_terms ) ) {
                     </select>
                 </div>
             </div>
+            <div class="col-sm-6 residential_rent_type" style="width: 100%">
+                <div class="form-group">
+                </div>
+            </div>
         <?php } ?>
         <?php if (!in_array("property_commer_rent_type", $hide_property_fields)) {?>
-            <div class="col-sm-6 commercial_custom_fileds">
+            <div class="col-sm-6 commercial_rent_type">
                 <div class="form-group">
                     <label for="property_commer_rent_type"><?php esc_html_e('Rent Type', 'essential-real-estate');
                         echo ere_required_field('property_commer_rent_type'); ?></label>
                     <select name="property_commer_rent_type" id="property_commer_rent_type" class="form-control">
                         <?php ere_get_taxonomy_by_post_id($property_data->ID, 'property-commer-rent-type', false, false, $paramtersPropertyCommerRentType, false); ?>
                     </select>
+                </div>
+            </div>
+            <div class="col-sm-6 commercial_rent_type" style="width: 100%">
+                <div class="form-group">
                 </div>
             </div>
         <?php } ?>
