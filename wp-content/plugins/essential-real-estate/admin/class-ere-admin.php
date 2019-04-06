@@ -3245,55 +3245,55 @@ if (!class_exists('ERE_Admin')) {
                 'fields' => array_merge(
                     apply_filters('ere_register_option_search_top', array()),
                     apply_filters('ere_register_option_search_main', array(
-                        array(
-                            'id' => 'section_search_field_option',
-                            'title' => esc_html__('Show / Hide / Arrange Search Fields', 'essential-real-estate'),
-                            'type' => 'group',
-                            'fields' => array(
-                                array(
-                                    'id' => 'search_fields',
-                                    'type' => 'sortable',
-                                    'title' => esc_html__('Search Fields', 'essential-real-estate'),
-                                    'desc' => esc_html__('Drag and drop layout manager, to quickly organize your form search layout', 'essential-real-estate'),
-                                    'options' => array(
-                                        'property_status' => esc_html__('Status', 'essential-real-estate'),
-                                        //'property_type' => esc_html__('Type', 'essential-real-estate'),
-                                        'property_group' => esc_html__('Property Group', 'essential-real-estate'),
-                                        'property_residential_type' => esc_html__('Residential Type', 'essential-real-estate'),
-                                        'property_resid_furnished_type' => esc_html__('Furnished Type', 'essential-real-estate'),
-                                        'property_commer_offices' => esc_html__('Commercial Offices', 'essential-real-estate'),
-                                        'property_commer_retail' => esc_html__('Commercial Retail', 'essential-real-estate'),
-                                        'property_commer_leisure' => esc_html__('Commercial Leisure/Hospitality', 'essential-real-estate'),
-                                        'property_commer_industrial' => esc_html__('Commercial Industrial/Warehousing', 'essential-real-estate'),
-                                        'property_commer_land' => esc_html__('Commercial Land/Development', 'essential-real-estate'),
-                                        'property_commer_other' => esc_html__('Commercial Other', 'essential-real-estate'),
-                                        'property_title' => esc_html__('Title', 'essential-real-estate'),
-                                        'property_address' => esc_html__('Address', 'essential-real-estate'),
-                                        'property_country' => esc_html__('Country', 'essential-real-estate'),
-                                        'property_state' => esc_html__('Province / State', 'essential-real-estate'),
-                                        'property_city' => esc_html__('City / Town', 'essential-real-estate'),
-                                        'property_neighborhood' => esc_html__('Neighborhood', 'essential-real-estate'),
-                                        'property_bedrooms' => esc_html__('Bedrooms', 'essential-real-estate'),
-                                        'property_bathrooms' => esc_html__('Bathrooms', 'essential-real-estate'),
-                                        'property_price' => esc_html__('Price', 'essential-real-estate'),
-                                        'property_size' => esc_html__('Size', 'essential-real-estate'),
-                                        //'property_land' => esc_html__('Land Area', 'essential-real-estate'),
-                                        'property_label' => esc_html__('Label', 'essential-real-estate'),
-                                        //'property_garage' => esc_html__('Garage', 'essential-real-estate'),
-                                        'property_identity' => esc_html__('Property ID', 'essential-real-estate'),
-                                        'property_feature' => esc_html__('Other Features', 'essential-real-estate'),
-                                        'property_story' => esc_html__('Story/Floor Nr.', 'essential-real-estate'),
-                                        'property_pet' => esc_html__('Pet Policy', 'essential-real-estate')
-                                    ),
-                                    'default' => array(
-                                        'property_status', //'property_type', 
-                                        'property_residential_type', 'property_resid_furnished_type', 
-                                        'property_commer_offices', 'property_commer_retail', 'property_commer_leisure', 'property_commer_industrial', 'property_commer_land', 'property_commer_other',
-                                        'property_title', 'property_address', 'property_country', 'property_state', 'property_city', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms', 'property_price', 'property_size', /*'property_land',*/ 'property_label', /*'property_garage',*/ 'property_identity', 'property_feature'
-                                    )
-                                ),
-                            )
-                        ),
+                        // array(
+                        //     'id' => 'section_search_field_option',
+                        //     'title' => esc_html__('Show / Hide / Arrange Search Fields', 'essential-real-estate'),
+                        //     'type' => 'group',
+                        //     'fields' => array(
+                        //         array(
+                        //             'id' => 'search_fields',
+                        //             'type' => 'sortable',
+                        //             'title' => esc_html__('Search Fields', 'essential-real-estate'),
+                        //             'desc' => esc_html__('Drag and drop layout manager, to quickly organize your form search layout', 'essential-real-estate'),
+                        //             'options' => array(
+                        //                 'property_status' => esc_html__('Status', 'essential-real-estate'),
+                        //                 //'property_type' => esc_html__('Type', 'essential-real-estate'),
+                        //                 'property_group' => esc_html__('Property Group', 'essential-real-estate'),
+                        //                 'property_residential_type' => esc_html__('Residential Type', 'essential-real-estate'),
+                        //                 'property_resid_furnished_type' => esc_html__('Furnished Type', 'essential-real-estate'),
+                        //                 'property_commer_offices' => esc_html__('Commercial Offices', 'essential-real-estate'),
+                        //                 'property_commer_retail' => esc_html__('Commercial Retail', 'essential-real-estate'),
+                        //                 'property_commer_leisure' => esc_html__('Commercial Leisure/Hospitality', 'essential-real-estate'),
+                        //                 'property_commer_industrial' => esc_html__('Commercial Industrial/Warehousing', 'essential-real-estate'),
+                        //                 'property_commer_land' => esc_html__('Commercial Land/Development', 'essential-real-estate'),
+                        //                 'property_commer_other' => esc_html__('Commercial Other', 'essential-real-estate'),
+                        //                 'property_title' => esc_html__('Title', 'essential-real-estate'),
+                        //                 'property_address' => esc_html__('Address', 'essential-real-estate'),
+                        //                 'property_country' => esc_html__('Country', 'essential-real-estate'),
+                        //                 'property_state' => esc_html__('Province / State', 'essential-real-estate'),
+                        //                 'property_city' => esc_html__('City / Town', 'essential-real-estate'),
+                        //                 'property_neighborhood' => esc_html__('Neighborhood', 'essential-real-estate'),
+                        //                 'property_bedrooms' => esc_html__('Bedrooms', 'essential-real-estate'),
+                        //                 'property_bathrooms' => esc_html__('Bathrooms', 'essential-real-estate'),
+                        //                 'property_price' => esc_html__('Price', 'essential-real-estate'),
+                        //                 'property_size' => esc_html__('Size', 'essential-real-estate'),
+                        //                 //'property_land' => esc_html__('Land Area', 'essential-real-estate'),
+                        //                 'property_label' => esc_html__('Label', 'essential-real-estate'),
+                        //                 //'property_garage' => esc_html__('Garage', 'essential-real-estate'),
+                        //                 'property_identity' => esc_html__('Property ID', 'essential-real-estate'),
+                        //                 'property_feature' => esc_html__('Other Features', 'essential-real-estate'),
+                        //                 'property_story' => esc_html__('Story/Floor Nr.', 'essential-real-estate'),
+                        //                 'property_pet' => esc_html__('Pet Policy', 'essential-real-estate')
+                        //             ),
+                        //             'default' => array(
+                        //                 'property_status', //'property_type', 
+                        //                 'property_residential_type', 'property_resid_furnished_type', 
+                        //                 'property_commer_offices', 'property_commer_retail', 'property_commer_leisure', 'property_commer_industrial', 'property_commer_land', 'property_commer_other',
+                        //                 'property_title', 'property_address', 'property_country', 'property_state', 'property_city', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms', 'property_price', 'property_size', /*'property_land',*/ 'property_label', /*'property_garage',*/ 'property_identity', 'property_feature'
+                        //             )
+                        //         ),
+                        //     )
+                        // ),
                         array(
                             'id' => 'section_search_form_option',
                             'title' => esc_html__('Search Form Options', 'essential-real-estate'),
