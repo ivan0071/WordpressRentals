@@ -46,11 +46,14 @@ $property_virtual_tour_type = get_post_meta($property_id, ERE_METABOX_PREFIX . '
 if (empty($property_virtual_tour_type)) {
     $property_virtual_tour_type = '0';
 }
-$price = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price'][0] : '';
-$price_short = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_short']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_short'][0] : '';
-$price_unit = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_unit']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_unit'][0] : '';
-$price_prefix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_prefix']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_prefix'][0] : '';
-$price_postfix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix'][0] : '';
+$property_rent_price = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_price']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rent_price'][0] : '';
+$property_rent_charges = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_charges']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rent_charges'][0] : '';
+$property_sale_price= isset($property_meta_data[ERE_METABOX_PREFIX . 'property_sale_price']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_sale_price'][0] : '';
+// $price = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price'][0] : '';
+// $price_short = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_short']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_short'][0] : '';
+// $price_unit = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_unit']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_unit'][0] : '';
+// $price_prefix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_prefix']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_prefix'][0] : '';
+// $price_postfix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix'][0] : '';
 //$property_year = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_year']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_year'][0] : '';
 $property_rooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rooms'][0] : '0';
 $property_bathrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms'][0] : '0';
@@ -108,7 +111,16 @@ wp_enqueue_script('bootstrap-tabcollapse');
                         }
                         ?></span>
                     </li>
-                    <?php if (!empty($price)): ?>
+
+$property_rent_price = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_price']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rent_price'][0] : '';
+$property_rent_charges = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_charges']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rent_charges'][0] : '';
+$property_sale_price= isset($property_meta_data[ERE_METABOX_PREFIX . 'property_sale_price']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_sale_price'][0] : '';
+http://prntscr.com/n8bg8h
+http://prntscr.com/n8bgdo
+
+remove prices, add the in compare and details, add MKD conversions
+
+                    <?php /* if (!empty($price)): ?>
                         <li>
                             <strong><?php esc_html_e('Price', 'essential-real-estate'); ?></strong>
                         <span class="ere-property-price">
@@ -126,7 +138,7 @@ wp_enqueue_script('bootstrap-tabcollapse');
                             <strong><?php esc_html_e('Price', 'essential-real-estate'); ?></strong>
                             <span><?php echo ere_get_option('empty_price_text', '') ?></span>
                         </li>
-                    <?php endif; ?>
+                    <?php endif; */ ?>
                     <?php 
                     // if (count($property_type_arr) > 0): ?_>
                     //     <li>

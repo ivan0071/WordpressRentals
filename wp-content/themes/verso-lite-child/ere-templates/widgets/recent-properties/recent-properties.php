@@ -54,11 +54,11 @@ $wrapper_attributes[] = "data-plugin-options='{" . implode(', ', $owl_attributes
                 $property_link = get_the_permalink();
                 $property_id = get_the_ID();
                 $property_label = get_the_terms($property_id, 'property-label');
-                $price = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price', true);
-                $price_short = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_short', true);
-                $price_unit = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_unit', true);
-                $price_prefix = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_prefix', true);
-                $price_postfix = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_postfix', true);
+                // $price = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price', true);
+                // $price_short = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_short', true);
+                // $price_unit = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_unit', true);
+                // $price_prefix = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_prefix', true);
+                // $price_postfix = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_postfix', true);
                 $property_address = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_address', true);
 
                 ?>
@@ -99,7 +99,7 @@ $wrapper_attributes[] = "data-plugin-options='{" . implode(', ', $owl_attributes
                             <h2 class="property-title"><a href="<?php echo esc_url($property_link); ?>"
                                                                 title="<?php the_title(); ?>"><?php the_title() ?></a>
                             </h2>
-                            <?php if (!empty($price)): ?>
+                            <?php /*if (!empty($price)): ?>
                                 <div class="property-price">
                                     <span>
                                         <?php if (!empty($price_prefix)) {
@@ -115,7 +115,7 @@ $wrapper_attributes[] = "data-plugin-options='{" . implode(', ', $owl_attributes
                                 <div class="property-price">
                                     <span><?php echo ere_get_option('empty_price_text', '') ?></span>
                                 </div>
-                            <?php endif; ?>
+                            <?php endif;*/ ?>
                             <?php if (!empty($property_address)):
                                 $property_location = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_location', true);
                                 if($property_location)

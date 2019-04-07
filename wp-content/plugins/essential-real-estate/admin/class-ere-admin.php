@@ -248,26 +248,26 @@ if (!class_exists('ERE_Admin')) {
             $measurement_units_land_area = ere_get_measurement_units_land_area();
             $dec_point = ere_get_option('decimal_separator', '.');
             $format_number = '^[0-9]+([' . $dec_point . '][0-9]+)?$';
-            $price_unit = array();
-            $enable_price_unit = ere_get_option('enable_price_unit', '1');
-            $price_short_col = '6';
-            if ($enable_price_unit == '1') {
-                $price_short_col = '3';
-                $price_unit = array(
-                    'id' => "{$meta_prefix}property_price_unit",
-                    'title' => esc_html__('Price Unit', 'essential-real-estate'),
-                    'type' => 'button_set',
-                    'options' => array(
-                        '1' => esc_html__('None', 'essential-real-estate'),
-                        '1000' => esc_html__('Thousand', 'essential-real-estate'),
-                        '1000000' => esc_html__('Million', 'essential-real-estate'),
-                        '1000000000' => esc_html__('Billion', 'essential-real-estate'),
-                    ),
-                    'default' => '1',
-                    'col' => '9',
-                    'required' => array("{$meta_prefix}property_price_on_call", '=', '0'),
-                );
-            }
+            // $price_unit = array();
+            // $enable_price_unit = ere_get_option('enable_price_unit', '1');
+            // $price_short_col = '6';
+            // if ($enable_price_unit == '1') {
+            //     $price_short_col = '3';
+            //     $price_unit = array(
+            //         'id' => "{$meta_prefix}property_price_unit",
+            //         'title' => esc_html__('Price Unit', 'essential-real-estate'),
+            //         'type' => 'button_set',
+            //         'options' => array(
+            //             '1' => esc_html__('None', 'essential-real-estate'),
+            //             '1000' => esc_html__('Thousand', 'essential-real-estate'),
+            //             '1000000' => esc_html__('Million', 'essential-real-estate'),
+            //             '1000000000' => esc_html__('Billion', 'essential-real-estate'),
+            //         ),
+            //         'default' => '1',
+            //         'col' => '9',
+            //         'required' => array("{$meta_prefix}property_price_on_call", '=', '0'),
+            //     );
+            // }
             $render_additional_fields = ere_render_additional_fields();
             $additional_fields = array();
             if (count($render_additional_fields) > 0) {
@@ -644,22 +644,22 @@ if (!class_exists('ERE_Admin')) {
                                         array(
                                             'type' => 'divide'
                                         ),
-                                        array(
-                                            'type' => 'row',
-                                            'col' => '12',
-                                            'fields' => array(
-                                                array(
-                                                    'id' => "{$meta_prefix}property_price_on_call",
-                                                    'title' => esc_html__('Price on Call ?', 'essential-real-estate'),
-                                                    'type' => 'button_set',
-                                                    'options' => array(
-                                                        '1' => esc_html__('Yes', 'essential-real-estate'),
-                                                        '0' => esc_html__('No', 'essential-real-estate'),
-                                                    ),
-                                                    'default' => '0',
-                                                ),
-                                            )
-                                        ),                                        
+                                        // array(
+                                        //     'type' => 'row',
+                                        //     'col' => '12',
+                                        //     'fields' => array(
+                                        //         array(
+                                        //             'id' => "{$meta_prefix}property_price_on_call",
+                                        //             'title' => esc_html__('Price on Call ?', 'essential-real-estate'),
+                                        //             'type' => 'button_set',
+                                        //             'options' => array(
+                                        //                 '1' => esc_html__('Yes', 'essential-real-estate'),
+                                        //                 '0' => esc_html__('No', 'essential-real-estate'),
+                                        //             ),
+                                        //             'default' => '0',
+                                        //         ),
+                                        //     )
+                                        // ),                                        
                                         array(
                                             'type' => 'row',
                                             'col' => '6',
@@ -721,45 +721,45 @@ if (!class_exists('ERE_Admin')) {
                                                 ),                                           
                                             )
                                         ),
-                                        array(
-                                            'type' => 'row',
-                                            'col' => '6',
-                                            'fields' => array(
-                                                array(
-                                                    'id' => "{$meta_prefix}property_price_short",
-                                                    'title' => esc_html__('Price', 'essential-real-estate'),
-                                                    'desc' => esc_html__('Example Value: 50', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                    'pattern' => "{$format_number}",
-                                                    'default' => '',
-                                                    'col' => $price_short_col,
-                                                    'required' => array("{$meta_prefix}property_price_on_call", '=', '0'),
-                                                ),
-                                                $price_unit
-                                            )
-                                        ),
-                                        array(
-                                            'type' => 'row',
-                                            'col' => '6',
-                                            'fields' => array(
-                                                array(
-                                                    'id' => "{$meta_prefix}property_price_prefix",
-                                                    'title' => esc_html__('Before Price Label', 'essential-real-estate'),
-                                                    'desc' => esc_html__('Example Value: Start From', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                    'default' => '',
-                                                    'required' => array("{$meta_prefix}property_price_on_call", '=', '0'),
-                                                ),
-                                                array(
-                                                    'id' => "{$meta_prefix}property_price_postfix",
-                                                    'title' => esc_html__('After Price Label', 'essential-real-estate'),
-                                                    'desc' => esc_html__('Example Value: Per Month', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                    'default' => '',
-                                                    'required' => array("{$meta_prefix}property_price_on_call", '=', '0'),
-                                                ),
-                                            )
-                                        ),
+                                        // array(
+                                        //     'type' => 'row',
+                                        //     'col' => '6',
+                                        //     'fields' => array(
+                                        //         array(
+                                        //             'id' => "{$meta_prefix}property_price_short",
+                                        //             'title' => esc_html__('Price', 'essential-real-estate'),
+                                        //             'desc' => esc_html__('Example Value: 50', 'essential-real-estate'),
+                                        //             'type' => 'text',
+                                        //             'pattern' => "{$format_number}",
+                                        //             'default' => '',
+                                        //             'col' => $price_short_col,
+                                        //             'required' => array("{$meta_prefix}property_price_on_call", '=', '0'),
+                                        //         ),
+                                        //         $price_unit
+                                        //     )
+                                        // ),
+                                        // array(
+                                        //     'type' => 'row',
+                                        //     'col' => '6',
+                                        //     'fields' => array(
+                                        //         array(
+                                        //             'id' => "{$meta_prefix}property_price_prefix",
+                                        //             'title' => esc_html__('Before Price Label', 'essential-real-estate'),
+                                        //             'desc' => esc_html__('Example Value: Start From', 'essential-real-estate'),
+                                        //             'type' => 'text',
+                                        //             'default' => '',
+                                        //             'required' => array("{$meta_prefix}property_price_on_call", '=', '0'),
+                                        //         ),
+                                        //         array(
+                                        //             'id' => "{$meta_prefix}property_price_postfix",
+                                        //             'title' => esc_html__('After Price Label', 'essential-real-estate'),
+                                        //             'desc' => esc_html__('Example Value: Per Month', 'essential-real-estate'),
+                                        //             'type' => 'text',
+                                        //             'default' => '',
+                                        //             'required' => array("{$meta_prefix}property_price_on_call", '=', '0'),
+                                        //         ),
+                                        //     )
+                                        // ),
                                         array(
                                             'type' => 'divide'
                                         ),
@@ -2835,9 +2835,14 @@ if (!class_exists('ERE_Admin')) {
                         ),
                         array(
                             'id' => 'currency_sign',
-                            'title' => esc_html__('Currency Sign', 'essential-real-estate'),
-                            'type' => 'text',
-                            'default' => '$',
+                            'title' => esc_html__('Currency', 'essential-real-estate'),
+                            'type' => 'select',
+                            'options' => array(
+                                'MKD' => esc_html__('MKD', 'essential-real-estate'),
+                                'EUR' => esc_html__('EUR', 'essential-real-estate'),
+                                'USD' => esc_html__('USD', 'essential-real-estate'),
+                            ),
+                            'default' => 'MKD',
                         ),
                         array(
                             'id' => 'currency_position',
@@ -3232,10 +3237,10 @@ if (!class_exists('ERE_Admin')) {
                                         'property_status' => esc_html__('Status', 'essential-real-estate'),
                                         'property_label' => esc_html__('Label', 'essential-real-estate'),
                                         //Price
-                                        'property_price' => esc_html__('Price', 'essential-real-estate'),
-                                        'property_price_prefix' => esc_html__('Before Price Label', 'essential-real-estate'),
-                                        'property_price_postfix' => esc_html__('After Price Label', 'essential-real-estate'),
-                                        'property_price_on_call' => esc_html__('Price on Call', 'essential-real-estate'),
+                                        // 'property_price' => esc_html__('Price', 'essential-real-estate'),
+                                        // 'property_price_prefix' => esc_html__('Before Price Label', 'essential-real-estate'),
+                                        // 'property_price_postfix' => esc_html__('After Price Label', 'essential-real-estate'),
+                                        // 'property_price_on_call' => esc_html__('Price on Call', 'essential-real-estate'),
                                         'property_rent_price' => esc_html__('Price per month', 'essential-real-estate'),
                                         'property_rent_charges' => esc_html__('Price', 'essential-real-estate'),
                                         'property_sale_price' => esc_html__('Common charges', 'essential-real-estate'),
@@ -3295,9 +3300,9 @@ if (!class_exists('ERE_Admin')) {
                                         'property_commer_other' => esc_html__('Commercial Other', 'essential-real-estate'),
                                         'property_commer_rent_type' => esc_html__('Commercial Rent Type', 'essential-real-estate'),
                                         'property_label' => esc_html__('Label', 'essential-real-estate'),
-                                        'property_price' => esc_html__('Price', 'essential-real-estate'),
-                                        'property_price_prefix' => esc_html__('Before Price Label', 'essential-real-estate'),
-                                        'property_price_postfix' => esc_html__('After Price Label', 'essential-real-estate'),
+                                        // 'property_price' => esc_html__('Price', 'essential-real-estate'),
+                                        // 'property_price_prefix' => esc_html__('Before Price Label', 'essential-real-estate'),
+                                        // 'property_price_postfix' => esc_html__('After Price Label', 'essential-real-estate'),
                                         'property_rent_price' => esc_html__('Price per month', 'essential-real-estate'),
                                         'property_rent_charges' => esc_html__('Price', 'essential-real-estate'),
                                         'property_sale_price' => esc_html__('Common charges', 'essential-real-estate'),

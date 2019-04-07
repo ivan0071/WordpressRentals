@@ -265,44 +265,44 @@ if (!class_exists('ERE_Property')) {
                 $property_bussiness_for_sale = isset($_POST['property_bussiness_for_sale']) ? 1 : 0;
                 update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_bussiness_for_sale', $property_bussiness_for_sale);
 
-                $property_price_on_call = isset($_POST['property_price_on_call']) ? 1 : 0;
-                update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_on_call', $property_price_on_call);
-                if ($property_price_on_call == 1) {
-                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_short', '');
-                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_unit', 1);
-                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price', '');
-                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_prefix', '');
-                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_postfix', '');
-                } else {
-                    if (isset($_POST['property_price_unit'])) {
-                        update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_unit', sanitize_text_field($_POST['property_price_unit']));
-                    } else {
-                        update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_unit', 1);
-                    }
-                    if (isset($_POST['property_price_short'])) {
-                        update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_short', sanitize_text_field($_POST['property_price_short']));
-                        $property_price_short = $_POST['property_price_short'];
-                        if (is_numeric($property_price_short)) {
-                            if (isset($_POST['property_price_unit']) && is_numeric($_POST['property_price_unit'])) {
-                                $property_price_unit = $_POST['property_price_unit'];
-                            } else {
-                                $property_price_unit = 1;
-                            }
-                            $property_price_short = $_POST['property_price_short'];
-                            $property_price = doubleval($property_price_short) * intval($property_price_unit);
-                            update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price', $property_price);
-                        } else {
-                            update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price', '');
-                        }
-                    }
-                    if (isset($_POST['property_price_prefix'])) {
-                        update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_prefix', sanitize_text_field($_POST['property_price_prefix']));
-                    }
+                // $property_price_on_call = isset($_POST['property_price_on_call']) ? 1 : 0;
+                // update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_on_call', $property_price_on_call);
+                // if ($property_price_on_call == 1) {
+                //     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_short', '');
+                //     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_unit', 1);
+                //     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price', '');
+                //     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_prefix', '');
+                //     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_postfix', '');
+                // } else {
+                //     if (isset($_POST['property_price_unit'])) {
+                //         update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_unit', sanitize_text_field($_POST['property_price_unit']));
+                //     } else {
+                //         update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_unit', 1);
+                //     }
+                //     if (isset($_POST['property_price_short'])) {
+                //         update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_short', sanitize_text_field($_POST['property_price_short']));
+                //         $property_price_short = $_POST['property_price_short'];
+                //         if (is_numeric($property_price_short)) {
+                //             if (isset($_POST['property_price_unit']) && is_numeric($_POST['property_price_unit'])) {
+                //                 $property_price_unit = $_POST['property_price_unit'];
+                //             } else {
+                //                 $property_price_unit = 1;
+                //             }
+                //             $property_price_short = $_POST['property_price_short'];
+                //             $property_price = doubleval($property_price_short) * intval($property_price_unit);
+                //             update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price', $property_price);
+                //         } else {
+                //             update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price', '');
+                //         }
+                //     }
+                //     if (isset($_POST['property_price_prefix'])) {
+                //         update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_prefix', sanitize_text_field($_POST['property_price_prefix']));
+                //     }
 
-                    if (isset($_POST['property_price_postfix'])) {
-                        update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_postfix', sanitize_text_field($_POST['property_price_postfix']));
-                    }
-                }
+                //     if (isset($_POST['property_price_postfix'])) {
+                //         update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_price_postfix', sanitize_text_field($_POST['property_price_postfix']));
+                //     }
+                // }
 
                 if (isset($_POST['property_rent_price'])) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_rent_price', sanitize_text_field($_POST['property_rent_price']));

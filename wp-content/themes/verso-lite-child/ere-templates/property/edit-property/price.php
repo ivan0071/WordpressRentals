@@ -106,7 +106,7 @@ if ( $statuses_terms && ! is_wp_error( $statuses_terms ) ) {
                 </div>
             </div>
         <?php } ?>
-        <?php
+        <?php /*        
         if (!in_array("property_price", $hide_property_fields)) {
             $enable_price_unit=ere_get_option('enable_price_unit', '1');
             $price_short_class='col-sm-6';
@@ -170,7 +170,8 @@ if ( $statuses_terms && ! is_wp_error( $statuses_terms ) ) {
                     </div>
                 </div>
             </div>
-        <?php } ?>
+        <?php } 
+        */?>
 
         <?php if (!in_array("property_rent_price", $hide_property_fields)) { ?>
             <div class="col-sm-6">

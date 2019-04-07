@@ -228,7 +228,7 @@ if (!class_exists('ERE_Public')) {
                 'ere_metabox_prefix' => ERE_METABOX_PREFIX,
             ));
             wp_register_script(ERE_PLUGIN_PREFIX . 'property_steps', ERE_PLUGIN_URL . 'public/assets/js/property/ere-property-steps' . $min_suffix . '.js', array('jquery', 'jquery-validate', ERE_PLUGIN_PREFIX . 'property'), ERE_PLUGIN_VER, true);
-            $property_req_fields = ere_get_option('required_fields', array('property_title', /*'property_type',*/ 'property_price', 'property_map_address'));
+            $property_req_fields = ere_get_option('required_fields', array('property_title', /*'property_type', 'property_price',*/ 'property_map_address'));
             if (!is_array($property_req_fields)) {
                 $property_req_fields = array();
             }
@@ -236,9 +236,9 @@ if (!class_exists('ERE_Public')) {
                 'property_title' => in_array("property_title", $property_req_fields),
                 //'property_type' => in_array("property_type", $property_req_fields),
                 'property_label' => in_array("property_label", $property_req_fields),
-                'property_price' => in_array("property_price", $property_req_fields),
-                'property_price_prefix' => in_array("property_price_prefix", $property_req_fields),
-                'property_price_postfix' => in_array("property_price_postfix", $property_req_fields),
+                // 'property_price' => in_array("property_price", $property_req_fields),
+                // 'property_price_prefix' => in_array("property_price_prefix", $property_req_fields),
+                // 'property_price_postfix' => in_array("property_price_postfix", $property_req_fields),
                 'property_rent_price' => in_array('property_rent_price', $property_req_fields),
                 'property_rent_charges' => in_array('property_rent_charges', $property_req_fields),
                 'property_sale_price' => in_array('property_sale_price', $property_req_fields),

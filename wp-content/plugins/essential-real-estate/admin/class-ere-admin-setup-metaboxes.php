@@ -543,38 +543,38 @@ if (!class_exists('ERE_Admin_Setup_Metaboxes')) {
                 update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_identity', $post_id);
             }
             $property_is_exclusive = get_post_meta($post_id, ERE_METABOX_PREFIX . 'property_is_exclusive', true);
-            $property_price_on_call = get_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_on_call', true);
+            // $property_price_on_call = get_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_on_call', true);
             $property_bussiness_for_sale = get_post_meta($post_id, ERE_METABOX_PREFIX . 'property_bussiness_for_sale', true);
-            if($property_price_on_call=='1')
-            {
-                update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_short', '');
-                update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price', '');
-                update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_unit', 1);
-                update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_prefix', '' );
-                update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_postfix', '');
-            }
-            else{
-                $enable_price_unit=ere_get_option('enable_price_unit', '1');
-                if($enable_price_unit=='0')
-                {
-                    update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_unit', 1);
-                }
-                $property_price_short = get_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_short', true);
-                $property_price_unit = get_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_unit', true);
-                if (!empty($property_price_short) && is_numeric($property_price_short)) {
-                    if (!empty($property_price_unit) && is_numeric($property_price_unit) && intval($property_price_unit)>1) {
-                        $property_price=doubleval($property_price_short)*intval($property_price_unit);
-                    }
-                    else
-                    {
-                        $property_price=doubleval($property_price_short);
-                    }
-                }
-                else{
-                    $property_price='';
-                }
-                update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price', $property_price);
-            }
+            // if($property_price_on_call=='1')
+            // {
+            //     update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_short', '');
+            //     update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price', '');
+            //     update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_unit', 1);
+            //     update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_prefix', '' );
+            //     update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_postfix', '');
+            // }
+            // else{
+            //     $enable_price_unit=ere_get_option('enable_price_unit', '1');
+            //     if($enable_price_unit=='0')
+            //     {
+            //         update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_unit', 1);
+            //     }
+            //     $property_price_short = get_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_short', true);
+            //     $property_price_unit = get_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price_unit', true);
+            //     if (!empty($property_price_short) && is_numeric($property_price_short)) {
+            //         if (!empty($property_price_unit) && is_numeric($property_price_unit) && intval($property_price_unit)>1) {
+            //             $property_price=doubleval($property_price_short)*intval($property_price_unit);
+            //         }
+            //         else
+            //         {
+            //             $property_price=doubleval($property_price_short);
+            //         }
+            //     }
+            //     else{
+            //         $property_price='';
+            //     }
+            //     update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_price', $property_price);
+            // }
             if (isset($_POST['ere']['ere_property_country'])) {
                 $country=$_POST['ere']['ere_property_country'];
                 update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_country', $country);

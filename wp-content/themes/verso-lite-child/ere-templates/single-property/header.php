@@ -13,12 +13,12 @@ $property_bathrooms   = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'proper
 $property_title = get_the_title();
 $property_address     = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_address' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_address' ][0] : '';
 $property_status = get_the_terms( $property_id, 'property-status' );
-$property_price              = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price' ][0] : '';
-$property_price_short              = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_short' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_short' ][0] : '';
-$property_price_unit             = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_unit' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_unit' ][0] : '';
+// $property_price              = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price' ][0] : '';
+// $property_price_short              = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_short' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_short' ][0] : '';
+// $property_price_unit             = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_unit' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_unit' ][0] : '';
 
-$property_price_prefix      = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ][0] : '';
-$property_price_postfix      = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_postfix' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_postfix' ][0] : '';
+// $property_price_prefix      = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ][0] : '';
+// $property_price_postfix      = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_postfix' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_postfix' ][0] : '';
 
 ?>
 <div class="single-property-element property-info-header property-info-action">
@@ -29,7 +29,7 @@ $property_price_postfix      = isset( $property_meta_data[ ERE_METABOX_PREFIX . 
 			<?php endif; ?>
 			<div class="property-info-block-inline">
 				<div>
-					<?php if (!empty( $property_price ) ): ?>
+					<?php /*if (!empty( $property_price ) ): ?>
 						<span class="property-price">
 						<?php if(!empty( $property_price_prefix )) {echo '<span class="property-price-prefix">'.$property_price_prefix.' </span>';} ?>
 						<?php
@@ -39,7 +39,7 @@ $property_price_postfix      = isset( $property_meta_data[ ERE_METABOX_PREFIX . 
 					</span>
 					<?php elseif (ere_get_option( 'empty_price_text', '' )!='' ): ?>
 						<span class="property-price"><?php echo ere_get_option( 'empty_price_text', '' ) ?></span>
-					<?php endif; ?>
+					<?php endif; */?>
 					<?php
 					if ( $property_status ) : ?>
 						<div class="property-status">

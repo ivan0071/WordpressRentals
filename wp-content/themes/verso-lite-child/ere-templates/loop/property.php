@@ -46,11 +46,14 @@ if (preg_match('/\d+x\d+/', $custom_property_image_size)) {
 }
 $property_meta_data = get_post_custom($property_id);
 $excerpt = get_the_excerpt();
-$price = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price'][0] : '';
-$price_short = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_short']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_short'][0] : '';
-$price_unit = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_unit']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_unit'][0] : '';
-$price_prefix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_prefix']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_prefix'][0] : '';
-$price_postfix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix'][0] : '';
+$property_rent_price = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_price']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rent_price'][0] : '';
+$property_rent_charges = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_charges']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rent_charges'][0] : '';
+$property_sale_price= isset($property_meta_data[ERE_METABOX_PREFIX . 'property_sale_price']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_sale_price'][0] : '';
+// $price = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price'][0] : '';
+// $price_short = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_short']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_short'][0] : '';
+// $price_unit = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_unit']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_unit'][0] : '';
+// $price_prefix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_prefix']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_prefix'][0] : '';
+// $price_postfix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix'][0] : '';
 $property_address = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_address']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_address'][0] : '';
 $property_size = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_size']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_size'][0] : '';
 $property_bedrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms'][0] : '0';
@@ -167,7 +170,7 @@ if($property_featured)
                 <h2 class="property-title"><a href="<?php echo esc_url($property_link); ?>"
                                                     title="<?php the_title(); ?>"><?php the_title() ?></a>
                 </h2>
-                <?php if (!empty($price)): ?>
+                <?php /*if (!empty($price)): ?>
                     <div class="property-price">
                         <span>
                             <?php if (!empty($price_prefix)) {
@@ -183,7 +186,7 @@ if($property_featured)
                     <div class="property-price">
                         <span><?php echo ere_get_option('empty_price_text', '') ?></span>
                     </div>
-                <?php endif; ?>
+                <?php endif; */?>
             </div>
             <?php if (!empty($property_address)):
                 $property_location = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_location', true);
