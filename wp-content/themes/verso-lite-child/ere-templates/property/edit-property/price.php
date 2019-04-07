@@ -106,6 +106,36 @@ if ( $statuses_terms && ! is_wp_error( $statuses_terms ) ) {
                 </div>
             </div>
         <?php } ?>
+        <?php if (!in_array("property_rent_price", $hide_property_fields)) { ?>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="property_rent_price"><?php esc_html_e('Price per month', 'essential-real-estate'); ?></label>
+                    <input type="text" class="form-control" name="property_rent_price" id="property_rent_price" value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_price'])) {
+                               echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_price'][0]);
+                           } ?>">
+                </div>
+            </div>
+        <?php } ?>
+        <?php if (!in_array("property_rent_charges", $hide_property_fields)) { ?>
+            <div class="col-sm-6 residential_custom_fileds">
+                <div class="form-group">
+                    <label for="property_rent_charges"><?php esc_html_e('Common charges', 'essential-real-estate'); ?></label>
+                    <input type="text" class="form-control" name="property_rent_charges" id="property_rent_charges" value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_charges'])) {
+                               echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_charges'][0]);
+                           } ?>">
+                </div>
+            </div>
+        <?php } ?>
+        <?php if (!in_array("property_sale_price", $hide_property_fields)) { ?>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="property_sale_price"><?php esc_html_e('Price', 'essential-real-estate'); ?></label>
+                    <input type="text" class="form-control" name="property_sale_price" id="property_sale_price" value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_sale_price'])) {
+                               echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_sale_price'][0]);
+                           } ?>">
+                </div>
+            </div>
+        <?php } ?>
         <?php /*        
         if (!in_array("property_price", $hide_property_fields)) {
             $enable_price_unit=ere_get_option('enable_price_unit', '1');
@@ -172,37 +202,5 @@ if ( $statuses_terms && ! is_wp_error( $statuses_terms ) ) {
             </div>
         <?php } 
         */?>
-
-        <?php if (!in_array("property_rent_price", $hide_property_fields)) { ?>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="property_rent_price"><?php esc_html_e('Price per month', 'essential-real-estate'); ?></label>
-                    <input type="text" class="form-control" name="property_rent_price" id="property_rent_price" value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_price'])) {
-                               echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_price'][0]);
-                           } ?>">
-                </div>
-            </div>
-        <?php } ?>
-        <?php if (!in_array("property_rent_charges", $hide_property_fields)) { ?>
-            <div class="col-sm-6 residential_custom_fileds">
-                <div class="form-group">
-                    <label for="property_rent_charges"><?php esc_html_e('Common charges', 'essential-real-estate'); ?></label>
-                    <input type="text" class="form-control" name="property_rent_charges" id="property_rent_charges" value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_charges'])) {
-                               echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_charges'][0]);
-                           } ?>">
-                </div>
-            </div>
-        <?php } ?>
-        <?php if (!in_array("property_sale_price", $hide_property_fields)) { ?>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="property_sale_price"><?php esc_html_e('Price', 'essential-real-estate'); ?></label>
-                    <input type="text" class="form-control" name="property_sale_price" id="property_sale_price" value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_sale_price'])) {
-                               echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_sale_price'][0]);
-                           } ?>">
-                </div>
-            </div>
-        <?php } ?>
-
     </div>
 </div>

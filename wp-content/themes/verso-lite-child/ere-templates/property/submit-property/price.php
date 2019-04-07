@@ -91,8 +91,34 @@ $paramtersPropertyStatus['meta_key'] = 'property_status_order_number';
                 </div>
             </div>
         <?php } ?>
-        <?php
-        /*
+        <?php if (!in_array("property_rent_price", $hide_property_fields)) { ?>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label
+                        for="property_rent_price"><?php echo esc_html__('Price per month', 'essential-real-estate') . ere_required_field('property_rent_price'); ?></label>
+                    <input type="text" id="property_rent_price" class="form-control" name="property_rent_price" value="">
+                </div>
+            </div>
+        <?php } ?>
+        <?php if (!in_array("property_rent_charges", $hide_property_fields)) { ?>
+            <div class="col-sm-6 residential_custom_fileds">
+                <div class="form-group">
+                    <label
+                        for="property_rent_charges"><?php echo esc_html__('Common charges', 'essential-real-estate') . ere_required_field('property_rent_charges'); ?></label>
+                    <input type="text" id="property_rent_charges" class="form-control" name="property_rent_charges" value="">
+                </div>
+            </div>
+        <?php } ?>
+        <?php if (!in_array("property_sale_price", $hide_property_fields)) { ?>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label
+                        for="property_sale_price"><?php echo esc_html__('Price', 'essential-real-estate') . ere_required_field('property_sale_price'); ?></label>
+                    <input type="text" id="property_sale_price" class="form-control" name="property_sale_price" value="">
+                </div>
+            </div>
+        <?php } ?>
+        <?php /*
         if (!in_array("property_price", $hide_property_fields)) {
             $enable_price_unit=ere_get_option('enable_price_unit', '1');
             $price_short_class='col-sm-6';
@@ -156,34 +182,5 @@ $paramtersPropertyStatus['meta_key'] = 'property_status_order_number';
             </div>
         <?php } 
         */?>
-
-        <?php if (!in_array("property_rent_price", $hide_property_fields)) { ?>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label
-                        for="property_rent_price"><?php echo esc_html__('Price per month', 'essential-real-estate') . ere_required_field('property_rent_price'); ?></label>
-                    <input type="text" id="property_rent_price" class="form-control" name="property_rent_price" value="">
-                </div>
-            </div>
-        <?php } ?>
-        <?php if (!in_array("property_rent_charges", $hide_property_fields)) { ?>
-            <div class="col-sm-6 residential_custom_fileds">
-                <div class="form-group">
-                    <label
-                        for="property_rent_charges"><?php echo esc_html__('Common charges', 'essential-real-estate') . ere_required_field('property_rent_charges'); ?></label>
-                    <input type="text" id="property_rent_charges" class="form-control" name="property_rent_charges" value="">
-                </div>
-            </div>
-        <?php } ?>
-        <?php if (!in_array("property_sale_price", $hide_property_fields)) { ?>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label
-                        for="property_sale_price"><?php echo esc_html__('Price', 'essential-real-estate') . ere_required_field('property_sale_price'); ?></label>
-                    <input type="text" id="property_sale_price" class="form-control" name="property_sale_price" value="">
-                </div>
-            </div>
-        <?php } ?>
-
     </div>
 </div>
