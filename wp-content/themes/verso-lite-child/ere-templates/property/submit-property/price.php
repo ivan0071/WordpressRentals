@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 global $hide_property_fields;
+$currency_sign = ere_get_option('currency_sign', esc_html__('MKD', 'essential-real-estate'));
 
 $paramtersDefault = array(
     'orderby' => 'meta_value_num',
@@ -91,33 +92,136 @@ $paramtersPropertyStatus['meta_key'] = 'property_status_order_number';
                 </div>
             </div>
         <?php } ?>
+
+<?php /*organize rent fileds (threein a row for currency conversion)
+manage price fields visibility depending of rge selected checkbox(rent or sale) */ ?>
+
         <?php if (!in_array("property_rent_price", $hide_property_fields)) { ?>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="form-group">
                     <label
                         for="property_rent_price"><?php echo esc_html__('Price per month', 'essential-real-estate') . ere_required_field('property_rent_price'); ?></label>
                     <input type="text" id="property_rent_price" class="form-control" name="property_rent_price" value="">
                 </div>
             </div>
+            <?php if ($currency_sign == "MKD" || $currency_sign == "EUR" || $currency_sign == "USD") { ?>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="property_rent_price_auto1">
+                        <?php 
+                            if ($currency_sign == "MKD" || $currency_sign == "USD")
+                                esc_html_e('Price per month (EUR)', 'essential-real-estate');
+                            else if ($currency_sign == "EUR")
+                                esc_html_e('Price per month (USD)', 'essential-real-estate');
+                            ?>
+                    </label>
+                    <input type="text" id="property_rent_price_auto1" class="form-control" disabled
+                        data-from-unit="<?=$currency_sign?>">
+                    <i><?php esc_html_e('Auto-generated field', 'essential-real-estate'); ?></i>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="property_rent_price_auto2">
+                        <?php 
+                            if ($currency_sign == "EUR" || $currency_sign == "USD")
+                                esc_html_e('Price per month (MKD)', 'essential-real-estate');
+                            else if ($currency_sign == "MKD")
+                                esc_html_e('Price per month (USD)', 'essential-real-estate');
+                            ?>
+                    </label>
+                    <input type="text" id="property_rent_price_auto2" class="form-control" disabled
+                        data-from-unit="<?=$currency_sign?>">
+                    <i><?php esc_html_e('Auto-generated field', 'essential-real-estate'); ?></i>
+                </div>
+            </div>
+            <?php } ?>
         <?php } ?>
+
         <?php if (!in_array("property_rent_charges", $hide_property_fields)) { ?>
-            <div class="col-sm-6 residential_custom_fileds">
+            <div class="col-sm-4 residential_custom_fileds">
                 <div class="form-group">
                     <label
                         for="property_rent_charges"><?php echo esc_html__('Common charges', 'essential-real-estate') . ere_required_field('property_rent_charges'); ?></label>
                     <input type="text" id="property_rent_charges" class="form-control" name="property_rent_charges" value="">
                 </div>
             </div>
+            <?php if ($currency_sign == "MKD" || $currency_sign == "EUR" || $currency_sign == "USD") { ?>
+            <div class="col-sm-4 residential_custom_fileds">
+                <div class="form-group">
+                    <label for="property_rent_charges_auto1">
+                        <?php 
+                            if ($currency_sign == "MKD" || $currency_sign == "USD")
+                                esc_html_e('Common charges (EUR)', 'essential-real-estate');
+                            else if ($currency_sign == "EUR")
+                                esc_html_e('Common charges (USD)', 'essential-real-estate');
+                            ?>
+                    </label>
+                    <input type="text" id="property_rent_charges_auto1" class="form-control" disabled
+                        data-from-unit="<?=$currency_sign?>">
+                    <i><?php esc_html_e('Auto-generated field', 'essential-real-estate'); ?></i>
+                </div>
+            </div>
+            <div class="col-sm-4 residential_custom_fileds">
+                <div class="form-group">
+                    <label for="property_rent_charges_auto2">
+                        <?php 
+                            if ($currency_sign == "EUR" || $currency_sign == "USD")
+                                esc_html_e('Common charges (MKD)', 'essential-real-estate');
+                            else if ($currency_sign == "MKD")
+                                esc_html_e('Common charges (USD)', 'essential-real-estate');
+                            ?>
+                    </label>
+                    <input type="text" id="property_rent_charges_auto2" class="form-control" disabled
+                        data-from-unit="<?=$currency_sign?>">
+                    <i><?php esc_html_e('Auto-generated field', 'essential-real-estate'); ?></i>
+                </div>
+            </div>
+            <?php } ?>          
         <?php } ?>
+
         <?php if (!in_array("property_sale_price", $hide_property_fields)) { ?>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="form-group">
                     <label
                         for="property_sale_price"><?php echo esc_html__('Price', 'essential-real-estate') . ere_required_field('property_sale_price'); ?></label>
                     <input type="text" id="property_sale_price" class="form-control" name="property_sale_price" value="">
                 </div>
             </div>
+            <?php if ($currency_sign == "MKD" || $currency_sign == "EUR" || $currency_sign == "USD") { ?>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="property_sale_price_auto1">
+                        <?php 
+                            if ($currency_sign == "MKD" || $currency_sign == "USD")
+                                esc_html_e('Price (EUR)', 'essential-real-estate');
+                            else if ($currency_sign == "EUR")
+                                esc_html_e('Price (USD)', 'essential-real-estate');
+                            ?>
+                    </label>
+                    <input type="text" id="property_sale_price_auto1" class="form-control" disabled
+                        data-from-unit="<?=$currency_sign?>">
+                    <i><?php esc_html_e('Auto-generated field', 'essential-real-estate'); ?></i>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="property_sale_price_auto2">
+                        <?php 
+                            if ($currency_sign == "EUR" || $currency_sign == "USD")
+                                esc_html_e('Price (MKD)', 'essential-real-estate');
+                            else if ($currency_sign == "MKD")
+                                esc_html_e('Price (USD)', 'essential-real-estate');
+                            ?>
+                    </label>
+                    <input type="text" id="property_sale_price_auto2" class="form-control" disabled
+                        data-from-unit="<?=$currency_sign?>">
+                    <i><?php esc_html_e('Auto-generated field', 'essential-real-estate'); ?></i>
+                </div>
+            </div>
+            <?php } ?>
         <?php } ?>
+
         <?php /*
         if (!in_array("property_price", $hide_property_fields)) {
             $enable_price_unit=ere_get_option('enable_price_unit', '1');
