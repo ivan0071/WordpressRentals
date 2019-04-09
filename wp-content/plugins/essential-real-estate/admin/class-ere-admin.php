@@ -2855,6 +2855,18 @@ if (!class_exists('ERE_Admin')) {
                             'default' => 'before',
                         ),
                         array(
+                            'id' => 'usd_to_mkd',
+                            'title' => esc_html__('1 USD = __ MKD', 'essential-real-estate'),
+                            'type' => 'text',
+                            'default' => '54.5411',
+                        ),
+                        array(
+                            'id' => 'eur_to_mkd',
+                            'title' => esc_html__('1 EUR = __ MKD', 'essential-real-estate'),
+                            'type' => 'text',
+                            'default' => '61.4552',
+                        ),
+                        array(
                             'id' => 'thousand_separator',
                             'title' => esc_html__('Thousand Separator', 'essential-real-estate'),
                             'type' => 'text',
