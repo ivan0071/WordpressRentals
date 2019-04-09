@@ -65,7 +65,7 @@ $paramtersPropertyStatus['meta_key'] = 'property_status_order_number';
         <?php if (!in_array("property_resid_rent_type", $hide_property_fields)) {?>
             <div class="col-sm-6 residential_rent_type">
                 <div class="form-group">
-                    <label for="property_resid_rent_type"><?php esc_html_e('Rent Type', 'essential-real-estate');
+                    <label for="property_resid_rent_type"><?php esc_html_e('Rent: Type', 'essential-real-estate');
                         echo ere_required_field('property_resid_rent_type'); ?></label>
                     <select name="property_resid_rent_type" id="property_resid_rent_type" class="form-control">
                         <?php ere_get_taxonomy('property-resid-rent-type', false, false, $paramtersPropertyResidRentType); ?>
@@ -80,7 +80,7 @@ $paramtersPropertyStatus['meta_key'] = 'property_status_order_number';
         <?php if (!in_array("property_commer_rent_type", $hide_property_fields)) {?>
             <div class="col-sm-6 commercial_rent_type">
                 <div class="form-group">
-                    <label for="property_commer_rent_type"><?php esc_html_e('Rent Type', 'essential-real-estate');
+                    <label for="property_commer_rent_type"><?php esc_html_e('Rent: Type', 'essential-real-estate');
                         echo ere_required_field('property_commer_rent_type'); ?></label>
                     <select name="property_commer_rent_type" id="property_commer_rent_type" class="form-control">
                         <?php ere_get_taxonomy('property-commer-rent-type', false, false, $paramtersPropertyCommerRentType); ?>
@@ -97,22 +97,21 @@ $paramtersPropertyStatus['meta_key'] = 'property_status_order_number';
 manage price fields visibility depending of rge selected checkbox(rent or sale) */ ?>
 
         <?php if (!in_array("property_rent_price", $hide_property_fields)) { ?>
-            <div class="col-sm-4">
+            <div class="col-sm-4 status_for_rent">
                 <div class="form-group">
-                    <label
-                        for="property_rent_price"><?php echo esc_html__('Price per month', 'essential-real-estate') . ere_required_field('property_rent_price'); ?></label>
+                    <label for="property_rent_price"><?php printf(__('Rent: Price per month (%s) %s', 'essential-real-estate'),$currency_sign,ere_required_field('property_rent_price')); ?></label>
                     <input type="text" id="property_rent_price" class="form-control" name="property_rent_price" value="">
                 </div>
             </div>
             <?php if ($currency_sign == "MKD" || $currency_sign == "EUR" || $currency_sign == "USD") { ?>
-            <div class="col-sm-4">
+            <div class="col-sm-4 status_for_rent">
                 <div class="form-group">
                     <label for="property_rent_price_auto1">
                         <?php 
                             if ($currency_sign == "MKD" || $currency_sign == "USD")
-                                esc_html_e('Price per month (EUR)', 'essential-real-estate');
+                                esc_html_e('Rent: Price per month (EUR)', 'essential-real-estate');
                             else if ($currency_sign == "EUR")
-                                esc_html_e('Price per month (USD)', 'essential-real-estate');
+                                esc_html_e('Rent: Price per month (USD)', 'essential-real-estate');
                             ?>
                     </label>
                     <input type="text" id="property_rent_price_auto1" class="form-control" disabled
@@ -120,14 +119,14 @@ manage price fields visibility depending of rge selected checkbox(rent or sale) 
                     <i><?php esc_html_e('Auto-generated field', 'essential-real-estate'); ?></i>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4 status_for_rent">
                 <div class="form-group">
                     <label for="property_rent_price_auto2">
                         <?php 
                             if ($currency_sign == "EUR" || $currency_sign == "USD")
-                                esc_html_e('Price per month (MKD)', 'essential-real-estate');
+                                esc_html_e('Rent: Price per month (MKD)', 'essential-real-estate');
                             else if ($currency_sign == "MKD")
-                                esc_html_e('Price per month (USD)', 'essential-real-estate');
+                                esc_html_e('Rent: Price per month (USD)', 'essential-real-estate');
                             ?>
                     </label>
                     <input type="text" id="property_rent_price_auto2" class="form-control" disabled
@@ -139,22 +138,21 @@ manage price fields visibility depending of rge selected checkbox(rent or sale) 
         <?php } ?>
 
         <?php if (!in_array("property_rent_charges", $hide_property_fields)) { ?>
-            <div class="col-sm-4 residential_custom_fileds">
+            <div class="col-sm-4 residential_custom_fileds status_for_rent">
                 <div class="form-group">
-                    <label
-                        for="property_rent_charges"><?php echo esc_html__('Common charges', 'essential-real-estate') . ere_required_field('property_rent_charges'); ?></label>
+                    <label for="property_rent_charges"><?php printf(__('Rent: Common charges (%s) %s', 'essential-real-estate'),$currency_sign,ere_required_field('property_rent_charges')); ?></label>
                     <input type="text" id="property_rent_charges" class="form-control" name="property_rent_charges" value="">
                 </div>
             </div>
             <?php if ($currency_sign == "MKD" || $currency_sign == "EUR" || $currency_sign == "USD") { ?>
-            <div class="col-sm-4 residential_custom_fileds">
+            <div class="col-sm-4 residential_custom_fileds status_for_rent">
                 <div class="form-group">
                     <label for="property_rent_charges_auto1">
                         <?php 
                             if ($currency_sign == "MKD" || $currency_sign == "USD")
-                                esc_html_e('Common charges (EUR)', 'essential-real-estate');
+                                esc_html_e('Rent: Common charges (EUR)', 'essential-real-estate');
                             else if ($currency_sign == "EUR")
-                                esc_html_e('Common charges (USD)', 'essential-real-estate');
+                                esc_html_e('Rent: Common charges (USD)', 'essential-real-estate');
                             ?>
                     </label>
                     <input type="text" id="property_rent_charges_auto1" class="form-control" disabled
@@ -162,14 +160,14 @@ manage price fields visibility depending of rge selected checkbox(rent or sale) 
                     <i><?php esc_html_e('Auto-generated field', 'essential-real-estate'); ?></i>
                 </div>
             </div>
-            <div class="col-sm-4 residential_custom_fileds">
+            <div class="col-sm-4 residential_custom_fileds status_for_rent">
                 <div class="form-group">
                     <label for="property_rent_charges_auto2">
                         <?php 
                             if ($currency_sign == "EUR" || $currency_sign == "USD")
-                                esc_html_e('Common charges (MKD)', 'essential-real-estate');
+                                esc_html_e('Rent: Common charges (MKD)', 'essential-real-estate');
                             else if ($currency_sign == "MKD")
-                                esc_html_e('Common charges (USD)', 'essential-real-estate');
+                                esc_html_e('Rent: Common charges (USD)', 'essential-real-estate');
                             ?>
                     </label>
                     <input type="text" id="property_rent_charges_auto2" class="form-control" disabled
@@ -181,22 +179,21 @@ manage price fields visibility depending of rge selected checkbox(rent or sale) 
         <?php } ?>
 
         <?php if (!in_array("property_sale_price", $hide_property_fields)) { ?>
-            <div class="col-sm-4">
+            <div class="col-sm-4 status_for_sale">
                 <div class="form-group">
-                    <label
-                        for="property_sale_price"><?php echo esc_html__('Price', 'essential-real-estate') . ere_required_field('property_sale_price'); ?></label>
+                    <label for="property_sale_price"><?php printf(__('Sale: Price (%s) %s', 'essential-real-estate'),$currency_sign,ere_required_field('property_sale_price')); ?></label>
                     <input type="text" id="property_sale_price" class="form-control" name="property_sale_price" value="">
                 </div>
             </div>
             <?php if ($currency_sign == "MKD" || $currency_sign == "EUR" || $currency_sign == "USD") { ?>
-            <div class="col-sm-4">
+            <div class="col-sm-4 status_for_sale">
                 <div class="form-group">
                     <label for="property_sale_price_auto1">
                         <?php 
                             if ($currency_sign == "MKD" || $currency_sign == "USD")
-                                esc_html_e('Price (EUR)', 'essential-real-estate');
+                                esc_html_e('Sale: Price (EUR)', 'essential-real-estate');
                             else if ($currency_sign == "EUR")
-                                esc_html_e('Price (USD)', 'essential-real-estate');
+                                esc_html_e('Sale: Price (USD)', 'essential-real-estate');
                             ?>
                     </label>
                     <input type="text" id="property_sale_price_auto1" class="form-control" disabled
@@ -204,14 +201,14 @@ manage price fields visibility depending of rge selected checkbox(rent or sale) 
                     <i><?php esc_html_e('Auto-generated field', 'essential-real-estate'); ?></i>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4 status_for_sale">
                 <div class="form-group">
                     <label for="property_sale_price_auto2">
                         <?php 
                             if ($currency_sign == "EUR" || $currency_sign == "USD")
-                                esc_html_e('Price (MKD)', 'essential-real-estate');
+                                esc_html_e('Sale: Price (MKD)', 'essential-real-estate');
                             else if ($currency_sign == "MKD")
-                                esc_html_e('Price (USD)', 'essential-real-estate');
+                                esc_html_e('Sale: Price (USD)', 'essential-real-estate');
                             ?>
                     </label>
                     <input type="text" id="property_sale_price_auto2" class="form-control" disabled
