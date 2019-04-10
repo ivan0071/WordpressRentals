@@ -11,12 +11,15 @@ if (!class_exists('ERE_Admin')) {
         /**
          * Returns the list of names, where key is the slug.
          */
-        private function get_all_taxonomies($taxonomy_options)
+        private function get_all_taxonomies($taxonomy_options, $byids = false)
         {
             $list_tax_item = array();
             $taxonomy_items = get_categories($taxonomy_options);
             foreach($taxonomy_items as $item){
-                $list_tax_item[$item->slug] = $item->name;
+                if ($byids == true)
+                    $list_tax_item[$item->term_id] = $item->name;
+                else 
+                    $list_tax_item[$item->slug] = $item->name;
             }
             return $list_tax_item;
         }
@@ -661,6 +664,28 @@ if (!class_exists('ERE_Admin')) {
                                         //         ),
                                         //     )
                                         // ),                                        
+                                        array(
+                                            'type' => 'row',
+                                            'col' => '12',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_status",
+                                                    'title' => esc_html__('Property Status:', 'essential-real-estate'),
+                                                    'type' => 'selectize',
+                                                    'multiple' => true,
+                                                    'options' => $this->get_all_taxonomies(
+                                                        array(
+                                                            'taxonomy' => 'property-status', 
+                                                            'hide_empty' => 0,
+                                                            'meta_key'=>'property_status_order_number',
+                                                            'orderby'=>'meta_value_num',
+                                                            'order' => 'ASC'
+                                                        ),
+                                                        true
+                                                    ),
+                                                ),
+                                            )
+                                        ),                                        
                                         array(
                                             'type' => 'row',
                                             'col' => '6',

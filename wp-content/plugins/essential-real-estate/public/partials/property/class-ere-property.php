@@ -542,6 +542,8 @@ if (!class_exists('ERE_Property')) {
                         $statuses_array[] = intval($status_id);
                     }
                     wp_set_object_terms($property_id, $statuses_array, 'property-status');
+
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_status', $statuses_array);
                 }
 
                 // to do ivan: uncomment the following block if need to have propety_label in the front_end form
