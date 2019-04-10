@@ -246,6 +246,7 @@ if (!class_exists('ERE_Admin')) {
             $meta_prefix = ERE_METABOX_PREFIX;
             $measurement_units = ere_get_measurement_units();
             $measurement_units_land_area = ere_get_measurement_units_land_area();
+            $currency_sign = ere_get_option('currency_sign', esc_html__('MKD', 'essential-real-estate'));
             $dec_point = ere_get_option('decimal_separator', '.');
             $format_number = '^[0-9]+([' . $dec_point . '][0-9]+)?$';
             // $price_unit = array();
@@ -698,27 +699,111 @@ if (!class_exists('ERE_Admin')) {
                                         ),
                                         array(
                                             'type' => 'row',
-                                            'col' => '6',
+                                            'col' => '4',
                                             'fields' => array(
                                                 array(
                                                     'id' => "{$meta_prefix}property_rent_price",
-                                                    'title' => esc_html__('Price per month', 'essential-real-estate'),
+                                                    'title' => esc_html__('Rent: Price per month', 'essential-real-estate').' ('.$currency_sign.')',
                                                     'type' => 'text',
                                                     'default' => '',
                                                 ),
                                                 array(
+                                                    'id' => "{$meta_prefix}property_rent_price_auto1",
+                                                    'title' => (($currency_sign == 'MKD' || $currency_sign == 'USD') ? sprintf(__('Rent: Price per month (EUR)', 'essential-real-estate')) : 
+                                                               (($currency_sign == 'EUR') ? sprintf(__('Rent: Price per month (USD)', 'essential-real-estate')) : 
+                                                               ('hidden'))),
+                                                    'desc' => esc_html__('Auto-generated field', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                    'default' => '',
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_rent_price_auto2",
+                                                    'title' => (($currency_sign == 'EUR' || $currency_sign == 'USD') ? sprintf(__('Rent: Price per month (MKD)', 'essential-real-estate')) : 
+                                                               (($currency_sign == 'MKD') ? sprintf(__('Rent: Price per month (USD)', 'essential-real-estate')) : 
+                                                               ('hidden'))),
+                                                    'desc' => esc_html__('Auto-generated field', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                    'default' => '',
+                                                ),
+                                            )
+                                        ),
+                                        array(
+                                            'type' => 'row',
+                                            'col' => '4',
+                                            'fields' => array(
+                                                array(
                                                     'id' => "{$meta_prefix}property_rent_charges",
-                                                    'title' => esc_html__('Common charges', 'essential-real-estate'),
+                                                    'title' => esc_html__('Rent: Common charges', 'essential-real-estate').' ('.$currency_sign.')',
                                                     'type' => 'text',
                                                     'default' => '',
                                                     'required' => array("{$meta_prefix}property_group", '=', '0'),
                                                 ),
                                                 array(
-                                                    'id' => "{$meta_prefix}property_sale_price",
-                                                    'title' => esc_html__('Price', 'essential-real-estate'),
+                                                    'id' => "{$meta_prefix}property_rent_charges_auto1",
+                                                    'title' => (($currency_sign == 'MKD' || $currency_sign == 'USD') ? sprintf(__('Rent: Common charges (EUR)', 'essential-real-estate')) : 
+                                                               (($currency_sign == 'EUR') ? sprintf(__('Rent: Common charges (USD)', 'essential-real-estate')) : 
+                                                               ('hidden'))),
+                                                    'desc' => esc_html__('Auto-generated field', 'essential-real-estate'),
                                                     'type' => 'text',
                                                     'default' => '',
-                                                ),                                           
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_rent_charges_auto2",
+                                                    'title' => (($currency_sign == 'EUR' || $currency_sign == 'USD') ? sprintf(__('Rent: Common charges (MKD)', 'essential-real-estate')) : 
+                                                               (($currency_sign == 'MKD') ? sprintf(__('Rent: Common charges (USD)', 'essential-real-estate')) : 
+                                                               ('hidden'))),
+                                                    'desc' => esc_html__('Auto-generated field', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                    'default' => '',
+                                                ),
+                                            )
+                                        ),
+                                        array(
+                                            'type' => 'row',
+                                            'col' => '4',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_sale_price",
+                                                    'title' => esc_html__('Sale: Price', 'essential-real-estate').' ('.$currency_sign.')',
+                                                    'type' => 'text',
+                                                    'default' => '',
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_sale_price_auto1",
+                                                    'title' => (($currency_sign == 'MKD' || $currency_sign == 'USD') ? sprintf(__('Sale: Price (EUR)', 'essential-real-estate')) : 
+                                                               (($currency_sign == 'EUR') ? sprintf(__('Sale: Price (USD)', 'essential-real-estate')) : 
+                                                               ('hidden'))),
+                                                    'desc' => esc_html__('Auto-generated field', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                    'default' => '',
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_sale_price_auto2",
+                                                    'title' => (($currency_sign == 'EUR' || $currency_sign == 'USD') ? sprintf(__('Sale: Price (MKD)', 'essential-real-estate')) : 
+                                                               (($currency_sign == 'MKD') ? sprintf(__('Sale: Price (USD)', 'essential-real-estate')) : 
+                                                               ('hidden'))),
+                                                    'desc' => esc_html__('Auto-generated field', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                    'default' => '',
+                                                ),
+                                            )
+                                        ),
+                                        array(
+                                            'type' => 'row',
+                                            'col' => '6',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}eur_to_mkd",
+                                                    'title' => 'hidden eur_to_mkd',
+                                                    'type' => 'text',
+                                                    'default' => ere_get_option('eur_to_mkd', esc_html__('60', 'essential-real-estate')),
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}usd_to_mkd",
+                                                    'title' => 'hidden usd_to_mkd',
+                                                    'type' => 'text',
+                                                    'default' => ere_get_option('usd_to_mkd', esc_html__('50', 'essential-real-estate')),
+                                                ),
                                             )
                                         ),
                                         // array(

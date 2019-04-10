@@ -112,14 +112,6 @@ wp_enqueue_script('bootstrap-tabcollapse');
                         ?></span>
                     </li>
 
-$property_rent_price = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_price']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rent_price'][0] : '';
-$property_rent_charges = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_charges']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rent_charges'][0] : '';
-$property_sale_price= isset($property_meta_data[ERE_METABOX_PREFIX . 'property_sale_price']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_sale_price'][0] : '';
-http://prntscr.com/n8bg8h
-http://prntscr.com/n8bgdo
-
-remove prices, add the in compare and details, add MKD conversions
-
                     <?php /* if (!empty($price)): ?>
                         <li>
                             <strong><?php esc_html_e('Price', 'essential-real-estate'); ?></strong>

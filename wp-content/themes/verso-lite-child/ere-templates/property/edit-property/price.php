@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 global $hide_property_fields,$property_data, $property_meta_data;
 $currency_sign = ere_get_option('currency_sign', esc_html__('MKD', 'essential-real-estate'));
-$eur_to_mkd = ere_get_option('eur_to_mkd', esc_html__('50', 'essential-real-estate'));
-$usd_to_mkd = ere_get_option('usd_to_mkd', esc_html__('60', 'essential-real-estate'));
+$eur_to_mkd = ere_get_option('eur_to_mkd', esc_html__('60', 'essential-real-estate'));
+$usd_to_mkd = ere_get_option('usd_to_mkd', esc_html__('50', 'essential-real-estate'));
 
 $property_group = get_post_meta($property_data->ID, ERE_METABOX_PREFIX . 'property_group', true);
 
