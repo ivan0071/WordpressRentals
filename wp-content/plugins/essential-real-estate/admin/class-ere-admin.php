@@ -703,7 +703,10 @@ if (!class_exists('ERE_Admin')) {
                                                             'order' => 'ASC'
                                                         )
                                                     ),
-                                                    'required' => array("{$meta_prefix}property_group", '=', '0')
+                                                    // 'required' => array(
+                                                    //     array("{$meta_prefix}property_group", '=', '0'),
+                                                    //     array("{$meta_prefix}property_group", '=', '0')
+                                                    // )
                                                 ),
                                                 array(
                                                     'id' => "{$meta_prefix}property_commer_rent_type",
@@ -718,7 +721,10 @@ if (!class_exists('ERE_Admin')) {
                                                             'order' => 'ASC'
                                                         )
                                                     ),
-                                                    'required' => array("{$meta_prefix}property_group", '=', '1')
+                                                    // 'required' => array(
+                                                    //     array("{$meta_prefix}property_group", '=', '1'),
+                                                    //     array("{$meta_prefix}property_group", '=', '1')
+                                                    // )
                                                 ),
                                             ),
                                         ),
