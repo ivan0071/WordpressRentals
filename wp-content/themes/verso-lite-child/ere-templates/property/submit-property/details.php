@@ -38,7 +38,7 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
                     </label>
                     <input type="text" id="property_size_auto" class="form-control" disabled
                         data-from-unit="<?=$measurement_units?>">
-                    <i>Auto-generated field</i>
+                    <i><?php esc_html_e('Auto-generated field', 'essential-real-estate'); ?></i>
                 </div>
                 <?php } ?>
             </div>            
@@ -248,8 +248,8 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
                 <thead>
                 <tr>
                     <td class="ere-column-action"></td>
-                    <td><label><?php esc_html_e('Title', 'essential-real-estate'); ?></label></td>
-                    <td><label><?php esc_html_e('Value', 'essential-real-estate'); ?></label></td>
+                    <td style="display: none"><label><?php esc_html_e('Title', 'essential-real-estate'); ?></label></td>
+                    <td style="display: none"><label><?php esc_html_e('', 'essential-real-estate'); ?></label></td>
                     <td class="ere-column-action"></td>
                 </tr>
                 </thead>
@@ -260,7 +260,7 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
                     <td></td>
                     <td colspan="3">
                         <button type="button" data-increment="-1" class="add-additional-feature"><i
-                                class="fa fa-plus"></i> <?php esc_html_e('Add New', 'essential-real-estate'); ?></button>
+                                class="fa fa-plus"></i> <?php esc_html_e('Add feature', 'essential-real-estate'); ?></button>
                     </td>
                 </tr>
                 </tfoot>

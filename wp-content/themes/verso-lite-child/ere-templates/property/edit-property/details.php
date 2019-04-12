@@ -45,7 +45,7 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                     </label>
                     <input type="text" id="property_size_auto" class="form-control" disabled
                         data-from-unit="<?=$measurement_units?>">
-                    <i>Auto-generated field</i>
+                    <i><?php esc_html_e('Auto-generated field', 'essential-real-estate'); ?></i>
                 </div>
                 <?php } ?>
             </div>
@@ -297,10 +297,10 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
             <h4><?php esc_html_e('Additional details', 'essential-real-estate'); ?></h4>
             <table class="additional-block">
                 <thead>
-                <tr>
+                <tr style="display: none">
                     <td class="ere-column-action"></td>
                     <td><label><?php esc_html_e('Title', 'essential-real-estate'); ?></label></td>
-                    <td><label><?php esc_html_e('Value', 'essential-real-estate'); ?></label></td>
+                    <td><label><?php esc_html_e('', 'essential-real-estate'); ?></label></td>
                     <td class="ere-column-action"></td>
                 </tr>
                 </thead>
@@ -312,11 +312,11 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                             <td>
                                 <span class="sort-additional-row"><i class="fa fa-navicon"></i></span>
                             </td>
-                            <td>
+                            <td style="display: none">
                                 <input class="form-control" type="text"
                                        name="additional_feature_title[<?php echo esc_attr($i); ?>]"
                                        id="additional_feature_title_<?php echo esc_attr($i); ?>"
-                                       value="<?php echo esc_attr($additional_feature_title[$i]); ?>">
+                                       value="<?php echo "feature"; /*esc_attr($additional_feature_title[$i]);*/ ?>">
                             </td>
                             <td>
                                 <input class="form-control" type="text"
@@ -340,7 +340,7 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                     <td colspan="3">
                         <button type="button" data-increment="<?php echo esc_attr($additional_features - 1); ?>"
                                 class="add-additional-feature"><i
-                                class="fa fa-plus"></i> <?php esc_html_e('Add New', 'essential-real-estate'); ?></button>
+                                class="fa fa-plus"></i> <?php esc_html_e('Add feature', 'essential-real-estate'); ?></button>
                     </td>
                 </tr>
                 </tfoot>
