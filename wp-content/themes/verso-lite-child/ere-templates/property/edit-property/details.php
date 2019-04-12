@@ -12,9 +12,6 @@ global $property_data, $property_meta_data, $hide_property_fields;
 $auto_property_id = ere_get_option('auto_property_id',0);
 $measurement_units = ere_get_measurement_units();
 $measurement_units_land_area = ere_get_measurement_units_land_area();
-$additional_features = get_post_meta($property_data->ID, ERE_METABOX_PREFIX . 'additional_features', true);
-$additional_feature_title = get_post_meta($property_data->ID, ERE_METABOX_PREFIX . 'additional_feature_title', true);
-$additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX . 'additional_feature_value', true);
 ?>
 <div class="property-fields-wrap">
     <div class="ere-heading-style2 property-fields-title">
@@ -292,59 +289,4 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
         }
         ?>
     </div>
-    <?php if (!in_array("additional_details", $hide_property_fields)) { ?>
-        <div class="add-tab-row">
-            <h4><?php esc_html_e('Additional details', 'essential-real-estate'); ?></h4>
-            <table class="additional-block">
-                <thead>
-                <tr style="display: none">
-                    <td class="ere-column-action"></td>
-                    <td><label><?php esc_html_e('Title', 'essential-real-estate'); ?></label></td>
-                    <td><label><?php esc_html_e('', 'essential-real-estate'); ?></label></td>
-                    <td class="ere-column-action"></td>
-                </tr>
-                </thead>
-                <tbody id="ere_additional_details">
-                <?php
-                if (!empty($additional_features)) {
-                    for ($i = 0; $i < $additional_features; $i++) { ?>
-                        <tr>
-                            <td>
-                                <span class="sort-additional-row"><i class="fa fa-navicon"></i></span>
-                            </td>
-                            <td style="display: none">
-                                <input class="form-control" type="text"
-                                       name="additional_feature_title[<?php echo esc_attr($i); ?>]"
-                                       id="additional_feature_title_<?php echo esc_attr($i); ?>"
-                                       value="<?php echo "feature"; /*esc_attr($additional_feature_title[$i]);*/ ?>">
-                            </td>
-                            <td>
-                                <input class="form-control" type="text"
-                                       name="additional_feature_value[<?php echo esc_attr($i); ?>]"
-                                       id="additional_feature_value_<?php echo esc_attr($i); ?>"
-                                       value="<?php echo esc_attr($additional_feature_value[$i]); ?>">
-                            </td>
-
-                            <td>
-                                    <span data-remove="<?php echo esc_attr($i); ?>" class="remove-additional-feature"><i
-                                            class="fa fa-remove"></i></span>
-                            </td>
-                        </tr>
-                    <?php }; ?>
-                <?php } ?>
-
-                </tbody>
-                <tfoot>
-                <tr>
-                    <td></td>
-                    <td colspan="3">
-                        <button type="button" data-increment="<?php echo esc_attr($additional_features - 1); ?>"
-                                class="add-additional-feature"><i
-                                class="fa fa-plus"></i> <?php esc_html_e('Add feature', 'essential-real-estate'); ?></button>
-                    </td>
-                </tr>
-                </tfoot>
-            </table>
-        </div>
-    <?php } ?>
 </div>

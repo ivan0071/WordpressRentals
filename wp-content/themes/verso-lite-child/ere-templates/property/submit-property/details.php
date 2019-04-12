@@ -241,31 +241,4 @@ $measurement_units_land_area = ere_get_measurement_units_land_area();
         }
         ?>
     </div>
-    <?php if (!in_array("additional_details", $hide_property_fields)) { ?>
-        <div class="add-tab-row">
-            <h4><?php esc_html_e('Additional details', 'essential-real-estate'); ?></h4>
-            <table class="additional-block">
-                <thead>
-                <tr>
-                    <td class="ere-column-action"></td>
-                    <td style="display: none"><label><?php esc_html_e('Title', 'essential-real-estate'); ?></label></td>
-                    <td style="display: none"><label><?php esc_html_e('', 'essential-real-estate'); ?></label></td>
-                    <td class="ere-column-action"></td>
-                </tr>
-                </thead>
-                <tbody id="ere_additional_details">
-                </tbody>
-                <tfoot>
-                <tr>
-                    <td></td>
-                    <td colspan="3">
-                        <button type="button" data-increment="-1" class="add-additional-feature"><i
-                                class="fa fa-plus"></i> <?php esc_html_e('Add feature', 'essential-real-estate'); ?></button>
-                    </td>
-                </tr>
-                </tfoot>
-            </table>
-
-        </div>
-    <?php } ?>
 </div>
