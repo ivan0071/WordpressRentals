@@ -57,7 +57,7 @@ if (!class_exists('GSF_Field')) {
 			}
 			?>
 			<button class="<?php echo esc_attr($btn_class); ?>"
-			        type="button"><?php echo esc_html__('+ Add more', 'smart-framework'); ?></button>
+			        type="button"><?php echo esc_html__('+ Add feature', 'smart-framework'); ?></button>
 		<?php
 		}
 

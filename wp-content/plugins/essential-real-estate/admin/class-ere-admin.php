@@ -891,7 +891,7 @@ if (!class_exists('ERE_Admin')) {
                                                     'title' => esc_html__('Title:', 'essential-real-estate'),
                                                     'desc' => esc_html__('Enter additional title', 'essential-real-estate'),
                                                     'type' => 'text',
-                                                    'default' => '',
+                                                    'default' => 'feature',
                                                     'col' => '5',
                                                 ),
                                                 array(
