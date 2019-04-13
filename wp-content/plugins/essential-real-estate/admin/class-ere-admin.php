@@ -3342,9 +3342,45 @@ if (!class_exists('ERE_Admin')) {
                                     ),
                                 ),
                                 array(
+                                    'id' => 'attach_floorplan_file_type',
+                                    'type' => 'text',
+                                    'title' => esc_html__('Floorplan File Type', 'essential-real-estate'),
+                                    'subtitle' => esc_html__('Allow only comma separated numbers. Ex: pdf,txt,doc,docx', 'essential-real-estate'),
+                                    'default' => 'pdf',
+                                    'required' => array(
+                                        array(
+                                            array('property_form_sections', 'contain', 'media'),
+                                        )
+                                    ),
+                                ),
+                                array(
+                                    'id' => 'attach_brochure_file_type',
+                                    'type' => 'text',
+                                    'title' => esc_html__('Brochure File Type', 'essential-real-estate'),
+                                    'subtitle' => esc_html__('Allow only comma separated numbers. Ex: pdf,txt,doc,docx', 'essential-real-estate'),
+                                    'default' => 'pdf',
+                                    'required' => array(
+                                        array(
+                                            array('property_form_sections', 'contain', 'media'),
+                                        )
+                                    ),
+                                ),
+                                array(
+                                    'id' => 'attach_epc_file_type',
+                                    'type' => 'text',
+                                    'title' => esc_html__('EPC File Type', 'essential-real-estate'),
+                                    'subtitle' => esc_html__('Allow only comma separated numbers. Ex: pdf,txt,doc,docx', 'essential-real-estate'),
+                                    'default' => 'pdf,jpg',
+                                    'required' => array(
+                                        array(
+                                            array('property_form_sections', 'contain', 'media'),
+                                        )
+                                    ),
+                                ),
+                                array(
                                     'id' => 'attachment_file_type',
                                     'type' => 'text',
-                                    'title' => esc_html__('File Type', 'essential-real-estate'),
+                                    'title' => esc_html__('Other File Type', 'essential-real-estate'),
                                     'subtitle' => esc_html__('Allow only comma separated numbers. Ex: pdf,txt,doc,docx', 'essential-real-estate'),
                                     'default' => 'pdf,txt,doc,docx',
                                     'required' => array(
