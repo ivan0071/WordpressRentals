@@ -39,7 +39,7 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
                 echo '<div class="ere-heading-style2 property-fields-title">';
                 echo '<h2>' . $parents_item->name . '</h2>';
                 echo '</div>';
-                echo '<div class="property-fields property-feature row">';
+                echo '<div class="property-fields property-feature row residential_custom_fileds">';
                 foreach ($child_items as $child_item) {
                     if ($child_item->parent == $parents_item->term_id) {
                         echo '<div class="col-sm-3"><div class="checkbox"><label>';
@@ -60,7 +60,7 @@ $additional_feature_value = get_post_meta($property_data->ID, ERE_METABOX_PREFIX
             echo '<div class="ere-heading-style2 property-fields-title">';
             echo '<h2>' . esc_html__( 'Property Features', 'essential-real-estate' ). '</h2>';
             echo '</div>';
-            echo '<div class="property-fields property-feature row">';
+            echo '<div class="property-fields property-feature row residential_custom_fileds">';
             foreach ($parents_items as $parents_item) {
                 echo '<div class="col-sm-3"><div class="checkbox"><label>';
                 if ( in_array( $parents_item->term_id, $features_terms_id ) ) {

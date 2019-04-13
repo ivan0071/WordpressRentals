@@ -1627,6 +1627,15 @@ if (!class_exists('ERE_Admin')) {
                     'slug' => apply_filters('ere_property_resid_rent_type_slug', 'property-resid-rent-type'),
                 ),
             ));
+            $taxonomies['property-feature'] = apply_filters('ere_register_taxonomy_property_feature', array(
+                'post_type' => 'property',
+                'hierarchical' => true,
+                'label' => esc_html__('Resid. Property Feature', 'essential-real-estate'),
+                'singular_name' => esc_html__('Property Feature', 'essential-real-estate'),
+                'rewrite' => array(
+                    'slug' => apply_filters('ere_property_feature_slug', 'property-feature'),
+                ),
+            ));
             $taxonomies['property-commer-offices'] = apply_filters('ere_register_taxonomy_property_commer_offices', array(
                 'post_type' => 'property',
                 'hierarchical' => false,
@@ -1711,15 +1720,6 @@ if (!class_exists('ERE_Admin')) {
                 'singular_name' => esc_html__('Property Status', 'essential-real-estate'),
                 'rewrite' => array(
                     'slug' => apply_filters('ere_property_status_slug', 'property-status'),
-                ),
-            ));
-            $taxonomies['property-feature'] = apply_filters('ere_register_taxonomy_property_feature', array(
-                'post_type' => 'property',
-                'hierarchical' => true,
-                'label' => esc_html__('Property Feature', 'essential-real-estate'),
-                'singular_name' => esc_html__('Property Feature', 'essential-real-estate'),
-                'rewrite' => array(
-                    'slug' => apply_filters('ere_property_feature_slug', 'property-feature'),
                 ),
             ));
             $taxonomies['property-label'] = apply_filters('ere_register_taxonomy_property_label', array(
