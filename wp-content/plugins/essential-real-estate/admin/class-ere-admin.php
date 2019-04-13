@@ -973,118 +973,118 @@ if (!class_exists('ERE_Admin')) {
                                         ),
                                     )
                                 ),
-                                array(
-                                    'id' => "{$meta_prefix}floors_tab",
-                                    'title' => esc_html__('Floor Plans', 'essential-real-estate'),
-                                    'icon' => 'dashicons-grid-view',
-                                    'fields' => array(
-                                        array(
-                                            'id' => "{$meta_prefix}floors_enable",
-                                            'title' => esc_html__('Enable Floors', 'essential-real-estate'),
-                                            'type' => 'button_set',
-                                            'options' => array(
-                                                '1' => esc_html__('Yes', 'essential-real-estate'),
-                                                '0' => esc_html__('No', 'essential-real-estate'),
-                                            ),
-                                            'default' => '0',
-                                        ),
-                                        array(
-                                            'id' => "{$meta_prefix}floors",
-                                            'type' => 'panel',
-                                            'title' => esc_html__('Floor', 'essential-real-estate'),
-                                            'sort' => true,
-                                            'required' => array("{$meta_prefix}floors_enable", '=', '1'),
-                                            'fields' => array(
-                                                array(
-                                                    'id' => "{$meta_prefix}floor_name",
-                                                    'title' => esc_html__('Floor Name', 'essential-real-estate'),
-                                                    'desc' => esc_html__('Example Value: Ground Floor', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                    'default' => '',
-                                                    'panel_title' => true,
-                                                ),
-                                                array(
-                                                    'type' => 'row',
-                                                    'col' => '6',
-                                                    'fields' => array(
-                                                        array(
-                                                            'id' => "{$meta_prefix}floor_price",
-                                                            'title' => esc_html__('Floor Price', 'essential-real-estate'),
-                                                            'desc' => esc_html__('Example Value: 4200', 'essential-real-estate'),
-                                                            'type' => 'text',
-                                                            'pattern' => "{$format_number}",
-                                                            'default' => '',
-                                                        ),
-                                                        array(
-                                                            'id' => "{$meta_prefix}floor_price_postfix",
-                                                            'title' => esc_html__('Price Postfix', 'essential-real-estate'),
-                                                            'desc' => esc_html__('Example Value: Per Month', 'essential-real-estate'),
-                                                            'type' => 'text',
-                                                            'default' => '',
-                                                        ),
-                                                    )
-                                                ),
-                                                array(
-                                                    'type' => 'row',
-                                                    'col' => '6',
-                                                    'fields' => array(
-                                                        array(
-                                                            'id' => "{$meta_prefix}floor_size",
-                                                            'title' => esc_html__('Floor Size', 'essential-real-estate'),
-                                                            'desc' => esc_html__('Example Value: 4200', 'essential-real-estate'),
-                                                            'type' => 'text',
-                                                            'pattern' => "{$format_number}",
-                                                            'default' => '',
-                                                        ),
-                                                        array(
-                                                            'id' => "{$meta_prefix}floor_size_postfix",
-                                                            'title' => esc_html__('Size Postfix', 'essential-real-estate'),
-                                                            'desc' => esc_html__('Example Value: Sq Ft', 'essential-real-estate'),
-                                                            'type' => 'text',
-                                                            'default' => '',
-                                                        ),
-                                                    )
-                                                ),
+                                // array(
+                                //     'id' => "{$meta_prefix}floors_tab",
+                                //     'title' => esc_html__('Floor Plans', 'essential-real-estate'),
+                                //     'icon' => 'dashicons-grid-view',
+                                //     'fields' => array(
+                                //         array(
+                                //             'id' => "{$meta_prefix}floors_enable",
+                                //             'title' => esc_html__('Enable Floors', 'essential-real-estate'),
+                                //             'type' => 'button_set',
+                                //             'options' => array(
+                                //                 '1' => esc_html__('Yes', 'essential-real-estate'),
+                                //                 '0' => esc_html__('No', 'essential-real-estate'),
+                                //             ),
+                                //             'default' => '0',
+                                //         ),
+                                //         array(
+                                //             'id' => "{$meta_prefix}floors",
+                                //             'type' => 'panel',
+                                //             'title' => esc_html__('Floor', 'essential-real-estate'),
+                                //             'sort' => true,
+                                //             'required' => array("{$meta_prefix}floors_enable", '=', '1'),
+                                //             'fields' => array(
+                                //                 array(
+                                //                     'id' => "{$meta_prefix}floor_name",
+                                //                     'title' => esc_html__('Floor Name', 'essential-real-estate'),
+                                //                     'desc' => esc_html__('Example Value: Ground Floor', 'essential-real-estate'),
+                                //                     'type' => 'text',
+                                //                     'default' => '',
+                                //                     'panel_title' => true,
+                                //                 ),
+                                //                 array(
+                                //                     'type' => 'row',
+                                //                     'col' => '6',
+                                //                     'fields' => array(
+                                //                         array(
+                                //                             'id' => "{$meta_prefix}floor_price",
+                                //                             'title' => esc_html__('Floor Price', 'essential-real-estate'),
+                                //                             'desc' => esc_html__('Example Value: 4200', 'essential-real-estate'),
+                                //                             'type' => 'text',
+                                //                             'pattern' => "{$format_number}",
+                                //                             'default' => '',
+                                //                         ),
+                                //                         array(
+                                //                             'id' => "{$meta_prefix}floor_price_postfix",
+                                //                             'title' => esc_html__('Price Postfix', 'essential-real-estate'),
+                                //                             'desc' => esc_html__('Example Value: Per Month', 'essential-real-estate'),
+                                //                             'type' => 'text',
+                                //                             'default' => '',
+                                //                         ),
+                                //                     )
+                                //                 ),
+                                //                 array(
+                                //                     'type' => 'row',
+                                //                     'col' => '6',
+                                //                     'fields' => array(
+                                //                         array(
+                                //                             'id' => "{$meta_prefix}floor_size",
+                                //                             'title' => esc_html__('Floor Size', 'essential-real-estate'),
+                                //                             'desc' => esc_html__('Example Value: 4200', 'essential-real-estate'),
+                                //                             'type' => 'text',
+                                //                             'pattern' => "{$format_number}",
+                                //                             'default' => '',
+                                //                         ),
+                                //                         array(
+                                //                             'id' => "{$meta_prefix}floor_size_postfix",
+                                //                             'title' => esc_html__('Size Postfix', 'essential-real-estate'),
+                                //                             'desc' => esc_html__('Example Value: Sq Ft', 'essential-real-estate'),
+                                //                             'type' => 'text',
+                                //                             'default' => '',
+                                //                         ),
+                                //                     )
+                                //                 ),
 
-                                                array(
-                                                    'type' => 'row',
-                                                    'col' => '6',
-                                                    'fields' => array(
-                                                        array(
-                                                            'id' => "{$meta_prefix}floor_bedrooms",
-                                                            'title' => esc_html__('Bedrooms', 'essential-real-estate'),
-                                                            'desc' => esc_html__('Example Value: 4', 'essential-real-estate'),
-                                                            'type' => 'text',
-                                                            'pattern' => "{$format_number}",
-                                                            'default' => '',
-                                                        ),
-                                                        array(
-                                                            'id' => "{$meta_prefix}floor_bathrooms",
-                                                            'title' => esc_html__('Bathrooms', 'essential-real-estate'),
-                                                            'desc' => esc_html__('Example Value: 2', 'essential-real-estate'),
-                                                            'type' => 'text',
-                                                            'pattern' => "{$format_number}",
-                                                            'default' => '',
-                                                        ),
-                                                    )
-                                                ),
+                                //                 array(
+                                //                     'type' => 'row',
+                                //                     'col' => '6',
+                                //                     'fields' => array(
+                                //                         array(
+                                //                             'id' => "{$meta_prefix}floor_bedrooms",
+                                //                             'title' => esc_html__('Bedrooms', 'essential-real-estate'),
+                                //                             'desc' => esc_html__('Example Value: 4', 'essential-real-estate'),
+                                //                             'type' => 'text',
+                                //                             'pattern' => "{$format_number}",
+                                //                             'default' => '',
+                                //                         ),
+                                //                         array(
+                                //                             'id' => "{$meta_prefix}floor_bathrooms",
+                                //                             'title' => esc_html__('Bathrooms', 'essential-real-estate'),
+                                //                             'desc' => esc_html__('Example Value: 2', 'essential-real-estate'),
+                                //                             'type' => 'text',
+                                //                             'pattern' => "{$format_number}",
+                                //                             'default' => '',
+                                //                         ),
+                                //                     )
+                                //                 ),
 
-                                                array(
-                                                    'id' => "{$meta_prefix}floor_description",
-                                                    'title' => esc_html__('Description', 'essential-real-estate'),
-                                                    'type' => 'textarea',
-                                                    'default' => '',
-                                                ),
+                                //                 array(
+                                //                     'id' => "{$meta_prefix}floor_description",
+                                //                     'title' => esc_html__('Description', 'essential-real-estate'),
+                                //                     'type' => 'textarea',
+                                //                     'default' => '',
+                                //                 ),
 
-                                                array(
-                                                    'id' => "{$meta_prefix}floor_image",
-                                                    'title' => esc_html__('Floor Plan Image', 'essential-real-estate'),
-                                                    'type' => 'image',
-                                                ),
-                                            )
-                                        ),
-                                    )
-                                ),
+                                //                 array(
+                                //                     'id' => "{$meta_prefix}floor_image",
+                                //                     'title' => esc_html__('Floor Plan Image', 'essential-real-estate'),
+                                //                     'type' => 'image',
+                                //                 ),
+                                //             )
+                                //         ),
+                                //     )
+                                // ),
                                 array(
                                     'id' => "{$meta_prefix}gallery_tab",
                                     'title' => esc_html__('Gallery Images', 'essential-real-estate'),
