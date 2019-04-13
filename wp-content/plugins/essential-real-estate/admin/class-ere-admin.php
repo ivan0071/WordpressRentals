@@ -880,6 +880,26 @@ if (!class_exists('ERE_Admin')) {
                                             'type' => 'divide'
                                         ),
                                         array(
+                                            'type' => 'row',
+                                            'col' => '12',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_feature",
+                                                    'title' => esc_html__('Property Features:', 'essential-real-estate'),
+                                                    'type' => 'selectize',
+                                                    'multiple' => true,
+                                                    'options' => $this->get_all_taxonomies(
+                                                        array(
+                                                            'taxonomy' => 'property-feature', 
+                                                            'hide_empty' => 0,
+                                                            'order' => 'ASC'
+                                                        ),
+                                                        true
+                                                    ),
+                                                ),
+                                            )
+                                        ),
+                                        array(
                                             'id' => "{$meta_prefix}additional_features",
                                             'type' => 'repeater',
                                             'title' => esc_html__('Additional details:', 'essential-real-estate'),

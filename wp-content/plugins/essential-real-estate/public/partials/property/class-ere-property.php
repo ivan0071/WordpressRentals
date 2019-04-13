@@ -588,6 +588,15 @@ if (!class_exists('ERE_Property')) {
                         $features_array[] = intval($feature_id);
                     }
                     wp_set_object_terms($property_id, $features_array, 'property-feature');
+
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_feature', $features_array);
+                }
+                if (isset($_POST['additional_feature_title']) && isset($_POST['additional_feature_value'])) {
+                    $additional_feature_title = $_POST['additional_feature_title'];
+                    $additional_feature_value = $_POST['additional_feature_value'];
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'additional_features', count($additional_feature_title));
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'additional_feature_title', $additional_feature_title);
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'additional_feature_value', $additional_feature_value);
                 }
 
                 if (isset($_POST['floors_enable'])) {
@@ -649,14 +658,6 @@ if (!class_exists('ERE_Property')) {
                 }
                 if (isset($_POST['postal_code'])) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_zip', sanitize_text_field($_POST['postal_code']));
-                }
-
-                if (isset($_POST['additional_feature_title']) && isset($_POST['additional_feature_value'])) {
-                    $additional_feature_title = $_POST['additional_feature_title'];
-                    $additional_feature_value = $_POST['additional_feature_value'];
-                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'additional_features', count($additional_feature_title));
-                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'additional_feature_title', $additional_feature_title);
-                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'additional_feature_value', $additional_feature_value);
                 }
 
                 if (isset($_POST['private_note'])) {
