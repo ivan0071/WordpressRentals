@@ -1103,8 +1103,32 @@ if (!class_exists('ERE_Admin')) {
                                     'icon' => 'dashicons-media-default',
                                     'fields' => array(
                                         array(
+                                            'id' => "{$meta_prefix}property_attach_floorplan",
+                                            'title' => esc_html__('Floorplan', 'essential-real-estate'),
+                                            'type' => 'file',
+                                        ),
+                                        array(
+                                            'type' => 'divide'
+                                        ),
+                                        array(
+                                            'id' => "{$meta_prefix}property_attach_brochure",
+                                            'title' => esc_html__('Brochure', 'essential-real-estate'),
+                                            'type' => 'file',
+                                        ),
+                                        array(
+                                            'type' => 'divide'
+                                        ),
+                                        array(
+                                            'id' => "{$meta_prefix}property_attach_epc",
+                                            'title' => esc_html__('Energy Performance Certficiate (EPC) graphs', 'essential-real-estate'),
+                                            'type' => 'file',
+                                        ),
+                                        array(
+                                            'type' => 'divide'
+                                        ),
+                                        array(
                                             'id' => "{$meta_prefix}property_attachments",
-                                            'title' => esc_html__('File Attachments', 'essential-real-estate'),
+                                            'title' => esc_html__('Other Attachments', 'essential-real-estate'),
                                             'type' => 'file',
                                         ),
                                     )
@@ -3403,7 +3427,10 @@ if (!class_exists('ERE_Admin')) {
                                         'property_story' => esc_html__('Story/Floor Nr.', 'essential-real-estate'),
                                         'property_pet' => esc_html__('Pet Policy', 'essential-real-estate'),
                                         //'property_year' => esc_html__('Year Built', 'essential-real-estate'),
-                                        'property_attachments' => esc_html__('Fie Attachments', 'essential-real-estate'),
+                                        'property_attach_floorplan' => esc_html__('Floorplan Attachments', 'essential-real-estate'),
+                                        'property_attach_brochure' => esc_html__('Brochure Attachments', 'essential-real-estate'),
+                                        'property_attach_epc' => esc_html__('Energy Performance Certficiate (EPC) graphs Attachments', 'essential-real-estate'),
+                                        'property_attachments' => esc_html__('Other Attachments', 'essential-real-estate'),
                                         'property_video_url' => esc_html__('Video Url', 'essential-real-estate'),
                                         'property_image_360' => esc_html__('Image 360', 'essential-real-estate'),
                                         'additional_details' => esc_html__('Additional Details', 'essential-real-estate'),
