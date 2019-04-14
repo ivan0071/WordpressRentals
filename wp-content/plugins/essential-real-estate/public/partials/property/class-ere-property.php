@@ -32,7 +32,13 @@ if (!class_exists('ERE_Property')) {
                 if ($property_id > 0) {
                     if ($type === 'gallery') {
                         delete_post_meta($property_id, ERE_METABOX_PREFIX . 'property_images', $attachment_id);
-                    } else {
+                    } else if ($type === 'attach_floorplan') {
+                        delete_post_meta($property_id, ERE_METABOX_PREFIX . 'property_attach_floorplan', $attachment_id);
+                    } else if ($type === 'attach_brochure') {
+                        delete_post_meta($property_id, ERE_METABOX_PREFIX . 'property_attach_brochure', $attachment_id);
+                    } else if ($type === 'attach_epc') {
+                        delete_post_meta($property_id, ERE_METABOX_PREFIX . 'property_attach_epc', $attachment_id);
+                    } else if ($type === 'attachments') {
                         delete_post_meta($property_id, ERE_METABOX_PREFIX . 'property_attachments', $attachment_id);
                     }
                     $success = true;
@@ -66,6 +72,30 @@ if (!class_exists('ERE_Property')) {
                 $gallery_ids = explode('|', $gallery_ids);
                 if (!empty($gallery_ids)) {
                     foreach ($gallery_ids as $id) {
+                        wp_delete_attachment($id);
+                    }
+                }
+
+                $attachment_floorplan_ids = get_post_meta($postid, ERE_METABOX_PREFIX . 'property_attachment_floorplan', false);
+                $attachment_floorplan_ids = explode('|', $attachment_floorplan_ids);
+                if (!empty($attachment_floorplan_ids)) {
+                    foreach ($attachment_floorplan_ids as $id) {
+                        wp_delete_attachment($id);
+                    }
+                }
+
+                $attachment_brochure_ids = get_post_meta($postid, ERE_METABOX_PREFIX . 'property_attach_brochure', false);
+                $attachment_brochure_ids = explode('|', $attachment_brochure_ids);
+                if (!empty($attachment_brochure_ids)) {
+                    foreach ($attachment_brochure_ids as $id) {
+                        wp_delete_attachment($id);
+                    }
+                }
+
+                $attachment_epc_ids = get_post_meta($postid, ERE_METABOX_PREFIX . 'property_attach_epc', false);
+                $attachment_epc_ids = explode('|', $attachment_epc_ids);
+                if (!empty($attachment_epc_ids)) {
+                    foreach ($attachment_epc_ids as $id) {
                         wp_delete_attachment($id);
                     }
                 }
@@ -422,6 +452,45 @@ if (!class_exists('ERE_Property')) {
                         }
                         $str_attachment_ids = substr($str_attachment_ids, 1);
                         update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_attachments', $str_attachment_ids);
+                    }
+                }
+
+                if (isset($_POST['property_attach_floorplan_ids'])) {
+                    if (!empty($_POST['property_attach_floorplan_ids']) && is_array($_POST['property_attach_floorplan_ids'])) {
+                        $property_attach_floorplan_ids = array();
+                        $str_attachment_ids = '';
+                        foreach ($_POST['property_attach_floorplan_ids'] as $property_attachment_id) {
+                            $property_attach_floorplan_ids[] = intval($property_attachment_id);
+                            $str_attachment_ids .= '|' . intval($property_attachment_id);
+                        }
+                        $str_attachment_ids = substr($str_attachment_ids, 1);
+                        update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_attach_floorplan', $str_attachment_ids);
+                    }
+                }
+
+                if (isset($_POST['property_attach_brochure_ids'])) {
+                    if (!empty($_POST['property_attach_brochure_ids']) && is_array($_POST['property_attach_brochure_ids'])) {
+                        $property_attach_brochure_ids = array();
+                        $str_attachment_ids = '';
+                        foreach ($_POST['property_attach_brochure_ids'] as $property_attachment_id) {
+                            $property_attach_brochure_ids[] = intval($property_attachment_id);
+                            $str_attachment_ids .= '|' . intval($property_attachment_id);
+                        }
+                        $str_attachment_ids = substr($str_attachment_ids, 1);
+                        update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_attach_brochure', $str_attachment_ids);
+                    }
+                }
+
+                if (isset($_POST['property_attach_epc_ids'])) {
+                    if (!empty($_POST['property_attach_epc_ids']) && is_array($_POST['property_attach_epc_ids'])) {
+                        $property_attach_epc_ids = array();
+                        $str_attachment_ids = '';
+                        foreach ($_POST['property_attach_epc_ids'] as $property_attachment_id) {
+                            $property_attach_epc_ids[] = intval($property_attachment_id);
+                            $str_attachment_ids .= '|' . intval($property_attachment_id);
+                        }
+                        $str_attachment_ids = substr($str_attachment_ids, 1);
+                        update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_attach_epc', $str_attachment_ids);
                     }
                 }
 

@@ -1104,7 +1104,7 @@ if (!class_exists('ERE_Admin')) {
                                     'fields' => array(
                                         array(
                                             'id' => "{$meta_prefix}property_attach_floorplan",
-                                            'title' => esc_html__('Floorplan', 'essential-real-estate'),
+                                            'title' => esc_html__('Floorplan Attachments', 'essential-real-estate'),
                                             'type' => 'file',
                                         ),
                                         array(
@@ -1112,7 +1112,7 @@ if (!class_exists('ERE_Admin')) {
                                         ),
                                         array(
                                             'id' => "{$meta_prefix}property_attach_brochure",
-                                            'title' => esc_html__('Brochure', 'essential-real-estate'),
+                                            'title' => esc_html__('Brochure Attachments', 'essential-real-estate'),
                                             'type' => 'file',
                                         ),
                                         array(
@@ -1120,7 +1120,7 @@ if (!class_exists('ERE_Admin')) {
                                         ),
                                         array(
                                             'id' => "{$meta_prefix}property_attach_epc",
-                                            'title' => esc_html__('Energy Performance Certficiate (EPC) graphs', 'essential-real-estate'),
+                                            'title' => esc_html__('Energy Performance Certficiate (EPC) graphs Attachments', 'essential-real-estate'),
                                             'type' => 'file',
                                         ),
                                         array(

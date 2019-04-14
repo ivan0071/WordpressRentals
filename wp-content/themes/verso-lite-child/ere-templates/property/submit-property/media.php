@@ -33,8 +33,79 @@ global $hide_property_fields;
             </div>
             <div id="ere_gallery_errors_log"></div>
         </div>
+
         <?php if (!in_array("property_attachments", $hide_property_fields)): ?>
-        <label class="media-attachments-title"><?php esc_html_e( 'File Attachments', 'essential-real-estate' ); ?></label>
+        
+        <label class="media-attachments-title"><?php esc_html_e( 'Floorplan Attachments', 'essential-real-estate' ); ?></label>
+        <div class="ere-property-attach-floorplan">
+            <div class="media-attachments">
+                <div class="row">
+                    <div id="property_attach_floorplan_thumbs_container">
+                    </div>
+                </div>
+            </div>
+            <div id="ere_attach_floorplan_plupload_container" class="media-drag-drop">
+                <h4>
+                    <i class="fa fa-cloud-upload"></i> <?php esc_html_e('Drag and drop file here', 'essential-real-estate'); ?>
+                </h4>
+                <h4><?php esc_html_e('or', 'essential-real-estate'); ?></h4>
+                <button type="button" id="ere_select_file_attach_floorplan"
+                        class="btn btn-primary"><?php esc_html_e('Select Files', 'essential-real-estate'); ?></button>
+                <p><?php
+                    $attach_floorplan_file_type=ere_get_option('attach_floorplan_file_type','pdf');
+                    echo sprintf(__('Allowed Extensions: <span class="attachment-file-type">%s</span>','essential-real-estate'),$attach_floorplan_file_type);
+                    ?></p>
+            </div>
+            <div id="ere_attach_floorplan_errors_log"></div>
+        </div>
+
+        <label class="media-attachments-title"><?php esc_html_e( 'Brochure Attachments', 'essential-real-estate' ); ?></label>
+        <div class="ere-property-attach-brochure">
+            <div class="media-attachments">
+                <div class="row">
+                    <div id="property_attach_brochure_thumbs_container">
+                    </div>
+                </div>
+            </div>
+            <div id="ere_attach_brochure_plupload_container" class="media-drag-drop">
+                <h4>
+                    <i class="fa fa-cloud-upload"></i> <?php esc_html_e('Drag and drop file here', 'essential-real-estate'); ?>
+                </h4>
+                <h4><?php esc_html_e('or', 'essential-real-estate'); ?></h4>
+                <button type="button" id="ere_select_file_attach_brochure"
+                        class="btn btn-primary"><?php esc_html_e('Select Files', 'essential-real-estate'); ?></button>
+                <p><?php
+                    $attach_brochure_file_type=ere_get_option('attach_brochure_file_type','pdf');
+                    echo sprintf(__('Allowed Extensions: <span class="attachment-file-type">%s</span>','essential-real-estate'),$attach_brochure_file_type);
+                    ?></p>
+            </div>
+            <div id="ere_attach_brochure_errors_log"></div>
+        </div>
+
+        <label class="media-attachments-title"><?php esc_html_e( 'Energy Performance Certficiate (EPC) graphs Attachments', 'essential-real-estate' ); ?></label>
+        <div class="ere-property-attach-epc">
+            <div class="media-attachments">
+                <div class="row">
+                    <div id="property_attach_epc_thumbs_container">
+                    </div>
+                </div>
+            </div>
+            <div id="ere_attach_epc_plupload_container" class="media-drag-drop">
+                <h4>
+                    <i class="fa fa-cloud-upload"></i> <?php esc_html_e('Drag and drop file here', 'essential-real-estate'); ?>
+                </h4>
+                <h4><?php esc_html_e('or', 'essential-real-estate'); ?></h4>
+                <button type="button" id="ere_select_file_attach_epc"
+                        class="btn btn-primary"><?php esc_html_e('Select Files', 'essential-real-estate'); ?></button>
+                <p><?php
+                    $attach_epc_file_type=ere_get_option('attach_epc_file_type','pdf,jpg');
+                    echo sprintf(__('Allowed Extensions: <span class="attachment-file-type">%s</span>','essential-real-estate'),$attach_epc_file_type);
+                    ?></p>
+            </div>
+            <div id="ere_attach_epc_errors_log"></div>
+        </div>
+        
+        <label class="media-attachments-title"><?php esc_html_e( 'Other File Attachments', 'essential-real-estate' ); ?></label>
         <div class="ere-property-attachments">
             <div class="media-attachments">
                 <div class="row">
@@ -57,6 +128,7 @@ global $hide_property_fields;
             <div id="ere_attachments_errors_log"></div>
         </div>
         <?php endif; ?>
+
         <div class="property-media-other row">
             <?php if (!in_array("property_video_url", $hide_property_fields)): ?>
             <div class="property-video-url col-sm-6">
