@@ -106,7 +106,7 @@ wp_enqueue_script('select2_js');
         <?php if (!in_array("postal_code", $hide_property_fields)) {?>
         <div class="col-sm-4">
             <div class="form-group">
-                <label for="zip"><?php esc_html_e('Postal Code / Zip', 'essential-real-estate'); ?></label>
+                <label for="zip"><?php esc_html_e('Postcode', 'essential-real-estate'); ?></label>
                 <input type="text" class="form-control" name="postal_code"
                        value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_zip'][0])) {
                            echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_zip'][0]);
@@ -114,8 +114,29 @@ wp_enqueue_script('select2_js');
             </div>
         </div>
         <?php } ?>
+        <?php if (!in_array("property_street_name", $hide_property_fields)) {?>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="property_street_name"><?php esc_html_e('Street Name', 'essential-real-estate'); ?></label>
+                <input type="text" class="form-control" name="property_street_name"
+                       value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_street_name'][0])) {
+                           echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_street_name'][0]);
+                       } ?>" id="property_street_name">
+            </div>
+        </div>
+        <?php } ?>
+        <?php if (!in_array("property_street_number", $hide_property_fields)) {?>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="property_street_number"><?php esc_html_e('Street Number', 'essential-real-estate'); ?></label>
+                <input type="text" class="form-control" name="property_street_number"
+                       value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_street_number'][0])) {
+                           echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_street_number'][0]);
+                       } ?>" id="property_street_number">
+            </div>
+        </div>
+        <?php } ?>
     </div>
-
 </div>
 <div class="property-fields-wrap">
     <div class="ere-heading-style2 property-fields-title">

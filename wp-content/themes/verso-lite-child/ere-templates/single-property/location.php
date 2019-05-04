@@ -38,6 +38,8 @@ if ($property_state) {
 $property_location = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_location', true);
 $property_address = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_address']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_address'][0] : '';
 $property_country = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_country']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_country'][0] : '';
+$property_street_name = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_street_name']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_street_name'][0] : '';
+$property_street_number = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_street_number']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_street_number'][0] : '';
 $property_zip = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_zip']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_zip'][0] : '';
 ?>
 <div class="single-property-element property-location">
@@ -77,9 +79,21 @@ $property_zip = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_zip']) 
                     <span><?php echo join(', ', $property_neighborhood_arr); ?></span>
                 </li>
             <?php endif;
+            if (!empty($property_street_name)): ?>
+                <li>
+                    <strong><?php esc_html_e('Street Name:', 'essential-real-estate'); ?></strong>
+                    <span><?php echo esc_html($property_street_name) ?></span>
+                </li>
+                <?php endif;
+            if (!empty($property_street_number)): ?>
+                <li>
+                    <strong><?php esc_html_e('Street Number:', 'essential-real-estate'); ?></strong>
+                    <span><?php echo esc_html($property_street_number) ?></span>
+                </li>
+                <?php endif;
             if (!empty($property_zip)): ?>
                 <li>
-                    <strong><?php esc_html_e('Postal code / ZIP:', 'essential-real-estate'); ?></strong>
+                    <strong><?php esc_html_e('Postcode:', 'essential-real-estate'); ?></strong>
                     <span><?php echo esc_html($property_zip) ?></span>
                 </li>
             <?php endif; ?>

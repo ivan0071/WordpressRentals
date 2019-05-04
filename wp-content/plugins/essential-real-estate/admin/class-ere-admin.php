@@ -949,17 +949,33 @@ if (!class_exists('ERE_Admin')) {
                                     'fields' => array(
                                         array(
                                             'type' => 'row',
+                                            'col' => '4',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_street_name",
+                                                    'title' => esc_html__('Street Name', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_street_number",
+                                                    'title' => esc_html__('Street Number', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_zip",
+                                                    'title' => esc_html__('Postcode', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                ),
+                                            )
+                                        ),
+                                        array(
+                                            'type' => 'row',
                                             'col' => '6',
                                             'fields' => array(
                                                 array(
                                                     'id' => "{$meta_prefix}property_address",
                                                     'title' => esc_html__('Property Address', 'essential-real-estate'),
                                                     'desc' => esc_html__('Full Address', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                ),
-                                                array(
-                                                    'id' => "{$meta_prefix}property_zip",
-                                                    'title' => esc_html__('Zip', 'essential-real-estate'),
                                                     'type' => 'text',
                                                 ),
                                             )

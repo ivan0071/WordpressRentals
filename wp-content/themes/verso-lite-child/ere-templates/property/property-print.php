@@ -87,6 +87,8 @@ $property_bathrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_b
 $property_story = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_story']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_story'][0] : '';
 $property_pet = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_pet']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_pet'][0] : '';
 $property_country = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_country']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_country'][0] : '';
+$property_street_name = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_street_name']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_street_name'][0] : '';
+$property_street_number = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_street_number']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_street_number'][0] : '';
 $property_zip = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_zip']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_zip'][0] : '';
 //$property_year = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_year']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_year'][0] : '';
 //$property_garage_size = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_garage_size']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_garage_size'][0] : '';
@@ -282,13 +284,25 @@ $measurement_units = ere_get_measurement_units();
                             <span><?php echo join(', ', $property_neighborhood_arr); ?></span>
                         </li>
                     <?php endif;
+                    if (!empty($property_street_name)): ?>
+                    <li>
+                        <strong><?php esc_html_e('Street Name:', 'essential-real-estate'); ?></strong>
+                        <span><?php echo esc_html($property_street_name) ?></span>
+                    </li>
+                    <?php endif;
+                    if (!empty($property_street_number)): ?>
+                    <li>
+                        <strong><?php esc_html_e('Street Number:', 'essential-real-estate'); ?></strong>
+                        <span><?php echo esc_html($property_street_number) ?></span>
+                    </li>
+                    <?php endif;
                     if (!empty($property_zip)): ?>
-                        <li>
-                            <strong><?php esc_html_e('Postal code / ZIP:', 'essential-real-estate'); ?></strong>
-                            <span><?php echo esc_html($property_zip) ?></span>
-                        </li>
-                    <?php endif; ?>
-                </ul>
+                    <li>
+                        <strong><?php esc_html_e('Postcode:', 'essential-real-estate'); ?></strong>
+                        <span><?php echo esc_html($property_zip) ?></span>
+                    </li>
+                <?php endif; ?>
+            </ul>
             </div>
             <div class="property-block overview-block clearfix">
                 <h4 class="property-block-title"><?php esc_html_e('Overview', 'essential-real-estate'); ?></h4>

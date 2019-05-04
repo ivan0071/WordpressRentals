@@ -729,6 +729,13 @@ if (!class_exists('ERE_Property')) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_zip', sanitize_text_field($_POST['postal_code']));
                 }
 
+                if (isset($_POST['property_street_name'])) {
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_street_name', sanitize_text_field($_POST['property_street_name']));
+                }
+                if (isset($_POST['property_street_number'])) {
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_street_number', sanitize_text_field($_POST['property_street_number']));
+                }               
+
                 if (isset($_POST['private_note'])) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'private_note', sanitize_text_field($_POST['private_note']));
                 }

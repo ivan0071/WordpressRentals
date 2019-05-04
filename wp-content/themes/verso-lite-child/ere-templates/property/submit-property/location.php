@@ -96,8 +96,24 @@ wp_enqueue_script('select2_js');
         <?php if (!in_array("postal_code", $hide_property_fields)) { ?>
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label for="zip"><?php esc_html_e('Postal Code / Zip', 'essential-real-estate'); ?></label>
+                    <label for="zip"><?php esc_html_e('Postcode', 'essential-real-estate'); ?></label>
                     <input type="text" class="form-control" name="postal_code" id="zip">
+                </div>
+            </div>
+        <?php } ?>
+        <?php if (!in_array("property_street_name", $hide_property_fields)) { ?>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="property_street_name"><?php esc_html_e('Street Name', 'essential-real-estate'); ?></label>
+                    <input type="text" class="form-control" name="property_street_name" id="zip">
+                </div>
+            </div>
+        <?php } ?>
+        <?php if (!in_array("property_street_number", $hide_property_fields)) { ?>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="property_street_number"><?php esc_html_e('Street Number', 'essential-real-estate'); ?></label>
+                    <input type="text" class="form-control" name="property_street_number" id="zip">
                 </div>
             </div>
         <?php } ?>
