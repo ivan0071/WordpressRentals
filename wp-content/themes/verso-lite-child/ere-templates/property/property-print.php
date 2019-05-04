@@ -89,11 +89,12 @@ $property_pet = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_pet']) 
 $property_country = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_country']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_country'][0] : '';
 $property_street_name = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_street_name']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_street_name'][0] : '';
 $property_street_number = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_street_number']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_street_number'][0] : '';
+$property_city_name = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_city_name']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_city_name'][0] : '';
 $property_zip = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_zip']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_zip'][0] : '';
 //$property_year = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_year']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_year'][0] : '';
 //$property_garage_size = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_garage_size']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_garage_size'][0] : '';
 
-$property_neighborhood = get_the_terms($property_id, 'property-neighborhood');
+/*$property_neighborhood = get_the_terms($property_id, 'property-neighborhood');
 $property_neighborhood_arr = array();
 if ($property_neighborhood) {
     foreach ($property_neighborhood as $neighborhood_item) {
@@ -113,7 +114,7 @@ if ($property_state) {
     foreach ($property_state as $state_item) {
         $property_state_arr[] = $state_item->name;
     }
-}
+}*/
 $property_features = get_the_terms($property_id, 'property-feature');
 
 $property_size = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_size']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_size'][0] : '';
@@ -266,7 +267,7 @@ $measurement_units = ere_get_measurement_units();
                             <span><?php echo esc_html($property_country); ?></span>
                         </li>
                     <?php endif;
-                    if (count($property_state_arr) > 0): ?>
+                    /*if (count($property_state_arr) > 0): ?>
                         <li>
                             <strong><?php esc_html_e('Province / State:', 'essential-real-estate'); ?></strong>
                             <span><?php echo join(', ', $property_state_arr); ?></span>
@@ -283,7 +284,7 @@ $measurement_units = ere_get_measurement_units();
                             <strong><?php esc_html_e('Neighborhood:', 'essential-real-estate'); ?></strong>
                             <span><?php echo join(', ', $property_neighborhood_arr); ?></span>
                         </li>
-                    <?php endif;
+                    <?php endif;*/
                     if (!empty($property_street_name)): ?>
                     <li>
                         <strong><?php esc_html_e('Street Name:', 'essential-real-estate'); ?></strong>
@@ -300,6 +301,12 @@ $measurement_units = ere_get_measurement_units();
                     <li>
                         <strong><?php esc_html_e('Postcode:', 'essential-real-estate'); ?></strong>
                         <span><?php echo esc_html($property_zip) ?></span>
+                    </li>
+                    <?php endif;
+                    if (!empty($property_city_name)): ?>
+                    <li>
+                        <strong><?php esc_html_e('City:', 'essential-real-estate'); ?></strong>
+                        <span><?php echo esc_html($property_city_name) ?></span>
                     </li>
                 <?php endif; ?>
             </ul>

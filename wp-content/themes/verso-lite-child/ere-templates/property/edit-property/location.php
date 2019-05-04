@@ -22,7 +22,7 @@ wp_enqueue_script('select2_js');
     </div>
     <div class="property-fields property-location row">
         <?php if (!in_array("property_map_address", $hide_property_fields)) {?>
-        <div class="col-sm-4">
+        <div class="col-sm-12">
             <div class="form-group">
                 <label
                     for="geocomplete"><?php echo esc_html__('Address', 'essential-real-estate') . ere_required_field('property_map_address'); ?></label>
@@ -32,29 +32,7 @@ wp_enqueue_script('select2_js');
             </div>
         </div>
         <?php } ?>
-        <?php if (!in_array("country", $hide_property_fields)) {?>
-            <div class="col-sm-4 submit_country_field">
-                <div class="form-group ere-loading-ajax-wrap">
-                    <label for="country"><?php esc_html_e('Country', 'essential-real-estate'); ?></label>
-                    <?php if ($location_dropdowns == 1) { ?>
-                        <select name="property_country" id="country" class="ere-property-country-ajax form-control">
-                            <?php
-                            $countries = ere_get_selected_countries();
-                            foreach ($countries as $key => $country):
-                                echo '<option ' . selected($property_meta_data[ERE_METABOX_PREFIX . 'property_country'][0], $key, false) . ' value="' . $key . '">' . $country . '</option>';
-                            endforeach;
-                            ?>
-                        </select>
-                    <?php } else { ?>
-                        <input type="text" class="form-control" name="country"
-                               value="<?php echo ere_get_country_by_code($property_meta_data[ERE_METABOX_PREFIX . 'property_country'][0]); ?>"
-                               id="country">
-                        <input name="country_short" type="hidden"
-                               value="<?php echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_country'][0]); ?>">
-                    <?php } ?>
-                </div>
-            </div>
-        <?php } ?>
+        <?php /*
         <?php if (!in_array("state", $hide_property_fields)) {?>
             <div class="col-sm-4">
                 <div class="form-group ere-loading-ajax-wrap">
@@ -103,17 +81,7 @@ wp_enqueue_script('select2_js');
             </div>
         </div>
         <?php } ?>
-        <?php if (!in_array("postal_code", $hide_property_fields)) {?>
-        <div class="col-sm-4">
-            <div class="form-group">
-                <label for="zip"><?php esc_html_e('Postcode', 'essential-real-estate'); ?></label>
-                <input type="text" class="form-control" name="postal_code"
-                       value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_zip'][0])) {
-                           echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_zip'][0]);
-                       } ?>" id="zip">
-            </div>
-        </div>
-        <?php } ?>
+        */ ?>
         <?php if (!in_array("property_street_name", $hide_property_fields)) {?>
         <div class="col-sm-4">
             <div class="form-group">
@@ -135,6 +103,51 @@ wp_enqueue_script('select2_js');
                        } ?>" id="property_street_number">
             </div>
         </div>
+        <?php } ?>
+        <?php if (!in_array("postal_code", $hide_property_fields)) {?>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="zip"><?php esc_html_e('Postcode', 'essential-real-estate'); ?></label>
+                <input type="text" class="form-control" name="postal_code"
+                       value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_zip'][0])) {
+                           echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_zip'][0]);
+                       } ?>" id="zip">
+            </div>
+        </div>
+        <?php } ?>
+        <?php if (!in_array("property_city_name", $hide_property_fields)) {?>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="property_city_name"><?php esc_html_e('City', 'essential-real-estate'); ?></label>
+                <input type="text" class="form-control" name="property_city_name"
+                       value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_city_name'][0])) {
+                           echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_city_name'][0]);
+                       } ?>" id="property_city_name">
+            </div>
+        </div>
+        <?php } ?>
+        <?php if (!in_array("country", $hide_property_fields)) {?>
+            <div class="col-sm-6 submit_country_field">
+                <div class="form-group ere-loading-ajax-wrap">
+                    <label for="country"><?php esc_html_e('Country', 'essential-real-estate'); ?></label>
+                    <?php if ($location_dropdowns == 1) { ?>
+                        <select name="property_country" id="country" class="ere-property-country-ajax form-control">
+                            <?php
+                            $countries = ere_get_selected_countries();
+                            foreach ($countries as $key => $country):
+                                echo '<option ' . selected($property_meta_data[ERE_METABOX_PREFIX . 'property_country'][0], $key, false) . ' value="' . $key . '">' . $country . '</option>';
+                            endforeach;
+                            ?>
+                        </select>
+                    <?php } else { ?>
+                        <input type="text" class="form-control" name="country"
+                               value="<?php echo ere_get_country_by_code($property_meta_data[ERE_METABOX_PREFIX . 'property_country'][0]); ?>"
+                               id="country">
+                        <input name="country_short" type="hidden"
+                               value="<?php echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_country'][0]); ?>">
+                    <?php } ?>
+                </div>
+            </div>
         <?php } ?>
     </div>
 </div>

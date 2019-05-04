@@ -21,7 +21,7 @@ wp_enqueue_script('select2_js');
     </div>
     <div class="property-fields property-location row">
         <?php if (!in_array("property_map_address", $hide_property_fields)) { ?>
-            <div class="col-sm-4">
+            <div class="col-sm-12">
                 <div class="form-group">
                     <label
                         for="geocomplete"><?php echo esc_html__('Address', 'essential-real-estate') . ere_required_field('property_map_address'); ?></label>
@@ -31,26 +31,7 @@ wp_enqueue_script('select2_js');
                 </div>
             </div>
         <?php } ?>
-        <?php if (!in_array("country", $hide_property_fields)) { ?>
-            <div class="col-sm-4 submit_country_field">
-                <div class="form-group ere-loading-ajax-wrap">
-                    <label for="country"><?php esc_html_e('Country', 'essential-real-estate'); ?></label>
-                    <?php if ($location_dropdowns == 1) { ?>
-                        <select name="property_country" id="country" class="ere-property-country-ajax form-control">
-                            <?php
-                            $countries = ere_get_selected_countries();
-                            foreach ($countries as $key => $country):
-                                echo '<option ' . selected($default_country, $key, false) . ' value="' . $key . '">' . $country . '</option>';
-                            endforeach;
-                            ?>
-                        </select>
-                    <?php } else { ?>
-                        <input type="text" class="form-control" name="country" id="country">
-                        <input name="country_short" type="hidden" value="">
-                    <?php } ?>
-                </div>
-            </div>
-        <?php } ?>
+        <?php /*
         <?php if (!in_array("state", $hide_property_fields)) { ?>
             <div class="col-sm-4">
                 <div class="form-group ere-loading-ajax-wrap">
@@ -93,6 +74,23 @@ wp_enqueue_script('select2_js');
                 </div>
             </div>
         <?php } ?>
+        */ ?>
+        <?php if (!in_array("property_street_name", $hide_property_fields)) { ?>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="property_street_name"><?php esc_html_e('Street Name', 'essential-real-estate'); ?></label>
+                    <input type="text" class="form-control" name="property_street_name" id="property_street_name">
+                </div>
+            </div>
+        <?php } ?>
+        <?php if (!in_array("property_street_number", $hide_property_fields)) { ?>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="property_street_number"><?php esc_html_e('Street Number', 'essential-real-estate'); ?></label>
+                    <input type="text" class="form-control" name="property_street_number" id="property_street_number">
+                </div>
+            </div>
+        <?php } ?>
         <?php if (!in_array("postal_code", $hide_property_fields)) { ?>
             <div class="col-sm-4">
                 <div class="form-group">
@@ -101,19 +99,31 @@ wp_enqueue_script('select2_js');
                 </div>
             </div>
         <?php } ?>
-        <?php if (!in_array("property_street_name", $hide_property_fields)) { ?>
-            <div class="col-sm-4">
+        <?php if (!in_array("property_city_name", $hide_property_fields)) { ?>
+            <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="property_street_name"><?php esc_html_e('Street Name', 'essential-real-estate'); ?></label>
-                    <input type="text" class="form-control" name="property_street_name" id="zip">
+                    <label for="property_city_name"><?php esc_html_e('City', 'essential-real-estate'); ?></label>
+                    <input type="text" class="form-control" name="property_city_name" id="property_city_name">
                 </div>
             </div>
         <?php } ?>
-        <?php if (!in_array("property_street_number", $hide_property_fields)) { ?>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label for="property_street_number"><?php esc_html_e('Street Number', 'essential-real-estate'); ?></label>
-                    <input type="text" class="form-control" name="property_street_number" id="zip">
+        <?php if (!in_array("country", $hide_property_fields)) { ?>
+            <div class="col-sm-6 submit_country_field">
+                <div class="form-group ere-loading-ajax-wrap">
+                    <label for="country"><?php esc_html_e('Country', 'essential-real-estate'); ?></label>
+                    <?php if ($location_dropdowns == 1) { ?>
+                        <select name="property_country" id="country" class="ere-property-country-ajax form-control">
+                            <?php
+                            $countries = ere_get_selected_countries();
+                            foreach ($countries as $key => $country):
+                                echo '<option ' . selected($default_country, $key, false) . ' value="' . $key . '">' . $country . '</option>';
+                            endforeach;
+                            ?>
+                        </select>
+                    <?php } else { ?>
+                        <input type="text" class="form-control" name="country" id="country">
+                        <input name="country_short" type="hidden" value="">
+                    <?php } ?>
                 </div>
             </div>
         <?php } ?>

@@ -973,6 +973,11 @@ if (!class_exists('ERE_Admin')) {
                                             'col' => '6',
                                             'fields' => array(
                                                 array(
+                                                    'id' => "{$meta_prefix}property_city_name",
+                                                    'title' => esc_html__('City', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                ),
+                                                array(
                                                     'id' => "{$meta_prefix}property_address",
                                                     'title' => esc_html__('Property Address', 'essential-real-estate'),
                                                     'desc' => esc_html__('Full Address', 'essential-real-estate'),
@@ -1771,36 +1776,36 @@ if (!class_exists('ERE_Admin')) {
                     'slug' => apply_filters('ere_property_label_slug', 'property-label'),
                 ),
             ));
-            $taxonomies['property-state'] = apply_filters('ere_register_taxonomy_property_state', array(
-                'post_type' => 'property',
-                'hierarchical' => false,
-                'meta_box_cb' => array($this, 'taxonomy_select_meta_box'),
-                'label' => esc_html__('Province / State', 'essential-real-estate'),
-                'singular_name' => esc_html__('Province / State', 'essential-real-estate'),
-                'rewrite' => array(
-                    'slug' => apply_filters('ere_property_state_slug', 'property-state'),
-                ),
-            ));
-            $taxonomies['property-city'] = apply_filters('ere_register_taxonomy_property_city', array(
-                'post_type' => 'property',
-                'hierarchical' => false,
-                'meta_box_cb' => array($this, 'taxonomy_select_meta_box'),
-                'label' => esc_html__('City / Town', 'essential-real-estate'),
-                'singular_name' => esc_html__('City / Town', 'essential-real-estate'),
-                'rewrite' => array(
-                    'slug' => apply_filters('ere_property_city_slug', 'property-city'),
-                ),
-            ));
-            $taxonomies['property-neighborhood'] = apply_filters('ere_register_taxonomy_property_neighborhood', array(
-                'post_type' => 'property',
-                'hierarchical' => false,
-                'meta_box_cb' => array($this, 'taxonomy_select_meta_box'),
-                'label' => esc_html__('Neighborhood', 'essential-real-estate'),
-                'singular_name' => esc_html__('Neighborhood', 'essential-real-estate'),
-                'rewrite' => array(
-                    'slug' => apply_filters('ere_property_neighborhood_slug', 'property-neighborhood'),
-                ),
-            ));
+            // $taxonomies['property-state'] = apply_filters('ere_register_taxonomy_property_state', array(
+            //     'post_type' => 'property',
+            //     'hierarchical' => false,
+            //     'meta_box_cb' => array($this, 'taxonomy_select_meta_box'),
+            //     'label' => esc_html__('Province / State', 'essential-real-estate'),
+            //     'singular_name' => esc_html__('Province / State', 'essential-real-estate'),
+            //     'rewrite' => array(
+            //         'slug' => apply_filters('ere_property_state_slug', 'property-state'),
+            //     ),
+            // ));
+            // $taxonomies['property-city'] = apply_filters('ere_register_taxonomy_property_city', array(
+            //     'post_type' => 'property',
+            //     'hierarchical' => false,
+            //     'meta_box_cb' => array($this, 'taxonomy_select_meta_box'),
+            //     'label' => esc_html__('City / Town', 'essential-real-estate'),
+            //     'singular_name' => esc_html__('City / Town', 'essential-real-estate'),
+            //     'rewrite' => array(
+            //         'slug' => apply_filters('ere_property_city_slug', 'property-city'),
+            //     ),
+            // ));
+            // $taxonomies['property-neighborhood'] = apply_filters('ere_register_taxonomy_property_neighborhood', array(
+            //     'post_type' => 'property',
+            //     'hierarchical' => false,
+            //     'meta_box_cb' => array($this, 'taxonomy_select_meta_box'),
+            //     'label' => esc_html__('Neighborhood', 'essential-real-estate'),
+            //     'singular_name' => esc_html__('Neighborhood', 'essential-real-estate'),
+            //     'rewrite' => array(
+            //         'slug' => apply_filters('ere_property_neighborhood_slug', 'property-neighborhood'),
+            //     ),
+            // ));
             $taxonomies['agency'] = apply_filters('ere_register_taxonomy_property_agency', array(
                 'post_type' => 'agent',
                 'hierarchical' => true,
