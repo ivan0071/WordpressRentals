@@ -142,12 +142,12 @@ wp_enqueue_script('select2_js');
         </div>
         <div class="col-sm-3 xs-mg-top-30">
             <div class="form-group">
-                <label for="latitude"><?php esc_html_e('Google Maps latitude', 'essential-real-estate'); ?></label>
-                <input type="text" class="form-control" name="lat" id="latitude">
+                <label for="property_location_latitude"><?php esc_html_e('Latitude', 'essential-real-estate'); ?></label>
+                <input type="text" class="form-control" name="property_location_latitude" id="property_location_latitude">
             </div>
             <div class="form-group">
-                <label for="longitude"><?php esc_html_e('Google Maps longitude', 'essential-real-estate'); ?></label>
-                <input type="text" class="form-control" name="lng" id="longitude">
+                <label for="property_location_longitude"><?php esc_html_e('Longitude', 'essential-real-estate'); ?></label>
+                <input type="text" class="form-control" name="property_location_longitude" id="property_location_longitude">
             </div>
             <div class="form-group">
                 <input id="find" type="button" class="btn btn-primary btn-block" title="<?php esc_html_e('Place the pin the address above', 'essential-real-estate'); ?>"

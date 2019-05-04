@@ -989,6 +989,16 @@ if (!class_exists('ERE_Admin')) {
                                                 //     'desc' => esc_html__('Full Address', 'essential-real-estate'),
                                                 //     'type' => 'text',
                                                 // ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_location_latitude",
+                                                    'title' => esc_html__('Latitude', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_location_longitude",
+                                                    'title' => esc_html__('Longitude', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                ),
                                             )
                                         ),
                                         array(
