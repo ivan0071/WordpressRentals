@@ -20,17 +20,6 @@ wp_enqueue_script('select2_js');
         <h2><?php esc_html_e('Property Location', 'essential-real-estate'); ?></h2>
     </div>
     <div class="property-fields property-location row">
-        <?php if (!in_array("property_map_address", $hide_property_fields)) { ?>
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <label
-                        for="geocomplete"><?php echo esc_html__('Address', 'essential-real-estate') . ere_required_field('property_map_address'); ?></label>
-                    <input type="text" class="form-control" name="property_map_address" id="geocomplete"
-                           value=""
-                           placeholder="<?php esc_html_e('Enter property address', 'essential-real-estate'); ?>">
-                </div>
-            </div>
-        <?php } ?>
         <?php /*
         <?php if (!in_array("state", $hide_property_fields)) { ?>
             <div class="col-sm-4">
@@ -124,6 +113,17 @@ wp_enqueue_script('select2_js');
                         <input type="text" class="form-control" name="country" id="country">
                         <input name="country_short" type="hidden" value="">
                     <?php } ?>
+                </div>
+            </div>
+        <?php } ?>
+        <?php if (!in_array("property_map_address", $hide_property_fields)) { ?>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label
+                        for="geocomplete"><?php echo esc_html__('Address', 'essential-real-estate') . ere_required_field('property_map_address'); ?></label>
+                    <input type="text" class="form-control" name="property_map_address" id="geocomplete"
+                           value=""
+                           placeholder="<?php esc_html_e('Enter property address', 'essential-real-estate'); ?>">
                 </div>
             </div>
         <?php } ?>

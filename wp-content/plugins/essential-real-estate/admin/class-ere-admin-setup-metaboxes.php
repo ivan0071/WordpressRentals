@@ -578,6 +578,7 @@ if (!class_exists('ERE_Admin_Setup_Metaboxes')) {
             if (isset($_POST['ere']['ere_property_country'])) {
                 $country=$_POST['ere']['ere_property_country'];
                 update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_country', $country);
+                update_post_meta($post_id, ERE_METABOX_PREFIX . 'property_country_name', $country);
             }
             return true;
         }

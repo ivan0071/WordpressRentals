@@ -978,11 +978,17 @@ if (!class_exists('ERE_Admin')) {
                                                     'type' => 'text',
                                                 ),
                                                 array(
-                                                    'id' => "{$meta_prefix}property_address",
-                                                    'title' => esc_html__('Property Address', 'essential-real-estate'),
-                                                    'desc' => esc_html__('Full Address', 'essential-real-estate'),
-                                                    'type' => 'text',
+                                                    'id' => "{$meta_prefix}property_country_name",
+                                                    'title' => esc_html__('Country:', 'essential-real-estate'),
+                                                    'type' => 'select',
+                                                    'options' => ere_get_selected_countries()
                                                 ),
+                                                // array(
+                                                //     'id' => "{$meta_prefix}property_address",
+                                                //     'title' => esc_html__('Property Address', 'essential-real-estate'),
+                                                //     'desc' => esc_html__('Full Address', 'essential-real-estate'),
+                                                //     'type' => 'text',
+                                                // ),
                                             )
                                         ),
                                         array(

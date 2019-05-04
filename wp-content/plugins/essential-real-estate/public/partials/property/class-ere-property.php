@@ -722,8 +722,10 @@ if (!class_exists('ERE_Property')) {
                 }
                 if (isset($_POST['country_short'])) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_country', sanitize_text_field($_POST['country_short']));
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_country_name', sanitize_text_field($_POST['country_short']));
                 } elseif (isset($_POST['property_country'])) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_country', sanitize_text_field($_POST['property_country']));
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_country_name', sanitize_text_field($_POST['property_country']));
                 }
                 if (isset($_POST['postal_code'])) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_zip', sanitize_text_field($_POST['postal_code']));
