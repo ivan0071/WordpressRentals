@@ -1619,6 +1619,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 				'property-commer-land',
 				'property-commer-other',
 				'property-commer-rent-type',
+				'property-london-postcodes',
 			];
 			$taxonomy_order_num_selectlist = [
 				'property_resid_furnished_type_order_number',
@@ -1631,6 +1632,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 				'property_commer_land_order_number',
 				'property_commer_other_order_number',
 				'property_commer_rent_type_order_number',
+				'property_london_postcodes_order_number',
 			];
 
 			$key = array_search($taxonomy_name, $taxonomy_names_selectlist);

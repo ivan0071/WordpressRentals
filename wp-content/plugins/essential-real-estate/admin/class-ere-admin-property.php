@@ -84,6 +84,9 @@ if (!class_exists('ERE_Admin_Property')) {
                 case 'status':
                     echo ere_admin_taxonomy_terms($post->ID, 'property-status', 'property');
                     break;
+                case 'london-postcodes':
+                    echo ere_admin_taxonomy_terms($post->ID, 'property-london-postcodes', 'property');
+                    break;
                 case 'price':
                     $price = get_post_meta($post->ID, ERE_METABOX_PREFIX . 'property_price', true);
                     if (!empty($price)) {
@@ -361,6 +364,20 @@ if (!class_exists('ERE_Admin_Property')) {
         }
 
         /**
+         * Modify london postcodes slug
+         * @param $existing_slug
+         * @return string
+         */
+        public function modify_property_london_postcodes_slug($existing_slug)
+        {
+            $property_london_postcodes_url_slug = ere_get_option('property_london_postcodes_url_slug');
+            if ($property_london_postcodes_url_slug) {
+                return $property_london_postcodes_url_slug;
+            }
+            return $existing_slug;
+        }
+
+        /**
          * Modify property city slug
          * @param $existing_slug
          * @return string
@@ -512,7 +529,8 @@ if (!class_exists('ERE_Admin_Property')) {
                 $taxonomy_arr = array(
                     'property-status',/*'property-type',*/
                     'property-residential-type', 'property-resid-furnished-type', 'property-resid-rent-type',
-                    'property-commer-offices', 'property-commer-retail', 'property-commer-leisure', 'property-commer-industrial', 'property-commer-land', 'property-commer-other', 'property-commer-rent-type'
+                    'property-commer-offices', 'property-commer-retail', 'property-commer-leisure', 'property-commer-industrial', 'property-commer-land', 'property-commer-other', 'property-commer-rent-type',
+                    'property-london-postcodes'
                 );
                 foreach($taxonomy_arr as $taxonomy){
                     $selected      = isset($_GET[$taxonomy]) ? $_GET[$taxonomy] : '';
@@ -547,7 +565,8 @@ if (!class_exists('ERE_Admin_Property')) {
                 $taxonomy_arr = array(
                     'property-status', /*'property-type',*/
                     'property-residential-type', 'property-resid-furnished-type', 'property-resid-rent-type',
-                    'property-commer-offices', 'property-commer-retail', 'property-commer-leisure', 'property-commer-industrial', 'property-commer-land', 'property-commer-other', 'property-commer-rent-type'
+                    'property-commer-offices', 'property-commer-retail', 'property-commer-leisure', 'property-commer-industrial', 'property-commer-land', 'property-commer-other', 'property-commer-rent-type',
+                    'property-london-postcodes'
                 );
                 foreach($taxonomy_arr as $taxonomy) {
                     if (isset($q_vars[$taxonomy]) && is_numeric($q_vars[$taxonomy]) && $q_vars[$taxonomy] != 0) {
@@ -902,6 +921,38 @@ if (!class_exists('ERE_Admin_Property')) {
         }
         public function add_columns_property_commer_rent_type_sortable( $sortable ){
             //$sortable[ 'property_commer_rent_type_order_number' ] = 'property_commer_rent_type_order_number';
+            return $sortable;
+        }
+        //property_london_postcodes
+        public function add_columns_property_london_postcodes($columns){
+            $columns['cb'] = "<input type=\"checkbox\" />";
+            $columns['name'] = esc_html__('Name', 'essential-real-estate');
+            $columns['description'] = esc_html__('Description', 'essential-real-estate');
+            $columns['slug'] = esc_html__('Slug', 'essential-real-estate');
+            $columns['property_london_postcodes_order_number'] = esc_html__('Order', 'essential-real-estate');
+            $columns['posts'] = esc_html__('Count', 'essential-real-estate');
+            $new_columns = array();
+            $custom_order = array('cb','name','description', 'slug', 'property_london_postcodes_order_number','posts');
+            foreach ($custom_order as $colname){
+                $new_columns[$colname] = $columns[$colname];
+            }
+            return $new_columns;
+        }
+        public function add_columns_property_london_postcodes_content( $content, $column_name, $term_id ){
+            if( $column_name !== 'property_london_postcodes_order_number' ){
+                return $content;
+            }
+            $term_id = absint( $term_id );
+            $property_london_postcodes_tax = get_term_meta( $term_id, 'property_london_postcodes_order_number', true );
+            if ((!empty($property_london_postcodes_tax) && isset($property_london_postcodes_tax)) || 
+                (strval($property_london_postcodes_tax) == '0'))
+            {
+                $content .= esc_html( $property_london_postcodes_tax );
+            }
+            return $content;
+        }
+        public function add_columns_property_london_postcodes_sortable( $sortable ){
+            //$sortable[ 'property_london_postcodes_order_number' ] = 'property_london_postcodes_order_number';
             return $sortable;
         }
     }

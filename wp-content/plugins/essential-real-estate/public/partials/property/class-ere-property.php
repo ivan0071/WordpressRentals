@@ -590,6 +590,14 @@ if (!class_exists('ERE_Property')) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_commer_rent_type', $property_commer_rent_type->slug);
                 }
 
+                if (isset($_POST['property_london_postcodes'])) {
+                    $object_id = $_POST['property_london_postcodes'];
+                    wp_set_object_terms($property_id, intval($object_id), 'property-london-postcodes');
+
+                    $property_london_postcodes = get_term_by('id', intval($object_id), 'property-london-postcodes');
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_london_postcodes', $property_london_postcodes->slug);
+                }
+
                 if (isset($_POST['property_type'])) {
                     if($_POST['property_type'] != '-1')
                     {

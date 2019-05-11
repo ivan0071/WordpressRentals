@@ -9,6 +9,17 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 global $hide_property_fields;
+
+$paramtersDefault = array(
+    'orderby' => 'meta_value_num',
+    'order' => 'ASC',
+    'hide_empty' => false
+);
+
+$paramtersPropertyLondonPostcodes = $paramtersDefault;
+$paramtersPropertyLondonPostcodes['taxonomy'] = 'property-london-postcodes';
+$paramtersPropertyLondonPostcodes['meta_key'] = 'property_london_postcodes_order_number';
+
 $location_dropdowns = ere_get_option('location_dropdowns', 1);
 $default_country = ere_get_option('default_country', 'US');
 $default_city = ere_get_option('default_city', '');
@@ -85,6 +96,17 @@ wp_enqueue_script('select2_js');
                 <div class="form-group">
                     <label for="zip"><?php esc_html_e('Postcode', 'essential-real-estate'); ?></label>
                     <input type="text" class="form-control" name="postal_code" id="zip">
+                </div>
+            </div>
+        <?php } ?>
+        <?php if (!in_array("property_london_postcodes", $hide_property_fields)) {?>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="property_london_postcodes"><?php esc_html_e('London Postcodes', 'essential-real-estate');
+                        echo ere_required_field('property_london_postcodes'); ?></label>
+                    <select name="property_london_postcodes" id="property_london_postcodes" class="form-control">
+                        <?php ere_get_taxonomy('property-london-postcodes', false, false, $paramtersPropertyLondonPostcodes); ?>
+                    </select>
                 </div>
             </div>
         <?php } ?>

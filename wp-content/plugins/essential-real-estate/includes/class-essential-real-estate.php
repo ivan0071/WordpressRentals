@@ -207,6 +207,9 @@ if (!class_exists('Essential_Real_Estate')) {
             $this->loader->add_filter('manage_edit-property-commer-rent-type_columns', $admin_property,  'add_columns_property_commer_rent_type');
             $this->loader->add_filter('manage_property-commer-rent-type_custom_column', $admin_property,  'add_columns_property_commer_rent_type_content', 10, 3 );
             $this->loader->add_filter('manage_edit-property-commer-rent-type_sortable_columns',  $admin_property,  'add_columns_property_commer_rent_type_sortable' );
+            $this->loader->add_filter('manage_edit-property-london-postcodes_columns', $admin_property,  'add_columns_property_london_postcodes');
+            $this->loader->add_filter('manage_property-london-postcodes_custom_column', $admin_property,  'add_columns_property_london_postcodes_content', 10, 3 );
+            $this->loader->add_filter('manage_edit-property-london-postcodes_sortable_columns',  $admin_property,  'add_columns_property_london_postcodes_sortable' );
             // Filters to modify URL slugs
             $this->loader->add_filter('ere_property_slug', $admin_property, 'modify_property_slug');
             $this->loader->add_filter('ere_property_type_slug', $admin_property, 'modify_property_type_slug');
@@ -226,6 +229,7 @@ if (!class_exists('Essential_Real_Estate')) {
             $this->loader->add_filter('ere_property_commer_land_slug', $admin_property, 'modify_property_commer_land_slug');
             $this->loader->add_filter('ere_property_commer_other_slug', $admin_property, 'modify_property_commer_other_slug');
             $this->loader->add_filter('ere_property_commer_rent_type_slug', $admin_property, 'modify_property_commer_rent_type_slug');
+            $this->loader->add_filter('ere_property_london_postcodes_slug', $admin_property, 'modify_property_london_postcodes_slug');
             // Agent Post Type
             $admin_agent = new ERE_Admin_Agent();
             $this->loader->add_filter('ere_agent_slug', $admin_agent, 'modify_agent_slug');
