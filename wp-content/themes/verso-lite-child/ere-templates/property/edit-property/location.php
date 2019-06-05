@@ -178,8 +178,15 @@ wp_enqueue_script('select2_js');
     </div>
     <div class="property-fields property-location row">
         <div class="col-sm-9">
-            <div class="map_canvas" id="map" style="height: 300px">
-            </div>
+            <!-- <div class="map_canvas" id="map" style="height: 300px"></div> -->
+            <?php 
+                // $mapLat = 41.912732;
+                // $mapLng = 22.406012;
+                // $mapDefaultZoom = 15;
+            ?> 
+            <!--<iframe onload="initialize_map(); add_map_point(41.912732, 22.406012);">-->
+                <div class="map_canvas" id="map" style="height: 300px;"></div>
+            <!--</iframe>-->
         </div>
         <div class="col-sm-3 xs-mg-top-30">
             <div class="form-group">
@@ -197,10 +204,57 @@ wp_enqueue_script('select2_js');
                             } ?>">
             </div>
             <div class="form-group">
-                <input id="find" type="button" class="btn btn-primary btn-block" title="<?php esc_html_e('Place the pin the address above', 'essential-real-estate'); ?>" value="<?php esc_html_e('Pin address', 'essential-real-estate'); ?>">
+                <input id="find" type="button" class="btn btn-primary btn-block" 
+                    title="<?php esc_html_e('Place the pin the address above', 'essential-real-estate'); ?>" 
+                    value="<?php esc_html_e('Pin address', 'essential-real-estate'); ?>">
                 <a id="reset" href="#"
                    style="display:none;"><?php esc_html_e('Reset Marker', 'essential-real-estate'); ?></a>
             </div>
         </div>
     </div>
 </div>
+
+
+<script>
+/* OSM & OL example code provided by https://mediarealm.com.au/ */
+//     var map;
+//     var mapLat = 41.912732;
+// 	   var mapLng = 22.406012;
+//     var mapDefaultZoom = 15;    
+//     function initialize_map() {
+// console.log("initialize_map");
+//       map = new ol.Map({
+//         target: "map",
+//         layers: [
+//             new ol.layer.Tile({
+//                 source: new ol.source.OSM({
+//                       url: "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
+//                 })
+//             })
+//         ],
+//         view: new ol.View({
+//             center: ol.proj.fromLonLat([mapLng, mapLat]),
+//             zoom: mapDefaultZoom
+//         })
+//       });
+//     }
+//     function add_map_point(lat, lng) {
+// console.log("add_map_point");
+//       var vectorLayer = new ol.layer.Vector({
+//         source:new ol.source.Vector({
+//           features: [new ol.Feature({
+//                 geometry: new ol.geom.Point(ol.proj.transform([parseFloat(lng), parseFloat(lat)], 'EPSG:4326', 'EPSG:3857')),
+//             })]
+//         }),
+//         style: new ol.style.Style({
+//           image: new ol.style.Icon({
+//             anchor: [0.5, 0.5],
+//             anchorXUnits: "fraction",
+//             anchorYUnits: "fraction",
+//             src: "https://upload.wikimedia.org/wikipedia/commons/e/ec/RedDot.svg"
+//           })
+//         })
+//       });
+//       map.addLayer(vectorLayer); 
+//     }
+</script>
