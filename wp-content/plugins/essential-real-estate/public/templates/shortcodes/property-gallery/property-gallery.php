@@ -266,8 +266,9 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'property_gallery', ERE_PLUGIN_URL . 'publ
                             <?php
                             foreach ($property_type_arr as $type_item) {
                                 $type = get_term_by('slug', $type_item, 'property-type', 'OBJECT'); ?>
-                                <a class="<?php echo esc_attr($filter_item_class); ?>"
-                                   data-filter=".<?php echo esc_attr($type_item); ?>"><?php echo esc_attr($type->name) ?></a>
+                                <a class="<?php echo esc_attr($filter_item_class); ?>" data-filter=".<?php echo esc_attr($type_item); ?>">
+                                    <?php echo esc_attr($type['name']) ?>
+                                </a>
                                 <?php
                             }
                         } ?>

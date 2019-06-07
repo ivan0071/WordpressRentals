@@ -25,7 +25,7 @@ $filter_attributes[] = 'data-layout_style="' . $layout_style . '"';
 $filter_attributes[] = "data-property_type='" . $property_type . "'";
 $filter_attributes[] = "data-property_status='" . $property_status . "'";
 $filter_attributes[] = "data-property_feature='" . $property_feature . "'";
-$filter_attributes[] = "data-property_cities='" . $property_cities . "'";
+$filter_attributes[] = "data-property_cities='" . is_array($property_cities) ? (count($property_cities) > 0 ? $property_cities[0] : '') : $property_cities . "'";
 $filter_attributes[] = "data-property_state='" . $property_state . "'";
 $filter_attributes[] = "data-property_neighborhood='" . $property_neighborhood . "'";
 $filter_attributes[] = "data-property_label='" . $property_label . "'";

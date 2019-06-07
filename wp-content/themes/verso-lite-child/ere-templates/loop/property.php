@@ -210,8 +210,11 @@ if($property_featured)
                     <div class="property-type-list">
                         <i class="fa fa-tag"></i>
                         <?php foreach ($property_item_type as $type): ?>
-                            <a href="<?php echo esc_url(get_term_link($type->slug, 'property-type')); ?>"
-                               title="<?php echo esc_attr($type->name); ?>"><span><?php echo esc_html($type->name); ?> </span></a>
+                            <?php if (property_exists('type', 'slug') && property_exists('type', 'name')) { ?>
+                                <a href="<?php echo esc_url(get_term_link($type['slug'], 'property-type')); ?>" title="<?php echo esc_attr($type['name']); ?>">
+                                    <span><?php echo esc_html($type['name']); ?> </span>
+                                </a>
+                            <?php } ?>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>

@@ -3793,6 +3793,11 @@ function esc_url( $url, $protocols = null, $_context = 'display' ) {
 	if ( '' == $url )
 		return $url;
 
+	if ( is_wp_error( $url ) ) {
+		//var_dump($url->get_error_message());
+		return '';
+	}
+
 	$url = str_replace( ' ', '%20', $url );
 	$url = preg_replace('|[^a-z0-9-~+_.?#=!&;,/:%@$\|*\'()\[\]\\x80-\\xff]|i', '', $url);
 
