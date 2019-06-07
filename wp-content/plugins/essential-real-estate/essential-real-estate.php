@@ -111,11 +111,11 @@ if (!class_exists('GSF_SmartFramework')) {
 add_filter('gsf_google_map_api_url', 'ere_google_map_api_url', 1);
 function ere_google_map_api_url()
 {
-    $googlemap_ssl = ere_get_option('googlemap_ssl', 0);
-    $googlemap_api_key = ere_get_option('googlemap_api_key', 'AIzaSyBqmFdSPp4-iY_BG14j_eUeLwOn9Oj4a4Q');
-    if (esc_html($googlemap_ssl) == 1 || is_ssl()) {
-        return 'https://maps-api-ssl.google.com/maps/api/js?libraries=places&language=' . get_locale() . '&key=' . esc_html($googlemap_api_key);
-    } else {
-        return 'http://maps.googleapis.com/maps/api/js?libraries=places&language=' . get_locale() . '&key=' . esc_html($googlemap_api_key);
-    }
+    // $googlemap_ssl = ere_get_option('googlemap_ssl', 0);
+    // $googlemap_api_key = ere_get_option('googlemap_api_key', 'AIzaSyBqmFdSPp4-iY_BG14j_eUeLwOn9Oj4a4Q');
+    // if (esc_html($googlemap_ssl) == 1 || is_ssl()) {
+    //     return 'https://maps-api-ssl.google.com/maps/api/js?libraries=places&language=' . get_locale() . '&key=' . esc_html($googlemap_api_key);
+    // } else {
+    //     return 'http://maps.googleapis.com/maps/api/js?libraries=places&language=' . get_locale() . '&key=' . esc_html($googlemap_api_key);
+    // }
 }

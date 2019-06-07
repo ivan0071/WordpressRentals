@@ -1015,13 +1015,13 @@ if (!class_exists('ERE_Admin')) {
                                                 ),
                                             )
                                         ),
-                                        array(
-                                            'id' => "{$meta_prefix}property_location",
-                                            'title' => esc_html__('Property Location at Google Map', 'essential-real-estate'),
-                                            'desc' => esc_html__('Drag the google map marker to point your property location. You can also use the address field above to search for your property', 'essential-real-estate'),
-                                            'type' => 'map',
-                                            'address_field' => "{$meta_prefix}property_address",
-                                        ),
+                                        // array(
+                                        //     'id' => "{$meta_prefix}property_location",
+                                        //     'title' => esc_html__('Property Location at Google Map', 'essential-real-estate'),
+                                        //     'desc' => esc_html__('Drag the google map marker to point your property location. You can also use the address field above to search for your property', 'essential-real-estate'),
+                                        //     'type' => 'map',
+                                        //     'address_field' => "{$meta_prefix}property_address",
+                                        // ),
                                     )
                                 ),
                                 // array(
@@ -2320,17 +2320,17 @@ if (!class_exists('ERE_Admin')) {
                             ),
                         )
                     ),
-                    array(
-                        'type' => 'row',
-                        'col' => '12',
-                        'fields' => array(
-                            array(
-                                'id' => 'agency_map_address',
-                                'title' => esc_html__('Google Map Address', 'smart-framework'),
-                                'type' => 'map',
-                            ),
-                        )
-                    ),
+                    // array(
+                    //     'type' => 'row',
+                    //     'col' => '12',
+                    //     'fields' => array(
+                    //         array(
+                    //             'id' => 'agency_map_address',
+                    //             'title' => esc_html__('Google Map Address', 'smart-framework'),
+                    //             'type' => 'map',
+                    //         ),
+                    //     )
+                    // ),
                     array(
                         'type' => 'row',
                         'col' => '6',
@@ -2499,9 +2499,9 @@ if (!class_exists('ERE_Admin')) {
                         $this->print_option(),
                         $this->nearby_places_option(),
                         $this->walk_score_option(),
-                        $this->google_map_directions_option(),
+                        //$this->google_map_directions_option(),
                         $this->comments_reviews_option(),
-                        $this->google_map_option(),
+                        //$this->google_map_option(),
                         $this->captcha_option(),
                         $this->property_page_option(),
                         $this->agent_page_option(),
