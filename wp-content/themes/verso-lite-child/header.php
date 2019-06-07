@@ -11,8 +11,8 @@
          <meta name="viewport" content="width=device-width, initial-scale=1" >
          <link rel="profile" href="http://gmpg.org/xfn/11">
          
-         <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
-         <script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
+         <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+         <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 
          <?php if( is_singular() && pings_open( get_queried_object() ) ): ?>
            <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">

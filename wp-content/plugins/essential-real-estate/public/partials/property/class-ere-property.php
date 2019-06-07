@@ -713,15 +713,15 @@ if (!class_exists('ERE_Property')) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_author', $user_id);
                 }
 
-                if (isset($_POST['property_map_address'])) {
-                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_address', sanitize_text_field($_POST['property_map_address']));
+                if (isset($_POST['property_address'])) {
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_address', sanitize_text_field($_POST['property_address']));
                 }
 
                 if ((isset($_POST['lat']) && !empty($_POST['lat'])) && (isset($_POST['lng']) && !empty($_POST['lng']))) {
                     $lat = sanitize_text_field($_POST['lat']);
                     $lng = sanitize_text_field($_POST['lng']);
                     $lat_lng = $lat . ',' . $lng;
-                    $address = sanitize_text_field($_POST['property_map_address']);
+                    $address = sanitize_text_field($_POST['property_address']);
                     $arr_location = array(
                         'location' => $lat_lng,
                         'address' => $address

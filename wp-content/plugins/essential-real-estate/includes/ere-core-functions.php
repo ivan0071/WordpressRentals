@@ -703,7 +703,7 @@ if (!function_exists('ere_send_email')) {
 if (!function_exists('ere_required_field')) {
     function ere_required_field($field)
     {
-        $required_fields = ere_get_option('required_fields', array('property_title', /*'property_type',*/ 'property_price', 'property_map_address'));
+        $required_fields = ere_get_option('required_fields', array('property_title', /*'property_type',*/ 'property_price', 'property_address'));
         if (is_array($required_fields) && in_array($field, $required_fields)) {
             return '*';
         }

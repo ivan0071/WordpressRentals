@@ -949,7 +949,7 @@ if (!class_exists('ERE_Admin')) {
                                     'fields' => array(
                                         array(
                                             'type' => 'row',
-                                            'col' => '4',
+                                            'col' => '6',
                                             'fields' => array(
                                                 array(
                                                     'id' => "{$meta_prefix}property_street_name",
@@ -997,12 +997,23 @@ if (!class_exists('ERE_Admin')) {
                                                     'type' => 'select',
                                                     'options' => ere_get_selected_countries()
                                                 ),
-                                                // array(
-                                                //     'id' => "{$meta_prefix}property_address",
-                                                //     'title' => esc_html__('Property Address', 'essential-real-estate'),
-                                                //     'desc' => esc_html__('Full Address', 'essential-real-estate'),
-                                                //     'type' => 'text',
-                                                // ),
+                                            )
+                                        ),
+                                        // array(
+                                        //     'type' => 'row',
+                                        //     'col' => '12',
+                                        //     'fields' => array( 
+                                        //         array(
+                                        //             'id' => "{$meta_prefix}property_address",
+                                        //             'title' => esc_html__('Property Address', 'essential-real-estate'),
+                                        //             'type' => 'text',
+                                        //         ),
+                                        //     )
+                                        // ),
+                                        array(
+                                            'type' => 'row',
+                                            'col' => '6',
+                                            'fields' => array( 
                                                 array(
                                                     'id' => "{$meta_prefix}property_location_latitude",
                                                     'title' => esc_html__('Latitude', 'essential-real-estate'),
@@ -3562,7 +3573,7 @@ if (!class_exists('ERE_Admin')) {
                                         'property_image_360' => esc_html__('Image 360', 'essential-real-estate'),
                                         'additional_details' => esc_html__('Additional Details', 'essential-real-estate'),
                                         //Location
-                                        'property_map_address' => esc_html__('Map Address', 'essential-real-estate'),
+                                        'property_address' => esc_html__('Address', 'essential-real-estate'),
                                         'country' => esc_html__('Country', 'essential-real-estate'),
                                         'state' => esc_html__('Province / State', 'essential-real-estate'),
                                         'city' => esc_html__('City / Town', 'essential-real-estate'),
@@ -3618,7 +3629,7 @@ if (!class_exists('ERE_Admin')) {
                                         //'property_year' => esc_html__('Year Built', 'essential-real-estate'),
                                         'property_story' => esc_html__('Story/Floor Nr.', 'essential-real-estate'),
                                         'property_pet' => esc_html__('Pet Policy', 'essential-real-estate'),
-                                        'property_map_address' => esc_html__('Address', 'essential-real-estate'),
+                                        'property_address' => esc_html__('Address', 'essential-real-estate'),
                                     ),
                                     'value_inline' => false,
                                     'default' => array(
@@ -3636,7 +3647,7 @@ if (!class_exists('ERE_Admin')) {
                                         //'property_commer_other',
                                         //'property_commer_rent_type',
                                         'property_price',
-                                        'property_map_address',
+                                        'property_address',
                                     )
                                 ),
                             )

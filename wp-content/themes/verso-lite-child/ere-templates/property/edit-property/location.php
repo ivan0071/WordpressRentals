@@ -82,7 +82,7 @@ wp_enqueue_script('select2_js');
         <?php } ?>
         */ ?>
         <?php if (!in_array("property_street_name", $hide_property_fields)) {?>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
             <div class="form-group">
                 <label for="property_street_name"><?php esc_html_e('Street Name', 'essential-real-estate'); ?></label>
                 <input type="text" class="form-control" name="property_street_name"
@@ -93,7 +93,7 @@ wp_enqueue_script('select2_js');
         </div>
         <?php } ?>
         <?php if (!in_array("property_street_number", $hide_property_fields)) {?>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
             <div class="form-group">
                 <label for="property_street_number"><?php esc_html_e('Street Number', 'essential-real-estate'); ?></label>
                 <input type="text" class="form-control" name="property_street_number"
@@ -104,7 +104,7 @@ wp_enqueue_script('select2_js');
         </div>
         <?php } ?>
         <?php if (!in_array("postal_code", $hide_property_fields)) {?>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
             <div class="form-group">
                 <label for="zip"><?php esc_html_e('Postcode', 'essential-real-estate'); ?></label>
                 <input type="text" class="form-control" name="postal_code"
@@ -159,17 +159,18 @@ wp_enqueue_script('select2_js');
                 </div>
             </div>
         <?php } ?>
-        <?php if (!in_array("property_map_address", $hide_property_fields)) {?>
+        <?php /*
+        if (!in_array("property_address", $hide_property_fields)) {?>
         <div class="col-sm-12">
             <div class="form-group">
                 <label
-                    for="geocomplete"><?php echo esc_html__('Address', 'essential-real-estate') . ere_required_field('property_map_address'); ?></label>
-                <input type="text" class="form-control" name="property_map_address" id="geocomplete"
-                       value="<?php echo sanitize_text_field($property_map_address); ?>"
+                    for="geocomplete"><?php echo esc_html__('Address', 'essential-real-estate') . ere_required_field('property_address'); ?></label>
+                <input type="text" class="form-control" name="property_address" id="geocomplete"
+                       value="<?php echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_address'][0]); ?>"
                        placeholder="<?php esc_html_e('Enter property address', 'essential-real-estate'); ?>">
             </div>
         </div>
-        <?php } ?>
+        <?php } */ ?>
     </div>
 </div>
 <div class="property-fields-wrap">
@@ -180,31 +181,37 @@ wp_enqueue_script('select2_js');
         <div class="col-sm-9">
             <!-- <div class="map_canvas" id="map" style="height: 300px"></div> -->
             <?php 
-                // $mapLat = 41.912732;
-                // $mapLng = 22.406012;
-                // $mapDefaultZoom = 15;
+                $mapLat = 0;
+                $mapLng = 0;
+                if ((isset($property_meta_data[ERE_METABOX_PREFIX . 'property_location_latitude'][0])) && 
+                    (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_location_longitude'][0]))) 
+                {
+                    $mapLat = $property_meta_data[ERE_METABOX_PREFIX . 'property_location_latitude'][0];
+                    $mapLng = $property_meta_data[ERE_METABOX_PREFIX . 'property_location_longitude'][0];  
+                }
+                $mapDefaultZoom = 15;
             ?> 
             <!--<iframe onload="initialize_map(); add_map_point(41.912732, 22.406012);">-->
-                <div class="map_canvas" id="map" style="height: 300px;"></div>
+                <div class="map_canvas" id="map_edit_property_location" style="height: 300px;"></div>
             <!--</iframe>-->
         </div>
         <div class="col-sm-3 xs-mg-top-30">
             <div class="form-group">
                 <label for="property_location_latitude"><?php esc_html_e('Latitude', 'essential-real-estate'); ?></label>
-                <input type="text" class="form-control" name="property_location_latitude" id="property_location_latitude"
-                        value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_location_latitude'][0])) {
+                <input type="text" class="form-control latitude-edit-page" name="property_location_latitude" id="property_location_latitude"
+                       value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_location_latitude'][0])) {
                                 echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_location_latitude'][0]);
                             } ?>">
             </div>
             <div class="form-group">
                 <label for="property_location_longitude"><?php esc_html_e('Longitude', 'essential-real-estate'); ?></label>
-                <input type="text" class="form-control" name="property_location_longitude" id="property_location_longitude"
-                        value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_location_longitude'][0])) {
+                <input type="text" class="form-control longitude-edit-page" name="property_location_longitude" id="property_location_longitude"
+                       value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_location_longitude'][0])) {
                                 echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_location_longitude'][0]);
                             } ?>">
             </div>
             <div class="form-group">
-                <input id="find" type="button" class="btn btn-primary btn-block" 
+                <input id="pin-address-edit-page" type="button" class="btn btn-primary btn-block" 
                     title="<?php esc_html_e('Place the pin the address above', 'essential-real-estate'); ?>" 
                     value="<?php esc_html_e('Pin address', 'essential-real-estate'); ?>">
                 <a id="reset" href="#"
@@ -214,47 +221,68 @@ wp_enqueue_script('select2_js');
     </div>
 </div>
 
-
 <script>
-/* OSM & OL example code provided by https://mediarealm.com.au/ */
-//     var map;
-//     var mapLat = 41.912732;
-// 	   var mapLng = 22.406012;
-//     var mapDefaultZoom = 15;    
-//     function initialize_map() {
-// console.log("initialize_map");
-//       map = new ol.Map({
-//         target: "map",
-//         layers: [
-//             new ol.layer.Tile({
-//                 source: new ol.source.OSM({
-//                       url: "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
-//                 })
-//             })
-//         ],
-//         view: new ol.View({
-//             center: ol.proj.fromLonLat([mapLng, mapLat]),
-//             zoom: mapDefaultZoom
-//         })
-//       });
-//     }
-//     function add_map_point(lat, lng) {
-// console.log("add_map_point");
-//       var vectorLayer = new ol.layer.Vector({
-//         source:new ol.source.Vector({
-//           features: [new ol.Feature({
-//                 geometry: new ol.geom.Point(ol.proj.transform([parseFloat(lng), parseFloat(lat)], 'EPSG:4326', 'EPSG:3857')),
-//             })]
-//         }),
-//         style: new ol.style.Style({
-//           image: new ol.style.Icon({
-//             anchor: [0.5, 0.5],
-//             anchorXUnits: "fraction",
-//             anchorYUnits: "fraction",
-//             src: "https://upload.wikimedia.org/wikipedia/commons/e/ec/RedDot.svg"
-//           })
-//         })
-//       });
-//       map.addLayer(vectorLayer); 
-//     }
+    /* OSM & OL example code provided by https://mediarealm.com.au/ */
+    var map;
+    var markerLayer;
+    var mapLat = <?php echo $mapLat; ?>;
+	var mapLng = <?php echo $mapLng; ?>;
+    var mapDefaultZoom = <?php echo $mapDefaultZoom; ?>;
+    
+    function initialize_map(lat, lng) {
+        map = new ol.Map({
+            target: "map_edit_property_location",
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM({
+                      url: "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    })
+                })
+            ],
+            view: getView(lat, lng)
+        });
+    }
+    function getView(lat, lng) {
+        return new ol.View({
+            center: ol.proj.fromLonLat([lng, lat]),
+            zoom: mapDefaultZoom
+        });
+    }
+    function add_map_point(lat, lng) {
+        markerLayer = new ol.layer.Vector({
+            source:new ol.source.Vector({
+                features: [new ol.Feature({
+                    geometry: new ol.geom.Point(ol.proj.transform([parseFloat(lng), parseFloat(lat)], 'EPSG:4326', 'EPSG:3857')),
+                })]
+            }),
+            style: new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 0.5],
+                    anchorXUnits: "fraction",
+                    anchorYUnits: "fraction",
+                    src: "https://upload.wikimedia.org/wikipedia/commons/e/ec/RedDot.svg"
+                })
+            })
+        });
+        map.addLayer(markerLayer); 
+    }
+	function checkObject(elemId) {
+	    return (document.getElementById(elemId)) ? true : false;
+    }
+    setTimeout(() => {        
+        if (checkObject('map_edit_property_location') === true) {
+            initialize_map(mapLat, mapLng); 
+            add_map_point(mapLat, mapLng); 
+            //add_map_point(41.913697, 22.404655);
+            //add_map_point(41.913697, 22.404655);
+            //add_map_point(41.911430, 22.404247);
+        }
+    }, 0);
+    document.getElementById('pin-address-edit-page').onclick = function(){
+        let lat = parseFloat(document.getElementsByClassName('latitude-edit-page')[0].value);
+        let lng = parseFloat(document.getElementsByClassName('longitude-edit-page')[0].value);
+        map.removeLayer(markerLayer);
+        add_map_point(lat, lng);
+        map.setView(getView(lat, lng));
+    };
 </script>
