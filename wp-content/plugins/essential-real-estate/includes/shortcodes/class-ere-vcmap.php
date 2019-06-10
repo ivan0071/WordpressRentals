@@ -1734,6 +1734,12 @@ if (!class_exists('ERE_Vc_map')) {
                 )
             ));
             vc_map(array(
+                'name' => esc_html__('Home Categories', 'essential-real-estate'),
+                'base' => 'ere_home_categories',
+                'icon' => 'fa fa-user-plus',
+                'category' => esc_html__('ERE Shortcode', 'essential-real-estate')
+            ));
+            vc_map(array(
                 'name' => esc_html__('Login', 'essential-real-estate'),
                 'base' => 'ere_login',
                 'icon' => 'fa fa-user',

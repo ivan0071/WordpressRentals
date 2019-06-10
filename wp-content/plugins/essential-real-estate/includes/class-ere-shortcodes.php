@@ -40,6 +40,8 @@ class ERE_Shortcodes {
 			'ere_property_map'                    => __CLASS__ . '::property_map',
 			'ere_agent'                    => __CLASS__ . '::agent',
 			'ere_agency'                    => __CLASS__ . '::agency',
+			///
+			'ere_home_categories'                    => __CLASS__ . '::home_categories',
 		);
 		foreach ( $shortcodes as $shortcode => $function ) {
 			add_shortcode( apply_filters( "{$shortcode}_shortcode_tag", $shortcode ), $function );
@@ -608,6 +610,14 @@ class ERE_Shortcodes {
 	public static function agency( $atts ) {
 		return self::shortcode_wrapper( array( 'ERE_Shortcode_Agency', 'output' ), $atts );
 	}
+
+	/**
+	 * @param $atts
+	 * @return string
+	 */
+	public static function home_categories( $atts ) {
+		return self::shortcode_wrapper( array( 'ERE_Shortcode_Home_Categories', 'output' ), $atts );
+	}	
 
 	/**
 	 * Filter Ajax callback

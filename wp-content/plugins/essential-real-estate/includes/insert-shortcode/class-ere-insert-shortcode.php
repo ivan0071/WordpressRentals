@@ -1376,6 +1376,10 @@ if (!class_exists('ERE_Insert_Shortcode')) {
 					)
 				)
 			);
+			$ere_shortcodes['ere_home_categories'] = array(
+				'type' => 'custom',
+				'title' => esc_html__('Home Categories', 'essential-real-estate')
+			);
 			$ere_shortcodes['ere_login'] = array(
 				'type' => 'custom',
 				'title' => esc_html__('Login', 'essential-real-estate'),
