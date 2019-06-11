@@ -66,6 +66,7 @@ if (!class_exists('ERE_Public')) {
             wp_register_style(ERE_PLUGIN_PREFIX . 'property-slider', ERE_PLUGIN_URL . 'public/templates/shortcodes/property-slider/assets/css/property-slider' . $min_suffix . '.css', array(), ERE_PLUGIN_VER, 'all');
             wp_register_style(ERE_PLUGIN_PREFIX . 'property-type', ERE_PLUGIN_URL . 'public/templates/shortcodes/property-type/assets/css/property-type' . $min_suffix . '.css', array(), ERE_PLUGIN_VER, 'all');
             wp_register_style(ERE_PLUGIN_PREFIX . 'home-categories', ERE_PLUGIN_URL . 'public/templates/shortcodes/home-categories/assets/css/home-categories' . $min_suffix . '.css', array(), ERE_PLUGIN_VER, 'all');
+            wp_register_style(ERE_PLUGIN_PREFIX . 'featured-slider', ERE_PLUGIN_URL . 'public/templates/shortcodes/featured-slider/assets/css/featured-slider' . $min_suffix . '.css', array(), ERE_PLUGIN_VER, 'all');
 
             // Widget
             wp_register_style(ERE_PLUGIN_PREFIX . 'listing-property-taxonomy-widget', ERE_PLUGIN_URL . 'public/templates/widgets/listing-property-taxonomy/assets/css/listing-property-taxonomy' . $min_suffix . '.css', array(), ERE_PLUGIN_VER, 'all');

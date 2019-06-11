@@ -1380,6 +1380,152 @@ if (!class_exists('ERE_Insert_Shortcode')) {
 				'type' => 'custom',
 				'title' => esc_html__('Home Categories', 'essential-real-estate')
 			);
+			$ere_shortcodes['ere_featured_slider'] = array(
+				'type' => 'custom',
+				'title' => esc_html__('Agent', 'essential-real-estate'),
+				'attr' => array(
+					'agency' => $this->add_narrow_taxonomy('agency', esc_html__( 'Agency', 'essential-real-estate' )),
+					'layout_style' => array(
+						'type' => 'select',
+						'title' => esc_html__('Layout Style', 'essential-real-estate'),
+						'values' => array(
+							'agent-slider' => esc_html__('Carousel', 'essential-real-estate'),
+							'agent-grid' => esc_html__('Grid', 'essential-real-estate'),
+							'agent-list' => esc_html__('List', 'essential-real-estate')
+						),
+						'default' => 'agent-slider'
+					),
+					'item_amount' => array(
+						'type' => 'text',
+						'title' => esc_html__('Items Amount', 'essential-real-estate'),
+						'default' => '12'
+					),
+					'items' => array(
+						'type' => 'select',
+						'title' => esc_html__('Columns', 'essential-real-estate'),
+						'values' => array(
+							'1' => '1',
+							'2' => '2',
+							'3' => '3',
+							'4' => '4',
+							'5' => '5',
+							'6' => '6'
+						),
+						'default' => '4',
+						'required' => array( 'element' => 'layout_style', 'value' => array('agent-grid','agent-slider'))
+					),
+					'image_size' => array(
+						'type' => 'text',
+						'title' => esc_html__('Image Size', 'essential-real-estate'),
+						'desc' => esc_html__('Enter image size ("thumbnail" or "full"). Alternatively enter size in pixels (Example : 270x340 (Not Include Unit, Space)).', 'essential-real-estate'),
+						'default' => '270x340'
+					),
+					'show_paging' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Show Paging', 'essential-real-estate'),
+						'required' => array( 'element' => 'layout_style', 'value' => array('agent-grid', 'agent-list') )
+					),
+					'dots' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Show pagination control', 'essential-real-estate'),
+						'required' => array('element' => 'layout_style', 'value' => 'agent-slider')
+					),
+					'nav' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Show navigation control', 'essential-real-estate'),
+						'required' => array('element' => 'layout_style', 'value' => 'agent-slider'),
+						'default' => 'true'
+					),
+					'nav_position' => array(
+						'type' => 'select',
+						'title' => esc_html__('Navigation Position', 'essential-real-estate'),
+						'values' => array(
+							'center' => esc_html__('Center', 'essential-real-estate'),
+							'top-right' => esc_html__('Top Right', 'essential-real-estate')
+						),
+						'default' => 'center',
+						'required' => array('element' => 'nav', 'value' => 'true')
+					),
+					'autoplay' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Auto play', 'essential-real-estate'),
+						'required' => array('element' => 'layout_style', 'value' => 'agent-slider'),
+						'default' => 'false'
+					),
+					'autoplaytimeout' => array(
+						'type' => 'text',
+						'title' => esc_html__('Autoplay Timeout', 'essential-real-estate'),
+						'desc' => esc_html__('Autoplay interval timeout.', 'essential-real-estate'),
+						'default' => 1000,
+						'required' => array('element' => 'autoplay', 'value' => 'true')
+					),
+					'items_md' => array(
+						'type' => 'select',
+						'title' => esc_html__('Items Desktop Small', 'essential-real-estate'),
+						'desc' => esc_html__('Browser Width < 1199', 'essential-real-estate'),
+						'values' => array(
+							'1' => '1',
+							'2' => '2',
+							'3' => '3',
+							'4' => '4',
+							'5' => '5',
+							'6' => '6',
+						),
+						'default' => '3',
+						'required' => array( 'element' => 'layout_style', 'value' => array('agent-grid','agent-slider'))
+					),
+					'items_sm' => array(
+						'type' => 'select',
+						'title' => esc_html__('Items Tablet', 'essential-real-estate'),
+						'desc' => esc_html__('Browser Width < 992', 'essential-real-estate'),
+						'values' => array(
+							'1' => '1',
+							'2' => '2',
+							'3' => '3',
+							'4' => '4',
+							'5' => '5',
+							'6' => '6',
+						),
+						'default' => '2',
+						'required' => array( 'element' => 'layout_style', 'value' => array('agent-grid','agent-slider'))
+					),
+					'items_xs' => array(
+						'type' => 'select',
+						'title' => esc_html__('Items Tablet Small', 'essential-real-estate'),
+						'desc' => esc_html__('Browser Width < 768', 'essential-real-estate'),
+						'values' => array(
+							'1' => '1',
+							'2' => '2',
+							'3' => '3',
+							'4' => '4',
+							'5' => '5',
+							'6' => '6',
+						),
+						'default' => '2',
+						'required' => array( 'element' => 'layout_style', 'value' => array('agent-grid','agent-slider'))
+					),
+					'items_mb' => array(
+						'type' => 'select',
+						'title' => esc_html__('Items Mobile', 'essential-real-estate'),
+						'desc' => esc_html__('Browser Width < 480', 'essential-real-estate'),
+						'values' => array(
+							'1' => '1',
+							'2' => '2',
+							'3' => '3',
+							'4' => '4',
+							'5' => '5',
+							'6' => '6',
+						),
+						'default' => '1',
+						'required' => array( 'element' => 'layout_style', 'value' => array('agent-grid','agent-slider'))
+					),
+					'el_class' => array(
+						'type' => 'text',
+						'title' => esc_html__('Extra class name', 'essential-real-estate'),
+						'desc' => esc_html__('Style particular content element differently - add a class name and refer to it in custom CSS.', 'essential-real-estate'),
+					)
+				)
+			);
 			$ere_shortcodes['ere_login'] = array(
 				'type' => 'custom',
 				'title' => esc_html__('Login', 'essential-real-estate'),
