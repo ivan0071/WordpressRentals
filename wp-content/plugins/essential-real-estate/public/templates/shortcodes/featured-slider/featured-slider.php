@@ -12,7 +12,7 @@ extract(shortcode_atts(array(
 	'agency'        => '',
 	'layout_style'    => 'agent-slider',
 	'item_amount'     => '12',
-	'items'           => '4',
+	'items'           => '3',
 	'image_size'      => '270x340',
 	'show_paging'     => '',
 	'dots'            => '',
@@ -79,30 +79,71 @@ if ($layout_style == 'agent-grid') {
 }
 $posts_per_page = $item_amount ? $item_amount : -1;
 
+// $args = array(
+// 	'post_type'      => 'agent',
+// 	'paged'          => $paged,
+// 	'posts_per_page' => $posts_per_page,
+// 	'orderby'   => array(
+// 		'menu_order'=>'ASC',
+// 		'date' =>'DESC',
+// 	),
+// 	'post_status'    => 'publish',
+// 	'post__not_in'   => array($post_not_in)
+// );
+
+// if ($agency != '') {
+// 	$args['tax_query'] = array(
+// 		array(
+// 			'taxonomy' => 'agency',
+// 			'field'    => 'slug',
+// 			'terms'    => explode(',', $agency),
+// 			'operator' => 'IN'
+// 		)
+// 	);
+// }
+
+// $data = new WP_Query($args);
+// wp_reset_postdata();
+
+
+
+// $args = array(
+// 	'post_type' => 'property',
+// 	'post_status' => 'publish',
+// 	'meta_query' => array(
+// 		'relation' => 'OR',
+// 		array(
+// 			'key' => ERE_METABOX_PREFIX . 'property_agent',
+// 			'value' => explode(',', $agent_id),
+// 			'compare' => 'IN'
+// 		),
+// 		array(
+// 			'key' => ERE_METABOX_PREFIX . 'property_author',
+// 			'value' => explode(',', $user_id),
+// 			'compare' => 'IN'
+// 		)
+// 	)
+// );
+// $properties = new WP_Query($args);
+//var_dump($properties->found_posts);
+
+
 $args = array(
-	'post_type'      => 'agent',
-	'paged'          => $paged,
-	'posts_per_page' => $posts_per_page,
-	'orderby'   => array(
-		'menu_order'=>'ASC',
-		'date' =>'DESC',
-	),
-	'post_status'    => 'publish',
-	'post__not_in'   => array($post_not_in)
+    'posts_per_page'    => -1,
+    'orderby'           => 'post_date',
+    'order'             => 'DESC',
+	'post_status'      	=> 'publish',
+	'post_type'      	=> 'property',
+    'meta_query' => array(
+        array(
+            'key'     => 'real_estate_property_featured',
+            'value'   => '1',
+            'compare' => '=',
+        ),
+    ),
 );
-
-if ($agency != '') {
-	$args['tax_query'] = array(
-		array(
-			'taxonomy' => 'agency',
-			'field'    => 'slug',
-			'terms'    => explode(',', $agency),
-			'operator' => 'IN'
-		)
-	);
-}
-
-$data = new WP_Query($args);
+$featured_posts = new WP_Query($args);
+//var_dump($featured_posts);
 
 $min_suffix = ere_get_option('enable_min_css', 0) == 1 ? '.min' : '';
 wp_print_styles( ERE_PLUGIN_PREFIX . 'featured-slider');
@@ -113,7 +154,7 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'featured-slider', ERE_PLUGIN_URL . 'publi
 
 ?>
 	<div class="ere-agent-wrap">
-		<?php if ($data->have_posts()): ?>
+		<?php if ($featured_posts->have_posts()): ?>
 			<div class="<?php echo join(' ', $wrapper_classes) ?>" <?php echo implode(' ', $wrapper_attributes); ?>>
 				<?php
 				$no_avatar_src= ERE_PLUGIN_URL . 'public/assets/images/profile-avatar.png';
@@ -141,30 +182,32 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'featured-slider', ERE_PLUGIN_URL . 'publi
 						}
 					}
 				}
-				while ($data->have_posts()): $data->the_post();
+				while ($featured_posts->have_posts()): $featured_posts->the_post();
 					$agent_id = get_the_ID();
 					$agent_name = get_the_title();
 					$agent_link = get_the_permalink();
 
-					$agent_post_meta_data = get_post_custom($agent_id);
+					$property_post_meta_data = get_post_custom($agent_id);
 
-					$agent_position = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_position']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_position'][0] : '';
-					$agent_description = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_description']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_description'][0] : '';
-					$email = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_email']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_email'][0] : '';
-					$agent_facebook_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_facebook_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_facebook_url'][0] : '';
-					$agent_twitter_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_twitter_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_twitter_url'][0] : '';
-					$agent_googleplus_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_googleplus_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_googleplus_url'][0] : '';
-					$agent_linkedin_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_linkedin_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_linkedin_url'][0] : '';
-					$agent_pinterest_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_pinterest_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_pinterest_url'][0] : '';
-					$agent_instagram_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_instagram_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_instagram_url'][0] : '';
-					$agent_skype = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_skype']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_skype'][0] : '';
-					$agent_youtube_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_youtube_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_youtube_url'][0] : '';
-					$agent_vimeo_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_vimeo_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_vimeo_url'][0] : '';
-					$agent_user_id = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_user_id']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_user_id'][0] : '';
+					$agent_position = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_position']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_position'][0] : '';
+					$agent_description = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_description']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_description'][0] : '';
+					$email = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_email']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_email'][0] : '';
+					$agent_facebook_url = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_facebook_url']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_facebook_url'][0] : '';
+					$agent_twitter_url = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_twitter_url']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_twitter_url'][0] : '';
+					$agent_googleplus_url = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_googleplus_url']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_googleplus_url'][0] : '';
+					$agent_linkedin_url = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_linkedin_url']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_linkedin_url'][0] : '';
+					$agent_pinterest_url = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_pinterest_url']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_pinterest_url'][0] : '';
+					$agent_instagram_url = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_instagram_url']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_instagram_url'][0] : '';
+					$agent_skype = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_skype']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_skype'][0] : '';
+					$agent_youtube_url = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_youtube_url']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_youtube_url'][0] : '';
+					$agent_vimeo_url = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_vimeo_url']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_vimeo_url'][0] : '';
+					$agent_user_id = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_user_id']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_user_id'][0] : '';
 					$user = get_user_by('id', $agent_user_id);
 					if (empty($user)) {
 						$agent_user_id = 0;
 					}
+					$property_bedrooms = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms'][0] : '0';
+                    $property_bathrooms = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms'][0] : '0';
 					$avatar_id = get_post_thumbnail_id($agent_id);
 					$avatar_src = $default_avatar_src = '';
 					$item_class = '';
@@ -206,11 +249,45 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'featured-slider', ERE_PLUGIN_URL . 'publi
 															   href="<?php echo esc_url($agent_link) ?>"><?php echo esc_html($agent_name) ?></a>
 									</h2>
 								<?php endif; ?>
-								<span><?php
+
+								<?php if (!empty($property_bedrooms)): ?>
+									<div class="property-bedrooms">
+										<div class="property-info-item-inner">
+											<span class="fa fa-hotel"></span>
+
+											<div class="content-property-info">
+												<p class="property-info-value"><?php echo esc_html($property_bedrooms) ?></p>
+
+												<p class="property-info-title"><?php
+													echo ere_get_number_text($property_bedrooms, esc_html__( 'Bedrooms', 'essential-real-estate' ), esc_html__( 'Bedroom', 'essential-real-estate' ));
+													?></p>
+											</div>
+										</div>
+									</div>
+								<?php endif; ?>
+								<?php if (!empty($property_bathrooms)): ?>
+									<div class="property-bathrooms">
+										<div class="property-info-item-inner">
+											<span class="fa fa-bath"></span>
+
+											<div class="content-property-info">
+												<p class="property-info-value"><?php echo esc_html($property_bathrooms) ?></p>
+
+												<p class="property-info-title"><?php
+													echo ere_get_number_text($property_bathrooms, esc_html__( 'Bathrooms', 'essential-real-estate' ), esc_html__( 'Bathroom', 'essential-real-estate' ));
+													?></p>
+											</div>
+										</div>
+									</div>
+								<?php endif; ?>
+
+								<!--
+								<span><?php /*
 									$ere_property = new ERE_Property();
 									$total_property = $ere_property->get_total_properties_by_user($agent_id, $agent_user_id);
 									printf( _n( '%s property', '%s properties', $total_property, 'essential-real-estate' ), ere_get_format_number($total_property ));
-									?></span>
+									*/ ?></span>
+								-->
 								<?php if (!empty($agent_description) && ($layout_style == 'agent-list')): ?>
 									<p><?php echo esc_html($agent_description) ?></p>
 								<?php endif; ?>
@@ -282,7 +359,7 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'featured-slider', ERE_PLUGIN_URL . 'publi
 						 data-items="<?php echo esc_attr($items); ?>"
 						 data-show-paging="<?php echo esc_attr($show_paging); ?>"
 						 data-post-not-in="<?php echo esc_attr($post_not_in); ?>">
-						<?php $max_num_pages = $data->max_num_pages;
+						<?php $max_num_pages = $featured_posts->max_num_pages;
 						set_query_var('paged', $paged);
 						ere_get_template('global/pagination.php', array('max_num_pages' => $max_num_pages));
 						?>
