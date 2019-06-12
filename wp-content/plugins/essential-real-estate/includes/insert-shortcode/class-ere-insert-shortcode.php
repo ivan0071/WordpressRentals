@@ -1526,6 +1526,105 @@ if (!class_exists('ERE_Insert_Shortcode')) {
 					)
 				)
 			);
+			$ere_shortcodes['ere_home_big_slider'] = array(
+				'type' => 'custom',
+				'title' => esc_html__('Property Featured', 'essential-real-estate'),
+				'attr' => array(
+					'layout_style' => array(
+						'type' => 'select',
+						'title' => esc_html__('Layout Style', 'essential-real-estate'),
+						'values' => array(
+							'property-list-two-columns' => esc_html__('List Two Columns', 'essential-real-estate'),
+							'property-cities-filter' => esc_html__('Cities Filter', 'essential-real-estate'),
+							'property-single-carousel' => esc_html__('Single Carousel', 'essential-real-estate'),
+							'property-sync-carousel' => esc_html__('Sync Carousel', 'essential-real-estate')
+						),
+						'default' => 'property-list-two-columns',
+						'desc' => esc_html__('Select Layout Style.', 'essential-real-estate')
+					),
+					'color_scheme' => array(
+						'type' => 'select',
+						'title' => esc_html__('Color Scheme', 'essential-real-estate'),
+						'values' => array(
+							'color-dark' => esc_html__('Dark', 'essential-real-estate'),
+							'color-light' => esc_html__('Light', 'essential-real-estate')
+						),
+						'default' => 'color-dark'
+					),
+					'item_amount' => array(
+						'type' => 'text',
+						'title' => esc_html__('Items Amount', 'essential-real-estate'),
+						'default' => '6'
+					),
+					'image_size1' => array(
+						'type' => 'text',
+						'title' => esc_html__('Image Size', 'essential-real-estate'),
+						'desc' => esc_html__('Enter image size ("thumbnail" or "full"). Alternatively enter size in pixels (Example: 240x180 (Not Include Unit, Space)).', 'essential-real-estate'),
+						'default' => '240x180',
+						'required' => array('element' => 'layout_style', 'value' => array('property-list-two-columns'))
+					),
+					'image_size2' => array(
+						'type' => 'text',
+						'title' => esc_html__('Image Size', 'essential-real-estate'),
+						'desc' => esc_html__('Enter image size ("thumbnail" or "full"). Alternatively enter size in pixels (Example: 835x320 (Not Include Unit, Space)).', 'essential-real-estate'),
+						'default' => '835x320',
+						'required' => array('element' => 'layout_style', 'value' => array('property-cities-filter'))
+					),
+					'image_size3' => array(
+						'type' => 'text',
+						'title' => esc_html__('Image Size', 'essential-real-estate'),
+						'desc' => esc_html__('Enter image size ("thumbnail" or "full"). Alternatively enter size in pixels (Example: 570x320 (Not Include Unit, Space)).', 'essential-real-estate'),
+						'default' => '570x320',
+						'required' => array('element' => 'layout_style', 'value' => array('property-single-carousel'))
+					),
+					'image_size4' => array(
+						'type' => 'text',
+						'title' => esc_html__('Image Size', 'essential-real-estate'),
+						'desc' => esc_html__('Enter image size ("thumbnail" or "full"). Alternatively enter size in pixels (Example: 945x605 (Not Include Unit, Space)).', 'essential-real-estate'),
+						'default' => '945x605',
+						'required' => array('element' => 'layout_style', 'value' => array('property-sync-carousel'))
+					),
+					'include_heading' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Include title', 'essential-real-estate')
+					),
+					'heading_title' => array(
+						'type' => 'text',
+						'title' => esc_html__('Title', 'essential-real-estate'),
+						'value' => '',
+						'required' => array('element' => 'include_heading', 'value' => 'true')
+					),
+					'heading_sub_title' => array(
+						'type' => 'text',
+						'title' => esc_html__('Sub Title', 'essential-real-estate'),
+						'value' => '',
+						'required' => array('element' => 'include_heading', 'value' => 'true')
+					),
+					'heading_text_align' => array(
+						'type' => 'select',
+						'title' => esc_html__('Text Align', 'essential-real-estate'),
+						'desc' => esc_html__('Select title alignment.', 'essential-real-estate'),
+						'values' => array(
+							'text-left' => esc_html__('Left', 'essential-real-estate'),
+							'text-center' => esc_html__('Center', 'essential-real-estate'),
+							'text-right' => esc_html__('Right', 'essential-real-estate'),
+						),
+						'required' => array('element' => 'include_heading', 'value' => 'true')
+					),
+					//'property_type' =>$this-> add_narrow_taxonomy('property-type', esc_html__( 'Type', 'essential-real-estate')),
+					'property_status' =>$this-> add_narrow_taxonomy('property-status', esc_html__( 'Status', 'essential-real-estate')),
+					'property_feature' => $this->add_narrow_taxonomy('property-feature', esc_html__( 'Feature', 'essential-real-estate')),
+					'property_city' => $this->add_narrow_taxonomy('property-city', esc_html__( 'City / Town', 'essential-real-estate')),
+					'property_state' => $this->add_narrow_taxonomy('property-state', esc_html__( 'Province / State', 'essential-real-estate')),
+					'property_neighborhood' =>$this-> add_narrow_taxonomy('property-neighborhood', esc_html__( 'Neighborhood', 'essential-real-estate')),
+					'property_label' => $this->add_narrow_taxonomy('property-label', esc_html__( 'Label', 'essential-real-estate')),
+					'el_class' => array(
+						'type' => 'text',
+						'title' => esc_html__('Extra class name', 'essential-real-estate'),
+						'desc' => esc_html__('Style particular content element differently - add a class name and refer to it in custom CSS.', 'essential-real-estate'),
+					)
+				)
+			);
 			$ere_shortcodes['ere_login'] = array(
 				'type' => 'custom',
 				'title' => esc_html__('Login', 'essential-real-estate'),
