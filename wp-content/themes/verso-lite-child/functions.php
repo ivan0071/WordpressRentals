@@ -19,7 +19,7 @@ function my_theme_enqueue_styles() {
 
 
 /* Add custom field to attachment */
-function ic_image_attachment_add_custom_fields($form_fields, $post) {
+function homepage_flag_image_attachment_add_custom_fields($form_fields, $post) {
 	$form_fields["home_page_flag"] = array(
 		"label" => __("Show on home page"),
 		"input" => "text",
@@ -28,10 +28,10 @@ function ic_image_attachment_add_custom_fields($form_fields, $post) {
 	);
 	return $form_fields;
 }
-add_filter("attachment_fields_to_edit", "ic_image_attachment_add_custom_fields", null, 2);
+add_filter("attachment_fields_to_edit", "homepage_flag_image_attachment_add_custom_fields", null, 2);
 
 /* Save custom field value */
-function ic_image_attachment_save_custom_fields($post, $attachment) {
+function homepage_flag_image_attachment_save_custom_fields($post, $attachment) {
 	if(isset($attachment['home_page_flag'])) {
 		update_post_meta($post['ID'], 'home_page_flag', $attachment['home_page_flag']);
 	} else {
@@ -39,15 +39,15 @@ function ic_image_attachment_save_custom_fields($post, $attachment) {
 	}
 	return $post;
 }
-add_filter("attachment_fields_to_save", "ic_image_attachment_save_custom_fields", null , 2);
+add_filter("attachment_fields_to_save", "homepage_flag_image_attachment_save_custom_fields", null , 2);
 
-// function ic_image_attachment_columns($columns) {
+// function homepage_flag_image_attachment_columns($columns) {
 // 	$columns['home_page_flag'] = __("Homepage Flag");
 // 	return $columns;
 // }
-// add_filter("manage_media_columns", "ic_image_attachment_columns", null, 2);
+// add_filter("manage_media_columns", "homepage_flag_image_attachment_columns", null, 2);
  
-// function ic_image_attachment_show_column($name) {
+// function homepage_flag_image_attachment_show_column($name) {
 // 	global $post;
 // 	switch ($name) {
 // 		case 'home_page_flag':
@@ -56,5 +56,53 @@ add_filter("attachment_fields_to_save", "ic_image_attachment_save_custom_fields"
 // 			break;
 // 	}
 // }
-// add_action('manage_media_custom_column', 'ic_image_attachment_show_column', null, 2);
+// add_action('manage_media_custom_column', 'homepage_flag_image_attachment_show_column', null, 2);
+
+/* Add custom field to attachment */
+function title_image_attachment_add_custom_fields($form_fields, $post) {
+	$form_fields["home_page_title"] = array(
+		"label" => __("Title over the image in the home page"),
+		"input" => "textarea",
+		"value" => (get_post_meta($post->ID, "home_page_title", true)) ? (get_post_meta($post->ID, "home_page_title", true)) : '',
+		//"helps" => __("Show on home page."),
+	);
+	return $form_fields;
+}
+add_filter("attachment_fields_to_edit", "title_image_attachment_add_custom_fields", null, 2);
+
+/* Save custom field value */
+function title_image_attachment_save_custom_fields($post, $attachment) {
+	if(isset($attachment['home_page_title'])) {
+		update_post_meta($post['ID'], 'home_page_title', $attachment['home_page_title']);
+	} else {
+		delete_post_meta($post['ID'], 'home_page_title');
+	}
+	return $post;
+}
+add_filter("attachment_fields_to_save", "title_image_attachment_save_custom_fields", null , 2);
+
+
+
+/* Add custom field to attachment */
+function content_image_attachment_add_custom_fields($form_fields, $post) {
+	$form_fields["home_page_content"] = array(
+		"label" => __("Content over the image in the home page"),
+		"input" => "textarea",
+		"value" => (get_post_meta($post->ID, "home_page_content", true)) ? (get_post_meta($post->ID, "home_page_content", true)) : '',
+		//"helps" => __("Show on home page."),
+	);
+	return $form_fields;
+}
+add_filter("attachment_fields_to_edit", "content_image_attachment_add_custom_fields", null, 2);
+
+/* Save custom field value */
+function content_image_attachment_save_custom_fields($post, $attachment) {
+	if(isset($attachment['home_page_content'])) {
+		update_post_meta($post['ID'], 'home_page_content', $attachment['home_page_content']);
+	} else {
+		delete_post_meta($post['ID'], 'home_page_content');
+	}
+	return $post;
+}
+add_filter("attachment_fields_to_save", "content_image_attachment_save_custom_fields", null , 2);
 ?>

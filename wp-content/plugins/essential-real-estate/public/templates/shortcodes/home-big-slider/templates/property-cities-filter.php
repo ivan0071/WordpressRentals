@@ -164,6 +164,8 @@ $property_content_attributes[] = 'data-layout="filter"';
                     $property_size = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_size']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_size'][0] : '';
                     $property_bedrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms'][0] : '0';
                     $property_bathrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms'][0] : '0';
+                    $attachment_title = isset($property_meta_data['home_page_title']) ? $property_meta_data['home_page_title'][0] : '';
+                    $attachment_content = isset($property_meta_data['home_page_content']) ? $property_meta_data['home_page_content'][0] : '';
 
                     $property_link = get_the_permalink();
                     ?>
@@ -179,6 +181,8 @@ $property_content_attributes[] = 'data-layout="filter"';
                                      title="<?php the_title(); ?>">
                             </div>
                         </div>
+                        <h2><?php echo $attachment_title; ?></h2>
+                        <div><?php echo $attachment_content; ?></div>
                     </div>
                 <?php endwhile;
 
