@@ -25,7 +25,7 @@ $filter_attributes[] = 'data-layout_style="' . $layout_style . '"';
 $filter_attributes[] = "data-property_type='" . $property_type . "'";
 $filter_attributes[] = "data-property_status='" . $property_status . "'";
 $filter_attributes[] = "data-property_feature='" . $property_feature . "'";
-$filter_attributes[] = "data-property_cities='" . is_array($property_cities) ? (count($property_cities) > 0 ? $property_cities[0] : '') : $property_cities . "'";
+//$filter_attributes[] = "data-property_cities='" . is_array($property_cities) ? (count($property_cities) > 0 ? $property_cities[0] : '') : $property_cities . "'";
 $filter_attributes[] = "data-property_state='" . $property_state . "'";
 $filter_attributes[] = "data-property_neighborhood='" . $property_neighborhood . "'";
 $filter_attributes[] = "data-property_label='" . $property_label . "'";
@@ -177,99 +177,6 @@ $property_content_attributes[] = 'data-layout="filter"';
                                      onerror="this.src = '<?php echo esc_url($no_image_src) ?>';"
                                      alt="<?php the_title(); ?>"
                                      title="<?php the_title(); ?>">
-                            </div>
-                            <div class="property-item-content">
-                                <div class="property-heading">
-                                    <a href="<?php echo esc_url($property_link); ?>"
-                                       title="<?php the_title(); ?>"><?php the_title(); ?></a>
-                                    <?php if (!empty($price)): ?>
-                                        <span class="property-price">
-                                            <?php if (!empty($price_prefix)) {
-                                                echo '<span class="property-price-prefix">' . $price_prefix . ' </span>';
-                                            } ?>
-                                            <?php echo ere_get_format_money($price_short,$price_unit) ?>
-                                            <?php if (!empty($price_postfix)) {
-                                                echo '<span class="property-price-postfix"> / ' . $price_postfix . '</span>';
-                                            } ?>
-                                        </span>
-                                    <?php elseif (ere_get_option('empty_price_text', '') != ''): ?>
-                                        <span
-                                            class="property-price"><?php echo ere_get_option('empty_price_text', '') ?></span>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="property-info">
-                                    <div class="property-info-inner">
-                                        <div class="property-id">
-                                            <div class="property-info-item-inner">
-                                                <span class="fa fa-barcode"></span>
-
-                                                <div class="content-property-info">
-                                                    <p class="property-info-value"><?php
-                                                        $property_identity  = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_identity' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_identity' ][0] : '';
-                                                        if(!empty($property_identity))
-                                                        {
-                                                            echo esc_html($property_identity);
-                                                        }
-                                                        else
-                                                        {
-                                                            echo esc_html($property_id);
-                                                        }?>
-                                                    </p>
-
-                                                    <p class="property-info-title"><?php esc_html_e('Property ID', 'essential-real-estate'); ?></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <?php if (!empty($property_size)): ?>
-                                            <div class="property-area">
-                                                <div class="property-info-item-inner">
-                                                    <span class="fa fa-arrows"></span>
-
-                                                    <div class="content-property-info">
-                                                        <p class="property-info-value"><?php
-                                                            echo ere_get_format_number($property_size) ?>
-                                                            <span><?php
-                                                                $measurement_units = ere_get_measurement_units();
-                                                                echo esc_html($measurement_units); ?></span>
-                                                        </p>
-
-                                                        <p class="property-info-title"><?php esc_html_e('Size', 'essential-real-estate'); ?></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php endif; ?>
-                                        <?php if (!empty($property_bedrooms)): ?>
-                                            <div class="property-bedrooms">
-                                                <div class="property-info-item-inner">
-                                                    <span class="fa fa-hotel"></span>
-
-                                                    <div class="content-property-info">
-                                                        <p class="property-info-value"><?php echo esc_html($property_bedrooms) ?></p>
-
-                                                        <p class="property-info-title"><?php
-                                                            echo ere_get_number_text($property_bedrooms, esc_html__( 'Bedrooms', 'essential-real-estate' ), esc_html__( 'Bedroom', 'essential-real-estate' ));
-                                                            ?></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php endif; ?>
-                                        <?php if (!empty($property_bathrooms)): ?>
-                                            <div class="property-bathrooms">
-                                                <div class="property-info-item-inner">
-                                                    <span class="fa fa-bath"></span>
-
-                                                    <div class="content-property-info">
-                                                        <p class="property-info-value"><?php echo esc_html($property_bathrooms) ?></p>
-
-                                                        <p class="property-info-title"><?php
-                                                            echo ere_get_number_text($property_bathrooms, esc_html__( 'Bathrooms', 'essential-real-estate' ), esc_html__( 'Bathroom', 'essential-real-estate' ));
-                                                            ?></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

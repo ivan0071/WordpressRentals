@@ -33,41 +33,41 @@ $wrapper_styles = array();
 $property_item_class = array();
 $property_content_class = array('property-content-wrap');
 
-if (empty($property_cities)) {
-    $property_ids = array();
-    $args1 = array(
-        'posts_per_page' => -1,
-        'post_type' => 'property',
-        'orderby'   => array(
-            'menu_order'=>'ASC',
-            'date' =>'DESC',
-        ),
-        'post_status' => 'publish',
-        'meta_query' => array(
-            array(
-                'key' => ERE_METABOX_PREFIX . 'property_featured',
-                'value' => true,
-                'compare' => '=',
-            )
-        )
-    );
-    $data = new WP_Query($args1);
-    if ($data->have_posts()) :
-        while ($data->have_posts()): $data->the_post();
-            $property_ids[] = get_the_ID();
-        endwhile;
-    endif;
-    wp_reset_postdata();
+// if (empty($property_cities)) {
+//     $property_ids = array();
+//     $args1 = array(
+//         'posts_per_page' => -1,
+//         'post_type' => 'attachment',
+//         // 'orderby'   => array(
+//         //     'menu_order'=>'ASC',
+//         //     'date' =>'DESC',
+//         // ),
+//         // 'post_status' => 'publish',
+//         // 'meta_query' => array(
+//         //     array(
+//         //         'key' => 'home_page_flag',
+//         //         'value' => '1',
+//         //         'compare' => '=',
+//         //     )
+//         // )
+//     );
+//     $data = new WP_Query($args1);
+//     if ($data->have_posts()) :
+//         while ($data->have_posts()): $data->the_post();
+//             $property_ids[] = get_the_ID();
+//         endwhile;
+//     endif;
+//     wp_reset_postdata();
 
-    $property_city_all = wp_get_object_terms($property_ids, 'property-city');
-    $property_cities = array();
-    if (is_array($property_city_all)) {
-        foreach ($property_city_all as $property_ct) {
-            $property_cities[] = $property_ct->slug;
-        }
-        $property_cities = join(',', $property_cities);
-    }
-}
+//     $property_city_all = wp_get_object_terms($property_ids, 'property-city');
+//     $property_cities = array();
+//     if (is_array($property_city_all)) {
+//         foreach ($property_city_all as $property_ct) {
+//             $property_cities[] = $property_ct->slug;
+//         }
+//         $property_cities = join(',', $property_cities);
+//     }
+// }
 if ($layout_style == 'property-cities-filter') {
     if (!empty($property_cities) && empty($property_city)) {
         $property_city = explode(',', $property_cities)[0];
@@ -89,95 +89,115 @@ if ($layout_style == 'property-list-two-columns') {
     $wrapper_classes[] = 'ere-property property-list';
 }
 
+// $args = array(
+//     'posts_per_page' => ($item_amount > 0) ? $item_amount : -1,
+//     'post_type' => 'attachment',
+//     'orderby'   => array(
+//         'menu_order'=>'ASC',
+//         'date' =>'DESC',
+//     ),
+//     //'post_status' => 'publish',
+//     'meta_query' => array(
+//         array(
+//             'key' => 'home_page_flag',
+//             'value' => '1',
+//             'compare' => '=',
+//         )
+//     )
+// );
+
+// $args['tax_query'] = array();
+// if (!empty($property_city)) {
+//     $args['tax_query'][] = array(
+//         'taxonomy' => 'property-city',
+//         'field' => 'slug',
+//         'terms' => array($property_city),
+//         'operator' => 'IN'
+//     );
+// }
+// if (!empty($property_type) || !empty($property_status) || !empty($property_feature) || !empty($property_cities)
+//     || !empty($property_state) || !empty($property_neighborhood) || !empty($property_label)
+// ) {
+//     if (!empty($property_type)) {
+//         $args['tax_query'][] = array(
+//             'taxonomy' => 'property-type',
+//             'field' => 'slug',
+//             'terms' => explode(',', $property_type),
+//             'operator' => 'IN'
+//         );
+//     }
+//     if (!empty($property_status)) {
+//         $args['tax_query'][] = array(
+//             'taxonomy' => 'property-status',
+//             'field' => 'slug',
+//             'terms' => explode(',', $property_status),
+//             'operator' => 'IN'
+//         );
+//     }
+//     if (!empty($property_feature)) {
+//         $args['tax_query'][] = array(
+//             'taxonomy' => 'property-feature',
+//             'field' => 'slug',
+//             'terms' => explode(',', $property_feature),
+//             'operator' => 'IN'
+//         );
+//     }
+//     if (!empty($property_cities) && empty($property_city)) {
+//         $args['tax_query'][] = array(
+//             'taxonomy' => 'property-city',
+//             'field' => 'slug',
+//             'terms' => explode(',', $property_cities),
+//             'operator' => 'IN'
+//         );
+//     }
+//     if (!empty($property_state)) {
+//         $args['tax_query'][] = array(
+//             'taxonomy' => 'property-state',
+//             'field' => 'slug',
+//             'terms' => explode(',', $property_state),
+//             'operator' => 'IN'
+//         );
+//     }
+//     if (!empty($property_neighborhood)) {
+//         $args['tax_query'][] = array(
+//             'taxonomy' => 'property-neighborhood',
+//             'field' => 'slug',
+//             'terms' => explode(',', $property_neighborhood),
+//             'operator' => 'IN'
+//         );
+//     }
+//     if (!empty($property_label)) {
+//         $args['tax_query'][] = array(
+//             'taxonomy' => 'property-label',
+//             'field' => 'slug',
+//             'terms' => explode(',', $property_label),
+//             'operator' => 'IN'
+//         );
+//     }
+// }
+
+// $data = new WP_Query($args);
+// $total_post = $data->found_posts;
+
 $args = array(
-    'posts_per_page' => ($item_amount > 0) ? $item_amount : -1,
-    'post_type' => 'property',
+    'post_type'   => 'attachment',
+    'post_status' => 'inherit',
     'orderby'   => array(
         'menu_order'=>'ASC',
         'date' =>'DESC',
     ),
-    'post_status' => 'publish',
-    'meta_query' => array(
+    'meta_query'  => array(
         array(
-            'key' => ERE_METABOX_PREFIX . 'property_featured',
-            'value' => true,
-            'compare' => '=',
-        )
+            'key'     => 'home_page_flag',
+            'value'   => '1',
+            'compare' => '=' 
+       )
     )
-);
-$args['tax_query'] = array();
-if (!empty($property_city)) {
-    $args['tax_query'][] = array(
-        'taxonomy' => 'property-city',
-        'field' => 'slug',
-        'terms' => array($property_city),
-        'operator' => 'IN'
-    );
-}
-if (!empty($property_type) || !empty($property_status) || !empty($property_feature) || !empty($property_cities)
-    || !empty($property_state) || !empty($property_neighborhood) || !empty($property_label)
-) {
-    if (!empty($property_type)) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'property-type',
-            'field' => 'slug',
-            'terms' => explode(',', $property_type),
-            'operator' => 'IN'
-        );
-    }
-    if (!empty($property_status)) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'property-status',
-            'field' => 'slug',
-            'terms' => explode(',', $property_status),
-            'operator' => 'IN'
-        );
-    }
-    if (!empty($property_feature)) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'property-feature',
-            'field' => 'slug',
-            'terms' => explode(',', $property_feature),
-            'operator' => 'IN'
-        );
-    }
-    if (!empty($property_cities) && empty($property_city)) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'property-city',
-            'field' => 'slug',
-            'terms' => explode(',', $property_cities),
-            'operator' => 'IN'
-        );
-    }
-    if (!empty($property_state)) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'property-state',
-            'field' => 'slug',
-            'terms' => explode(',', $property_state),
-            'operator' => 'IN'
-        );
-    }
-    if (!empty($property_neighborhood)) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'property-neighborhood',
-            'field' => 'slug',
-            'terms' => explode(',', $property_neighborhood),
-            'operator' => 'IN'
-        );
-    }
-    if (!empty($property_label)) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'property-label',
-            'field' => 'slug',
-            'terms' => explode(',', $property_label),
-            'operator' => 'IN'
-        );
-    }
-}
+ );
+ 
+ $data = new WP_Query( $args );
 
-$data = new WP_Query($args);
-$total_post = $data->found_posts;
-
+// var_dump($data);
 
 $min_suffix = ere_get_option('enable_min_css', 0) == 1 ? '.min' : '';
 wp_print_styles(ERE_PLUGIN_PREFIX . 'home-big-slider');
