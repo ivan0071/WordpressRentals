@@ -146,11 +146,11 @@ $featured_posts = new WP_Query($args);
 //var_dump($featured_posts);
 
 $min_suffix = ere_get_option('enable_min_css', 0) == 1 ? '.min' : '';
-wp_print_styles( ERE_PLUGIN_PREFIX . 'featured-slider');
+wp_print_styles( ERE_PLUGIN_PREFIX . 'home-featured-slider');
 
 $min_suffix_js = ere_get_option('enable_min_js', 0) == 1 ? '.min' : '';
 wp_enqueue_script(ERE_PLUGIN_PREFIX . 'owl_carousel', ERE_PLUGIN_URL . 'public/assets/js/ere-carousel' . $min_suffix_js . '.js', array('jquery'), ERE_PLUGIN_VER, true);
-wp_enqueue_script(ERE_PLUGIN_PREFIX . 'featured-slider', ERE_PLUGIN_URL . 'public/templates/shortcodes/featured-slider/assets/js/featured-slider' . $min_suffix_js . '.js', array('jquery'), ERE_PLUGIN_VER, true);
+wp_enqueue_script(ERE_PLUGIN_PREFIX . 'home-featured-slider', ERE_PLUGIN_URL . 'public/templates/shortcodes/home-featured-slider/assets/js/home-featured-slider' . $min_suffix_js . '.js', array('jquery'), ERE_PLUGIN_VER, true);
 
 ?>
 	<div class="ere-agent-wrap">

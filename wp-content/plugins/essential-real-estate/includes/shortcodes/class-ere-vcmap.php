@@ -1741,7 +1741,7 @@ if (!class_exists('ERE_Vc_map')) {
             ));
             vc_map(array(
                 'name' => esc_html__('Agent', 'essential-real-estate'),
-                'base' => 'ere_featured_slider',
+                'base' => 'ere_home_featured_slider',
                 'icon' => 'fa fa-user-plus',
                 'category' => esc_html__('ERE Shortcode', 'essential-real-estate'),
                 'params' => array(

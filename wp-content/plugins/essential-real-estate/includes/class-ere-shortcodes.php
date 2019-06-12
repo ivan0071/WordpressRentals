@@ -42,7 +42,7 @@ class ERE_Shortcodes {
 			'ere_agency'                    => __CLASS__ . '::agency',
 			///
 			'ere_home_categories'                    => __CLASS__ . '::home_categories',
-			'ere_featured_slider'                    => __CLASS__ . '::featured_slider',
+			'ere_home_featured_slider'                    => __CLASS__ . '::home_featured_slider',
 		);
 		foreach ( $shortcodes as $shortcode => $function ) {
 			add_shortcode( apply_filters( "{$shortcode}_shortcode_tag", $shortcode ), $function );
@@ -624,8 +624,8 @@ class ERE_Shortcodes {
 	 * @param $atts
 	 * @return string
 	 */
-	public static function featured_slider( $atts ) {
-		return self::shortcode_wrapper( array( 'ERE_Shortcode_Featured_Slider', 'output' ), $atts );
+	public static function home_featured_slider( $atts ) {
+		return self::shortcode_wrapper( array( 'ERE_Shortcode_Home_Featured_Slider', 'output' ), $atts );
 	}	
 
 	/**

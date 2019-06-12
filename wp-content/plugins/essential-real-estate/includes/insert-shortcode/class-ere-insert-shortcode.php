@@ -1380,7 +1380,7 @@ if (!class_exists('ERE_Insert_Shortcode')) {
 				'type' => 'custom',
 				'title' => esc_html__('Home Categories', 'essential-real-estate')
 			);
-			$ere_shortcodes['ere_featured_slider'] = array(
+			$ere_shortcodes['ere_home_featured_slider'] = array(
 				'type' => 'custom',
 				'title' => esc_html__('Agent', 'essential-real-estate'),
 				'attr' => array(
