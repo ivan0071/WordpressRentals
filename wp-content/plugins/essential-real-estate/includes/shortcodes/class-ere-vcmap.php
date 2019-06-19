@@ -2100,6 +2100,294 @@ if (!class_exists('ERE_Vc_map')) {
                 )
             ));
             vc_map(array(
+                'name' => esc_html__('Property', 'essential-real-estate'),
+                'base' => 'ere_search_grid_view',
+                'icon' => 'fa fa-newspaper-o',
+                'category' => esc_html__('ERE Shortcode', 'essential-real-estate'),
+                'params' => array(
+                    array(
+                        'type' => 'dropdown',
+                        'heading' => esc_html__('Layout Style', 'essential-real-estate'),
+                        'param_name' => 'layout_style',
+                        'admin_label' => true,
+                        'value' => array(
+                            esc_html__('Grid', 'essential-real-estate') => 'property-grid',
+                            esc_html__('List', 'essential-real-estate') => 'property-list',
+                            esc_html__('Zig Zac', 'essential-real-estate') => 'property-zigzac',
+                            esc_html__('Carousel', 'essential-real-estate') => 'property-carousel',
+                        ),
+                        'std' => 'property-grid',
+                        'description' => esc_html__('Select Layout Style.', 'essential-real-estate')
+                    ),
+                    array_merge($this->vc_map_add_narrow_taxonomy('property-type', 'property_type', esc_html__('Type', 'essential-real-estate')), array(
+                        'group' => esc_html__('Filter Property', 'essential-real-estate'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    )),
+                    array_merge($this->vc_map_add_narrow_taxonomy('property-status', 'property_status', esc_html__('Status', 'essential-real-estate')), array(
+                        'group' => esc_html__('Filter Property', 'essential-real-estate'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    )),
+                    array_merge($this->vc_map_add_narrow_taxonomy('property-feature', 'property_feature', esc_html__('Feature', 'essential-real-estate')), array(
+                        'group' => esc_html__('Filter Property', 'essential-real-estate'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    )),
+                    array_merge($this->vc_map_add_narrow_taxonomy('property-city', 'property_city', esc_html__('City / Town', 'essential-real-estate')), array(
+                        'group' => esc_html__('Filter Property', 'essential-real-estate'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    )),
+                    array_merge($this->vc_map_add_narrow_taxonomy('property-state', 'property_state', esc_html__('Province / State', 'essential-real-estate')), array(
+                        'group' => esc_html__('Filter Property', 'essential-real-estate'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    )),
+                    array_merge($this->vc_map_add_narrow_taxonomy('property-neighborhood', 'property_neighborhood', esc_html__('Neighborhood', 'essential-real-estate')), array(
+                        'group' => esc_html__('Filter Property', 'essential-real-estate'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    )),
+                    array_merge($this->vc_map_add_narrow_taxonomy('property-label', 'property_label', esc_html__('Label', 'essential-real-estate')), array(
+                        'group' => esc_html__('Filter Property', 'essential-real-estate'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    )),
+                    array(
+                        'type' => 'checkbox',
+                        'heading' => esc_html__('Property Featured', 'essential-real-estate'),
+                        'param_name' => 'property_featured',
+                        'std' => 'false',
+                        'group' => esc_html__('Filter Property', 'essential-real-estate'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column'
+                    ),
+                    array(
+                        'type' => 'textfield',
+                        'heading' => esc_html__('Items Amount', 'essential-real-estate'),
+                        'param_name' => 'item_amount',
+                        'std' => '6',
+                        'edit_field_class' => 'vc_col-sm-6 vc_column'
+                    ),
+                    array(
+                        'type' => 'dropdown',
+                        'heading' => esc_html__('Columns', 'essential-real-estate'),
+                        'param_name' => 'columns',
+                        'value' => array(
+                            '2' => '2',
+                            '3' => '3',
+                            '4' => '4',
+                            '5' => '5',
+                            '6' => '6'
+                        ),
+                        'std' => '3',
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'dependency' => array('element' => 'layout_style', 'value' => array('property-grid', 'property-carousel'))
+                    ),
+                    array(
+                        'type' => 'dropdown',
+                        'heading' => esc_html__('Items Desktop Small', 'essential-real-estate'),
+                        'param_name' => 'items_md',
+                        'description' => esc_html__('Browser Width < 1199', 'essential-real-estate'),
+                        'value' => array(
+                            '2' => '2',
+                            '3' => '3',
+                            '4' => '4',
+                            '5' => '5',
+                            '6' => '6',
+                        ),
+                        'std' => '3',
+                        'group' => esc_html__('Responsive', 'essential-real-estate'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'dependency' => array('element' => 'layout_style', 'value' => array('property-grid', 'property-carousel'))
+                    ),
+                    array(
+                        'type' => 'dropdown',
+                        'heading' => esc_html__('Items Tablet', 'essential-real-estate'),
+                        'param_name' => 'items_sm',
+                        'description' => esc_html__('Browser Width < 992', 'essential-real-estate'),
+                        'value' => array(
+                            '2' => '2',
+                            '3' => '3',
+                            '4' => '4',
+                            '5' => '5',
+                            '6' => '6',
+                        ),
+                        'std' => '2',
+                        'group' => esc_html__('Responsive', 'essential-real-estate'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'dependency' => array('element' => 'layout_style', 'value' => array('property-grid', 'property-carousel'))
+                    ),
+                    array(
+                        'type' => 'dropdown',
+                        'heading' => esc_html__('Items Tablet Small', 'essential-real-estate'),
+                        'param_name' => 'items_xs',
+                        'description' => esc_html__('Browser Width < 768', 'essential-real-estate'),
+                        'value' => array(
+                            '1' => '1',
+                            '2' => '2',
+                            '3' => '3',
+                            '4' => '4',
+                            '5' => '5',
+                            '6' => '6',
+                        ),
+                        'std' => '1',
+                        'group' => esc_html__('Responsive', 'essential-real-estate'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'dependency' => array('element' => 'layout_style', 'value' => array('property-grid', 'property-carousel'))
+                    ),
+                    array(
+                        'type' => 'dropdown',
+                        'heading' => esc_html__('Items Mobile', 'essential-real-estate'),
+                        'param_name' => 'items_mb',
+                        'description' => esc_html__('Browser Width < 480', 'essential-real-estate'),
+                        'value' => array(
+                            '1' => '1',
+                            '2' => '2',
+                            '3' => '3',
+                            '4' => '4',
+                            '5' => '5',
+                            '6' => '6',
+                        ),
+                        'std' => '1',
+                        'group' => esc_html__('Responsive', 'essential-real-estate'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'dependency' => array('element' => 'layout_style', 'value' => array('property-grid', 'property-carousel'))
+                    ),
+                    array(
+                        'type' => 'textfield',
+                        'heading' => esc_html__('Image Size', 'essential-real-estate'),
+                        'description' => esc_html__('Enter image size ("thumbnail" or "full"). Alternatively enter size in pixels (Example: 280x180, 330x180, 380x180 , Zic Zac: 290x270 (Not Include Unit, Space)).', 'essential-real-estate'),
+                        'param_name' => 'image_size',
+                        'std' => '330x180',
+                        'edit_field_class' => 'vc_col-sm-6 vc_column'
+                    ),
+                    array(
+                        'type' => 'dropdown',
+                        'heading' => esc_html__('Columns Gap', 'essential-real-estate'),
+                        'param_name' => 'columns_gap',
+                        'value' => array(
+                            '0px' => 'col-gap-0',
+                            '10px' => 'col-gap-10',
+                            '20px' => 'col-gap-20',
+                            '30px' => 'col-gap-30',
+                        ),
+                        'std' => 'col-gap-30',
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'dependency' => array('element' => 'layout_style', 'value' => array('property-grid', 'property-carousel'))
+                    ),
+                    array(
+                        'type' => 'textfield',
+                        'heading' => esc_html__('View All Link', 'essential-real-estate'),
+                        'param_name' => 'view_all_link',
+                        'value' => '',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'heading' => esc_html__('Show Paging', 'essential-real-estate'),
+                        'param_name' => 'show_paging',
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'dependency' => array('element' => 'layout_style', 'value_not_equal_to' => 'property-carousel'),
+                    ),
+                    array(
+                        'param_name' => 'include_heading',
+                        'type' => 'checkbox',
+                        'heading' => esc_html__('Include Heading', 'essential-real-estate'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column'
+                    ),
+                    array(
+                        'type' => 'textfield',
+                        'heading' => esc_html__('Title', 'essential-real-estate'),
+                        'param_name' => 'heading_title',
+                        'value' => '',
+                        'dependency' => array('element' => 'include_heading', 'value' => 'true'),
+                        'group' => esc_html__('Heading Options', 'essential-real-estate')
+                    ),
+                    array(
+                        'type' => 'textfield',
+                        'heading' => esc_html__('Sub Title', 'essential-real-estate'),
+                        'param_name' => 'heading_sub_title',
+                        'value' => '',
+                        'dependency' => array('element' => 'include_heading', 'value' => 'true'),
+                        'group' => esc_html__('Heading Options', 'essential-real-estate')
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'heading' => esc_html__('Show Pagination Control', 'essential-real-estate'),
+                        'param_name' => 'dots',
+                        'dependency' => array('element' => 'layout_style', 'value' => 'property-carousel'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'group' => esc_html__('Carousel Options', 'essential-real-estate')
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'heading' => esc_html__('Show Navigation Control', 'essential-real-estate'),
+                        'param_name' => 'nav',
+                        'dependency' => array('element' => 'layout_style', 'value' => 'property-carousel'),
+                        'std' => 'true',
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'group' => esc_html__('Carousel Options', 'essential-real-estate')
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'heading' => esc_html__('Move Navigation Par With Top Heading', 'essential-real-estate'),
+                        'param_name' => 'move_nav',
+                        'dependency' => array('element' => 'nav', 'value' => 'true'),
+                        'std' => 'false',
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'group' => esc_html__('Carousel Options', 'essential-real-estate')
+                    ),
+                    array(
+                        'type' => 'dropdown',
+                        'heading' => esc_html__('Navigation Position', 'essential-real-estate'),
+                        'param_name' => 'nav_position',
+                        'value' => array(
+                            esc_html__('Middle Center', 'essential-real-estate') => '',
+                            esc_html__('Top Right', 'essential-real-estate') => 'top-right',
+                            esc_html__('Bottom Center', 'essential-real-estate') => 'bottom-center',
+                        ),
+                        'std' => '',
+                        'dependency' => array('element' => 'move_nav', 'value_not_equal_to' => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'group' => esc_html__('Carousel Options', 'essential-real-estate')
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'heading' => esc_html__('Auto play', 'essential-real-estate'),
+                        'param_name' => 'autoplay',
+                        'dependency' => array('element' => 'layout_style', 'value' => 'property-carousel'),
+                        'std' => 'true',
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'group' => esc_html__('Carousel Options', 'essential-real-estate')
+                    ),
+                    array(
+                        'type' => 'textfield',
+                        'heading' => esc_html__('Autoplay Timeout', 'essential-real-estate'),
+                        'param_name' => 'autoplaytimeout',
+                        'description' => esc_html__('Autoplay interval timeout.', 'essential-real-estate'),
+                        'value' => '',
+                        'std' => 1000,
+                        'dependency' => array('element' => 'autoplay', 'value' => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'group' => esc_html__('Carousel Options', 'essential-real-estate')
+                    ),
+                    array(
+                        'type' => 'hidden',
+                        'param_name' => 'paged',
+                        'value' => '1',
+                    ),
+                    array(
+                        'type' => 'hidden',
+                        'param_name' => 'author_id',
+                        'value' => '',
+                    ),
+                    array(
+                        'type' => 'hidden',
+                        'param_name' => 'agent_id',
+                        'value' => '',
+                    ),
+                    array(
+                        'type' => 'textfield',
+                        'heading' => __('Extra class name', 'essential-real-estate'),
+                        'param_name' => 'el_class',
+                        'description' => __('Style particular content element differently - add a class name and refer to it in custom CSS.', 'essential-real-estate'),
+                    )
+                )
+            ));
+            vc_map(array(
                 'name' => esc_html__('Login', 'essential-real-estate'),
                 'base' => 'ere_login',
                 'icon' => 'fa fa-user',

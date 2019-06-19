@@ -44,6 +44,7 @@ class ERE_Shortcodes {
 			'ere_home_categories'                    => __CLASS__ . '::home_categories',
 			'ere_home_featured_slider'                    => __CLASS__ . '::home_featured_slider',
 			'ere_home_big_slider'                    => __CLASS__ . '::home_big_slider',
+			'ere_search_grid_view'                    => __CLASS__ . '::search_grid_view',
 		);
 		foreach ( $shortcodes as $shortcode => $function ) {
 			add_shortcode( apply_filters( "{$shortcode}_shortcode_tag", $shortcode ), $function );
@@ -635,7 +636,15 @@ class ERE_Shortcodes {
 	 */
 	public static function home_big_slider( $atts ) {
 		return self::shortcode_wrapper( array( 'ERE_Shortcode_Home_Big_Slider', 'output' ), $atts );
-	}	
+	}
+	
+	/**
+	 * @param $atts
+	 * @return string
+	 */
+	public static function search_grid_view( $atts ) {
+		return self::shortcode_wrapper( array( 'ERE_Shortcode_Search_Grid_View', 'output' ), $atts );
+	}
 
 	/**
 	 * Filter Ajax callback
