@@ -194,7 +194,8 @@ $map_ID = 'ere_result_map-'.rand();
         <div class="form-search-wrap">
             <div class="form-search-inner">
                 <div class="ere-search-content">
-                    <?php $advanced_search = ere_get_permalink('advanced_search'); ?>
+                <?php //$advanced_search = //ivan: this was the original //ere_get_permalink('advanced_search'); ?>
+                <?php $advanced_search = ere_get_permalink('home_search'); ?>
                     <div data-href="<?php echo esc_url($advanced_search) ?>" class="search-properties-form">
                         <?php
                         if($status_enable=='true' && $show_status_tab=='true'):?>

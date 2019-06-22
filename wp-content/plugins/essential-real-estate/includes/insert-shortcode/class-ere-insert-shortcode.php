@@ -1625,6 +1625,136 @@ if (!class_exists('ERE_Insert_Shortcode')) {
 					)
 				)
 			);
+			$ere_shortcodes['ere_home_search'] = array(
+				'type' => 'custom',
+				'title' => esc_html__('Advanced Search Page', 'essential-real-estate')
+			);
+			$ere_shortcodes['ere_property_home_search'] = array(
+				'type' => 'custom',
+				'title' => esc_html__('Property Home Search', 'essential-real-estate'),
+				'attr' => array(
+					'layout' => array(
+						'type' => 'select',
+						'title' => esc_html__('Layout Style','essential-real-estate'),
+						'values' => array(
+							'tab' => esc_html__('Tab With Property Status','essential-real-estate'),
+							'default' => esc_html__('Form','essential-real-estate'),
+						),
+					),
+					'column' => array(
+						'type' => 'select',
+						'title' => esc_html__('Column','essential-real-estate'),
+						'values' => array(
+							'1' => esc_html__('1','essential-real-estate'),
+							'2' => esc_html__('2','essential-real-estate'),
+							'3' => esc_html__('3','essential-real-estate'),
+							'4' => esc_html__('4','essential-real-estate')
+						),
+					),
+					'status_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Status','essential-real-estate'),
+						'default' => 'true',
+					),
+					'type_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Type','essential-real-estate'),
+						'default' => 'true',
+					),
+					'title_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Title','essential-real-estate'),
+						'default' => 'true',
+					),
+					'address_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Address','essential-real-estate'),
+						'default' => 'true',
+					),
+					'country_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Country', 'essential-real-estate'),
+					),
+					'state_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Province / State', 'essential-real-estate'),
+					),
+					'city_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('City / Town','essential-real-estate'),
+					),
+					'neighborhood_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Neighborhood','essential-real-estate'),
+					),
+					'bedrooms_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Bedrooms','essential-real-estate'),
+					),
+					'bathrooms_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Bathrooms','essential-real-estate'),
+					),
+					'price_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Price','essential-real-estate'),
+						'default' => 'true',
+					),
+					'price_is_slider' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Show Slider for Price?','essential-real-estate'),
+						'required' => array( 'element' => 'price_enable', 'value' => 'true')
+					),
+					'area_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Size','essential-real-estate'),
+					),
+					'area_is_slider' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Show Slider for Size?','essential-real-estate'),
+						'required' => array( 'element' => 'area_enable', 'value' => 'true')
+					),
+					'land_area_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Land Area', 'essential-real-estate'),
+					),
+					'land_area_is_slider' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Show Slider for Land Area?','essential-real-estate'),
+						'required' => array( 'element' => 'land_area_enable', 'value' => 'true')
+					),
+					'label_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Label', 'essential-real-estate'),
+					),
+					'garage_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Garage', 'essential-real-estate'),
+					),
+					'property_identity_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Property ID', 'essential-real-estate'),
+					),
+					'other_features_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Other Features', 'essential-real-estate'),
+					),
+					'color_scheme' => array(
+						'type' => 'select',
+						'title' => esc_html__('Color Scheme','essential-real-estate'),
+						'desc' => esc_html__('Select color scheme for form search', 'essential-real-estate'),
+						'values' => array(
+							'color-dark' => esc_html__('Dark','essential-real-estate'),
+							'color-light' => esc_html__('Light','essential-real-estate')
+						),
+					),
+					'el_class' => array(
+						'type' => 'text',
+						'title' => esc_html__('Extra class name', 'essential-real-estate'),
+						'desc' => esc_html__('Style particular content element differently - add a class name and refer to it in custom CSS.', 'essential-real-estate'),
+					),
+				)
+			);
 			$ere_shortcodes['ere_search_grid_view'] = array(
 				'type' => 'custom',
 				'title' => esc_html__('Property', 'essential-real-estate'),

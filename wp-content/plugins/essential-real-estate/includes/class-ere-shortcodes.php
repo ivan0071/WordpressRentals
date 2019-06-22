@@ -44,6 +44,8 @@ class ERE_Shortcodes {
 			'ere_home_categories'                    => __CLASS__ . '::home_categories',
 			'ere_home_featured_slider'                    => __CLASS__ . '::home_featured_slider',
 			'ere_home_big_slider'                    => __CLASS__ . '::home_big_slider',
+			'ere_home_search'                    => __CLASS__ . '::home_search',
+			'ere_property_home_search'			=> __CLASS__ . '::property_home_search',
 			'ere_search_grid_view'                    => __CLASS__ . '::search_grid_view',
 		);
 		foreach ( $shortcodes as $shortcode => $function ) {
@@ -496,7 +498,6 @@ class ERE_Shortcodes {
 	public static function my_favorites( $atts ) {
 		return self::shortcode_wrapper( array( 'ERE_Shortcode_My_Favorites', 'output' ), $atts );
 	}
-
 	/**
 	 * @param $atts
 	 * @return string
@@ -636,6 +637,22 @@ class ERE_Shortcodes {
 	 */
 	public static function home_big_slider( $atts ) {
 		return self::shortcode_wrapper( array( 'ERE_Shortcode_Home_Big_Slider', 'output' ), $atts );
+	}
+
+	/**
+	 * @param $atts
+	 * @return string
+	 */
+	public static function home_search( $atts ) {
+		return self::shortcode_wrapper( array( 'ERE_Shortcode_Home_Search', 'output' ), $atts );
+	}
+
+	/**
+	 * @param $atts
+	 * @return string
+	 */
+	public static function property_home_search( $atts ) {
+		return self::shortcode_wrapper( array( 'ERE_Shortcode_Property_Home_Search', 'output' ), $atts );
 	}
 	
 	/**

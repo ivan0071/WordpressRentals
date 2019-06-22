@@ -361,7 +361,7 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'property_gallery', ERE_PLUGIN_URL . 'publ
                         $property_type_class = array();
                         if ($property_type_list) {
                             foreach ($property_type_list as $type) {
-                                $property_type_class[] = $type->slug;
+                            //    $property_type_class[] = $type['slug'];
                             }
                         }
                         ?>

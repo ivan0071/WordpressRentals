@@ -1439,7 +1439,6 @@ if (!class_exists('ERE_Vc_map')) {
                     ),
                 )
             ));
-
             vc_map(array(
                 'name' => esc_html__('Property Mini Search', 'essential-real-estate'),
                 'base' => 'ere_property_mini_search',
@@ -2097,6 +2096,185 @@ if (!class_exists('ERE_Vc_map')) {
                         'param_name' => 'el_class',
                         'description' => __('Style particular content element differently - add a class name and refer to it in custom CSS.', 'essential-real-estate'),
                     )
+                )
+            ));
+            vc_map(array(
+                'name' => esc_html__('Advanced Search Page', 'essential-real-estate'),
+                'base' => 'ere_home_search',
+                'icon' => 'fa fa-search-plus',
+                'category' => esc_html__('ERE Shortcode', 'essential-real-estate')
+            ));
+            vc_map(array(
+                'name' => esc_html__('Property Home Search', 'essential-real-estate'),
+                'base' => 'ere_property_home_search',
+                'icon' => 'fa fa-search',
+                'category' => esc_html__('ERE Shortcode', 'essential-real-estate'),
+                'params' => array(
+                    array(
+                        'type' => 'dropdown',
+                        'heading' => esc_html__('Layout Style', 'essential-real-estate'),
+                        'param_name' => 'layout',
+                        'value' => array(
+                            esc_html__('Status As Tab', 'essential-real-estate') => 'tab',
+                            esc_html__('Status As Dropdown', 'essential-real-estate') => 'dropdown',
+                        ),
+                    ),
+                    array(
+                        'type' => 'dropdown',
+                        'heading' => esc_html__('Column', 'essential-real-estate'),
+                        'param_name' => 'column',
+                        'value' => array(
+                            esc_html__('1', 'essential-real-estate') => '1',
+                            esc_html__('2', 'essential-real-estate') => '2',
+                            esc_html__('3', 'essential-real-estate') => '3',
+                            esc_html__('4', 'essential-real-estate') => '4'
+                        ),
+                        'std' => '3',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'status_enable',
+                        'value' => array(esc_html__('Status', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'std' => 'true',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'type_enable',
+                        'value' => array(esc_html__('Type', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'std' => 'true',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'title_enable',
+                        'value' => array(esc_html__('Title', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'std' => 'true',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'address_enable',
+                        'value' => array(esc_html__('Address', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'std' => 'true',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'country_enable',
+                        'value' => array(esc_html__('Country', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'state_enable',
+                        'value' => array(esc_html__('Province / State', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'city_enable',
+                        'value' => array(esc_html__('City / Town', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'neighborhood_enable',
+                        'value' => array(esc_html__('Neighborhood', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'bedrooms_enable',
+                        'value' => array(esc_html__('Bedrooms', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'bathrooms_enable',
+                        'value' => array(esc_html__('Bathrooms', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'price_enable',
+                        'value' => array(esc_html__('Price', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'std' => 'true',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'price_is_slider',
+                        'value' => array(esc_html__('Show Slider for Price?', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'dependency' => array('element' => 'price_enable', 'value' => 'true')
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'area_enable',
+                        'value' => array(esc_html__('Size', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'area_is_slider',
+                        'value' => array(esc_html__('Show Slider for Size?', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'dependency' => array('element' => 'area_enable', 'value' => 'true')
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'land_area_enable',
+                        'value' => array(esc_html__('Land Area', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'land_area_is_slider',
+                        'value' => array(esc_html__('Show Slider for Land Area?', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                        'dependency' => array('element' => 'land_area_enable', 'value' => 'true')
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'label_enable',
+                        'value' => array(esc_html__('Label', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'garage_enable',
+                        'value' => array(esc_html__('Number Garage', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'property_identity_enable',
+                        'value' => array(esc_html__('Property ID', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    ),
+                    array(
+                        'type' => 'checkbox',
+                        'param_name' => 'other_features_enable',
+                        'value' => array(esc_html__('Other Features', 'essential-real-estate') => 'true'),
+                        'edit_field_class' => 'vc_col-sm-6 vc_column',
+                    ),
+                    array(
+                        'type' => 'dropdown',
+                        'heading' => esc_html__('Color Scheme', 'essential-real-estate'),
+                        'param_name' => 'color_scheme',
+                        'value' => array(
+                            esc_html__('Dark', 'essential-real-estate') => 'color-dark',
+                            esc_html__('Light', 'essential-real-estate') => 'color-light'
+                        ),
+                        'std' => 'color-light',
+                    ),
+                    array(
+                        'type' => 'textfield',
+                        'heading' => __('Extra class name', 'essential-real-estate'),
+                        'param_name' => 'el_class',
+                        'description' => esc_html__('Style particular content element differently - add a class name and refer to it in custom CSS.', 'essential-real-estate'),
+                    ),
                 )
             ));
             vc_map(array(

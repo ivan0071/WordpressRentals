@@ -30,7 +30,8 @@ $min_suffix = ere_get_option('enable_min_css', 0) == 1 ? '.min' : '';
 $min_suffix_js = ere_get_option('enable_min_js', 0) == 1 ? '.min' : '';
 wp_enqueue_script(ERE_PLUGIN_PREFIX . 'mini_search_js', ERE_PLUGIN_URL.'public/templates/shortcodes/property-mini-search/assets/js/property-mini-search' . $min_suffix_js . '.js', array(), ERE_PLUGIN_VER, true);
 wp_print_styles( ERE_PLUGIN_PREFIX . 'property-mini-search');
-$advanced_search = ere_get_permalink('advanced_search');
+//ivan: this was the original //$advanced_search = ere_get_permalink('advanced_search');
+$advanced_search = ere_get_permalink('home_search');
 ?>
 <div class="<?php echo join(' ', $wrapper_classes) ?>">
     <div data-href="<?php echo esc_url($advanced_search) ?>" class="ere-mini-search-properties-form">

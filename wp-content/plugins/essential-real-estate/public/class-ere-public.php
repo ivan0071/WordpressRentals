@@ -68,6 +68,7 @@ if (!class_exists('ERE_Public')) {
             wp_register_style(ERE_PLUGIN_PREFIX . 'home-categories', ERE_PLUGIN_URL . 'public/templates/shortcodes/home-categories/assets/css/home-categories' . $min_suffix . '.css', array(), ERE_PLUGIN_VER, 'all');
             wp_register_style(ERE_PLUGIN_PREFIX . 'home-featured-slider', ERE_PLUGIN_URL . 'public/templates/shortcodes/home-featured-slider/assets/css/home-featured-slider' . $min_suffix . '.css', array(), ERE_PLUGIN_VER, 'all');
             wp_register_style(ERE_PLUGIN_PREFIX . 'home-big-slider', ERE_PLUGIN_URL . 'public/templates/shortcodes/home-big-slider/assets/css/home-big-slider' . $min_suffix . '.css', array(), ERE_PLUGIN_VER, 'all');
+            wp_register_style(ERE_PLUGIN_PREFIX . 'property-home-search', ERE_PLUGIN_URL . 'public/templates/shortcodes/property-home-search/assets/css/property-home-search' . $min_suffix . '.css', array(), ERE_PLUGIN_VER, 'all');
             wp_register_style(ERE_PLUGIN_PREFIX . 'search-grid-view', ERE_PLUGIN_URL . 'public/templates/shortcodes/search-grid-view/assets/css/search-grid-view' . $min_suffix . '.css', array(), ERE_PLUGIN_VER, 'all');
 
             // Widget
