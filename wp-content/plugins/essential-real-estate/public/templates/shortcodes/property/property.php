@@ -121,6 +121,9 @@ if ($layout_style == 'property-carousel') {
         //$image_size = '330x180';
         $property_item_class[] = 'mg-bottom-30';
     }
+    if ($layout_style == 'property-map') {
+        //to do: add someting related to style
+    }
     if ($layout_style == 'property-zigzac') {
         //$image_size = '290x270';
         $property_content_class[] = 'columns-2 columns-md-2 columns-sm-1';

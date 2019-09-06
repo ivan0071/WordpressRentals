@@ -26,7 +26,7 @@ $custom_property_items_mb = ere_get_option('archive_property_items_mb', '1');
 
 $property_item_class = array();
 
-if (isset($_SESSION["property_view_as"]) && !empty($_SESSION["property_view_as"]) && in_array($_SESSION["property_view_as"], array('property-list', 'property-grid'))) {
+if (isset($_SESSION["property_view_as"]) && !empty($_SESSION["property_view_as"]) && in_array($_SESSION["property_view_as"], array('property-list', 'property-grid', 'property-map'))) {
     $custom_property_layout_style = $_SESSION["property_view_as"];
 }
 

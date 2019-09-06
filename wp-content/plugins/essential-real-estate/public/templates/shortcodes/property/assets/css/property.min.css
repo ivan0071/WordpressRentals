@@ -701,6 +701,9 @@
 	-moz-background-clip: border;
 	background-clip: border-box;
 }
+.hiddenClass {
+	display: none !important;
+}
 @media (min-width: 768px) {
 	.ere-property.property-zigzac .property-image,
 	.ere-property.property-zigzac .property-item-content {

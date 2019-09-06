@@ -4076,6 +4076,7 @@ if (!class_exists('ERE_Admin')) {
                                     'options' => array(
                                         'property-grid' => esc_html__('Grid', 'essential-real-estate'),
                                         'property-list' => esc_html__('List', 'essential-real-estate'),
+                                        //'property-map' => esc_html__('Map', 'essential-real-estate')
                                     ),
                                     'default' => 'property-grid',
                                 ),
@@ -5281,7 +5282,8 @@ if (!class_exists('ERE_Admin')) {
                                             'default' => 'property-grid',
                                             'options' => array(
                                                 'property-grid' => esc_html__('Grid', 'essential-real-estate'),
-                                                'property-list' => esc_html__('List', 'essential-real-estate')
+                                                'property-list' => esc_html__('List', 'essential-real-estate'),
+                                                //'property-map' => esc_html__('List', 'essential-real-estate')
                                             )
                                         ),
                                         array(

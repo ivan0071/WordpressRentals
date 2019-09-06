@@ -765,7 +765,7 @@ class ERE_Shortcodes {
 
 	public function property_set_session_view_as_ajax() {
 		$view_as = $_REQUEST['view_as'];
-		if (!empty( $view_as ) && in_array($view_as, array('property-list', 'property-grid'))) {
+		if (!empty( $view_as ) && in_array($view_as, array('property-list', 'property-grid', 'property-map'))) {
 			$_SESSION['property_view_as'] = $view_as;
 		}
 	}

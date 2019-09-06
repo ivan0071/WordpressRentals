@@ -57,10 +57,10 @@ $custom_property_items_sm = ere_get_option( 'search_property_items_sm', '2' );
 $custom_property_items_xs = ere_get_option( 'search_property_items_xs', '1' );
 $custom_property_items_mb = ere_get_option( 'search_property_items_mb', '1' );
 
-if(isset( $_SESSION["property_view_as"] ) && !empty( $_SESSION["property_view_as"] ) && in_array($_SESSION["property_view_as"], array('property-list', 'property-grid'))) {
+if(isset( $_SESSION["property_view_as"] ) && !empty( $_SESSION["property_view_as"] ) && in_array($_SESSION["property_view_as"], array('property-list', 'property-grid', 'property-map'))) {
     $custom_property_layout_style = $_SESSION["property_view_as"];
 }
-$property_item_class         = array();
+$property_item_class = array();
 
 $wrapper_classes = array(
     'ere-property clearfix',
@@ -490,29 +490,50 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'archive-property', ERE_PLUGIN_URL . 'publ
                     </span>
                     <span data-view-as="property-grid" class="view-as-grid" title="<?php esc_html_e( 'View as Grid', 'essential-real-estate' ) ?>">
                         <i class="fa fa-th-large"></i>
+                    </span>                    
+                    <span data-view-as="property-map" class="view-as-map" title="<?php esc_html_e( 'View as Map', 'essential-real-estate' ) ?>">
+                        <i class="fa fa-map-marker"></i>
                     </span>
                 </div>
             </div>
         </div>
-        <div class="<?php echo join( ' ', $wrapper_classes ) ?>">
-            <?php if ( $data->have_posts() ) :
-                while ( $data->have_posts() ): $data->the_post(); ?>
+        <?php 
+            $hideNoMapClass = "";
+            $hideMapClass = "hiddenClass";
+            if (isset( $custom_property_layout_style ) && !empty( $custom_property_layout_style ) && in_array($custom_property_layout_style, array('property-map'))) {
+                $hideNoMapClass = "hiddenClass";
+                $hideMapClass = "";
+            }
+        ?>
+        <?php if(isset( $custom_property_layout_style ) && !empty( $custom_property_layout_style ) && in_array($custom_property_layout_style, array('property-list', 'property-grid', 'property-map'))) : ?>
+            <div class="map-no <?php echo join( ' ', $wrapper_classes ) ?> <?php echo $hideNoMapClass ?>">
+                <?php if ( $data->have_posts() ) :
+                    while ( $data->have_posts() ): $data->the_post(); ?>
 
-                    <?php ere_get_template( 'content-property.php', array(
+                        <?php ere_get_template( 'content-property.php', array(
+                            'custom_property_image_size' => $custom_property_image_size,
+                            'property_item_class' => $property_item_class
+                        )); ?>
+
+                    <?php endwhile;
+                else: ?>
+                    <div class="item-not-found"><?php esc_html_e( 'No item found', 'essential-real-estate' ); ?></div>
+                <?php endif; ?>
+                <div class="clearfix"></div>
+                <?php
+                $max_num_pages = $data->max_num_pages;
+                ere_get_template( 'global/pagination.php', array( 'max_num_pages' => $max_num_pages ) );
+                wp_reset_postdata(); ?>
+            </div>
+            <div class="map-yes <?php echo $hideMapClass ?>">
+
+                    <?php ere_get_template( 'content-property-map.php', array( 
                         'custom_property_image_size' => $custom_property_image_size,
                         'property_item_class' => $property_item_class
                     )); ?>
 
-                <?php endwhile;
-            else: ?>
-                <div class="item-not-found"><?php esc_html_e( 'No item found', 'essential-real-estate' ); ?></div>
-            <?php endif; ?>
-            <div class="clearfix"></div>
-            <?php
-            $max_num_pages = $data->max_num_pages;
-            ere_get_template( 'global/pagination.php', array( 'max_num_pages' => $max_num_pages ) );
-            wp_reset_postdata(); ?>
-        </div>
+            </div>
+        <?php endif; ?>
     </div>
     <?php do_action('ere_home_search_after_main_content'); ?>
 </div>

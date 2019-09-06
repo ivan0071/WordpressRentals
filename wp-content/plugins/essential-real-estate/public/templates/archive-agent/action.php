@@ -53,6 +53,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                                   title="<?php esc_html_e('View as Grid', 'essential-real-estate') ?>">
                                 <i class="fa fa-th-large"></i>
                             </span>
+                            <span data-view-as="property-map" class="view-as-map"
+                                title="<?php esc_html_e('View as Map', 'essential-real-estate') ?>">
+                                <i class="fa fa-map-marker"></i>
+                            </span>                            
         </div>
     </div>
 </div>

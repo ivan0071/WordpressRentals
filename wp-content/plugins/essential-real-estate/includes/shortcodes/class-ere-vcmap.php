@@ -29,6 +29,7 @@ if (!class_exists('ERE_Vc_map')) {
                         'value' => array(
                             esc_html__('Grid', 'essential-real-estate') => 'property-grid',
                             esc_html__('List', 'essential-real-estate') => 'property-list',
+                            //esc_html__('Map', 'essential-real-estate') => 'property-map',
                             esc_html__('Zig Zac', 'essential-real-estate') => 'property-zigzac',
                             esc_html__('Carousel', 'essential-real-estate') => 'property-carousel',
                         ),
@@ -2291,6 +2292,7 @@ if (!class_exists('ERE_Vc_map')) {
                         'value' => array(
                             esc_html__('Grid', 'essential-real-estate') => 'property-grid',
                             esc_html__('List', 'essential-real-estate') => 'property-list',
+                            //esc_html__('Map', 'essential-real-estate') => 'property-map',
                             esc_html__('Zig Zac', 'essential-real-estate') => 'property-zigzac',
                             esc_html__('Carousel', 'essential-real-estate') => 'property-carousel',
                         ),

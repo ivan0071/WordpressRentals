@@ -57,10 +57,10 @@ $custom_property_items_sm = ere_get_option( 'search_property_items_sm', '2' );
 $custom_property_items_xs = ere_get_option( 'search_property_items_xs', '1' );
 $custom_property_items_mb = ere_get_option( 'search_property_items_mb', '1' );
 
-if(isset( $_SESSION["property_view_as"] ) && !empty( $_SESSION["property_view_as"] ) && in_array($_SESSION["property_view_as"], array('property-list', 'property-grid'))) {
+if(isset( $_SESSION["property_view_as"] ) && !empty( $_SESSION["property_view_as"] ) && in_array($_SESSION["property_view_as"], array('property-list', 'property-grid', 'property-map'))) {
     $custom_property_layout_style = $_SESSION["property_view_as"];
 }
-$property_item_class         = array();
+$property_item_class = array();
 
 $wrapper_classes = array(
     'ere-property clearfix',
@@ -491,6 +491,9 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'archive-property', ERE_PLUGIN_URL . 'publ
                     <span data-view-as="property-grid" class="view-as-grid" title="<?php esc_html_e( 'View as Grid', 'essential-real-estate' ) ?>">
                         <i class="fa fa-th-large"></i>
                     </span>
+                    <span data-view-as="property-map" class="view-as-map" title="<?php esc_html_e( 'View as Map', 'essential-real-estate' ) ?>">
+                        <i class="fa fa-map-marker"></i>
+                    </span>                
                 </div>
             </div>
         </div>

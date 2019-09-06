@@ -53,6 +53,7 @@ if (!class_exists('ERE_Template_Hooks')) {
             $this->loader->add_action('ere_archive_property_heading', $this, 'archive_property_heading', 10, 4);
             $this->loader->add_action('ere_archive_property_action', $this, 'archive_property_action', 10, 1);
             $this->loader->add_action('ere_loop_property', $this, 'loop_property', 10, 2);
+            $this->loader->add_action('ere_loop_property_map', $this, 'loop_property_map', 10, 2);
             //Advanced Search
             $this->loader->add_action('ere_advanced_search_before_main_content', $this, 'advanced_property_search', 10);
             $this->loader->add_action('ere_home_search_before_main_content', $this, 'home_property_search', 10);
@@ -238,6 +239,16 @@ if (!class_exists('ERE_Template_Hooks')) {
         public function loop_property($property_item_class, $custom_property_image_size)
         {
             ere_get_template('loop/property.php', array('property_item_class' => $property_item_class, 'custom_property_image_size' => $custom_property_image_size));
+        }
+
+        /**
+         * loop_property_map
+         * @param $property_item_class
+         * @param $custom_property_image_size
+         */
+        public function loop_property_map($property_item_class, $custom_property_image_size)
+        {
+            ere_get_template('loop/property-map.php', array('property_item_class' => $property_item_class, 'custom_property_image_size' => $custom_property_image_size));
         }
 
         /**

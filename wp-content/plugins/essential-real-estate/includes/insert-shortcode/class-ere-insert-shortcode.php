@@ -202,6 +202,7 @@ if (!class_exists('ERE_Insert_Shortcode')) {
 						'values' => array(
 							"property-grid" => esc_html__("Grid", 'essential-real-estate'),
 							"property-list" => esc_html__("List", 'essential-real-estate'),
+							//"property-map" => esc_html__("Map", 'essential-real-estate'),
 							"property-zigzac" => esc_html__("Zigzac", 'essential-real-estate'),
 							"property-carousel" => esc_html__("Carousel", 'essential-real-estate')
 						),
@@ -1765,6 +1766,7 @@ if (!class_exists('ERE_Insert_Shortcode')) {
 						'values' => array(
 							"property-grid" => esc_html__("Grid", 'essential-real-estate'),
 							"property-list" => esc_html__("List", 'essential-real-estate'),
+							//"property-map" => esc_html__("Map", 'essential-real-estate'),
 							"property-zigzac" => esc_html__("Zigzac", 'essential-real-estate'),
 							"property-carousel" => esc_html__("Carousel", 'essential-real-estate')
 						),
