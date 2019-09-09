@@ -1,8 +1,12 @@
 <?php
 /**
+ * @var $dataMap
  * @var $custom_property_image_size
  * @var $property_item_class
  */
+
+global $post;
+
 /*
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
@@ -273,6 +277,14 @@ if($property_featured)
     </div>
 </div>
 */
+
+if ( $dataMap->have_posts() ) {
+    while ( $dataMap->have_posts() ) : $dataMap->the_post();
+        var_dump($post->ID);
+    endwhile;
+}
+
 ?>
+
 
 MAP TEST

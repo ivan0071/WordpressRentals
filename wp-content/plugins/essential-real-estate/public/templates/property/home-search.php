@@ -8,6 +8,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
+global $post;
+
 $features = '';
 $title = isset($_GET['title']) ? $_GET['title'] : '';
 $address = isset($_GET['address']) ? $_GET['address'] : '';
@@ -101,6 +103,7 @@ $args = array(
     'ignore_sticky_posts' => 1,
     'post_status'         => 'publish',
 );
+
 if (isset($_GET['sortby']) && in_array($_GET['sortby'], array('a_price', 'd_price', 'a_date', 'd_date', 'featured', 'most_viewed'))) {
     if ($_GET['sortby'] == 'a_price') {
         $args['orderby'] = 'meta_value_num';
@@ -413,6 +416,13 @@ if ($tax_count > 0) {
         $tax_query
     );
 }
+
+$argsMap = $args;
+$custom_property_items_amount_map = 1000;
+$argsMap['posts_per_page'] = $custom_property_items_amount_map;
+$argsMap['offset'] = ( max( 1, get_query_var( 'paged' ) ) - 1 ) * $custom_property_items_amount_map;
+$dataMap    = new WP_Query( $argsMap );
+
 $data       = new WP_Query( $args );
 $search_query=$args;
 $total_post = $data->found_posts;
@@ -527,7 +537,8 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'archive-property', ERE_PLUGIN_URL . 'publ
             </div>
             <div class="map-yes <?php echo $hideMapClass ?>">
 
-                    <?php ere_get_template( 'content-property-map.php', array( 
+                    <?php ere_get_template( 'content-property-map.php', array(
+                        'dataMap' => $dataMap,
                         'custom_property_image_size' => $custom_property_image_size,
                         'property_item_class' => $property_item_class
                     )); ?>
