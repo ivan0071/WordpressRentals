@@ -537,11 +537,47 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'archive-property', ERE_PLUGIN_URL . 'publ
             </div>
             <div class="map-yes <?php echo $hideMapClass ?>">
 
-                    <?php ere_get_template( 'content-property-map.php', array(
-                        'dataMap' => $dataMap,
-                        'custom_property_image_size' => $custom_property_image_size,
-                        'property_item_class' => $property_item_class
-                    )); ?>
+                <?php
+                    $titleArr = [];
+                    $latArr = [];
+                    $longArr = [];
+                    $latArrSum = 0;
+                    $longArrSum = 0;
+                    if ( $dataMap->have_posts() ) {
+                        while ( $dataMap->have_posts() ) : $dataMap->the_post();
+                            $propertyTitleTmp = $post->post_title;
+                            $titleArr[] = $propertyTitleTmp;
+                            $property_location = get_post_meta( $post->ID, ERE_METABOX_PREFIX . 'property_location', true );
+                            $property_map_address = isset($property_location['address']) ? $property_location['address'] : '';
+                            list( $latTmp, $longTmp ) =  isset($property_location['location']) ? explode( ',', $property_location['location'] ) : array('', '');
+                            $latArr[] = $latTmp;
+                            $longArr[] = $longTmp;
+                            $latArrSum += $latTmp;
+                            $longArrSum += $longTmp;
+                        endwhile;
+                    }
+                    $arrayCountLatLong = count($latArr);
+                    $latAverageView = $latArrSum / $arrayCountLatLong;
+                    $longAverageView = $longArrSum / $arrayCountLatLong;
+
+                    $latLongData = array(
+                        'titleArr' => $titleArr,
+                        'latArr' => $latArr,
+                        'longArr' => $longArr,
+                        'latArrSum' => $latArrSum,
+                        'longArrSum' => $longArrSum,
+                        'arrayCountLatLong' => $arrayCountLatLong,
+                        'latAverageView' => $latAverageView,
+                        'longAverageView' => $longAverageView
+                    );
+                ?>
+
+                <?php ere_get_template( 'content-property-map.php', array(
+                    'dataMap' => $dataMap,
+                    'latLongData' => $latLongData,
+                    'custom_property_image_size' => $custom_property_image_size,
+                    'property_item_class' => $property_item_class
+                )); ?>
 
             </div>
         <?php endif; ?>

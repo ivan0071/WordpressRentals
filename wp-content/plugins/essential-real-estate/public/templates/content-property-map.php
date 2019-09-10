@@ -15,7 +15,7 @@ do_action( 'ere_before_loop_property_map' );
  *
  * @hooked loop_property_map - 10
  */
-do_action( 'ere_loop_property_map', $dataMap, $property_item_class, $custom_property_image_size);
+do_action( 'ere_loop_property_map', $dataMap, $latLongData, $property_item_class, $custom_property_image_size);
 /**
  * ere_after_loop_property_map hook.
  */
