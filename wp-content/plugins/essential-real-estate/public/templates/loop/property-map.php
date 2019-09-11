@@ -7,7 +7,7 @@
  */
 
 global $post;
-$mapDefaultZoom = 15;
+$mapDefaultZoom = 10;
 
 //var_dump($latLongData);
 ?>
@@ -23,7 +23,7 @@ $mapDefaultZoom = 15;
     var longArr = <?php echo json_encode($latLongData['longArr']); ?>;
     var arrayCountLatLong = <?php echo $latLongData['arrayCountLatLong']; ?>;
     var mapLat = <?php echo $latLongData['latAverageView']; ?>;
-	var mapLng = <?php echo $latLongData['longAverageView']; ?>;
+	  var mapLng = <?php echo $latLongData['longAverageView']; ?>;
 
     function initialize_map() {
       map = new ol.Map({

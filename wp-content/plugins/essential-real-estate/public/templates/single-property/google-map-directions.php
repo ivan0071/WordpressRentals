@@ -48,6 +48,7 @@ $map_id = 'map-' . uniqid();
 </div>
 <script>
     jQuery(document).ready(function () {
+/*
         var bounds = new google.maps.LatLngBounds();
         var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
         var isDraggable = w > 1024 ? true : false;
@@ -56,21 +57,21 @@ $map_id = 'map-' . uniqid();
             draggable: isDraggable,
             scrollwheel: false
         };
-        var map = new google.maps.Map(document.getElementById("<?php echo esc_attr($map_id) ?>"), mapOptions);
+        var map = new google.maps.Map(document.getElementById("<?php //echo esc_attr($map_id) ?>"), mapOptions);
 
         var infoWindow = new google.maps.InfoWindow(), marker, i;
-        var property_position = new google.maps.LatLng(<?php echo esc_html($lat) ?>, <?php echo esc_html($lng) ?>);
+        var property_position = new google.maps.LatLng(<?php //echo esc_html($lat) ?>, <?php //echo esc_html($lng) ?>);
         bounds.extend(property_position);
         marker = new google.maps.Marker({
             position: property_position,
             map: map,
-            title: '<?php echo esc_html($title) ?>',
+            title: '<?php //echo esc_html($title) ?>',
             animation: google.maps.Animation.DROP,
-            icon: '<?php echo esc_html($map_icons_path_marker) ?>'
+            icon: '<?php //echo esc_html($map_icons_path_marker) ?>'
         });
         google.maps.event.addListener(marker, 'click', (function (marker) {
             return function () {
-                infoWindow.setContent('<h6>' + '<?php echo esc_html($title) ?>' + '</h6>');
+                infoWindow.setContent('<h6>' + '<?php //echo esc_html($title) ?>' + '</h6>');
                 infoWindow.open(map, marker);
             }
         })(marker));
@@ -81,7 +82,7 @@ $map_id = 'map-' . uniqid();
             map.setOptions({styles: styles});
         }
         var boundsListener = google.maps.event.addListener((map), 'idle', function (event) {
-            this.setZoom(<?php echo esc_html($googlemap_zoom_level); ?>);
+            this.setZoom(<?php //echo esc_html($googlemap_zoom_level); ?>);
             google.maps.event.removeListener(boundsListener);
         });
 
@@ -101,7 +102,7 @@ $map_id = 'map-' . uniqid();
 
         var autocomplete = new google.maps.places.Autocomplete(document.getElementById('directions-input'));
         autocomplete.bindTo('bounds', map);
-
+*/
         function ereDisplayRoute(directionsService, directionsDisplay, marker) {
             directionsService.route({
                 origin: property_position,

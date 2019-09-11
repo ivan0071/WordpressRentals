@@ -63,14 +63,15 @@ if (!class_exists('ERE_Template_Hooks')) {
             $this->loader->add_action('ere_loop_agent', $this, 'loop_agent', 10, 3);
 
             //Single Property
-            $this->loader->add_action('ere_single_property_summary', $this, 'single_property_header', 5);
-            $this->loader->add_action('ere_single_property_summary', $this, 'single_property_gallery', 10);
+            //$this->loader->add_action('ere_single_property_summary', $this, 'single_property_header', 5);
+            //$this->loader->add_action('ere_single_property_summary', $this, 'single_property_gallery', 10);
+            $this->loader->add_action('ere_single_property_summary', $this, 'single_property_header_and_gallery', 5);
             $this->loader->add_action('ere_single_property_summary', $this, 'single_property_description', 15);
             $this->loader->add_action('ere_single_property_summary', $this, 'single_property_location', 20);
             $this->loader->add_action('ere_single_property_summary', $this, 'single_property_features', 25);
             $this->loader->add_action('ere_single_property_summary', $this, 'single_property_floors', 30);
             $this->loader->add_action('ere_single_property_summary', $this, 'single_property_attachments', 35);
-            $this->loader->add_action('ere_single_property_summary', $this, 'single_property_map_directions', 40);
+            //$this->loader->add_action('ere_single_property_summary', $this, 'single_property_map_directions', 40);
             $this->loader->add_action('ere_single_property_summary', $this, 'single_property_nearby_places', 45);
             $this->loader->add_action('ere_single_property_summary', $this, 'single_property_walk_score', 50);
             $this->loader->add_action('ere_single_property_summary', $this, 'single_property_contact_agent', 55);
@@ -267,6 +268,14 @@ if (!class_exists('ERE_Template_Hooks')) {
         public function single_property_header()
         {
             ere_get_template('single-property/header.php');
+        }
+
+        /**
+         * single_property_header_and_gallery
+         */
+        public function single_property_header_and_gallery()
+        {
+            ere_get_template('single-property/header_and_gallery.php');
         }
 
         /**

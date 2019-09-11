@@ -20,8 +20,54 @@ $property_price_unit             = isset( $property_meta_data[ ERE_METABOX_PREFI
 $property_price_prefix      = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ][0] : '';
 $property_price_postfix      = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_postfix' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_postfix' ][0] : '';
 
+$property_group = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_group', true);
+
+$property_gallery = get_post_meta(get_the_ID(), ERE_METABOX_PREFIX . 'property_images', true);
+wp_enqueue_style('owl.carousel');
+wp_enqueue_script('owl.carousel');
 ?>
-<div class="single-property-element property-info-header property-info-action">
+<div class="property-gallery-and-info">
+  <div class="single-property-element property-gallery-wrap property-gallery-left">
+<?php
+	if ($property_gallery):
+		$property_gallery = explode('|', $property_gallery); ?>    
+        <div class="ere-property-element">
+            <div class="single-property-image-main owl-carousel manual ere-carousel-manual">
+                <?php
+                $gallery_id = 'ere_gallery-' . rand();
+                foreach ($property_gallery as $image):
+                    $image_src = ere_image_resize_id($image, 870, 420, true);
+                    $image_full_src = wp_get_attachment_image_src($image, 'full');
+                    if (!empty($image_src)) {
+                        ?>
+                        <div class="property-gallery-item ere-light-gallery">
+                            <img src="<?php echo esc_url($image_src) ?>" alt="<?php the_title(); ?>"
+                                 title="<?php the_title(); ?>">
+                            <a data-thumb-src="<?php echo esc_url($image_full_src[0]); ?>"
+                               data-gallery-id="<?php echo esc_attr($gallery_id); ?>"
+                               data-rel="ere_light_gallery" href="<?php echo esc_url($image_full_src[0]); ?>"
+                               class="zoomGallery"><i
+                                    class="fa fa-expand"></i></a>
+                        </div>
+                    <?php } ?>
+                <?php endforeach; ?>
+            </div>
+            <div class="single-property-image-thumb owl-carousel manual ere-carousel-manual">
+                <?php
+                foreach ($property_gallery as $image):
+                    $image_src = ere_image_resize_id($image, 250, 130, true);
+                    if (!empty($image_src)) { ?>
+                        <div class="property-gallery-item">
+                            <img src="<?php echo esc_url($image_src) ?>" alt="<?php the_title(); ?>"
+                                 title="<?php the_title(); ?>">
+                        </div>
+                    <?php } ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+	<?php endif; ?>
+  </div>
+  <div class="single-property-element property-info-header property-info-action property-info-right">
 	<div class="property-main-info">
 		<div class="property-heading">
 			<?php if ( ! empty( $property_title ) ): ?>
@@ -49,6 +95,9 @@ $property_price_postfix      = isset( $property_meta_data[ ERE_METABOX_PREFIX . 
 							<?php endforeach; ?>
 						</div>
 					<?php endif; ?>
+					<div class="property-group">
+						Group:  <?php echo $property_group; ?>
+					</div>
 				</div>
 				<?php if ( ! empty( $property_address ) ):
 					$property_location = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_location', true);
@@ -148,4 +197,5 @@ $property_price_postfix      = isset( $property_meta_data[ ERE_METABOX_PREFIX . 
 			<?php endif;?>
 		</div>
 	</div>
+  </div>
 </div>

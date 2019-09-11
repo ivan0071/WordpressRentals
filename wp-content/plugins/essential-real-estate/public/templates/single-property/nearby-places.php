@@ -70,6 +70,7 @@ wp_enqueue_script('google-map');
                 G5PlusGoogleMap.settingMap();
             },
             settingMap: function () {
+/*
                 var map, lat = "<?php echo esc_html($lat) ?>", lng = "<?php echo esc_html($lng) ?>", infowindow, i;
                 var bounds = new google.maps.LatLngBounds();
                 var map_icons_path_marker = '<?php echo esc_url($map_icons_path_marker) ?>';
@@ -84,6 +85,7 @@ wp_enqueue_script('google-map');
                 for (var n = 0; n < PlacePlaceArray.length; n++) {
                     PlaceDetail[PlacePlaceArray[n]] = [PlaceLabelArray[n], PlaceIconArray[n]];
                 }
+*/
                 function initialize() {
                     "use strict";
                     var myLatLng = new google.maps.LatLng(lat, lng);
@@ -173,7 +175,7 @@ wp_enqueue_script('google-map');
                     });
                 }
 
-                google.maps.event.addDomListener(window, 'load', initialize);
+ //               google.maps.event.addDomListener(window, 'load', initialize);
                 function distance(latitude, longitude) {
                     var lat1 = lat;
                     var lng1 = lng;
@@ -214,7 +216,7 @@ wp_enqueue_script('google-map');
                 }
             }
         };
-        $(document).ready(G5PlusGoogleMap.init);
+ //       $(document).ready(G5PlusGoogleMap.init);
     })
     (jQuery);
 </script>
