@@ -66,9 +66,10 @@ if (!class_exists('ERE_Template_Hooks')) {
             //$this->loader->add_action('ere_single_property_summary', $this, 'single_property_header', 5);
             //$this->loader->add_action('ere_single_property_summary', $this, 'single_property_gallery', 10);
             $this->loader->add_action('ere_single_property_summary', $this, 'single_property_header_and_gallery', 5);
-            $this->loader->add_action('ere_single_property_summary', $this, 'single_property_description', 15);
-            $this->loader->add_action('ere_single_property_summary', $this, 'single_property_location', 20);
-            $this->loader->add_action('ere_single_property_summary', $this, 'single_property_features', 25);
+            $this->loader->add_action('ere_single_property_summary', $this, 'single_property_tabs_and_contact', 10);
+            //$this->loader->add_action('ere_single_property_summary', $this, 'single_property_description', 15);
+            //$this->loader->add_action('ere_single_property_summary', $this, 'single_property_location', 20);
+            //$this->loader->add_action('ere_single_property_summary', $this, 'single_property_features', 25);
             $this->loader->add_action('ere_single_property_summary', $this, 'single_property_floors', 30);
             $this->loader->add_action('ere_single_property_summary', $this, 'single_property_attachments', 35);
             //$this->loader->add_action('ere_single_property_summary', $this, 'single_property_map_directions', 40);
@@ -277,6 +278,14 @@ if (!class_exists('ERE_Template_Hooks')) {
         {
             ere_get_template('single-property/header_and_gallery.php');
         }
+
+        /**
+         * single_property_tabs_and_contact
+         */
+        public function single_property_tabs_and_contact()
+        {
+            ere_get_template('single-property/tabs_and_contact.php');
+        }        
 
         /**
          * single_property_footer

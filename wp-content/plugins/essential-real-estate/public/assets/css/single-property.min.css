@@ -1114,14 +1114,19 @@ ul.walkscore-list li:last-child
 	display: flex;
 }
 
-.property-gallery-left
+.property-gallery-left, .property-tabs-left
 {
 	width: 60%;
 	float: left;
 }
 
-.property-info-right
+.property-info-right, .property-contact-right
 {
 	width: 40%;
 	float: right;
+}
+
+.display-flex
+{
+	display: flex;
 }
