@@ -321,7 +321,7 @@ class Postman_Zend_Validate_EmailAddress extends Postman_Zend_Validate_Abstract
     /**
      * Returns the set domainCheck option
      *
-     * @return mixed
+     * @return unknown
      */
     public function getDomainCheck()
     {

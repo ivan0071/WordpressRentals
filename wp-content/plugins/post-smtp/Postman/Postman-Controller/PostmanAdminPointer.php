@@ -1,8 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
-
 if (! class_exists ( 'PostmanAdminPointer' )) {
 	
 	/**
@@ -17,7 +13,7 @@ if (! class_exists ( 'PostmanAdminPointer' )) {
 		
 		/**
 		 *
-		 * @param mixed $rootPluginFilenameAndPath        	
+		 * @param unknown $rootPluginFilenameAndPath        	
 		 */
 		function __construct($rootPluginFilenameAndPath) {
 			$this->logger = new PostmanLogger ( get_class ( $this ) );
@@ -39,7 +35,7 @@ if (! class_exists ( 'PostmanAdminPointer' )) {
 		
 		/**
 		 *
-		 * @param mixed $hook_suffix        	
+		 * @param unknown $hook_suffix        	
 		 */
 		function wptuts_pointer_load($hook_suffix) {
 			// only do this for administrators

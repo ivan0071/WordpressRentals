@@ -1,8 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
-
 if ( ! class_exists( 'PostmanMessage' ) ) {
 
 	require_once 'PostmanEmailAddress.php';
@@ -56,7 +52,7 @@ if ( ! class_exists( 'PostmanMessage' ) ) {
 		}
 
 		function __get( $name ) {
-			$message = __( '<code>%1$s</code> property of a <code>PostmanMessage</code> object is <strong>not supported</strong>. For now all of this class properties are private.', 'post-smtp' );
+			$message = __( '<code>%1$s</code> property of a <code>PostmanMessage</code> object is <strong>not supported</strong>. For now all of this class properties are private.', Postman::TEXT_DOMAIN );
 
 			if ( WP_DEBUG ) {
 				trigger_error( sprintf( $message, $name ) );
@@ -67,7 +63,7 @@ if ( ! class_exists( 'PostmanMessage' ) ) {
 			$class = new ReflectionClass(__CLASS__);
 			$methods = $class->getMethods(ReflectionMethod::IS_PUBLIC );
 
-			$message = __( '<code>%1$s</code> method of a <code>PostmanMessage</code> object is <strong>not supported</strong>. Use one of the following methods <pre><code>%2$s</code></pre>', 'post-smtp' );
+			$message = __( '<code>%1$s</code> method of a <code>PostmanMessage</code> object is <strong>not supported</strong>. Use one of the following methods <pre><code>%2$s</code></pre>', Postman::TEXT_DOMAIN );
 
 			if ( WP_DEBUG ) {
 				trigger_error( sprintf( $message, $name, print_r( $methods, true ) ) );
@@ -295,7 +291,7 @@ if ( ! class_exists( 'PostmanMessage' ) ) {
 		/**
 		 * Set the charset
 		 *
-		 * @param mixed $charset
+		 * @param unknown $charset
 		 */
 		public function setCharset( $charset ) {
 			$this->charset = $charset;
@@ -314,7 +310,7 @@ if ( ! class_exists( 'PostmanMessage' ) ) {
 		}
 		/**
 		 *
-		 * @param mixed $recipients
+		 * @param unknown $recipients
 		 *        	Array or comma-separated list of email addresses to send message.
 		 * @throws Exception
 		 */
@@ -323,7 +319,7 @@ if ( ! class_exists( 'PostmanMessage' ) ) {
 		}
 		/**
 		 *
-		 * @param mixed $recipients
+		 * @param unknown $recipients
 		 *        	Array or comma-separated list of email addresses to send message.
 		 * @throws Exception
 		 */
@@ -332,7 +328,7 @@ if ( ! class_exists( 'PostmanMessage' ) ) {
 		}
 		/**
 		 *
-		 * @param mixed $recipients
+		 * @param unknown $recipients
 		 *        	Array or comma-separated list of email addresses to send message.
 		 * @throws Exception
 		 */
@@ -341,7 +337,7 @@ if ( ! class_exists( 'PostmanMessage' ) ) {
 		}
 		/**
 		 *
-		 * @param mixed $recipients
+		 * @param unknown $recipients
 		 *        	Array or comma-separated list of email addresses to send message.
 		 * @throws Exception
 		 */
@@ -395,8 +391,8 @@ if ( ! class_exists( 'PostmanMessage' ) ) {
 		 * Add the headers that were processed in processHeaders()
 		 * Zend requires that several headers are specially handled.
 		 *
-		 * @param mixed           $name
-		 * @param mixed           $value
+		 * @param unknown           $name
+		 * @param unknown           $value
 		 * @param Postman_Zend_Mail $mail
 		 */
 		private function processHeader( $name, $content ) {
@@ -481,9 +477,9 @@ if ( ! class_exists( 'PostmanMessage' ) ) {
 
 		/**
 		 *
-		 * @param mixed $desc
-		 * @param mixed $name
-		 * @param mixed $content
+		 * @param unknown $desc
+		 * @param unknown $name
+		 * @param unknown $content
 		 */
 		private function logProcessHeader( $desc, $name, $content ) {
 			$this->logger->debug( 'Processing ' . $desc . ' Header - ' . $name . ': ' . $content );

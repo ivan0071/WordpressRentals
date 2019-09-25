@@ -365,7 +365,7 @@ class Postman_Zend_Mail extends Postman_Zend_Mime_Message
         }
 
         $mp = new Postman_Zend_Mime_Part($txt);
-        $mp->encoding = apply_filters( 'post_smtp_content_transfer_encoding', $encoding, Postman_Zend_Mime::TYPE_TEXT);
+        $mp->encoding = $encoding;
         $mp->type = Postman_Zend_Mime::TYPE_TEXT;
         $mp->disposition = Postman_Zend_Mime::DISPOSITION_INLINE;
         $mp->charset = $charset;
@@ -406,7 +406,7 @@ class Postman_Zend_Mail extends Postman_Zend_Mime_Message
         }
 
         $mp = new Postman_Zend_Mime_Part($html);
-        $mp->encoding = apply_filters( 'post_smtp_content_transfer_encoding', $encoding, Postman_Zend_Mime::TYPE_HTML );
+        $mp->encoding = $encoding;
         $mp->type = Postman_Zend_Mime::TYPE_HTML;
         $mp->disposition = Postman_Zend_Mime::DISPOSITION_INLINE;
         $mp->charset = $charset;
@@ -706,21 +706,10 @@ class Postman_Zend_Mail extends Postman_Zend_Mime_Message
             throw new Postman_Zend_Mail_Exception('Reply-To Header set twice');
         }
 
+        $email = $this->_filterEmail($email);
         $name  = $this->_filterName($name);
         $this->_replyTo = $email;
-
-        if ( strpos( $email, ',' ) !== false ) {
-            $emails = explode(',', $email );
-            foreach ( $emails as $email ) {
-                $email = $this->_filterEmail($email);
-                $replyToList[] = $this->_formatAddress($email, $name);
-            }
-        } else {
-            $email = $this->_filterEmail($email);
-            $replyToList[] = $this->_formatAddress($email, $name);
-        }
-
-        $this->_storeHeader('Reply-To', implode(',', $replyToList ), true);
+        $this->_storeHeader('Reply-To', $this->_formatAddress($email, $name), true);
 
         return $this;
     }
@@ -1186,9 +1175,10 @@ class Postman_Zend_Mail extends Postman_Zend_Mime_Message
     {
         if ($transport === null) {
             if (! self::$_defaultTransport instanceof Postman_Zend_Mail_Transport_Abstract) {
-                require_once 'Mail/Transport/Sendmail.php';
-
-                $transport = new Postman_Zend_Mail_Transport_Sendmail("-f{$this->_from}");
+                require_once 'Zend/Mail/Transport/Sendmail.php';
+	            
+	            $replyTo = self::getDefaultReplyTo();
+                $transport = new Postman_Zend_Mail_Transport_Sendmail("-f{$replyTo['email']}");
             } else {
                 $transport = self::$_defaultTransport;
             }

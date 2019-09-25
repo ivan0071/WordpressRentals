@@ -1,8 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
-
 class PostmanWizardSocket {
 	
 	// these variables are populated by the Port Test
@@ -31,7 +27,7 @@ class PostmanWizardSocket {
 	
 	/**
 	 *
-	 * @param mixed $queryHostData        	
+	 * @param unknown $queryHostData        	
 	 */
 	function __construct($queryHostData) {
 		$this->hostname = $queryHostData ['hostname'];

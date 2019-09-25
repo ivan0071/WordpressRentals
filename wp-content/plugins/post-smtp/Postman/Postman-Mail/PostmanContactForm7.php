@@ -1,7 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
 class Postsmtp_ContactForm7 {
 
     private $result_error;
@@ -16,7 +13,7 @@ class Postsmtp_ContactForm7 {
     }
 
     public function change_rest_response( $response ) {
-        if ( array_key_exists('status', $response) && $response['status'] == 'mail_failed' ) {
+        if ( $response['status'] == 'mail_failed' ) {
             $message = $this->result_error ['exception']->getMessage();
 
             if ( ! $message || $message == '' ) {

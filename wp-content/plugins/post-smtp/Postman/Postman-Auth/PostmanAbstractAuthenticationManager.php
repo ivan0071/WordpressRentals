@@ -1,7 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
 if (! class_exists ( "PostmanAbstractAuthenticationManager" )) {
 	
 	require_once 'PostmanAuthenticationManager.php';
@@ -72,7 +69,7 @@ if (! class_exists ( "PostmanAbstractAuthenticationManager" )) {
 		 * Decoded the received token
 		 * This code is identical for Google and Hotmail
 		 *
-		 * @param mixed $response        	
+		 * @param unknown $response        	
 		 * @throws Exception
 		 */
 		protected function processResponse($response) {
@@ -102,7 +99,7 @@ if (! class_exists ( "PostmanAbstractAuthenticationManager" )) {
 		 *
 		 * This code is identical for Google and Hotmail
 		 *
-		 * @param mixed $client        	
+		 * @param unknown $client        	
 		 */
 		protected function decodeReceivedAuthorizationToken($newtoken) {
 			assert ( ! empty ( $newtoken ) );

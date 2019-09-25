@@ -1,8 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
-
 if (! class_exists ( 'PostmanSmtpMappings' )) {
 	class PostmanSmtpMappings {
 		// if an email is in this domain array, it is a known smtp server (easy lookup)
@@ -121,7 +117,7 @@ if (! class_exists ( 'PostmanSmtpDiscovery' )) {
 		/**
 		 * Constructor
 		 *
-		 * @param mixed $email        	
+		 * @param unknown $email        	
 		 */
 		public function __construct($email) {
 			$this->email = $email;
@@ -141,8 +137,8 @@ if (! class_exists ( 'PostmanSmtpDiscovery' )) {
 		}
 		/**
 		 *
-		 * @param mixed $email
-		 * @return string|bool
+		 * @param unknown $email        	
+		 * @return Ambigous <number, boolean>
 		 */
 		private function validateEmail($email) {
 			return PostmanUtils::validateEmail ( $email );
@@ -175,7 +171,7 @@ if (! class_exists ( 'PostmanSmtpDiscovery' )) {
 		/**
 		 * Uses getmxrr to retrieve the MX records of a hostname
 		 *
-		 * @param mixed $hostname        	
+		 * @param unknown $hostname        	
 		 * @return mixed|boolean
 		 */
 		private function findMxHostViaDns($hostname) {
@@ -205,9 +201,9 @@ if (! class_exists ( 'PostmanSmtpDiscovery' )) {
 		 * This is a custom implementation of mxrr for Windows PHP installations
 		 * which don't have this method natively.
 		 *
-		 * @param mixed $hostname        	
-		 * @param mixed $mxhosts        	
-		 * @param mixed $mxweight        	
+		 * @param unknown $hostname        	
+		 * @param unknown $mxhosts        	
+		 * @param unknown $mxweight        	
 		 * @return boolean
 		 */
 		function getmxrr($hostname, &$mxhosts, &$mxweight) {

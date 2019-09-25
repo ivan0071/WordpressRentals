@@ -1,8 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
-
 if (! class_exists ( "PostmanLogger" )) {
 	
 	//
@@ -48,8 +44,8 @@ if (! class_exists ( "PostmanLogger" )) {
 		/**
 		 * better logging thanks to http://www.smashingmagazine.com/2011/03/08/ten-things-every-wordpress-plugin-developer-should-know/
 		 *
-		 * @param mixed $intLogLevel        	
-		 * @param mixed $logLevelName        	
+		 * @param unknown $intLogLevel        	
+		 * @param unknown $logLevelName        	
 		 */
 		private function printLog($text, $intLogLevel, $logLevelName) {
 			if ($this->wpDebug && $intLogLevel >= $this->logLevel) {

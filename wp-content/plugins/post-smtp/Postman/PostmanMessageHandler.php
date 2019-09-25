@@ -1,7 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
 if (! class_exists ( 'PostmanMessageHandler' )) {
 	
 	require_once ('PostmanSession.php');
@@ -15,7 +12,7 @@ if (! class_exists ( 'PostmanMessageHandler' )) {
 		
 		/**
 		 *
-		 * @param mixed $options        	
+		 * @param unknown $options        	
 		 */
 		function __construct() {
 			$this->logger = new PostmanLogger ( get_class ( $this ) );
@@ -29,21 +26,21 @@ if (! class_exists ( 'PostmanMessageHandler' )) {
 		
 		/**
 		 *
-		 * @param mixed $message        	
+		 * @param unknown $message        	
 		 */
 		public function addError($message) {
 			$this->storeMessage ( $message, 'error' );
 		}
 		/**
 		 *
-		 * @param mixed $message        	
+		 * @param unknown $message        	
 		 */
 		public function addWarning($message) {
 			$this->storeMessage ( $message, 'warning' );
 		}
 		/**
 		 *
-		 * @param mixed $message        	
+		 * @param unknown $message        	
 		 */
 		public function addMessage($message) {
 			$this->storeMessage ( $message, 'notify' );
@@ -52,8 +49,8 @@ if (! class_exists ( 'PostmanMessageHandler' )) {
 		/**
 		 * store messages for display later
 		 *
-		 * @param mixed $message        	
-		 * @param mixed $type        	
+		 * @param unknown $message        	
+		 * @param unknown $type        	
 		 */
 		private function storeMessage($message, $type) {
 			$messageArray = array ();
@@ -105,8 +102,8 @@ if (! class_exists ( 'PostmanMessageHandler' )) {
 		/**
 		 * putput message
 		 *
-		 * @param mixed $message        	
-		 * @param mixed $className        	
+		 * @param unknown $message        	
+		 * @param unknown $className        	
 		 */
 		public function printMessage($message, $className) {
 			printf ( '<div class="%s"><p>%s</p></div>', $className, $message );

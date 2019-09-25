@@ -1,7 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
 if ( ! class_exists( 'PostmanInputSanitizer' ) ) {
 	class PostmanInputSanitizer {
 		private $logger;
@@ -43,7 +40,6 @@ if ( ! class_exists( 'PostmanInputSanitizer' ) ) {
 			$new_input [ PostmanOptions::ENVELOPE_SENDER ] = $new_input [ PostmanOptions::MESSAGE_SENDER_EMAIL ];
 			$this->sanitizeString( 'Sender Email', PostmanOptions::ENVELOPE_SENDER, $input, $new_input );
 			$this->sanitizeString( 'Transport Type', PostmanOptions::TRANSPORT_TYPE, $input, $new_input );
-            $this->sanitizeString( 'SMTP Mailers', 'smtp_mailers', $input, $new_input );
 			$this->sanitizeString( 'Authorization Type', PostmanOptions::AUTHENTICATION_TYPE, $input, $new_input );
 			$this->sanitizeString( 'From Name', PostmanOptions::MESSAGE_SENDER_NAME, $input, $new_input );
 			$this->sanitizeString( 'Client ID', PostmanOptions::CLIENT_ID, $input, $new_input );
@@ -93,8 +89,6 @@ if ( ! class_exists( 'PostmanInputSanitizer' ) ) {
             $this->sanitizeString( 'Fallback username', PostmanOptions::FALLBACK_SMTP_USERNAME, $input, $new_input );
             $this->sanitizePassword( 'Fallback password', PostmanOptions::FALLBACK_SMTP_PASSWORD, $input, $new_input, $this->options->getFallbackPassword() );
 
-            $new_input = apply_filters( 'post_smtp_sanitize', $new_input, $input, $this );
-
 			if ( $new_input [ PostmanOptions::CLIENT_ID ] != $this->options->getClientId() || $new_input [ PostmanOptions::CLIENT_SECRET ] != $this->options->getClientSecret() || $new_input [ PostmanOptions::HOSTNAME ] != $this->options->getHostname() ) {
 				$this->logger->debug( 'Recognized new Client ID' );
 				// the user entered a new client id and we should destroy the stored auth token
@@ -117,8 +111,7 @@ if ( ! class_exists( 'PostmanInputSanitizer' ) ) {
 
 			return $new_input;
 		}
-
-		public function sanitizeString( $desc, $key, $input, &$new_input ) {
+		private function sanitizeString( $desc, $key, $input, &$new_input ) {
 			if ( isset( $input [ $key ] ) ) {
 				$this->logSanitize( $desc, $input [ $key ] );
 				$new_input [ $key ] = trim( $input [ $key ] );
@@ -128,12 +121,12 @@ if ( ! class_exists( 'PostmanInputSanitizer' ) ) {
 		/**
 		 * Sanitize a Basic Auth password, and base64-encode it
 		 *
-		 * @param mixed $desc
-		 * @param mixed $key
-		 * @param mixed $input
-		 * @param mixed $new_input
+		 * @param unknown $desc
+		 * @param unknown $key
+		 * @param unknown $input
+		 * @param unknown $new_input
 		 */
-		public function sanitizePassword( $desc, $key, $input, &$new_input, $existingPassword ) {
+		private function sanitizePassword( $desc, $key, $input, &$new_input, $existingPassword ) {
 			// WordPress calling Sanitize twice is a known issue
 			// https://core.trac.wordpress.org/ticket/21989
 			$action = PostmanSession::getInstance()->getAction();
@@ -164,7 +157,7 @@ if ( ! class_exists( 'PostmanInputSanitizer' ) ) {
 				if ( $value <= 0 ) {
 					$new_input [ $key ] = PostmanOptions::getInstance()->getMailLoggingMaxEntries();
 					$h = new PostmanMessageHandler();
-					$h->addError( sprintf( '%s %s', __( 'Maximum Log Entries', 'post-smtp' ), __( 'must be greater than 0', 'post-smtp' ) ) );
+					$h->addError( sprintf( '%s %s', __( 'Maximum Log Entries', Postman::TEXT_DOMAIN ), __( 'must be greater than 0', Postman::TEXT_DOMAIN ) ) );
 				} else {
 					$this->logSanitize( $desc, $input [ $key ] );
 					$new_input [ $key ] = $value;

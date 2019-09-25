@@ -1,8 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
-
 require_once ("registered-domain-libs-master/PHP/effectiveTLDs.inc.php");
 require_once ("registered-domain-libs-master/PHP/regDomain.inc.php");
 
@@ -54,8 +50,8 @@ class PostmanPortTest {
 	/**
 	 * Wrap the regDomain/getRegisteredDomain function
 	 *
-	 * @param mixed $domain
-	 * @return mixed
+	 * @param unknown $domain        	
+	 * @return unknown|Ambigous <NULL, string, unknown, mixed>
 	 */
 	private function getRegisteredDomain($hostname) {
 		$registeredDomain = getRegisteredDomain ( $hostname );

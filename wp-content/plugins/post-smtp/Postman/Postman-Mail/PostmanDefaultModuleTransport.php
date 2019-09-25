@@ -1,8 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
-
 require_once 'PostmanModuleTransport.php';
 if (! class_exists ( 'PostmanSmtpModuleTransport' )) {
 	class PostmanDefaultModuleTransport extends PostmanAbstractZendModuleTransport implements PostmanZendModuleTransport {
@@ -12,7 +8,7 @@ if (! class_exists ( 'PostmanSmtpModuleTransport' )) {
 		
 		/**
 		 *
-		 * @param mixed $rootPluginFilenameAndPath        	
+		 * @param unknown $rootPluginFilenameAndPath        	
 		 */
 		public function __construct($rootPluginFilenameAndPath) {
 			parent::__construct ( $rootPluginFilenameAndPath );
@@ -106,7 +102,7 @@ if (! class_exists ( 'PostmanSmtpModuleTransport' )) {
 			return self::SLUG;
 		}
 		public function getName() {
-			return __ ( 'Default', 'post-smtp' );
+			return __ ( 'Default', Postman::TEXT_DOMAIN );
 		}
 		public function getHostname() {
 			return 'localhost';

@@ -1,8 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
-
 if ( ! class_exists( 'PostmanZendMailEngine' ) ) {
 
 	require_once 'Zend-1.12.10/Loader.php';
@@ -51,8 +47,8 @@ if ( ! class_exists( 'PostmanZendMailEngine' ) ) {
 
 		/**
 		 *
-		 * @param mixed $senderEmail
-		 * @param mixed $accessToken
+		 * @param unknown $senderEmail
+		 * @param unknown $accessToken
 		 */
 		function __construct( PostmanZendModuleTransport $transport ) {
 			assert( isset( $transport ) );
@@ -175,12 +171,10 @@ if ( ! class_exists( 'PostmanZendMailEngine' ) ) {
 			$this->logger->debug( 'Create the Zend_Mail transport' );
 			$zendTransport = $this->transport->createZendMailTransport( $this->transport->getHostname(), array() );
 
-            $transport = $this->transport instanceof PostmanDefaultModuleTransport ? null : $zendTransport;
-
 			try {
 				// send the message
 				$this->logger->debug( 'Sending mail' );
-				$mail->send( $transport );
+				$mail->send( $zendTransport );
 				if ( $this->logger->isInfo() ) {
 					$this->logger->info( sprintf( 'Message %d accepted for delivery', PostmanState::getInstance()->getSuccessfulDeliveries() + 1 ) );
 				}
@@ -210,7 +204,7 @@ if ( ! class_exists( 'PostmanZendMailEngine' ) ) {
 				$message = $e->getMessage();
 				if ( $e->getCode() == 334 ) {
 					// replace the unusable Google message with a better one in the case of code 334
-					$message = sprintf( __( 'Communication Error [334] - make sure the Envelope From email is the same account used to create the Client ID.', 'post-smtp' ) );
+					$message = sprintf( __( 'Communication Error [334] - make sure the Envelope From email is the same account used to create the Client ID.', Postman::TEXT_DOMAIN ) );
 				}
 				// create a new exception
 				$newException = new Exception( $message, $e->getCode() );

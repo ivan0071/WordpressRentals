@@ -1,8 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
-
 if (! class_exists ( 'PostmanEmailAddress' )) {
 	class PostmanEmailAddress {
 		private $name;
@@ -65,8 +61,8 @@ if (! class_exists ( 'PostmanEmailAddress' )) {
 		/**
 		 * Accept a String of addresses or an array and return an array
 		 *
-		 * @param mixed $recipientList        	
-		 * @param mixed $recipients        	
+		 * @param unknown $recipientList        	
+		 * @param unknown $recipients        	
 		 */
 		public static function convertToArray($emails) {
 			assert ( ! empty ( $emails ) );
