@@ -83,6 +83,8 @@ $property_location = get_post_meta( get_the_ID(), ERE_METABOX_PREFIX . 'property
 $property_map_address = isset($property_location['address']) ? $property_location['address'] : '';
 list( $propertyLat, $propertyLong ) =  isset($property_location['location']) ? explode( ',', $property_location['location'] ) : array('', '');
 
+$agent_display_option = isset($property_meta_data[ ERE_METABOX_PREFIX . 'agent_display_option' ]) ? $property_meta_data[ ERE_METABOX_PREFIX . 'agent_display_option' ][0] : '';
+
 wp_enqueue_script('bootstrap-tabcollapse');
 ?>
 
@@ -407,7 +409,172 @@ wp_enqueue_script('bootstrap-tabcollapse');
         </div>
 	</div>
 	<div class="ere-property-element property-contact-right" style="100%">
-        Contact Agent
+
+    Contact Agent
+    <div class="single-property-element property-contact-agent">
+        <div class="ere-property-element">
+        <?php
+        $property_agent       = isset($property_meta_data[ ERE_METABOX_PREFIX . 'property_agent' ]) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_agent' ][0] : '';
+        $agent_type = '';$user_id=0;
+        if ( $agent_display_option == 'author_info' || ( $agent_display_option == 'other_info') || ( $agent_display_option == 'agent_info' && ! empty( $property_agent ) ) ):
+                $email = $avatar_src = $agent_link = $agent_name = $agent_position = $agent_facebook_url = $agent_twitter_url =
+                $agent_googleplus_url = $agent_linkedin_url = $agent_pinterest_url = $agent_skype =
+                $agent_youtube_url = $agent_vimeo_url = $agent_mobile_number = $agent_office_address = $agent_website_url = $agent_description = '';
+                if ( $agent_display_option != 'other_info' ) {
+                    $width = 270; $height = 340;
+                    $no_avatar_src= ERE_PLUGIN_URL . 'public/assets/images/profile-avatar.png';
+                    $default_avatar=ere_get_option('default_user_avatar','');
+                    if($default_avatar!='')
+                    {
+                        if(is_array($default_avatar)&& $default_avatar['url']!='')
+                        {
+                            $resize = ere_image_resize_url($default_avatar['url'], $width, $height, true);
+                            if ($resize != null && is_array($resize)) {
+                                $no_avatar_src = $resize['url'];
+                            }
+                        }
+                    }
+                    if( $agent_display_option == 'author_info') {
+                        $user_id = $post->post_author;
+                        $email = get_userdata( $user_id )->user_email;
+                        $user_info      = get_userdata( $user_id );
+                        // Show Property Author Info (Get info via User. Apply for User, Agent, Seller)
+                        $author_picture_id = get_the_author_meta( ERE_METABOX_PREFIX . 'author_picture_id', $user_id );
+                        $avatar_src = ere_image_resize_id($author_picture_id, $width, $height, true);
+
+                        if(empty($user_info->first_name) && empty($user_info->last_name))
+                        {
+                            $agent_name=$user_info->user_login;
+                        }
+                        else
+                        {
+                            $agent_name     = $user_info->first_name . ' ' . $user_info->last_name;
+                        }
+                        $agent_facebook_url   = get_the_author_meta( ERE_METABOX_PREFIX . 'author_facebook_url', $user_id );
+                        $agent_twitter_url    = get_the_author_meta( ERE_METABOX_PREFIX . 'author_twitter_url', $user_id );
+                        $agent_googleplus_url = get_the_author_meta( ERE_METABOX_PREFIX . 'author_googleplus_url', $user_id );
+                        $agent_linkedin_url   = get_the_author_meta( ERE_METABOX_PREFIX . 'author_linkedin_url', $user_id );
+                        $agent_pinterest_url  = get_the_author_meta( ERE_METABOX_PREFIX . 'author_pinterest_url', $user_id );
+                        $agent_instagram_url  = get_the_author_meta( ERE_METABOX_PREFIX . 'author_instagram_url', $user_id );
+                        $agent_skype          = get_the_author_meta( ERE_METABOX_PREFIX . 'author_skype', $user_id );
+                        $agent_youtube_url    = get_the_author_meta( ERE_METABOX_PREFIX . 'author_youtube_url', $user_id );
+                        $agent_vimeo_url      = get_the_author_meta( ERE_METABOX_PREFIX . 'author_vimeo_url', $user_id );
+
+                        $agent_mobile_number  = get_the_author_meta( ERE_METABOX_PREFIX . 'author_mobile_number', $user_id );
+                        $agent_office_address = get_the_author_meta( ERE_METABOX_PREFIX . 'author_office_address', $user_id );
+                        $agent_website_url    = get_the_author_meta( 'user_url', $user_id );
+
+                        $author_agent_id = get_the_author_meta(ERE_METABOX_PREFIX . 'author_agent_id', $user_id);
+                        if(empty($author_agent_id))
+                        {
+                            $agent_position = esc_html__( 'Property Seller', 'essential-real-estate' );
+                            $agent_type = esc_html__( 'Seller', 'essential-real-estate' );
+                            $agent_link = get_author_posts_url($user_id);
+                        }
+                        else
+                        {
+                            $agent_position = esc_html__( 'Property Agent', 'essential-real-estate' );
+                            $agent_type = esc_html__( 'Agent', 'essential-real-estate' );
+                            $agent_link = get_the_permalink($author_agent_id);
+                        }
+                    } else {
+                        $agent_post_meta_data = get_post_custom( $property_agent);
+                        $email = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_email']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_email'][0] : '';
+                        $agent_name     = get_the_title($property_agent);
+                        $avatar_id = get_post_thumbnail_id($property_agent);
+                        $avatar_src = ere_image_resize_id($avatar_id, $width, $height, true);
+
+                        $agent_facebook_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_facebook_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_facebook_url'][0] : '';
+                        $agent_twitter_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_twitter_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_twitter_url'][0] : '';
+                        $agent_googleplus_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_googleplus_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_googleplus_url'][0] : '';
+                        $agent_linkedin_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_linkedin_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_linkedin_url'][0] : '';
+                        $agent_pinterest_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_pinterest_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_pinterest_url'][0] : '';
+                        $agent_instagram_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_instagram_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_instagram_url'][0] : '';
+                        $agent_skype = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_skype']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_skype'][0] : '';
+                        $agent_youtube_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_youtube_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_youtube_url'][0] : '';
+                        $agent_vimeo_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_vimeo_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_vimeo_url'][0] : '';
+
+                        $agent_mobile_number = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_mobile_number']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_mobile_number'][0] : '';
+                        $agent_office_address = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_office_address']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_office_address'][0] : '';
+                        $agent_website_url = isset($agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_website_url']) ? $agent_post_meta_data[ERE_METABOX_PREFIX . 'agent_website_url'][0] : '';
+
+                        $agent_position = esc_html__( 'Property Agent', 'essential-real-estate' );
+                        $agent_type = esc_html__( 'Agent', 'essential-real-estate' );
+                        $agent_link     = get_the_permalink( $property_agent );
+                    }
+                } elseif ( $agent_display_option == 'other_info' ) {
+                    $email = isset($property_meta_data[ ERE_METABOX_PREFIX . 'property_other_contact_mail' ]) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_other_contact_mail' ][0] : '';
+                    $agent_name = isset($property_meta_data[ ERE_METABOX_PREFIX . 'property_other_contact_name' ]) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_other_contact_name' ][0] : '';
+                    $agent_mobile_number = isset($property_meta_data[ ERE_METABOX_PREFIX . 'property_other_contact_phone' ]) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_other_contact_phone' ][0] : '';
+                    $agent_description = isset($property_meta_data[ ERE_METABOX_PREFIX . 'property_other_contact_description' ]) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_other_contact_description' ][0] : '';
+                }
+                ?>
+            
+            <?php if ( ! empty( $email ) ): ?>
+            <div class="contact-agent">
+                <form action="#" method="POST" id="contact-agent-form" class="row">
+                        <input type="hidden" name="target_email" value="<?php echo esc_attr( $email ); ?>">
+                        <input type="hidden" name="property_url" value="<?php echo get_permalink(); ?>">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input class="form-control" name="sender_name" type="text"
+                                    placeholder="<?php esc_html_e( 'Your name', 'essential-real-estate' ); ?>">
+                                <div
+                                    class="hidden name-error form-error"><?php esc_html_e( 'Please enter your Name!', 'essential-real-estate' ); ?></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input class="form-control" name="sender_email" type="email"
+                                    placeholder="<?php esc_html_e( 'Your e-mail adress', 'essential-real-estate' ); ?>">
+                                <div class="hidden email-error form-error"
+                                    data-not-valid="<?php esc_html_e( 'Your Email address is not Valid!', 'essential-real-estate' ) ?>"
+                                    data-error="<?php esc_html_e( 'Please enter your Email!', 'essential-real-estate' ) ?>"><?php esc_html_e( 'Please enter your Email!', 'essential-real-estate' ); ?></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input class="form-control" name="sender_phone" type="text"
+                                    placeholder="<?php esc_html_e( 'Your phone number', 'essential-real-estate' ); ?>">
+                                <div
+                                    class="hidden phone-error form-error"><?php esc_html_e( 'Please enter your Phone!', 'essential-real-estate' ); ?></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <textarea class="form-control" name="sender_msg" rows="4"
+                                        placeholder="<?php esc_html_e( 'Message', 'essential-real-estate' ); ?> *"><?php $title=get_the_title(); echo sprintf(__( 'Hello, I am interested in [%s]', 'essential-real-estate' ), $title) ?></textarea>
+                                <div
+                                    class="hidden message-error form-error"><?php esc_html_e( 'Please enter your Message!', 'essential-real-estate' ); ?></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <?php if (ere_enable_captcha('contact_agent')) {do_action('ere_generate_form_recaptcha');} ?>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <?php wp_nonce_field('ere_contact_agent_ajax_nonce', 'ere_security_contact_agent'); ?>
+                            <input type="hidden" name="action" id="contact_agent_with_property_url_action" value="ere_contact_agent_ajax">
+                            <button type="submit"
+                                    class="agent-contact-btn btn"><?php esc_html_e( 'Send', 'essential-real-estate' ); ?></button>
+                            <div class="form-messages"></div>
+                        </div>
+                    </form>
+            </div>
+            <?php endif; ?>
+        <?php endif; ?>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
 	</div>
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
