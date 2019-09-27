@@ -568,17 +568,71 @@ wp_enqueue_script('bootstrap-tabcollapse');
 
 
 
-
-
-
-
-
+<input id="postcodesautocomplete"/>
 
 
 	</div>
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
             $('#ere-features-tabs').tabCollapse();
+
+
+
+
+
+
+$.widget( "custom.catcomplete", $.ui.autocomplete, {
+    _renderMenu: function( ul, items ) {
+        var that = this, currentPostcode = "";
+        var count = 1;
+        items.forEach(function(item) {
+            count++;
+            if (count < 10) {
+                if ( item.postcode != currentPostcode ) {
+                    ul.append( "<li class='ui-autocomplete-postcode'>" + item.postcode + "</li>" );
+                    currentPostcode = item.postcode;
+                }
+                that._renderItemData( ul, item );
+            }            
+        });
+    }
+});
+
+var xhr;
+$( "#postcodesautocomplete" ).catcomplete({
+    delay: 0,
+    source: function( request, response ) {
+        var regex = new RegExp(request.term, 'i');
+        var bigLetter = (request.term.substring(0, 1).toUpperCase());
+        if(xhr){
+            xhr.abort();
+        }
+        xhr = $.ajax({
+            url: "http://localhost:8080/wordpress/postcodesdb/postcodes" + bigLetter + ".json",
+            dataType: "json",
+            cache: false,
+            success: function(data) {
+                response($.map(data, function(item) {
+                if(regex.test(item.postcode)){
+                    return {
+                        postcode: item.postcode
+                        //category: item.category,
+                        //desc: item.desc
+                    };
+                }
+                }));
+            }
+        });
+    },
+    minlength:0
+});
+
+
+
+
+
+
+
         });
     </script>
 </div>
