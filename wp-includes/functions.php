@@ -6165,3 +6165,52 @@ function wp_privacy_delete_old_export_files() {
 		}
 	}
 }
+
+
+add_filter( 'wp_get_nav_menu_items','nav_items', 11, 3 );
+
+function nav_items( $items, $menu, $args ) 
+{
+    if( is_admin() )
+        return $items;
+
+	$residentialMenuID = null;
+	$commercialMenuID = null;
+	$internationalMenuID = null;
+    foreach( $items as $item ) 
+    {
+		if ($item->post_title == 'Residential' ) {
+			//$item->url .= '?group=residential&status=all&location=london';
+			$residentialMenuID = $item->ID;
+		} else if ($item->post_title == 'Commercial' ) {
+			//$item->url .= '?group=commercial&status=all&location=london';
+			$commercialMenuID = $item->ID;
+		} else if ($item->post_title == 'International' ) {
+			//$item->url .= '?group=all&status=all&location=outsidelondon';
+			$internationalMenuID = $item->ID;
+		}		
+	}
+	
+	foreach( $items as $item ) 
+    {
+		if ($item->post_title == 'Buy' ) {
+			if ($item->menu_item_parent == $residentialMenuID && $residentialMenuID != null ) {
+				$item->url .= '?group=residential&status=buy&location=london';
+			} else if ($item->menu_item_parent == $commercialMenuID && $commercialMenuID != null ) {
+				$item->url .= '?group=commercial&status=buy&location=london';
+			} else if ($item->menu_item_parent == $internationalMenuID && $internationalMenuID != null ) {
+				$item->url .= '?group=all&status=buy&location=outsidelondon';
+			}
+		} else if ($item->post_title == 'Rent' ) {
+			if ($item->menu_item_parent == $residentialMenuID && $residentialMenuID != null ) {
+				$item->url .= '?group=residential&status=rent&location=london';
+			} else if ($item->menu_item_parent == $commercialMenuID && $commercialMenuID != null ) {
+				$item->url .= '?group=commercial&status=rent&location=london';
+			} else if ($item->menu_item_parent == $internationalMenuID && $internationalMenuID != null ) {
+				$item->url .= '?group=all&status=rent&location=outsidelondon';
+			}
+		}
+	}
+
+	return $items;
+}
