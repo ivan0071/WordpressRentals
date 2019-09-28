@@ -6,6 +6,7 @@
 get_header(); ?>
 
   <div id="primary" class="content-area">
+<?php /*
     <div class="verso-breadcrumb">
     	<div class="container">
             <div class="verso-breadcrumb-banner">
@@ -15,11 +16,13 @@ get_header(); ?>
 				<?php
 					if( function_exists('verso_lite_custom_breadcrumbs') ) :
 					  verso_lite_custom_breadcrumbs();
-					endif;
+          endif;
+          var_dump("full-width");
 				?>
 			</div>
     	</div>
     </div>
+*/ ?>
     <div class="container">
           <main id="main" class="site-main" role="main">
 

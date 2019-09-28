@@ -6,6 +6,7 @@
 get_header(); ?>
 
   <div id="primary" class="content-area">
+<?php /*
     <div class="verso-breadcrumb">
       	<div class="container">
             <div class="verso-breadcrumb-banner">
@@ -15,11 +16,13 @@ get_header(); ?>
 				<?php
 					if( function_exists('verso_lite_custom_breadcrumbs') ) :
 					  verso_lite_custom_breadcrumbs();
-					endif;
+          endif;
+          var_dump("left-sidebar");
 				?>
 			</div>
       	</div>
     </div>
+*/ ?>
     <div class="container">
       <div class="row">
           <div class="col-xs-12 col-sm-9 col-sm-push-3 col-md-9 col-md-push-3">

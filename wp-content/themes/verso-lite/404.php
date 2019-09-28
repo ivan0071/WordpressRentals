@@ -6,6 +6,7 @@
 get_header(); ?>
 
   <div id="primary" class="content-area">
+<?php /*
     <div class="verso-breadcrumb">
         <div class="container">
             <div class="verso-breadcrumb-banner">
@@ -18,10 +19,12 @@ get_header(); ?>
                     if( function_exists('verso_lite_custom_breadcrumbs') ) :
                       verso_lite_custom_breadcrumbs();
                     endif;
+                    var_dump("404");
                 ?>
             </div>
         </div>
     </div>
+*/ ?>
     <main id="main" class="site-main" role="main">
 
         <section class="error-404 not-found">
