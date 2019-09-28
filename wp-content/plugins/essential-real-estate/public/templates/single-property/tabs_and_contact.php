@@ -581,25 +581,36 @@ wp_enqueue_script('bootstrap-tabcollapse');
 
 
 
-$.widget( "custom.catcomplete", $.ui.autocomplete, {
-    _renderMenu: function( ul, items ) {
-        var that = this, currentPostcode = "";
+$.widget("custom.tablecomplete", $.ui.autocomplete, {
+    _create: function() {
+        this._super();
+        this.widget().menu("option", "items", "> li:not(.ui-autocomplete-header)");
+    },
+    _renderMenu(ul, items) {
+        var self = this;
         var count = 1;
-        items.forEach(function(item) {
+        $.each(items, function(index, item) {
             count++;
             if (count < 10) {
-                if ( item.postcode != currentPostcode ) {
-                    ul.append( "<li class='ui-autocomplete-postcode'>" + item.postcode + "</li>" );
-                    currentPostcode = item.postcode;
-                }
-                that._renderItemData( ul, item );
-            }            
+            self._renderItemData(ul, item);
+            }
         });
+    },
+    _renderItemData(ul, item) {
+        return this._renderItem(ul, item).data("ui-autocomplete-item", item);
+    },
+    _renderItem(ul, item) {
+        var $li = $("<li class='ui-menu-item' role='presentation'></li>");
+        //var $content = "<div class='row ui-menu-item-wrapper'>" + "<div class='col-xs-12'>" + item.postcode + "</div>" + "</div>";
+        $li.html(item.postcode); //$content
+
+        return $li.appendTo(ul);
     }
 });
 
 var xhr;
-$( "#postcodesautocomplete" ).catcomplete({
+// create the autocomplete
+var autocomplete = $("#postcodesautocomplete").tablecomplete({
     delay: 0,
     source: function( request, response ) {
         var regex = new RegExp(request.term, 'i');
@@ -613,13 +624,13 @@ $( "#postcodesautocomplete" ).catcomplete({
             cache: false,
             success: function(data) {
                 response($.map(data, function(item) {
-                if(regex.test(item.postcode)){
-                    return {
-                        postcode: item.postcode
-                        //category: item.category,
-                        //desc: item.desc
-                    };
-                }
+                    if(regex.test(item.postcode)){
+                        return {
+                            postcode: item.postcode//,
+                            //district: item.district,
+                            //ward: item.ward
+                        };
+                    }
                 }));
             }
         });
@@ -627,7 +638,8 @@ $( "#postcodesautocomplete" ).catcomplete({
     minlength:0
 });
 
-
+// get a handle on it's UI view
+var autocomplete_handle = autocomplete.data("ui-autocomplete");
 
 
 
