@@ -568,8 +568,8 @@ wp_enqueue_script('bootstrap-tabcollapse');
 
 
 
-<input id="postcodesautocomplete"/>
-
+<input id="postcodesautocomplete" placeholder="Search london postcode"/>
+<input id="postcodesautocompleteLabel" disabled/>
 
 	</div>
     <script type="text/javascript">
@@ -635,7 +635,11 @@ var autocomplete = $("#postcodesautocomplete").tablecomplete({
             }
         });
     },
-    minlength:0
+    minlength:0,
+    select: function( event , ui ) {
+        $("#postcodesautocomplete").val(ui.item.postcode);
+        $("#postcodesautocompleteLabel").val(ui.item.postcode);
+    }
 });
 
 // get a handle on it's UI view
