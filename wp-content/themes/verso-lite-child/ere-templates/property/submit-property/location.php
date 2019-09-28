@@ -91,33 +91,6 @@ wp_enqueue_script('select2_js');
                 </div>
             </div>
         <?php } ?>
-        <?php if (!in_array("postal_code", $hide_property_fields)) { ?>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="zip"><?php esc_html_e('Postcode', 'essential-real-estate'); ?></label>
-                    <input type="text" class="form-control" name="postal_code" id="zip">
-                </div>
-            </div>
-        <?php } ?>
-        <?php if (!in_array("property_london_postcodes", $hide_property_fields)) {?>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="property_london_postcodes"><?php esc_html_e('London Postcodes', 'essential-real-estate');
-                        echo ere_required_field('property_london_postcodes'); ?></label>
-                    <select name="property_london_postcodes" id="property_london_postcodes" class="form-control">
-                        <?php ere_get_taxonomy('property-london-postcodes', false, false, $paramtersPropertyLondonPostcodes); ?>
-                    </select>
-                </div>
-            </div>
-        <?php } ?>
-        <?php if (!in_array("property_city_name", $hide_property_fields)) { ?>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="property_city_name"><?php esc_html_e('City', 'essential-real-estate'); ?></label>
-                    <input type="text" class="form-control" name="property_city_name" id="property_city_name">
-                </div>
-            </div>
-        <?php } ?>
         <?php if (!in_array("country", $hide_property_fields)) { ?>
             <div class="col-sm-6 submit_country_field">
                 <div class="form-group ere-loading-ajax-wrap">
@@ -138,6 +111,38 @@ wp_enqueue_script('select2_js');
                 </div>
             </div>
         <?php } ?>
+        <?php if (!in_array("property_city_name", $hide_property_fields)) { ?>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="property_city_name"><?php esc_html_e('City', 'essential-real-estate'); ?></label>
+                    <input type="text" class="form-control" name="property_city_name" id="property_city_name">
+                </div>
+            </div>
+        <?php } ?>
+        <?php if (!in_array("postal_code", $hide_property_fields)) { ?>
+        <div class="col-sm-6 london-postcode-section">
+            <label for="search_london_postcodes"><?php esc_html_e('Search London postcodes', 'essential-real-estate'); ?></label>
+            <input type="text" class="form-control" name="search_london_postcodes" 
+                id="search_london_postcodes" placeholder="Type to search...">
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="zip"><?php esc_html_e('Postcode', 'essential-real-estate'); ?></label>
+                <input type="text" class="form-control" name="postal_code" id="zip">
+            </div>
+        </div>
+        <?php } ?>
+        <?php /* if (!in_array("property_london_postcodes", $hide_property_fields)) {?>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="property_london_postcodes"><?php esc_html_e('London Postcodes', 'essential-real-estate');
+                        echo ere_required_field('property_london_postcodes'); ?></label>
+                    <select name="property_london_postcodes" id="property_london_postcodes" class="form-control">
+                        <?php ere_get_taxonomy('property-london-postcodes', false, false, $paramtersPropertyLondonPostcodes); ?>
+                    </select>
+                </div>
+            </div>
+        <?php } */ ?>
         <?php /*
         if (!in_array("property_address", $hide_property_fields)) { ?>
             <div class="col-sm-12">

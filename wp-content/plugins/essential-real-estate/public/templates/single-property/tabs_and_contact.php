@@ -564,91 +564,10 @@ wp_enqueue_script('bootstrap-tabcollapse');
         <?php endif; ?>
         </div>
     </div>
-
-
-
-
-<input id="postcodesautocomplete" placeholder="Search london postcode"/>
-<input id="postcodesautocompleteLabel" disabled/>
-
 	</div>
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
             $('#ere-features-tabs').tabCollapse();
-
-
-
-
-
-
-$.widget("custom.tablecomplete", $.ui.autocomplete, {
-    _create: function() {
-        this._super();
-        this.widget().menu("option", "items", "> li:not(.ui-autocomplete-header)");
-    },
-    _renderMenu(ul, items) {
-        var self = this;
-        var count = 1;
-        $.each(items, function(index, item) {
-            count++;
-            if (count < 10) {
-            self._renderItemData(ul, item);
-            }
-        });
-    },
-    _renderItemData(ul, item) {
-        return this._renderItem(ul, item).data("ui-autocomplete-item", item);
-    },
-    _renderItem(ul, item) {
-        var $li = $("<li class='ui-menu-item' role='presentation'></li>");
-        //var $content = "<div class='row ui-menu-item-wrapper'>" + "<div class='col-xs-12'>" + item.postcode + "</div>" + "</div>";
-        $li.html(item.postcode); //$content
-
-        return $li.appendTo(ul);
-    }
-});
-
-var xhr;
-// create the autocomplete
-var autocomplete = $("#postcodesautocomplete").tablecomplete({
-    delay: 0,
-    source: function( request, response ) {
-        var regex = new RegExp(request.term, 'i');
-        var bigLetter = (request.term.substring(0, 1).toUpperCase());
-        if(xhr){
-            xhr.abort();
-        }
-        xhr = $.ajax({
-            url: "http://localhost:8080/wordpress/postcodesdb/postcodes" + bigLetter + ".json",
-            dataType: "json",
-            cache: false,
-            success: function(data) {
-                response($.map(data, function(item) {
-                    if(regex.test(item.postcode)){
-                        return {
-                            postcode: item.postcode//,
-                            //district: item.district,
-                            //ward: item.ward
-                        };
-                    }
-                }));
-            }
-        });
-    },
-    minlength:0,
-    select: function( event , ui ) {
-        $("#postcodesautocomplete").val(ui.item.postcode);
-        $("#postcodesautocompleteLabel").val(ui.item.postcode);
-    }
-});
-
-// get a handle on it's UI view
-var autocomplete_handle = autocomplete.data("ui-autocomplete");
-
-
-
-
-
         });
     </script>
 </div>
