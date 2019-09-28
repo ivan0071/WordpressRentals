@@ -6180,13 +6180,13 @@ function nav_items( $items, $menu, $args )
     foreach( $items as $item ) 
     {
 		if ($item->post_title == 'Residential' ) {
-			//$item->url .= '?group=residential&status=all&location=london';
+			$item->url .= '?group=0&city=london';
 			$residentialMenuID = $item->ID;
 		} else if ($item->post_title == 'Commercial' ) {
-			//$item->url .= '?group=commercial&status=all&location=london';
+			$item->url .= '?group=1&city=london';
 			$commercialMenuID = $item->ID;
 		} else if ($item->post_title == 'International' ) {
-			//$item->url .= '?group=all&status=all&location=outsidelondon';
+			$item->url .= '?city=outsidelondon';
 			$internationalMenuID = $item->ID;
 		}		
 	}
@@ -6195,19 +6195,19 @@ function nav_items( $items, $menu, $args )
     {
 		if ($item->post_title == 'Buy' ) {
 			if ($item->menu_item_parent == $residentialMenuID && $residentialMenuID != null ) {
-				$item->url .= '?group=residential&status=buy&location=london';
+				$item->url .= '?group=0&status=for-sale&city=london';
 			} else if ($item->menu_item_parent == $commercialMenuID && $commercialMenuID != null ) {
-				$item->url .= '?group=commercial&status=buy&location=london';
+				$item->url .= '?group=1&status=for-sale&city=london';
 			} else if ($item->menu_item_parent == $internationalMenuID && $internationalMenuID != null ) {
-				$item->url .= '?group=all&status=buy&location=outsidelondon';
+				$item->url .= '?status=for-sale&city=outsidelondon';
 			}
 		} else if ($item->post_title == 'Rent' ) {
 			if ($item->menu_item_parent == $residentialMenuID && $residentialMenuID != null ) {
-				$item->url .= '?group=residential&status=rent&location=london';
+				$item->url .= '?group=0&status=for-rent&city=london';
 			} else if ($item->menu_item_parent == $commercialMenuID && $commercialMenuID != null ) {
-				$item->url .= '?group=commercial&status=rent&location=london';
+				$item->url .= '?group=1&status=for-rent&city=london';
 			} else if ($item->menu_item_parent == $internationalMenuID && $internationalMenuID != null ) {
-				$item->url .= '?group=all&status=rent&location=outsidelondon';
+				$item->url .= '?status=for-rent&city=outsidelondon';
 			}
 		}
 	}
