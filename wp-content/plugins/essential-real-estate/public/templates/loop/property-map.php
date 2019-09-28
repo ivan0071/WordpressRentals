@@ -15,6 +15,15 @@ $mapDefaultZoom = 10;
 <div id="map" style="width: 100%; height: 500px;"></div>
 
 <script>
+    jQuery(document).ready(function ($) {
+      $('#markerMapBtn').on('click', function () {        
+        $('#map').empty();
+        setTimeout(() => {
+          checkDivLoaded();
+        }, 1000);
+      });
+    });
+
     /* OSM & OL example code provided by https://mediarealm.com.au/ */
     var map;
     var mapDefaultZoom = <?php echo $mapDefaultZoom; ?>;
