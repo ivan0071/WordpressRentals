@@ -961,12 +961,41 @@ if (!class_exists('ERE_Admin')) {
                                                     'title' => esc_html__('Street Number', 'essential-real-estate'),
                                                     'type' => 'text',
                                                 ),
+                                            )
+                                        ),
+                                        array(
+                                            'type' => 'row',
+                                            'col' => '6',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}property_country_name",
+                                                    'title' => esc_html__('Country:', 'essential-real-estate'),
+                                                    'type' => 'select',
+                                                    'options' => ere_get_selected_countries()
+                                                ),
+                                                array(
+                                                    'id' => "{$meta_prefix}property_city_name",
+                                                    'title' => esc_html__('City', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                ),
+                                            )
+                                        ),
+                                        array(
+                                            'type' => 'row',
+                                            'col' => '6',
+                                            'fields' => array(
+                                                array(
+                                                    'id' => "{$meta_prefix}search_london_postcodes",
+                                                    'title' => esc_html__('Search London postcodes', 'essential-real-estate'),
+                                                    'placeholder' => esc_html__('Type to search...', 'essential-real-estate'),
+                                                    'type' => 'text',
+                                                ),
                                                 array(
                                                     'id' => "{$meta_prefix}property_zip",
                                                     'title' => esc_html__('Postcode', 'essential-real-estate'),
                                                     'type' => 'text',
                                                 ),
-                                                array(
+                                                /*array(
                                                     'id' => "{$meta_prefix}property_london_postcodes",
                                                     'title' => esc_html__('London Postcodes:', 'essential-real-estate'),
                                                     'type' => 'select',
@@ -979,24 +1008,7 @@ if (!class_exists('ERE_Admin')) {
                                                             'order' => 'ASC'
                                                         )
                                                     ),
-                                                ),
-                                            )
-                                        ),
-                                        array(
-                                            'type' => 'row',
-                                            'col' => '6',
-                                            'fields' => array(
-                                                array(
-                                                    'id' => "{$meta_prefix}property_city_name",
-                                                    'title' => esc_html__('City', 'essential-real-estate'),
-                                                    'type' => 'text',
-                                                ),
-                                                array(
-                                                    'id' => "{$meta_prefix}property_country_name",
-                                                    'title' => esc_html__('Country:', 'essential-real-estate'),
-                                                    'type' => 'select',
-                                                    'options' => ere_get_selected_countries()
-                                                ),
+                                                ),*/
                                             )
                                         ),
                                         // array(
@@ -1808,7 +1820,7 @@ if (!class_exists('ERE_Admin')) {
                     'slug' => apply_filters('ere_property_status_slug', 'property-status'),
                 ),
             ));
-            $taxonomies['property-london-postcodes'] = apply_filters('ere_register_taxonomy_property_london_postcodes', array(
+            /*$taxonomies['property-london-postcodes'] = apply_filters('ere_register_taxonomy_property_london_postcodes', array(
                 'post_type' => 'property',
                 'hierarchical' => false,
                 'meta_box_cb' => array($this, 'taxonomy_select_meta_box'),
@@ -1818,7 +1830,7 @@ if (!class_exists('ERE_Admin')) {
                 'rewrite' => array(
                     'slug' => apply_filters('ere_property_london_postcodes_slug', 'property-london-postcodes'),
                 ),
-            ));
+            ));*/
             $taxonomies['property-label'] = apply_filters('ere_register_taxonomy_property_label', array(
                 'post_type' => 'property',
                 'hierarchical' => true,
