@@ -15,9 +15,9 @@ $paramtersDefault = array(
     'order' => 'ASC',
     'hide_empty' => false
 );
-$paramtersPropertyLondonPostcodes = $paramtersDefault;
-$paramtersPropertyLondonPostcodes['taxonomy'] = 'property-london-postcodes';
-$paramtersPropertyLondonPostcodes['meta_key'] = 'property_london_postcodes_order_number';
+//$paramtersPropertyLondonPostcodes = $paramtersDefault;
+//$paramtersPropertyLondonPostcodes['taxonomy'] = 'property-london-postcodes';
+//$paramtersPropertyLondonPostcodes['meta_key'] = 'property_london_postcodes_order_number';
 
 $location_dropdowns = ere_get_option('location_dropdowns',1);
 $property_location = get_post_meta( $property_data->ID, ERE_METABOX_PREFIX . 'property_location', true );
