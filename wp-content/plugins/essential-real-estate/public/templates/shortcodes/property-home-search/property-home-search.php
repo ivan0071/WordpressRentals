@@ -42,7 +42,7 @@ extract(shortcode_atts(array(
 ), $atts));
 
 
-$status_default=ere_get_property_status_default_value();
+$status_default='';//ere_get_property_status_default_value();
 $request_city = isset($_GET['city']) ? $_GET['city'] : '';
 $request_title = isset($_GET['title']) ? $_GET['title'] : '';
 //$request_address = isset($_GET['address']) ? $_GET['address'] : '';
@@ -119,7 +119,7 @@ if ($column == '1') {
             <div class="ere-search-content">
                 <?php $home_search = ere_get_permalink('home_search'); ?>
                 <div data-href="<?php echo esc_url($home_search) ?>" class="search-properties-form">
-                    <?php if ($status_enable == 'true' && $layout == 'tab'): ?>
+                    <?php /* if ($status_enable == 'true' && $layout == 'tab'): ?>
                         <div class="ere-search-status-tab">
                             <input class="search-field" type='hidden' name="status"
                                    value="<?php echo esc_attr($request_status); ?>" data-default-value=""/>
@@ -133,14 +133,24 @@ if ($column == '1') {
                             endif;
                             ?>
                         </div>
-                    <?php endif; ?>
+                    <?php endif; */ ?>
                     <div class="row">
+                    <?php /*
+                    <select id="selectpicker-status" multiple placeholder="Sales or rentals">
+                    <?php 
+                        $property_status = ere_get_property_status_search();
+                        foreach ($property_status as $status):?>
+                            <option><?php echo esc_html($status->name) ?></option>
+                        <?php endforeach;
+                    ?>
+                    </select>
+                    */ ?>
                         <?php
                         $search_fields = ere_get_option('search_fields', array('property_status',  'property_type', 'property_title', /*'property_address',*/ 'property_country', 'property_state', 'property_city', /*'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', 'property_size', /*'property_land',*/ 'property_label', /*'property_garage', 'property_identity',*/ 'property_feature'));
                         if ($search_fields): foreach ($search_fields as $field) {
                             switch ($field) {
                                 case 'property_status':
-                                    if ($status_enable == 'true' && $layout != 'tab') {
+                                    if ($status_enable == 'true') {
                                         ere_get_template('property/search-fields/' . $field . '.php', array(
                                             'css_class_field' => $css_class_field,
                                             'request_status' => $request_status
