@@ -135,16 +135,6 @@ if ($column == '1') {
                         </div>
                     <?php endif; */ ?>
                     <div class="row">
-                    <?php /*
-                    <select id="selectpicker-status" multiple placeholder="Sales or rentals">
-                    <?php 
-                        $property_status = ere_get_property_status_search();
-                        foreach ($property_status as $status):?>
-                            <option><?php echo esc_html($status->name) ?></option>
-                        <?php endforeach;
-                    ?>
-                    </select>
-                    */ ?>
                         <?php
                         $search_fields = ere_get_option('search_fields', array('property_status',  'property_type', 'property_title', /*'property_address',*/ 'property_country', 'property_state', 'property_city', /*'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', 'property_size', /*'property_land',*/ 'property_label', /*'property_garage', 'property_identity',*/ 'property_feature'));
                         if ($search_fields): foreach ($search_fields as $field) {

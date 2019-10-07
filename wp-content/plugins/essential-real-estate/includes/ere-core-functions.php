@@ -968,10 +968,16 @@ if (!function_exists('ere_get_property_status_search_slug')) {
     function ere_get_property_status_search_slug($target_term_slug='',$prefix='')
     {
         $property_status = ere_get_property_status_search();
+        $noneSelected = false;
+        $arrayStatuses = explode(",", $target_term_slug);
+        if ((count($arrayStatuses) == 1) && $arrayStatuses[0] == 'null')
+            $noneSelected = true;
+
         if (!empty($property_status)) {
             foreach ($property_status as $term) {
-                if ($target_term_slug == $term->slug) {
-                    echo '<option value="' . $term->slug . '" selected>' . $prefix . $term->name . '</option>';
+                $inArray = (in_array($term->slug, $arrayStatuses));                
+                if ($inArray == true && $noneSelected == false) {
+                    echo '<option value="' . $term->slug . '" selected>' . $key . $term->name . '</option>';
                 } else {
                     echo '<option value="' . $term->slug . '">' . $prefix . $term->name . '</option>';
                 }

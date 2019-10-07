@@ -13,7 +13,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="<?php echo esc_attr($css_class_field); ?> form-group">
-    <select name="status" title="<?php esc_html_e('Sales or rentals' /*'Property Status'*/, 'essential-real-estate') ?>"
+
+<?php
+    //var_dump( $request_status );
+    //$arrayStatuses = explode(",", $request_status);
+    //var_dump( $arrayStatuses );
+?>
+
+    <select name="status" title="<?php esc_html_e('Sales or rentals', 'essential-real-estate') ?>"
+        id="selectpicker-status" multiple placeholder="Sales or rentals"
+        class="search-field form-control" data-default-value="">
+    <?php 
+        /*if ($request_status == '') {
+            echo '<option value="" disabled> All Statuses </option>';
+        } else {
+            echo '<option value="" disabled> All Statuses </option>';
+        }*/
+        ere_get_property_status_search_slug($request_status);
+    ?>
+    </select>
+
+    <?php /*
+    <select name="status" title="<?php esc_html_e('Sales or rentals', 'essential-real-estate') ?>"
             class="search-field form-control" data-default-value="">
         <?php 
             if ($request_status == '') {
@@ -24,4 +45,5 @@ if ( ! defined( 'ABSPATH' ) ) {
         ?>
         <?php ere_get_property_status_search_slug($request_status); ?>
     </select>
+    */ ?>
 </div>
