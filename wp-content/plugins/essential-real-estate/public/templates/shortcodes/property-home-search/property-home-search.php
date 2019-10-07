@@ -11,12 +11,13 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
-$layout = $column = /*$address_enable =*/ $title_enable = $city_enable = $type_enable = $status_enable = /*$bedrooms_enable =*/
+$layout = $column = /*$address_enable =*/ $title_enable = $city_enable = $type_enable = $group_enable = $status_enable = /*$bedrooms_enable =*/
 /*$bathrooms_enable =*/ $price_enable = $price_is_slider = $area_enable = $area_is_slider = /*$land_area_enable =*/ $land_area_is_slider = $country_enable = $state_enable = /*$neighborhood_enable =*/ $label_enable = $garage_enable =
 /*$property_identity_enable =*/ $other_features_enable = $color_scheme = $el_class = $request_city = '';
 extract(shortcode_atts(array(
     'layout' => 'tab',
     'column' => '3',
+    'group_enable' => 'true',
     'status_enable' => 'true',
     'type_enable' => 'true',
     'title_enable' => 'true',
@@ -136,9 +137,17 @@ if ($column == '1') {
                     <?php endif; */ ?>
                     <div class="row">
                         <?php
-                        $search_fields = ere_get_option('search_fields', array('property_status',  'property_type', 'property_title', /*'property_address',*/ 'property_country', 'property_state', 'property_city', /*'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', 'property_size', /*'property_land',*/ 'property_label', /*'property_garage', 'property_identity',*/ 'property_feature'));
+                        $search_fields = ere_get_option('search_fields', array('property_group', 'property_status',  'property_type', 'property_title', /*'property_address',*/ 'property_country', 'property_state', 'property_city', /*'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', 'property_size', /*'property_land',*/ 'property_label', /*'property_garage', 'property_identity',*/ 'property_feature'));
                         if ($search_fields): foreach ($search_fields as $field) {
                             switch ($field) {
+                                case 'property_group':
+                                    if ($group_enable == 'true') {
+                                        ere_get_template('property/search-fields/' . $field . '.php', array(
+                                            'css_class_field' => $css_class_field,
+                                            'request_group' => $request_group
+                                        ));
+                                    }
+                                    break;
                                 case 'property_status':
                                     if ($status_enable == 'true') {
                                         ere_get_template('property/search-fields/' . $field . '.php', array(
