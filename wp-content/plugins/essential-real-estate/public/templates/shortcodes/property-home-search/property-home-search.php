@@ -11,7 +11,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
-$layout = $column = /*$address_enable =*/ $title_enable = $city_enable = $type_enable = $group_enable = $status_enable = /*$bedrooms_enable =*/
+$layout = $column = /*$address_enable =*/ $title_enable = $city_enable = $type_enable = $group_enable = $status_enable = $postcode_enable = /*$bedrooms_enable =*/
 /*$bathrooms_enable =*/ $price_enable = $price_is_slider = $area_enable = $area_is_slider = /*$land_area_enable =*/ $land_area_is_slider = $country_enable = $state_enable = /*$neighborhood_enable =*/ $label_enable = $garage_enable =
 /*$property_identity_enable =*/ $other_features_enable = $color_scheme = $el_class = $request_city = '';
 extract(shortcode_atts(array(
@@ -19,6 +19,7 @@ extract(shortcode_atts(array(
     'column' => '3',
     'group_enable' => 'true',
     'status_enable' => 'true',
+    'postcode_enable' => 'true',
     'type_enable' => 'true',
     'title_enable' => 'true',
     //'address_enable' => 'true',
@@ -44,11 +45,13 @@ extract(shortcode_atts(array(
 
 
 $status_default='';//ere_get_property_status_default_value();
+$postcode_default='';
 $request_city = isset($_GET['city']) ? $_GET['city'] : '';
 $request_title = isset($_GET['title']) ? $_GET['title'] : '';
 //$request_address = isset($_GET['address']) ? $_GET['address'] : '';
 $request_type = isset($_GET['type']) ? $_GET['type'] : '';
 $request_status = isset($_GET['status']) ? $_GET['status'] : $status_default;
+$request_postcode = isset($_GET['postcode']) ? $_GET['postcode'] : $postcode_default;
 //$request_bathrooms = isset($_GET['bathrooms']) ? $_GET['bathrooms'] : '';
 //$request_bedrooms = isset($_GET['bedrooms']) ? $_GET['bedrooms'] : '';
 $request_min_price = isset($_GET['min-price']) ? $_GET['min-price'] : '';
@@ -137,7 +140,7 @@ if ($column == '1') {
                     <?php endif; */ ?>
                     <div class="row">
                         <?php
-                        $search_fields = ere_get_option('search_fields', array('property_group', 'property_status', /*'property_type',*/ 'property_title', /*'property_address', 'property_country', 'property_state', 'property_city', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', /*'property_size', 'property_land',*/ 'property_label', /*'property_garage', 'property_identity',*/ 'property_feature'));
+                        $search_fields = ere_get_option('search_fields', array('property_group', 'property_status', 'property_postcode', /*'property_type',*/ 'property_title', /*'property_address', 'property_country', 'property_state', 'property_city', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', /*'property_size', 'property_land',*/ 'property_label', /*'property_garage', 'property_identity',*/ 'property_feature'));
                         if ($search_fields): foreach ($search_fields as $field) {
                             switch ($field) {
                                 case 'property_group':
@@ -153,6 +156,14 @@ if ($column == '1') {
                                         ere_get_template('property/search-fields/' . $field . '.php', array(
                                             'css_class_field' => $css_class_field,
                                             'request_status' => $request_status
+                                        ));
+                                    }
+                                    break;
+                                case 'property_postcode':
+                                    if ($postcode_enable == 'true') {
+                                        ere_get_template('property/search-fields/' . $field . '.php', array(
+                                            'css_class_field' => $css_class_field,
+                                            'request_postcode' => $request_postcode
                                         ));
                                     }
                                     break;
