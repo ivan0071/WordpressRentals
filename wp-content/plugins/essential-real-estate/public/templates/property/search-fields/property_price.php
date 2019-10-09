@@ -63,25 +63,27 @@ if ($property_price_slider_search_field != '') {
 <?php else:
     $property_price_dropdown_min='0,100,300,500,700,900,1100,1300,1500,1700,1900';
     $property_price_dropdown_max='200,400,600,800,1000,1200,1400,1600,1800,2000';
-    $property_price_dropdown_search_field = ere_get_option('property_price_dropdown_search_field','');
-    if ($property_price_dropdown_search_field != '') {
-        foreach ($property_price_dropdown_search_field as $data) {
-            $term_id =(isset($data['property_price_dropdown_property_status']) ? $data['property_price_dropdown_property_status'] : '');
-            $term = get_term_by('id', $term_id, 'property-status');
-            if($term)
-            {
-                if($term->slug==$request_status)
-                {
-                    $property_price_dropdown_min = (isset($data['property_price_dropdown_min']) ? $data['property_price_dropdown_min'] : $property_price_dropdown_min);
-                    $property_price_dropdown_max = (isset($data['property_price_dropdown_max']) ? $data['property_price_dropdown_max'] : $property_price_dropdown_max);
-                    break;
-                }
-            }
-        }
-    }
+    // $property_price_dropdown_search_field = ere_get_option('property_price_dropdown_search_field','');
+    // if ($property_price_dropdown_search_field != '') {
+    //     foreach ($property_price_dropdown_search_field as $data) {
+    //         $term_id =(isset($data['property_price_dropdown_property_status']) ? $data['property_price_dropdown_property_status'] : '');
+    //         $term = get_term_by('id', $term_id, 'property-status');
+    //         if($term)
+    //         {
+    //             if($term->slug==$request_status)
+    //             {
+    //                 $property_price_dropdown_min = (isset($data['property_price_dropdown_min']) ? $data['property_price_dropdown_min'] : $property_price_dropdown_min);
+    //                 $property_price_dropdown_max = (isset($data['property_price_dropdown_max']) ? $data['property_price_dropdown_max'] : $property_price_dropdown_max);
+    //                 break;
+    //             }
+    //         }
+    //     }
+    // }
     ?>
     <div class="<?php echo esc_attr($css_class_half_field); ?> form-group">
-        <select name="min-price" id="min-price" title="<?php esc_html_e('Min Price', 'essential-real-estate') ?>"
+        <select name="min-price" id="min-price" 
+                title="<?php esc_html_e('Min Price', 'essential-real-estate') ?>"
+                placeholder="<?php esc_html_e('Min Price', 'essential-real-estate') ?>"
                 class="search-field form-control" data-default-value="">
             <option value="">
                 <?php esc_html_e('Min Price', 'essential-real-estate') ?>
@@ -94,7 +96,7 @@ if ($property_price_slider_search_field != '') {
                     <option
                         value="<?php echo esc_attr($n) ?>" <?php if ($n == $request_min_price) {
                         echo esc_attr('selected');
-                    } ?>><?php echo ere_get_format_money_search_field($n); ?>
+                    } ?>><?php echo ere_get_custom_format_money_search_field($n); ?>
                     </option>
                     <?php
                 }
@@ -102,7 +104,9 @@ if ($property_price_slider_search_field != '') {
         </select>
     </div>
     <div class="<?php echo esc_attr($css_class_half_field); ?> form-group">
-        <select name="max-price" id="max-price" title="<?php esc_html_e('Max Price', 'essential-real-estate') ?>"
+        <select name="max-price" id="max-price" 
+                title="<?php esc_html_e('Max Price', 'essential-real-estate') ?>"
+                placeholder="<?php esc_html_e('Max Price', 'essential-real-estate') ?>"
                 class="search-field form-control" data-default-value="">
             <option value="">
                 <?php esc_html_e('Max Price', 'essential-real-estate') ?>
@@ -114,7 +118,7 @@ if ($property_price_slider_search_field != '') {
                     ?>
                     <option value="<?php echo  esc_attr($n) ?>" <?php if ($n == $request_max_price) {
                         echo esc_attr('selected');
-                    } ?>><?php echo ere_get_format_money_search_field($n); ?>
+                    } ?>><?php echo ere_get_custom_format_money_search_field($n); ?>
                     </option>
                     <?php
                 }

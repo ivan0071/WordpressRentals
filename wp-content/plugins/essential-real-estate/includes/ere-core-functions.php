@@ -322,6 +322,21 @@ if (!function_exists('ere_get_format_money_search_field')) {
     }
 }
 /**
+ * Get custom format money search field
+ */
+if (!function_exists('ere_get_custom_format_money_search_field')) {
+    function ere_get_custom_format_money_search_field($money)
+    {
+        $currency = ere_get_option('currency_sign', esc_html__('$', 'essential-real-estate'));
+        $currency_position = ere_get_option('currency_position', 'before');
+        if ($currency_position == 'before') {
+            return $currency . ' ' . $money;
+        } else {
+            return $money . ' ' . $currency;
+        }
+    }
+}
+/**
  * Get format number
  */
 if (!function_exists('ere_get_format_number')) {

@@ -22,6 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
             if ((count($arrayGroups) == 1) && $arrayGroups[0] == 'null')
                 $noneSelected = true;
 
+            echo '<option value="0" selected> Type of property </option>';
+
             $inArrayRes = (in_array('0', $arrayGroups));
             if ($inArrayRes == true && $noneSelected == false) {
                 echo '<option value="0" selected> Residential </option>';
