@@ -137,7 +137,7 @@ if ($column == '1') {
                     <?php endif; */ ?>
                     <div class="row">
                         <?php
-                        $search_fields = ere_get_option('search_fields', array('property_group', 'property_status',  'property_type', 'property_title', /*'property_address',*/ 'property_country', 'property_state', 'property_city', /*'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', 'property_size', /*'property_land',*/ 'property_label', /*'property_garage', 'property_identity',*/ 'property_feature'));
+                        $search_fields = ere_get_option('search_fields', array('property_group', 'property_status', /*'property_type',*/ 'property_title', /*'property_address', 'property_country', 'property_state', 'property_city', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', /*'property_size', 'property_land',*/ 'property_label', /*'property_garage', 'property_identity',*/ 'property_feature'));
                         if ($search_fields): foreach ($search_fields as $field) {
                             switch ($field) {
                                 case 'property_group':
@@ -156,14 +156,14 @@ if ($column == '1') {
                                         ));
                                     }
                                     break;
-                                case 'property_type':
-                                    if ($type_enable == 'true') {
-                                        ere_get_template('property/search-fields/' . $field . '.php', array(
-                                            'css_class_field' => $css_class_field,
-                                            'request_type' => $request_type
-                                        ));
-                                    }
-                                    break;
+                                // case 'property_type':
+                                //     if ($type_enable == 'true') {
+                                //         ere_get_template('property/search-fields/' . $field . '.php', array(
+                                //             'css_class_field' => $css_class_field,
+                                //             'request_type' => $request_type
+                                //         ));
+                                //     }
+                                //     break;
                                 case 'property_title':
                                     if ($title_enable == 'true') {
                                         ere_get_template('property/search-fields/' . $field . '.php', array(
@@ -180,30 +180,30 @@ if ($column == '1') {
                                 //         ));
                                 //     }
                                 //     break;
-                                case 'property_country':
-                                    if ($country_enable == 'true') {
-                                        ere_get_template('property/search-fields/' . $field . '.php', array(
-                                            'css_class_field' => $css_class_field,
-                                            'request_country' => $request_country
-                                        ));
-                                    }
-                                    break;
-                                case 'property_state':
-                                    if ($state_enable == 'true') {
-                                        ere_get_template('property/search-fields/' . $field . '.php', array(
-                                            'css_class_field' => $css_class_field,
-                                            'request_state' => $request_state
-                                        ));
-                                    }
-                                    break;
-                                case 'property_city':
-                                    if ($city_enable == 'true') {
-                                        ere_get_template('property/search-fields/' . $field . '.php', array(
-                                            'css_class_field' => $css_class_field,
-                                            'request_city' => $request_city
-                                        ));
-                                    }
-                                    break;
+                                // case 'property_country':
+                                //     if ($country_enable == 'true') {
+                                //         ere_get_template('property/search-fields/' . $field . '.php', array(
+                                //             'css_class_field' => $css_class_field,
+                                //             'request_country' => $request_country
+                                //         ));
+                                //     }
+                                //     break;
+                                // case 'property_state':
+                                //     if ($state_enable == 'true') {
+                                //         ere_get_template('property/search-fields/' . $field . '.php', array(
+                                //             'css_class_field' => $css_class_field,
+                                //             'request_state' => $request_state
+                                //         ));
+                                //     }
+                                //     break;
+                                // case 'property_city':
+                                //     if ($city_enable == 'true') {
+                                //         ere_get_template('property/search-fields/' . $field . '.php', array(
+                                //             'css_class_field' => $css_class_field,
+                                //             'request_city' => $request_city
+                                //         ));
+                                //     }
+                                //     break;
                                 // case 'property_neighborhood':
                                 //     if ($neighborhood_enable == 'true') {
                                 //         ere_get_template('property/search-fields/' . $field . '.php', array(
@@ -240,17 +240,17 @@ if ($column == '1') {
                                         ));
                                     }
                                     break;
-                                case 'property_size':
-                                    if ($area_enable == 'true') {
-                                        ere_get_template('property/search-fields/' . $field . '.php', array(
-                                            'css_class_field' => $css_class_field,
-                                            'css_class_half_field' => $css_class_half_field,
-                                            'request_min_area' => $request_min_area,
-                                            'request_max_area' => $request_max_area,
-                                            'area_is_slider' => $area_is_slider
-                                        ));
-                                    }
-                                    break;
+                                // case 'property_size':
+                                //     if ($area_enable == 'true') {
+                                //         ere_get_template('property/search-fields/' . $field . '.php', array(
+                                //             'css_class_field' => $css_class_field,
+                                //             'css_class_half_field' => $css_class_half_field,
+                                //             'request_min_area' => $request_min_area,
+                                //             'request_max_area' => $request_max_area,
+                                //             'area_is_slider' => $area_is_slider
+                                //         ));
+                                //     }
+                                //     break;
                                 // case 'property_land':
                                 //     if ($land_area_enable == 'true') {
                                 //         ere_get_template('property/search-fields/' . $field . '.php', array(
