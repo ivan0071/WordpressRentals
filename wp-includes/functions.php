@@ -6186,7 +6186,7 @@ function nav_items( $items, $menu, $args )
 			$item->url .= '?group=1&city=london';
 			$commercialMenuID = $item->ID;
 		} else if ($item->post_title == 'International' ) {
-			$item->url .= '?city=outsidelondon';
+			$item->url .= '?city=international';
 			$internationalMenuID = $item->ID;
 		}		
 	}
@@ -6199,7 +6199,7 @@ function nav_items( $items, $menu, $args )
 			} else if ($item->menu_item_parent == $commercialMenuID && $commercialMenuID != null ) {
 				$item->url .= '?group=1&status=for-sale&city=london';
 			} else if ($item->menu_item_parent == $internationalMenuID && $internationalMenuID != null ) {
-				$item->url .= '?status=for-sale&city=outsidelondon';
+				$item->url .= '?status=for-sale&city=international';
 			}
 		} else if ($item->post_title == 'Rent' ) {
 			if ($item->menu_item_parent == $residentialMenuID && $residentialMenuID != null ) {
@@ -6207,7 +6207,7 @@ function nav_items( $items, $menu, $args )
 			} else if ($item->menu_item_parent == $commercialMenuID && $commercialMenuID != null ) {
 				$item->url .= '?group=1&status=for-rent&city=london';
 			} else if ($item->menu_item_parent == $internationalMenuID && $internationalMenuID != null ) {
-				$item->url .= '?status=for-rent&city=outsidelondon';
+				$item->url .= '?status=for-rent&city=international';
 			}
 		}
 	}

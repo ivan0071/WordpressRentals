@@ -13,7 +13,7 @@ global $post;
 $features = '';
 $title = isset($_GET['title']) ? $_GET['title'] : '';
 $address = isset($_GET['address']) ? $_GET['address'] : '';
-$city = isset($_GET['city']) ? $_GET['city'] : '';
+$city_name = isset($_GET['city']) ? $_GET['city'] : '';
 $status_default=ere_get_property_status_default_value();
 $status = isset($_GET['status']) ? $_GET['status'] :$status_default;
 $type = isset($_GET['type']) ? $_GET['type'] : '';
@@ -193,13 +193,40 @@ if (isset($label) && !empty($label)) {
 
 //initial cities and cities search
 
-if (!empty($city)) {
-    $tax_query[] = array(
-        'taxonomy' => 'property-city',
-        'field' => 'slug',
-        'terms' => $city
-    );
-    $parameters.=sprintf( __('City / Town: <strong>%s</strong>; ', 'essential-real-estate'), $city );
+// if (!empty($city)) {
+//     $tax_query[] = array(
+//         'taxonomy' => 'property-city',
+//         'field' => 'slug',
+//         'terms' => $city
+//     );
+//     $parameters.=sprintf( __('City / Town: <strong>%s</strong>; ', 'essential-real-estate'), $city );
+// }
+
+//city name check
+if (isset($city_name) && !empty($city_name)) {
+    if ($city_name == 'international') {
+        $meta_query[] = array(
+            'relation' => 'OR',
+            array(
+              'key' => ERE_METABOX_PREFIX . 'property_city_name',
+              'value' => '', //<--- not required but necessary in this case
+              'compare' => 'NOT EXISTS',
+            ),
+            array(
+              'key' => ERE_METABOX_PREFIX . 'property_city_name',
+              'value' => 'london',
+              'type' => 'CHAR',
+              'compare' => '!=',
+            ),
+        );
+    } else {
+        $meta_query[] = array(
+            'key' => ERE_METABOX_PREFIX . 'property_city_name',
+            'value' => $city_name,
+            'type' => 'CHAR',
+            'compare' => '=',
+        );
+    }
 }
 
 //bathroom check

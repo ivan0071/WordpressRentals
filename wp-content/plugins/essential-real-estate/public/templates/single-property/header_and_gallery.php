@@ -12,6 +12,7 @@ $property_rooms         = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'prop
 $property_pet         = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_pet' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_pet' ][0] : '';
 $property_bedrooms    = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_bedrooms' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_bedrooms' ][0] : '0';
 $property_bathrooms   = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_bathrooms' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_bathrooms' ][0] : '0';
+$property_city_name   = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_city_name' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_city_name' ][0] : '0';
 
 $property_title = get_the_title();
 $property_short_des = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_short_des' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_short_des' ][0] : '';
@@ -322,6 +323,15 @@ wp_enqueue_script('owl.carousel');
 				</div>
 			</div>
 		<?php endif; ?>
+		
+		<?php /* if (!empty($property_city_name)): ?>
+			<div class="property-city-name">
+				<div class="content-property-info">
+					City: <p><?php echo esc_html( $property_city_name ) ?></p>
+				</div>
+			</div>
+		<?php endif; */ ?>
+
 	</div>
 	<div class="property-action">
 		<div class="property-action-inner clearfix">
@@ -329,6 +339,7 @@ wp_enqueue_script('owl.carousel');
 			// if (ere_get_option('enable_social_share', '1') == '1') {
 			// 	ere_get_template('global/social-share.php');
 			// }
+
 			if (ere_get_option('enable_favorite_property', '1') == '1') {
 				ere_get_template('property/favorite.php');
 			}

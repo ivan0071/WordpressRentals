@@ -11,7 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 ?>
-<div class="<?php echo esc_attr($css_class_field); ?> form-group">
+<div id="search-prop-city-name" class="<?php echo esc_attr($css_class_field); ?> form-group">
+    <input type="hidden" class="form-control search-field" data-default-value=""
+           value="<?php echo esc_attr($request_city); ?>"
+           name="city">
+
+    <?php /*
     <select name="city" class="ere-property-city-ajax search-field form-control" title="<?php esc_html_e('Cities', 'essential-real-estate'); ?>" data-selected="<?php echo esc_attr($request_city); ?>" data-default-value="">
         <?php if(!empty($request_city)):?>
             <?php ere_get_taxonomy_slug('property-city', $request_city); ?>
@@ -25,4 +30,5 @@ if ( ! defined( 'ABSPATH' ) ) {
             </option>
         <?php endif;?>
     </select>
+    */ ?>
 </div>

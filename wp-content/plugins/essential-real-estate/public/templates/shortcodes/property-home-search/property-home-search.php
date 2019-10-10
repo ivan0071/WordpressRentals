@@ -25,7 +25,7 @@ extract(shortcode_atts(array(
     //'address_enable' => 'true',
     'country_enable' => '',
     'state_enable' => '',
-    'city_enable' => '',
+    'city_enable' => 'true',
     //'neighborhood_enable' => '',
     //'bedrooms_enable' => '',
     //'bathrooms_enable' => '',
@@ -46,7 +46,8 @@ extract(shortcode_atts(array(
 
 $status_default='';//ere_get_property_status_default_value();
 $postcode_default='';
-$request_city = isset($_GET['city']) ? $_GET['city'] : '';
+$city_default='';
+$request_city = isset($_GET['city']) ? $_GET['city'] : $city_default;
 $request_title = isset($_GET['title']) ? $_GET['title'] : '';
 //$request_address = isset($_GET['address']) ? $_GET['address'] : '';
 $request_type = isset($_GET['type']) ? $_GET['type'] : '';
@@ -140,7 +141,7 @@ if ($column == '1') {
                     <?php endif; */ ?>
                     <div class="row">
                         <?php
-                        $search_fields = ere_get_option('search_fields', array('property_group', 'property_status', 'property_postcode', /*'property_type',*/ 'property_title', /*'property_address', 'property_country', 'property_state', 'property_city', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', /*'property_size', 'property_land', 'property_label', 'property_garage', 'property_identity',*/ 'property_feature'));
+                        $search_fields = ere_get_option('search_fields', array('property_group', 'property_status', 'property_postcode', /*'property_type',*/ 'property_title', /*'property_address', 'property_country', 'property_state', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', /*'property_size', 'property_land', 'property_label', 'property_garage', 'property_identity',*/ 'property_city', 'property_feature'));
                         if ($search_fields): foreach ($search_fields as $field) {
                             switch ($field) {
                                 case 'property_group':
@@ -204,14 +205,6 @@ if ($column == '1') {
                                 //         ere_get_template('property/search-fields/' . $field . '.php', array(
                                 //             'css_class_field' => $css_class_field,
                                 //             'request_state' => $request_state
-                                //         ));
-                                //     }
-                                //     break;
-                                // case 'property_city':
-                                //     if ($city_enable == 'true') {
-                                //         ere_get_template('property/search-fields/' . $field . '.php', array(
-                                //             'css_class_field' => $css_class_field,
-                                //             'request_city' => $request_city
                                 //         ));
                                 //     }
                                 //     break;
@@ -298,6 +291,14 @@ if ($column == '1') {
                                 //         ));
                                 //     }
                                 //     break;
+                                case 'property_city':
+                                    if ($city_enable == 'true') {
+                                        ere_get_template('property/search-fields/' . $field . '.php', array(
+                                            'css_class_field' => $css_class_field,
+                                            'request_city' => $request_city
+                                        ));
+                                    }
+                                    break;
                                 case 'property_feature':
                                     if ($other_features_enable == 'true') {
                                         ere_get_template('property/search-fields/' . $field . '.php', array(
@@ -306,7 +307,7 @@ if ($column == '1') {
                                             'request_features' => $request_features,
                                         ));
                                     }
-                                    break;
+                                    break;                                    
                             }
                         }
                         endif;

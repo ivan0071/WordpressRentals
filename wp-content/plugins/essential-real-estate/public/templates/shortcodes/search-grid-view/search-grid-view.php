@@ -182,14 +182,14 @@ if (!empty($property_type) || !empty($property_status) || !empty($property_featu
             'operator' => 'IN'
         );
     }
-    if (!empty($property_city)) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'property-city',
-            'field' => 'slug',
-            'terms' => explode(',', $property_city),
-            'operator' => 'IN'
-        );
-    }
+    // if (!empty($property_city)) {
+    //     $args['tax_query'][] = array(
+    //         'taxonomy' => 'property-city',
+    //         'field' => 'slug',
+    //         'terms' => explode(',', $property_city),
+    //         'operator' => 'IN'
+    //     );
+    // }
     if (!empty($property_state)) {
         $args['tax_query'][] = array(
             'taxonomy' => 'property-state',
