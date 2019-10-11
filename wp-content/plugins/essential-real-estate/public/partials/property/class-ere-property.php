@@ -747,6 +747,9 @@ if (!class_exists('ERE_Property')) {
                 }
                 if (isset($_POST['property_city_name'])) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_city_name', sanitize_text_field($_POST['property_city_name']));
+                }                
+                if (isset($_POST['property_location_zip'])) {
+                    update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_location_zip', sanitize_text_field($_POST['property_location_zip']));
                 }
                 if (isset($_POST['property_location_latitude'])) {
                     update_post_meta($property_id, ERE_METABOX_PREFIX . 'property_location_latitude', sanitize_text_field($_POST['property_location_latitude']));

@@ -145,11 +145,11 @@ wp_enqueue_script('select2_js');
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="zip"><?php esc_html_e('Postcode', 'essential-real-estate'); ?></label>
-                <input type="text" class="form-control" name="postal_code"
-                       value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_zip'][0])) {
-                           echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_zip'][0]);
-                       } ?>" id="zip">
+                <label for="property_location_zip"><?php esc_html_e('Postcode', 'essential-real-estate'); ?></label>
+                <input type="text" class="form-control" name="property_location_zip"
+                       value="<?php if (isset($property_meta_data[ERE_METABOX_PREFIX . 'property_location_zip'][0])) {
+                           echo sanitize_text_field($property_meta_data[ERE_METABOX_PREFIX . 'property_location_zip'][0]);
+                       } ?>" id="property_location_zip">
             </div>
         </div>
         <?php } ?>

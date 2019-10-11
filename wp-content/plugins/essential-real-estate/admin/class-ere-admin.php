@@ -991,7 +991,7 @@ if (!class_exists('ERE_Admin')) {
                                                     'type' => 'text',
                                                 ),
                                                 array(
-                                                    'id' => "{$meta_prefix}property_zip",
+                                                    'id' => "{$meta_prefix}property_location_zip",
                                                     'title' => esc_html__('Postcode', 'essential-real-estate'),
                                                     'type' => 'text',
                                                 ),

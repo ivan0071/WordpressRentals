@@ -14,9 +14,11 @@ $features = '';
 $title = isset($_GET['title']) ? $_GET['title'] : '';
 $address = isset($_GET['address']) ? $_GET['address'] : '';
 $city_name = isset($_GET['city']) ? $_GET['city'] : '';
-$status_default=ere_get_property_status_default_value();
+$status_default = ''; //ere_get_property_status_default_value();
 $status = isset($_GET['status']) ? $_GET['status'] :$status_default;
 $type = isset($_GET['type']) ? $_GET['type'] : '';
+$location_zip_default = '';
+$location_zip = isset($_GET['postcode']) ? $_GET['postcode'] :$location_zip_default;
 $bedrooms = isset($_GET['bedrooms']) ? $_GET['bedrooms'] : '';
 $bathrooms = isset($_GET['bathrooms']) ? $_GET['bathrooms'] : '';
 $min_price = isset($_GET['min-price']) ? $_GET['min-price'] : '';
@@ -159,6 +161,16 @@ if (isset($address) ? $address : '') {
 if (isset($title) ? $title : '') {
     $args['s'] = $title;
     $parameters.=sprintf( __('Title: <strong>%s</strong>; ', 'essential-real-estate'), $title );
+}
+
+//Query get properties with keyword property_location_zip
+if (isset($location_zip) && !empty($location_zip)) {
+    $meta_query[] = array(
+        'key' => ERE_METABOX_PREFIX. 'property_location_zip',
+        'value' => str_replace("-", " ", $location_zip),
+        'type' => 'CHAR',
+        'compare' => 'LIKE',
+    );
 }
 
 //tax query property type

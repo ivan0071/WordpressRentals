@@ -127,8 +127,8 @@ wp_enqueue_script('select2_js');
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="zip"><?php esc_html_e('Postcode', 'essential-real-estate'); ?></label>
-                <input type="text" class="form-control" name="postal_code" id="zip">
+                <label for="property_location_zip"><?php esc_html_e('Postcode', 'essential-real-estate'); ?></label>
+                <input type="text" class="form-control" name="property_location_zip" id="property_location_zip">
             </div>
         </div>
         <?php } ?>
