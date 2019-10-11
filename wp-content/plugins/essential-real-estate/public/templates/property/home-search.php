@@ -185,11 +185,27 @@ if (isset($type) && !empty($type)) {
 
 //tax query property status
 if (isset($status) && !empty($status)) {
-    $tax_query[] = array(
-        'taxonomy' => 'property-status',
-        'field' => 'slug',
-        'terms' => $status
-    );
+    $statuses_list = explode(",", $status);
+    if (count($statuses_list) == 1) {
+        $tax_query[] = array(
+            'taxonomy' => 'property-status',
+            'field' => 'slug',
+            'terms' => $status
+        );
+    } else if (count($statuses_list) > 1) {
+        $nested_query = array(
+            'relation' => 'OR',
+        );
+        foreach($statuses_list as $statuses_list_item){
+            $nested_query[] = array(
+                'taxonomy' => 'property-status',
+                'field' => 'slug',
+                'terms' => $statuses_list_item
+            );
+        }
+        $tax_query[] = $nested_query;
+    }
+
     $parameters.=sprintf( __('Status: <strong>%s</strong>; ', 'essential-real-estate'), $status );
 }
 
