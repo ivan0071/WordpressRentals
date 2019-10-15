@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $post;
 
 $features = '';
+$resid_type = '';
 $title = isset($_GET['title']) ? $_GET['title'] : '';
 $address = isset($_GET['address']) ? $_GET['address'] : '';
 $city_name = isset($_GET['city']) ? $_GET['city'] : '';
@@ -19,6 +20,8 @@ $status = isset($_GET['status']) ? $_GET['status'] :$status_default;
 $type = isset($_GET['type']) ? $_GET['type'] : '';
 $location_zip_default = '';
 $location_zip = isset($_GET['postcode']) ? $_GET['postcode'] :$location_zip_default;
+$group_default = '';
+$group = isset($_GET['group']) ? $_GET['group'] :$group_default;
 $bedrooms = isset($_GET['bedrooms']) ? $_GET['bedrooms'] : '';
 $bathrooms = isset($_GET['bathrooms']) ? $_GET['bathrooms'] : '';
 $min_price = isset($_GET['min-price']) ? $_GET['min-price'] : '';
@@ -40,7 +43,13 @@ if($featured_search == '1'){
         $features = explode( ';',$features );
     }
 }
-
+$resid_type_search = isset($_GET['resid-type-search']) ? $_GET['resid-type-search'] : '';
+if($resid_type_search == '1'){
+    $resid_type = isset($_GET['resid_type']) ? $_GET['resid_type'] : '';
+    if(!empty($resid_type)) {
+        $resid_type = explode( ';',$resid_type );
+    }
+}
 
 $meta_query = $tax_query=array();
 $parameters=$keyword_array='';
@@ -170,6 +179,16 @@ if (isset($location_zip) && !empty($location_zip)) {
         'value' => str_replace("-", " ", $location_zip),
         'type' => 'CHAR',
         'compare' => 'LIKE',
+    );
+}
+
+//Query get properties with keyword property_group
+if ($group != '') {
+    $meta_query[] = array(
+        'key' => ERE_METABOX_PREFIX. 'property_group',
+        'value' => $group,
+        'type' => 'CHAR',
+        'compare' => '=',
     );
 }
 
@@ -457,6 +476,30 @@ if (!empty($features)) {
         );
         $parameters.=sprintf( __('Feature: <strong>%s</strong>; ', 'essential-real-estate'), $feature);
     }
+}
+/* property residential type query */
+if (!empty($resid_type)) {
+    if (count($resid_type) == 1) {
+        $tax_query[] = array(
+            'taxonomy' => 'property-residential-type',
+            'field' => 'slug',
+            'terms' => $resid_type
+        );
+    } else if (count($resid_type) > 1) {
+        $nested_query = array(
+            'relation' => 'OR',
+        );
+        foreach($resid_type as $resid_type_item){
+            $nested_query[] = array(
+                'taxonomy' => 'property-residential-type',
+                'field' => 'slug',
+                'terms' => $resid_type_item
+            );
+        }
+        $tax_query[] = $nested_query;
+    }
+
+    //$parameters.=sprintf( __('Status: <strong>%s</strong>; ', 'essential-real-estate'), $status );
 }
 
 $args['meta_query'] = array(

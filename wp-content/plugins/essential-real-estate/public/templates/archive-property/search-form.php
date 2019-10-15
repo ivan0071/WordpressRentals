@@ -24,6 +24,7 @@ $garage_enable = !in_array("property_garage", $hide_archive_search_fields);
 // to do: property_pet and property_story
 $property_identity_enable = !in_array("property_identity", $hide_archive_search_fields);
 $other_features_enable = !in_array("property_feature", $hide_archive_search_fields);
+//$resid_type_enable = !in_array("property_resid_type", $hide_archive_search_fields);
 ?>
     <div class="ere-heading-style2">
         <h2><?php esc_html_e('Search Property', 'essential-real-estate') ?></h2>

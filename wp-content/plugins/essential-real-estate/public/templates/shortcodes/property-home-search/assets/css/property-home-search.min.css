@@ -105,10 +105,25 @@
     margin-right: 5px;
     padding: 3px;
 }
+.ere-property-advanced-search .btn-resid-type {
+    cursor: pointer;
+    font-weight: 600;
+    color: #222222;
+}
+.ere-property-advanced-search .btn-resid-type i {
+    background: #FE6A00;
+    color: #FFF;
+    margin-right: 5px;
+    padding: 3px;
+}
 .ere-property-advanced-search .ere-sliderbar-filter {
     line-height: 1;
 }
 .ere-property-advanced-search .other-features-list {
+    clear: both;
+    display: none;
+}
+.ere-property-advanced-search .resid-type-list {
     clear: both;
     display: none;
 }
@@ -157,6 +172,10 @@
 .ere-property-advanced-search.color-light .form-search-wrap .other-features-list h4 {
     color: #ffffff;
 }
+.ere-property-advanced-search.color-light .form-search-wrap .btn-resid-type,
+.ere-property-advanced-search.color-light .form-search-wrap .resid-type-list h4 {
+    color: #ffffff;
+}
 .ere-property-advanced-search.color-dark .form-search-wrap {
     background-color: transparent;
 }
@@ -189,6 +208,9 @@
     color: #8f8f8f;
 }
 .ere-property-advanced-search .other-features-list.ere-display-block {
+    display: block;
+}
+.ere-property-advanced-search .resid-type-list.ere-display-block {
     display: block;
 }
 .ere-property-advanced-search.ere-show-status-tab .form-search-wrap {

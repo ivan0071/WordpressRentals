@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 ?>
-<div class="col-md-12 col-sm-12 col-xs-12 other-features-wrap clearfix">
+<div id="search-filter-features" class="col-md-12 col-sm-12 col-xs-12 other-features-wrap clearfix">
     <div class="enable-other-features">
         <?php if (!empty($request_features_search) && $request_features_search == '1') {
             $class_other_features = 'show';

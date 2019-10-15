@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 $layout = $column = /*$address_enable =*/ $title_enable = $city_enable = $type_enable = $group_enable = $status_enable = $postcode_enable = /*$bedrooms_enable =*/
 /*$bathrooms_enable =*/ $price_enable = $price_is_slider = $area_enable = $area_is_slider = /*$land_area_enable =*/ $land_area_is_slider = $country_enable = $state_enable = /*$neighborhood_enable = $label_enable = */ $garage_enable =
-/*$property_identity_enable =*/ $other_features_enable = $color_scheme = $el_class = $request_city = '';
+/*$property_identity_enable =*/ $other_features_enable = $resid_type_enable = $color_scheme = $el_class = $request_city = '';
 extract(shortcode_atts(array(
     'layout' => 'tab',
     'column' => '3',
@@ -39,6 +39,7 @@ extract(shortcode_atts(array(
     'garage_enable' => '',
     //'property_identity_enable' => '',
     'other_features_enable' => '',
+    'resid_type_enable' => 'true',
     'color_scheme' => 'color-light',
     'el_class' => ''
 ), $atts));
@@ -71,12 +72,18 @@ $request_garage = isset($_GET['garage']) ? $_GET['garage'] : '';
 
 $request_group = isset($_GET['group']) ? $_GET['group'] : '';
 
-
 $request_features = isset($_GET['other_features']) ? $_GET['other_features'] : '';
 if (!empty($request_features)) {
     $request_features = explode(';', $request_features);
 }
 $request_features_search = isset($_GET['features-search']) ? $_GET['features-search'] : '0';
+
+$request_resid_type = isset($_GET['resid_type']) ? $_GET['resid_type'] : '';
+if (!empty($request_resid_type)) {
+    $request_resid_type = explode(';', $request_resid_type);
+}
+$request_resid_type_search = isset($_GET['resid-type-search']) ? $_GET['resid-type-search'] : '0';
+//var_dump($request_resid_type_search);
 $wrapper_class = 'ere-property-advanced-search clearfix';
 
 $wrapper_classes = array(
@@ -141,7 +148,7 @@ if ($column == '1') {
                     <?php endif; */ ?>
                     <div class="row">
                         <?php
-                        $search_fields = ere_get_option('search_fields', array('property_group', 'property_status', 'property_postcode', /*'property_type',*/ 'property_title', /*'property_address', 'property_country', 'property_state', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', /*'property_size', 'property_land', 'property_label', 'property_garage', 'property_identity',*/ 'property_city', 'property_feature'));
+                        $search_fields = ere_get_option('search_fields', array('property_group', 'property_status', 'property_postcode', /*'property_type',*/ 'property_title', /*'property_address', 'property_country', 'property_state', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', /*'property_size', 'property_land', 'property_label', 'property_garage', 'property_identity',*/ 'property_city', 'property_feature', 'property_resid_type'));
                         if ($search_fields): foreach ($search_fields as $field) {
                             switch ($field) {
                                 case 'property_group':
@@ -307,7 +314,16 @@ if ($column == '1') {
                                             'request_features' => $request_features,
                                         ));
                                     }
-                                    break;                                    
+                                    break;
+                                case 'property_resid_type':
+                                    if ($resid_type_enable == 'true') {
+                                        ere_get_template('property/search-fields/' . $field . '.php', array(
+                                            'css_class_field' => $css_class_field,
+                                            'request_resid_type_search' => $request_resid_type_search,
+                                            'request_resid_type' => $request_resid_type,
+                                        ));
+                                    }
+                                    break;
                             }
                         }
                         endif;
