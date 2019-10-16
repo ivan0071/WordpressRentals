@@ -9,9 +9,15 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 global $post;
-
 $features = '';
 $resid_type = '';
+$resid_furnished_type = '';
+$commer_offices = '';
+$commer_retail = '';
+$commer_leisure = '';
+$commer_industrial = '';
+$commer_land = '';
+$commer_other = '';
 $title = isset($_GET['title']) ? $_GET['title'] : '';
 $address = isset($_GET['address']) ? $_GET['address'] : '';
 $city_name = isset($_GET['city']) ? $_GET['city'] : '';
@@ -48,6 +54,55 @@ if($resid_type_search == '1'){
     $resid_type = isset($_GET['resid_type']) ? $_GET['resid_type'] : '';
     if(!empty($resid_type)) {
         $resid_type = explode( ';',$resid_type );
+    }
+}
+$resid_furnished_type_search = isset($_GET['resid-furnished-type-search']) ? $_GET['resid-furnished-type-search'] : '';
+if($resid_furnished_type_search == '1'){
+    $resid_furnished_type = isset($_GET['resid_furnished_type']) ? $_GET['resid_furnished_type'] : '';
+    if(!empty($resid_furnished_type)) {
+        $resid_furnished_type = explode( ';',$resid_furnished_type );
+    }
+}
+$commer_offices_search = isset($_GET['commer-offices-search']) ? $_GET['commer-offices-search'] : '';
+if($commer_offices_search == '1'){
+    $commer_offices = isset($_GET['commer_offices']) ? $_GET['commer_offices'] : '';
+    if(!empty($commer_offices)) {
+        $commer_offices = explode( ';',$commer_offices );
+    }
+}
+$commer_retail_search = isset($_GET['commer-retail-search']) ? $_GET['commer-retail-search'] : '';
+if($commer_retail_search == '1'){
+    $commer_retail = isset($_GET['commer_retail']) ? $_GET['commer_retail'] : '';
+    if(!empty($commer_retail)) {
+        $commer_retail = explode( ';',$commer_retail );
+    }
+}
+$commer_leisure_search = isset($_GET['commer-leisure-search']) ? $_GET['commer-leisure-search'] : '';
+if($commer_leisure_search == '1'){
+    $commer_leisure = isset($_GET['commer_leisure']) ? $_GET['commer_leisure'] : '';
+    if(!empty($commer_leisure)) {
+        $commer_leisure = explode( ';',$commer_leisure );
+    }
+}
+$commer_industrial_search = isset($_GET['commer-industrial-search']) ? $_GET['commer-industrial-search'] : '';
+if($commer_industrial_search == '1'){
+    $commer_industrial = isset($_GET['commer_industrial']) ? $_GET['commer_industrial'] : '';
+    if(!empty($commer_industrial)) {
+        $commer_industrial = explode( ';',$commer_industrial );
+    }
+}
+$commer_land_search = isset($_GET['commer-land-search']) ? $_GET['commer-land-search'] : '';
+if($commer_land_search == '1'){
+    $commer_land = isset($_GET['commer_land']) ? $_GET['commer_land'] : '';
+    if(!empty($commer_land)) {
+        $commer_land = explode( ';',$commer_land );
+    }
+}
+$commer_other_search = isset($_GET['commer-other-search']) ? $_GET['commer-other-search'] : '';
+if($commer_other_search == '1'){
+    $commer_other = isset($_GET['commer_other']) ? $_GET['commer_other'] : '';
+    if(!empty($commer_other)) {
+        $commer_other = explode( ';',$commer_other );
     }
 }
 
@@ -478,7 +533,8 @@ if (!empty($features)) {
     }
 }
 /* property residential type query */
-if (!empty($resid_type)) {
+$nested_query[] = array();
+if (!empty($resid_type) && (strval($group) == '0')) {
     if (count($resid_type) == 1) {
         $tax_query[] = array(
             'taxonomy' => 'property-residential-type',
@@ -498,7 +554,174 @@ if (!empty($resid_type)) {
         }
         $tax_query[] = $nested_query;
     }
-
+    //$parameters.=sprintf( __('Status: <strong>%s</strong>; ', 'essential-real-estate'), $status );
+}
+/* property residential furnished type query */
+$nested_query[] = array();
+if (!empty($resid_furnished_type) && (strval($group) == '0')) {
+    if (count($resid_furnished_type) == 1) {
+        $tax_query[] = array(
+            'taxonomy' => 'property-resid-furnished-type',
+            'field' => 'slug',
+            'terms' => $resid_furnished_type
+        );
+    } else if (count($resid_furnished_type) > 1) {
+        $nested_query = array(
+            'relation' => 'OR',
+        );
+        foreach($resid_furnished_type as $resid_furnished_type_item){
+            $nested_query[] = array(
+                'taxonomy' => 'property-resid-furnished-type',
+                'field' => 'slug',
+                'terms' => $resid_furnished_type_item
+            );
+        }
+        $tax_query[] = $nested_query;
+    }
+    //$parameters.=sprintf( __('Status: <strong>%s</strong>; ', 'essential-real-estate'), $status );
+}
+/* property commertial offices query */
+$nested_query[] = array();
+if (!empty($commer_offices) && (strval($group) == '1')) {
+    if (count($commer_offices) == 1) {
+        $tax_query[] = array(
+            'taxonomy' => 'property-commer-offices',
+            'field' => 'slug',
+            'terms' => $commer_offices
+        );
+    } else if (count($commer_offices) > 1) {
+        $nested_query = array(
+            'relation' => 'OR',
+        );
+        foreach($commer_offices as $commer_offices_item){
+            $nested_query[] = array(
+                'taxonomy' => 'property-commer-offices',
+                'field' => 'slug',
+                'terms' => $commer_offices_item
+            );
+        }
+        $tax_query[] = $nested_query;
+    }
+    //$parameters.=sprintf( __('Status: <strong>%s</strong>; ', 'essential-real-estate'), $status );
+}
+/* property commertial retail query */
+$nested_query[] = array();
+if (!empty($commer_retail) && (strval($group) == '1')) {
+    if (count($commer_retail) == 1) {
+        $tax_query[] = array(
+            'taxonomy' => 'property-commer-retail',
+            'field' => 'slug',
+            'terms' => $commer_retail
+        );
+    } else if (count($commer_retail) > 1) {
+        $nested_query = array(
+            'relation' => 'OR',
+        );
+        foreach($commer_retail as $commer_retail_item){
+            $nested_query[] = array(
+                'taxonomy' => 'property-commer-retail',
+                'field' => 'slug',
+                'terms' => $commer_retail_item
+            );
+        }
+        $tax_query[] = $nested_query;
+    }
+    //$parameters.=sprintf( __('Status: <strong>%s</strong>; ', 'essential-real-estate'), $status );
+}
+/* property commertial leisure query */
+$nested_query[] = array();
+if (!empty($commer_leisure) && (strval($group) == '1')) {
+    if (count($commer_leisure) == 1) {
+        $tax_query[] = array(
+            'taxonomy' => 'property-commer-leisure',
+            'field' => 'slug',
+            'terms' => $commer_leisure
+        );
+    } else if (count($commer_leisure) > 1) {
+        $nested_query = array(
+            'relation' => 'OR',
+        );
+        foreach($commer_leisure as $commer_leisure_item){
+            $nested_query[] = array(
+                'taxonomy' => 'property-commer-leisure',
+                'field' => 'slug',
+                'terms' => $commer_leisure_item
+            );
+        }
+        $tax_query[] = $nested_query;
+    }
+    //$parameters.=sprintf( __('Status: <strong>%s</strong>; ', 'essential-real-estate'), $status );
+}
+/* property commertial industrial query */
+$nested_query[] = array();
+if (!empty($commer_industrial) && (strval($group) == '1')) {
+    if (count($commer_industrial) == 1) {
+        $tax_query[] = array(
+            'taxonomy' => 'property-commer-industrial',
+            'field' => 'slug',
+            'terms' => $commer_industrial
+        );
+    } else if (count($commer_industrial) > 1) {
+        $nested_query = array(
+            'relation' => 'OR',
+        );
+        foreach($commer_industrial as $commer_industrial_item){
+            $nested_query[] = array(
+                'taxonomy' => 'property-commer-industrial',
+                'field' => 'slug',
+                'terms' => $commer_industrial_item
+            );
+        }
+        $tax_query[] = $nested_query;
+    }
+    //$parameters.=sprintf( __('Status: <strong>%s</strong>; ', 'essential-real-estate'), $status );
+}
+/* property commertial land query */
+$nested_query[] = array();
+if (!empty($commer_land) && (strval($group) == '1')) {
+    if (count($commer_land) == 1) {
+        $tax_query[] = array(
+            'taxonomy' => 'property-commer-land',
+            'field' => 'slug',
+            'terms' => $commer_land
+        );
+    } else if (count($commer_land) > 1) {
+        $nested_query = array(
+            'relation' => 'OR',
+        );
+        foreach($commer_land as $commer_land_item){
+            $nested_query[] = array(
+                'taxonomy' => 'property-commer-land',
+                'field' => 'slug',
+                'terms' => $commer_land_item
+            );
+        }
+        $tax_query[] = $nested_query;
+    }
+    //$parameters.=sprintf( __('Status: <strong>%s</strong>; ', 'essential-real-estate'), $status );
+}
+/* property commertial other query */
+$nested_query[] = array();
+if (!empty($commer_other) && (strval($group) == '1')) {
+    if (count($commer_other) == 1) {
+        $tax_query[] = array(
+            'taxonomy' => 'property-commer-other',
+            'field' => 'slug',
+            'terms' => $commer_other
+        );
+    } else if (count($commer_other) > 1) {
+        $nested_query = array(
+            'relation' => 'OR',
+        );
+        foreach($commer_other as $commer_other_item){
+            $nested_query[] = array(
+                'taxonomy' => 'property-commer-other',
+                'field' => 'slug',
+                'terms' => $commer_other_item
+            );
+        }
+        $tax_query[] = $nested_query;
+    }
     //$parameters.=sprintf( __('Status: <strong>%s</strong>; ', 'essential-real-estate'), $status );
 }
 

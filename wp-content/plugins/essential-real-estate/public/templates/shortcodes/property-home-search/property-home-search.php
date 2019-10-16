@@ -13,7 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 $layout = $column = /*$address_enable =*/ $title_enable = $city_enable = $type_enable = $group_enable = $status_enable = $postcode_enable = /*$bedrooms_enable =*/
 /*$bathrooms_enable =*/ $price_enable = $price_is_slider = $area_enable = $area_is_slider = /*$land_area_enable =*/ $land_area_is_slider = $country_enable = $state_enable = /*$neighborhood_enable = $label_enable = */ $garage_enable =
-/*$property_identity_enable =*/ $other_features_enable = $resid_type_enable = $color_scheme = $el_class = $request_city = '';
+/*$property_identity_enable =*/ $other_features_enable = $resid_type_enable = $color_scheme = $el_class = $request_city = 
+$resid_furnished_type_enable = $commer_offices_enable = $commer_retail_enable = $commer_leisure_enable = $commer_industrial_enable = $commer_land_enable = $commer_other_enable = '';
 extract(shortcode_atts(array(
     'layout' => 'tab',
     'column' => '3',
@@ -40,10 +41,16 @@ extract(shortcode_atts(array(
     //'property_identity_enable' => '',
     'other_features_enable' => '',
     'resid_type_enable' => 'true',
+    'resid_furnished_type_enable' => 'true',
+    'commer_offices_enable' => 'true',
+    'commer_retail_enable' => 'true',
+    'commer_leisure_enable' => 'true',
+    'commer_industrial_enable' => 'true',
+    'commer_land_enable' => 'true',
+    'commer_other_enable' => 'true',
     'color_scheme' => 'color-light',
     'el_class' => ''
 ), $atts));
-
 
 $status_default='';//ere_get_property_status_default_value();
 $postcode_default='';
@@ -83,7 +90,49 @@ if (!empty($request_resid_type)) {
     $request_resid_type = explode(';', $request_resid_type);
 }
 $request_resid_type_search = isset($_GET['resid-type-search']) ? $_GET['resid-type-search'] : '0';
-//var_dump($request_resid_type_search);
+
+$request_resid_furnished_type = isset($_GET['resid_furnished_type']) ? $_GET['resid_furnished_type'] : '';
+if (!empty($request_resid_furnished_type)) {
+    $request_resid_furnished_type = explode(';', $request_resid_furnished_type);
+}
+$request_resid_furnished_type_search = isset($_GET['resid-furnished-type-search']) ? $_GET['resid-furnished-type-search'] : '0';
+
+$request_commer_offices = isset($_GET['commer_offices']) ? $_GET['commer_offices'] : '';
+if (!empty($request_commer_offices)) {
+    $request_commer_offices = explode(';', $request_commer_offices);
+}
+$request_commer_offices_search = isset($_GET['commer-offices-search']) ? $_GET['commer-offices-search'] : '0';
+
+$request_commer_retail = isset($_GET['commer_retail']) ? $_GET['commer_retail'] : '';
+if (!empty($request_commer_retail)) {
+    $request_commer_retail = explode(';', $request_commer_retail);
+}
+$request_commer_retail_search = isset($_GET['commer-retail-search']) ? $_GET['commer-retail-search'] : '0';
+
+$request_commer_leisure = isset($_GET['commer_leisure']) ? $_GET['commer_leisure'] : '';
+if (!empty($request_commer_leisure)) {
+    $request_commer_leisure = explode(';', $request_commer_leisure);
+}
+$request_commer_leisure_search = isset($_GET['commer-leisure-search']) ? $_GET['commer-leisure-search'] : '0';
+
+$request_commer_industrial = isset($_GET['commer_industrial']) ? $_GET['commer_industrial'] : '';
+if (!empty($request_commer_industrial)) {
+    $request_commer_industrial = explode(';', $request_commer_industrial);
+}
+$request_commer_industrial_search = isset($_GET['commer-industrial-search']) ? $_GET['commer-industrial-search'] : '0';
+
+$request_commer_land = isset($_GET['commer_land']) ? $_GET['commer_land'] : '';
+if (!empty($request_commer_land)) {
+    $request_commer_land = explode(';', $request_commer_land);
+}
+$request_commer_land_search = isset($_GET['commer-land-search']) ? $_GET['commer-land-search'] : '0';
+
+$request_commer_other = isset($_GET['commer_other']) ? $_GET['commer_other'] : '';
+if (!empty($request_commer_other)) {
+    $request_commer_other = explode(';', $request_commer_other);
+}
+$request_commer_other_search = isset($_GET['commer-other-search']) ? $_GET['commer-other-search'] : '0';
+
 $wrapper_class = 'ere-property-advanced-search clearfix';
 
 $wrapper_classes = array(
@@ -148,7 +197,8 @@ if ($column == '1') {
                     <?php endif; */ ?>
                     <div class="row">
                         <?php
-                        $search_fields = ere_get_option('search_fields', array('property_group', 'property_status', 'property_postcode', /*'property_type',*/ 'property_title', /*'property_address', 'property_country', 'property_state', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', /*'property_size', 'property_land', 'property_label', 'property_garage', 'property_identity',*/ 'property_city', 'property_feature', 'property_resid_type'));
+                        $search_fields = ere_get_option('search_fields', array('property_group', 'property_status', 'property_postcode', /*'property_type',*/ 'property_title', /*'property_address', 'property_country', 'property_state', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', /*'property_size', 'property_land', 'property_label', 'property_garage', 'property_identity',*/ 'property_city', 'property_feature', 
+                            'property_resid_type', 'property_resid_furnished_type', 'property_commer_offices', 'property_commer_retail', 'property_commer_leisure', 'property_commer_industrial', 'property_commer_land', 'property_commer_other'));
                         if ($search_fields): foreach ($search_fields as $field) {
                             switch ($field) {
                                 case 'property_group':
@@ -321,6 +371,69 @@ if ($column == '1') {
                                             'css_class_field' => $css_class_field,
                                             'request_resid_type_search' => $request_resid_type_search,
                                             'request_resid_type' => $request_resid_type,
+                                        ));
+                                    }
+                                    break;
+                                case 'property_resid_furnished_type':
+                                    if ($resid_furnished_type_enable == 'true') {
+                                        ere_get_template('property/search-fields/' . $field . '.php', array(
+                                            'css_class_field' => $css_class_field,
+                                            'request_resid_furnished_type_search' => $request_resid_furnished_type_search,
+                                            'request_resid_furnished_type' => $request_resid_furnished_type,
+                                        ));
+                                    }
+                                    break;
+                                case 'property_commer_offices':
+                                    if ($commer_offices_enable == 'true') {
+                                        ere_get_template('property/search-fields/' . $field . '.php', array(
+                                            'css_class_field' => $css_class_field,
+                                            'request_commer_offices_search' => $request_commer_offices_search,
+                                            'request_commer_offices' => $request_commer_offices,
+                                        ));
+                                    }
+                                    break;
+                                case 'property_commer_retail':
+                                    if ($commer_retail_enable == 'true') {
+                                        ere_get_template('property/search-fields/' . $field . '.php', array(
+                                            'css_class_field' => $css_class_field,
+                                            'request_commer_retail_search' => $request_commer_retail_search,
+                                            'request_commer_retail' => $request_commer_retail,
+                                        ));
+                                    }
+                                    break;
+                                case 'property_commer_leisure':
+                                    if ($commer_leisure_enable == 'true') {
+                                        ere_get_template('property/search-fields/' . $field . '.php', array(
+                                            'css_class_field' => $css_class_field,
+                                            'request_commer_leisure_search' => $request_commer_leisure_search,
+                                            'request_commer_leisure' => $request_commer_leisure,
+                                        ));
+                                    }
+                                    break;
+                                case 'property_commer_industrial':
+                                    if ($commer_industrial_enable == 'true') {
+                                        ere_get_template('property/search-fields/' . $field . '.php', array(
+                                            'css_class_field' => $css_class_field,
+                                            'request_commer_industrial_search' => $request_commer_industrial_search,
+                                            'request_commer_industrial' => $request_commer_industrial,
+                                        ));
+                                    }
+                                    break;
+                                case 'property_commer_land':
+                                    if ($commer_land_enable == 'true') {
+                                        ere_get_template('property/search-fields/' . $field . '.php', array(
+                                            'css_class_field' => $css_class_field,
+                                            'request_commer_land_search' => $request_commer_land_search,
+                                            'request_commer_land' => $request_commer_land,
+                                        ));
+                                    }
+                                    break;
+                                case 'property_commer_other':
+                                    if ($commer_other_enable == 'true') {
+                                        ere_get_template('property/search-fields/' . $field . '.php', array(
+                                            'css_class_field' => $css_class_field,
+                                            'request_commer_other_search' => $request_commer_other_search,
+                                            'request_commer_other' => $request_commer_other,
                                         ));
                                     }
                                     break;

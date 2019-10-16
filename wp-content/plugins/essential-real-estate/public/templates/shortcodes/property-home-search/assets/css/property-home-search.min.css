@@ -105,12 +105,26 @@
     margin-right: 5px;
     padding: 3px;
 }
-.ere-property-advanced-search .btn-resid-type {
+.ere-property-advanced-search .btn-resid-type,
+.ere-property-advanced-search .btn-resid-furnished-type,
+.ere-property-advanced-search .btn-commer-offices,
+.ere-property-advanced-search .btn-commer-retail,
+.ere-property-advanced-search .btn-commer-leisure,
+.ere-property-advanced-search .btn-commer-industrial,
+.ere-property-advanced-search .btn-commer-land,
+.ere-property-advanced-search .btn-commer-other {
     cursor: pointer;
     font-weight: 600;
     color: #222222;
 }
-.ere-property-advanced-search .btn-resid-type i {
+.ere-property-advanced-search .btn-resid-type i,
+.ere-property-advanced-search .btn-resid-furnished-type i,
+.ere-property-advanced-search .btn-commer-offices i,
+.ere-property-advanced-search .btn-commer-retail i,
+.ere-property-advanced-search .btn-commer-leisure i,
+.ere-property-advanced-search .btn-commer-industrial i,
+.ere-property-advanced-search .btn-commer-land i,
+.ere-property-advanced-search .btn-commer-other i {
     background: #FE6A00;
     color: #FFF;
     margin-right: 5px;
@@ -123,7 +137,14 @@
     clear: both;
     display: none;
 }
-.ere-property-advanced-search .resid-type-list {
+.ere-property-advanced-search .resid-type-list,
+.ere-property-advanced-search .resid-furnished-type-list,
+.ere-property-advanced-search .commer-offices-list,
+.ere-property-advanced-search .commer-retail-list,
+.ere-property-advanced-search .commer-leisure-list,
+.ere-property-advanced-search .commer-industrial-list,
+.ere-property-advanced-search .commer-land-list,
+.ere-property-advanced-search .commer-other-list {
     clear: both;
     display: none;
 }
@@ -173,7 +194,21 @@
     color: #ffffff;
 }
 .ere-property-advanced-search.color-light .form-search-wrap .btn-resid-type,
-.ere-property-advanced-search.color-light .form-search-wrap .resid-type-list h4 {
+.ere-property-advanced-search.color-light .form-search-wrap .resid-type-list h4,
+.ere-property-advanced-search.color-light .form-search-wrap .btn-resid-furnished-type,
+.ere-property-advanced-search.color-light .form-search-wrap .resid-furnished-type-list h4,
+.ere-property-advanced-search.color-light .form-search-wrap .btn-commer-offices,
+.ere-property-advanced-search.color-light .form-search-wrap .commer-offices-list h4,
+.ere-property-advanced-search.color-light .form-search-wrap .btn-commer-retail,
+.ere-property-advanced-search.color-light .form-search-wrap .commer-retail-list h4,
+.ere-property-advanced-search.color-light .form-search-wrap .btn-commer-leisure,
+.ere-property-advanced-search.color-light .form-search-wrap .commer-leisure-list h4,
+.ere-property-advanced-search.color-light .form-search-wrap .btn-commer-industrial,
+.ere-property-advanced-search.color-light .form-search-wrap .commer-industrial-list h4,
+.ere-property-advanced-search.color-light .form-search-wrap .btn-commer-land,
+.ere-property-advanced-search.color-light .form-search-wrap .commer-land-list h4,
+.ere-property-advanced-search.color-light .form-search-wrap .btn-commer-other,
+.ere-property-advanced-search.color-light .form-search-wrap .commer-other-list h4 {
     color: #ffffff;
 }
 .ere-property-advanced-search.color-dark .form-search-wrap {
@@ -210,7 +245,14 @@
 .ere-property-advanced-search .other-features-list.ere-display-block {
     display: block;
 }
-.ere-property-advanced-search .resid-type-list.ere-display-block {
+.ere-property-advanced-search .resid-type-list.ere-display-block,
+.ere-property-advanced-search .resid-furnished-type-list.ere-display-block,
+.ere-property-advanced-search .commer-offices-list.ere-display-block,
+.ere-property-advanced-search .commer-retail-list.ere-display-block,
+.ere-property-advanced-search .commer-leisure-list.ere-display-block,
+.ere-property-advanced-search .commer-industrial-list.ere-display-block,
+.ere-property-advanced-search .commer-land-list.ere-display-block,
+.ere-property-advanced-search .commer-other-list.ere-display-block {
     display: block;
 }
 .ere-property-advanced-search.ere-show-status-tab .form-search-wrap {

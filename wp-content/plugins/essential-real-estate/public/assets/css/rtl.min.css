@@ -2293,7 +2293,21 @@ select {
 	margin-left: 5px;
 }
 .ere-search-properties .resid-type-wrap .enable-resid-type a i,
-.ere-property-advanced-search .resid-type-wrap .enable-resid-type a i {
+.ere-property-advanced-search .resid-type-wrap .enable-resid-type a i,
+.ere-search-properties .resid-furnished-type-wrap .enable-resid-furnished-type a i,
+.ere-property-advanced-search .resid-furnished-type-wrap .enable-resid-furnished-type a i,
+.ere-search-properties .commer-offices-wrap .enable-commer-offices a i,
+.ere-property-advanced-search .commer-offices-wrap .enable-commer-offices a i,
+.ere-search-properties .commer-retail-wrap .enable-commer-retail a i,
+.ere-property-advanced-search .commer-retail-wrap .enable-commer-retail a i,
+.ere-search-properties .commer-leisure-wrap .enable-commer-leisure a i,
+.ere-property-advanced-search .commer-leisure-wrap .enable-commer-leisure a i,
+.ere-search-properties .commer-industrial-wrap .enable-commer-industrial a i,
+.ere-property-advanced-search .commer-industrial-wrap .enable-commer-industrial a i,
+.ere-search-properties .commer-land-wrap .enable-commer-land a i,
+.ere-property-advanced-search .commer-land-wrap .enable-commer-land a i,
+.ere-search-properties .commer-other-wrap .enable-commer-other a i,
+.ere-property-advanced-search .commer-other-wrap .enable-commer-other a i {
 	margin-right: 0;
 	margin-left: 5px;
 }
@@ -2311,7 +2325,21 @@ select {
 	margin-left: 5px;
 }
 .ere-search-properties .btn-resid-type i,
-.ere-property-advanced-search .btn-resid-type i {
+.ere-property-advanced-search .btn-resid-type i,
+.ere-search-properties .btn-resid-furnished-type i,
+.ere-property-advanced-search .btn-resid-furnished-type i,
+.ere-search-properties .btn-commer-offices i,
+.ere-property-advanced-search .btn-commer-offices i,
+.ere-search-properties .btn-commer-retail i,
+.ere-property-advanced-search .btn-commer-retail i,
+.ere-search-properties .btn-commer-leisure i,
+.ere-property-advanced-search .btn-commer-leisure i,
+.ere-search-properties .btn-commer-industrial i,
+.ere-property-advanced-search .btn-commer-industrial i,
+.ere-search-properties .btn-commer-land i,
+.ere-property-advanced-search .btn-commer-land i,
+.ere-search-properties .btn-commer-other i,
+.ere-property-advanced-search .btn-commer-other i {
 	margin-right: 0;
 	margin-left: 5px;
 }

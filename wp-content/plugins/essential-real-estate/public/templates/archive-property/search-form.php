@@ -25,6 +25,13 @@ $garage_enable = !in_array("property_garage", $hide_archive_search_fields);
 $property_identity_enable = !in_array("property_identity", $hide_archive_search_fields);
 $other_features_enable = !in_array("property_feature", $hide_archive_search_fields);
 //$resid_type_enable = !in_array("property_resid_type", $hide_archive_search_fields);
+//$resid_furnished_type_enable = !in_array("property_resid_furnished_type", $hide_archive_search_fields);
+//$commer_offices_enable = !in_array("property_commer_offices", $hide_archive_search_fields);
+//$commer_retail_enable = !in_array("property_commer_retail", $hide_archive_search_fields);
+//$commer_leisure_enable = !in_array("property_commer_leisure", $hide_archive_search_fields);
+//$commer_industrial_enable = !in_array("property_commer_industrial", $hide_archive_search_fields);
+//$commer_land_enable = !in_array("property_commer_land", $hide_archive_search_fields);
+//$commer_other_enable = !in_array("property_commer_other", $hide_archive_search_fields);
 ?>
     <div class="ere-heading-style2">
         <h2><?php esc_html_e('Search Property', 'essential-real-estate') ?></h2>
