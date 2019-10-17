@@ -1740,6 +1740,38 @@ if (!class_exists('ERE_Insert_Shortcode')) {
 						'type' => 'checkbox',
 						'title' => esc_html__('Other Features', 'essential-real-estate'),
 					),
+					'resid_type_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Resid. Type', 'essential-real-estate'),
+					),
+					'resid_furnished_type_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Resid. Furnished Type', 'essential-real-estate'),
+					),
+					'commer_offices_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Commer Offices', 'essential-real-estate'),
+					),
+					'commer_retail_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Commer Retail', 'essential-real-estate'),
+					),
+					'commer_leisure_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Commer Leisure', 'essential-real-estate'),
+					),
+					'commer_industrial_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Commer Industrial', 'essential-real-estate'),
+					),
+					'commer_land_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Commer Land', 'essential-real-estate'),
+					),
+					'commer_other_enable' => array(
+						'type' => 'checkbox',
+						'title' => esc_html__('Commer Other', 'essential-real-estate'),
+					),
 					'color_scheme' => array(
 						'type' => 'select',
 						'title' => esc_html__('Color Scheme','essential-real-estate'),
