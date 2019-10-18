@@ -23,7 +23,14 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'home-categories', ERE_PLUGIN_URL . 'publi
 			OF LISTINGS FOR COMMERCIAL<br>
 			PROPERTES FOR RENT AND SALES
 			<hr>
-			<span>OFFICE SPACE</span> * <span>WAREHOUSING</span> * <span>PRODUCTION FACILITIES</span>
+			<?php //to do: handle links differently ?>
+			<span>
+				<a href='<?php echo get_permalink(4025)."?group=1&resid-type-search=1&resid-furnished-type-search=1&commer-offices-search=1&commer_offices=office;serviced-office" ?>'>OFFICE SPACE</a>
+			</span> * <span>
+				<a href='<?php echo get_permalink(4025)."?group=1&commer-industrial-search=1&commer_industrial=distribution-warehouse;warehouse" ?>'>WAREHOUSING</a>
+			</span> * <span>
+				<a href='<?php echo get_permalink(4025)."?group=1&commer-industrial-search=1&commer_industrial=factory;heavy-industrial;industrial-park;light-industrial" ?>'>PRODUCTION FACILITIES</a>
+			</span>
 		</div>
 		<div class="purple-box col-sm-6">
 			RESIDENTIAL REAL ESTATE
@@ -33,7 +40,13 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'home-categories', ERE_PLUGIN_URL . 'publi
 			TEMPORARY RESIDENCE, WE HAVE A LARGE<br>
 			SELECTION TO CHOOSE FROM
 			<hr>
-			<span>HOUSES</span> * <span>APARTMENTS</span> * <span>VILLAS</span>
+			<span>
+				<a href='<?php echo get_permalink(4025)."?group=0&resid-type-search=1&resid_type=detached-house;semi-detached-house;terraced-house" ?>'>HOUSES</a>
+			</span> * <span>
+				<a href='<?php echo get_permalink(4025)."?group=0&resid-type-search=1&resid_type=flat" ?>'>APARTMENTS</a>
+			</span> * <span>
+				<a href='<?php echo get_permalink(4025)."?group=0&resid-type-search=1&resid_type=bungalow" ?>'>VILLAS</a>
+			</span>
 		</div>
 	</div>
 </div>

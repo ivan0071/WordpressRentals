@@ -445,7 +445,7 @@ if ($column == '1') {
                             <button type="button" class="ere-advanced-search-btn"><i class="fa fa-search"></i>
                                 <?php esc_html_e('Search', 'essential-real-estate') ?>
                             </button>
-                            <input id="search-url" type="hidden" value=<?php echo get_permalink(4025); ?>/>
+                            <input id="search-url" type="hidden" value="<?php echo get_permalink(4025); ?>"/> <?php //to do ?>
                         </div>
                     </div>
                 </div>

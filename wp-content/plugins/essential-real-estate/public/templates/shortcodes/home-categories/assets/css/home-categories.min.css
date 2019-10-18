@@ -3,3 +3,7 @@
     background-color: #97145A;
     color: white;
 }
+
+a, a:hover {
+    color: white;
+}
