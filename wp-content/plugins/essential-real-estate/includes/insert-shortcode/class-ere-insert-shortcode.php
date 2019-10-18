@@ -1628,7 +1628,7 @@ if (!class_exists('ERE_Insert_Shortcode')) {
 			);
 			$ere_shortcodes['ere_home_search'] = array(
 				'type' => 'custom',
-				'title' => esc_html__('Advanced Search Page', 'essential-real-estate')
+				'title' => esc_html__('Home Search Page', 'essential-real-estate')
 			);
 			$ere_shortcodes['ere_property_home_search'] = array(
 				'type' => 'custom',

@@ -2100,7 +2100,7 @@ if (!class_exists('ERE_Vc_map')) {
                 )
             ));
             vc_map(array(
-                'name' => esc_html__('Advanced Search Page', 'essential-real-estate'),
+                'name' => esc_html__('Home Search Page', 'essential-real-estate'),
                 'base' => 'ere_home_search',
                 'icon' => 'fa fa-search-plus',
                 'category' => esc_html__('ERE Shortcode', 'essential-real-estate')
