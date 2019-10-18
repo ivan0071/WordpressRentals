@@ -2106,6 +2106,12 @@ if (!class_exists('ERE_Vc_map')) {
                 'category' => esc_html__('ERE Shortcode', 'essential-real-estate')
             ));
             vc_map(array(
+                'name' => esc_html__('Home Search Page No Result', 'essential-real-estate'),
+                'base' => 'ere_home_search_no_result',
+                'icon' => 'fa fa-search-plus',
+                'category' => esc_html__('ERE Shortcode', 'essential-real-estate')
+            ));
+            vc_map(array(
                 'name' => esc_html__('Property Home Search', 'essential-real-estate'),
                 'base' => 'ere_property_home_search',
                 'icon' => 'fa fa-search',

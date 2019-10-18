@@ -57,6 +57,7 @@ if (!class_exists('ERE_Template_Hooks')) {
             //Advanced Search
             $this->loader->add_action('ere_advanced_search_before_main_content', $this, 'advanced_property_search', 10);
             $this->loader->add_action('ere_home_search_before_main_content', $this, 'home_property_search', 10);
+            $this->loader->add_action('ere_home_search_no_result_before_main_content', $this, 'home_property_search_no_result', 10);
             //Archive Agent
             $this->loader->add_action('ere_archive_agent_heading', $this, 'archive_agent_heading', 10, 1);
             $this->loader->add_action('ere_archive_agent_action', $this, 'archive_agent_action', 10, 1);
@@ -169,6 +170,20 @@ if (!class_exists('ERE_Template_Hooks')) {
                 echo do_shortcode('[ere_property_home_search layout="tab" column="3" color_scheme="color-dark" status_enable="true" type_enable="true" title_enable="true" address_enable="true" country_enable="true" state_enable="true"  city_enable="true"  neighborhood_enable="true" bedrooms_enable="true" bathrooms_enable="true" price_enable="true" price_is_slider="' . (($property_price_field_layout == '1') ? 'true' : 'false') . '" area_enable="true" area_is_slider="' . (($property_size_field_layout == '1') ? 'true' : 'false') . '" land_area_enable="true" land_area_is_slider="' . (($property_land_field_layout == '1') ? 'true' : 'false') . '" label_enable="true" garage_enable="true" property_identity_enable="true" other_features_enable="true" resid_type_enable="true" resid_furnished_type_enable="true" commer_offices_enable="true" commer_retail_enable="true" commer_leisure_enable="true" commer_industrial_enable="true" commer_land_enable="true" commer_other_enable="true"]');
             }
         }        
+
+        /**
+         * home_property_search_no_result
+         */
+        public function home_property_search_no_result()
+        {
+            $enable_home_search_form = ere_get_option('enable_advanced_search_form', '1');
+            if ($enable_home_search_form == '1') {
+                $property_price_field_layout = ere_get_option('advanced_search_price_field_layout', '0');
+                $property_size_field_layout = ere_get_option('advanced_search_size_field_layout', '0');
+                $property_land_field_layout = ere_get_option('advanced_search_land_field_layout', '0');
+                echo do_shortcode('[ere_property_home_search layout="tab" column="3" color_scheme="color-dark" status_enable="true" type_enable="true" title_enable="true" address_enable="true" country_enable="true" state_enable="true"  city_enable="true"  neighborhood_enable="true" bedrooms_enable="true" bathrooms_enable="true" price_enable="true" price_is_slider="' . (($property_price_field_layout == '1') ? 'true' : 'false') . '" area_enable="true" area_is_slider="' . (($property_size_field_layout == '1') ? 'true' : 'false') . '" land_area_enable="true" land_area_is_slider="' . (($property_land_field_layout == '1') ? 'true' : 'false') . '" label_enable="true" garage_enable="true" property_identity_enable="true" other_features_enable="true" resid_type_enable="true" resid_furnished_type_enable="true" commer_offices_enable="true" commer_retail_enable="true" commer_leisure_enable="true" commer_industrial_enable="true" commer_land_enable="true" commer_other_enable="true"]');
+            }
+        }   
 
         /**
          * property_sidebar

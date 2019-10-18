@@ -44,6 +44,7 @@ class ERE_Shortcodes {
 			'ere_home_categories'                    => __CLASS__ . '::home_categories',
 			'ere_home_featured_slider'                    => __CLASS__ . '::home_featured_slider',
 			'ere_home_big_slider'                    => __CLASS__ . '::home_big_slider',
+			'ere_home_search_no_result'                    => __CLASS__ . '::home_search_no_result',
 			'ere_home_search'                    => __CLASS__ . '::home_search',
 			'ere_property_home_search'			=> __CLASS__ . '::property_home_search',
 			'ere_search_grid_view'                    => __CLASS__ . '::search_grid_view',
@@ -646,6 +647,14 @@ class ERE_Shortcodes {
 	public static function home_search( $atts ) {
 		return self::shortcode_wrapper( array( 'ERE_Shortcode_Home_Search', 'output' ), $atts );
 	}
+
+	/**
+	 * @param $atts
+	 * @return string
+	 */
+	public static function home_search_no_result( $atts ) {
+		return self::shortcode_wrapper( array( 'ERE_Shortcode_Home_Search_No_Result', 'output' ), $atts );
+	}	
 
 	/**
 	 * @param $atts

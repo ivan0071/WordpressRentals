@@ -1630,6 +1630,10 @@ if (!class_exists('ERE_Insert_Shortcode')) {
 				'type' => 'custom',
 				'title' => esc_html__('Home Search Page', 'essential-real-estate')
 			);
+			$ere_shortcodes['ere_home_search_no_result'] = array(
+				'type' => 'custom',
+				'title' => esc_html__('Home Search Page No Result', 'essential-real-estate')
+			);
 			$ere_shortcodes['ere_property_home_search'] = array(
 				'type' => 'custom',
 				'title' => esc_html__('Property Home Search', 'essential-real-estate'),
