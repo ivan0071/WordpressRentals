@@ -389,6 +389,10 @@
 	margin-bottom: 18px;
 }
 
+.single-property-area .property-tab .fade {
+	opacity: 1;
+}
+
 .single-property-area .agent-content .agent-heading h4,
 .single-property-area .agent-content .agent-heading a {
 	color: #222;
