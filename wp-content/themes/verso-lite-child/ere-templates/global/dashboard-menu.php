@@ -137,7 +137,7 @@ wp_print_styles(ERE_PLUGIN_PREFIX . 'dashboard');
                     <?php endif;
                 endif;
                 $enable_saved_search = ere_get_option('enable_saved_search', 1);
-                if ($enable_saved_search == 1):
+                if (false && $enable_saved_search == 1): //to do: enable saved search
                     if ($permalink = ere_get_permalink('my_save_search')) : ?>
                         <li<?php if ($cur_menu == 'my_save_search') echo ' class="active"' ?>>
                             <a href="<?php echo esc_url($permalink); ?>"><i

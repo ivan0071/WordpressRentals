@@ -762,10 +762,12 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'archive-property', ERE_PLUGIN_URL . 'publ
             $data_target='#ere_signin_modal';
         }
         ?>
+        <?php /*
         <div class="advanced-saved-searches">
             <button type="button" class="btn btn-primary btn-xs btn-save-search" data-toggle="modal" data-target="<?php echo $data_target; ?>">
                 <?php esc_html_e( 'Save Search', 'essential-real-estate' ) ?></button>
         </div>
+        */ ?>
         <?php ere_get_template('global/save-search-modal.php',array('parameters'=>$parameters,'search_query'=>$search_query));
     endif; ?>
     <div class="ere-archive-property">
