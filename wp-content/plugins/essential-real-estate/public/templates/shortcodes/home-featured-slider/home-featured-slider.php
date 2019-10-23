@@ -189,6 +189,13 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'home-featured-slider', ERE_PLUGIN_URL . '
 
 					$property_post_meta_data = get_post_custom($agent_id);
 
+					$property_location_zip = isset($property_post_meta_data[ ERE_METABOX_PREFIX . 'property_location_zip' ] ) ? $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_location_zip' ][0] : '';
+					$property_price_prefix      = isset( $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ] ) ? $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ][0] : '';
+					$property_price_postfix      = isset( $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_postfix' ] ) ? $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_postfix' ][0] : '';
+					$property_price              = isset( $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price' ] ) ? $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price' ][0] : '';
+					$property_price_short              = isset( $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_short' ] ) ? $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_short' ][0] : '';
+					$property_price_unit             = isset( $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_unit' ] ) ? $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_unit' ][0] : '';
+					
 					$agent_position = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_position']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_position'][0] : '';
 					$agent_description = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_description']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_description'][0] : '';
 					$email = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_email']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_email'][0] : '';
@@ -244,54 +251,55 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'home-featured-slider', ERE_PLUGIN_URL . '
 							</div>
 							<div class="agent-content">
 							<div class="agent-info">
-								<?php if (!empty($agent_name)): ?>
-									<h2 class="agent-name"><a title="<?php echo esc_attr($agent_name) ?>"
-															   href="<?php echo esc_url($agent_link) ?>"><?php echo esc_html($agent_name) ?></a>
-									</h2>
-								<?php endif; ?>
-
-								<?php if (!empty($property_bedrooms)): ?>
-									<div class="property-bedrooms">
-										<div class="property-info-item-inner">
-											<span class="fa fa-hotel"></span>
-
-											<div class="content-property-info">
-												<p class="property-info-value"><?php echo esc_html($property_bedrooms) ?></p>
-
-												<p class="property-info-title"><?php
-													echo ere_get_number_text($property_bedrooms, esc_html__( 'Bedrooms', 'essential-real-estate' ), esc_html__( 'Bedroom', 'essential-real-estate' ));
-													?></p>
-											</div>
-										</div>
+								<div class="agent-info-section-left">
+									<?php if (!empty($agent_name)): ?>
+										<h2 class="agent-name"><a title="<?php echo esc_attr($agent_name) ?>"
+																href="<?php echo esc_url($agent_link) ?>"><?php echo esc_html($agent_name) ?></a>
+										</h2>
+									<?php endif; ?>
+									<?php if (!empty($property_location_zip)): ?>
+										<p><?php echo esc_html($property_location_zip) ?></p>
+									<?php endif; ?>
+								</div>
+								<div class="agent-info-section-right">
+									<div class="property-rooms">
+										<?php if (!empty($property_bedrooms)): ?>										
+											<span class="fa fa-hotel"> <?php echo esc_html($property_bedrooms) ?></span>
+										<?php endif; ?>
+										&nbsp;
+										<?php if (!empty($property_bathrooms)): ?>
+											<span class="fa fa-bath"> <?php echo esc_html($property_bathrooms) ?></span>
+										<?php endif; ?>
 									</div>
-								<?php endif; ?>
-								<?php if (!empty($property_bathrooms)): ?>
-									<div class="property-bathrooms">
-										<div class="property-info-item-inner">
-											<span class="fa fa-bath"></span>
-
-											<div class="content-property-info">
-												<p class="property-info-value"><?php echo esc_html($property_bathrooms) ?></p>
-
-												<p class="property-info-title"><?php
-													echo ere_get_number_text($property_bathrooms, esc_html__( 'Bathrooms', 'essential-real-estate' ), esc_html__( 'Bathroom', 'essential-real-estate' ));
-													?></p>
-											</div>
-										</div>
+									<div class="property-price">
+<?php if (!empty( $property_price ) ): ?>
+	<span class="property-price">
+	<?php if(!empty( $property_price_prefix )) {echo '<span class="property-price-prefix">'.$property_price_prefix.' </span>';} ?>
+	<?php
+	echo ere_get_format_money( $property_price_short,$property_price_unit );
+	?>
+	<?php if(!empty( $property_price_postfix )) {echo '<span class="property-price-postfix"> / '.$property_price_postfix.'</span>';} ?>
+</span>
+<?php elseif (ere_get_option( 'empty_price_text', '' )!='' ): ?>
+	<span class="property-price"><?php echo ere_get_option( 'empty_price_text', '' ) ?></span>
+<?php endif; ?>
 									</div>
-								<?php endif; ?>
-
+								</div>
+								<br>
 								<!--
 								<span><?php /*
 									$ere_property = new ERE_Property();
 									$total_property = $ere_property->get_total_properties_by_user($agent_id, $agent_user_id);
 									printf( _n( '%s property', '%s properties', $total_property, 'essential-real-estate' ), ere_get_format_number($total_property ));
 									*/ ?></span>
-								-->
-								<?php if (!empty($agent_description) && ($layout_style == 'agent-list')): ?>
+								-->							
+
+
+								<?php /* if (!empty($agent_description) && ($layout_style == 'agent-list')): ?>
 									<p><?php echo esc_html($agent_description) ?></p>
-								<?php endif; ?>
+								<?php endif; */ ?>
 							</div>
+							<?php /*
 							<div class="agent-social">
 								<?php if (!empty($agent_facebook_url)): ?>
 									<a title="Facebook" href="<?php echo esc_url($agent_facebook_url); ?>">
@@ -344,6 +352,7 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'home-featured-slider', ERE_PLUGIN_URL . '
 									</a>
 								<?php endif; ?>
 							</div>
+							*/ ?>
 						</div>
 						</div>
 					</div>

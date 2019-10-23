@@ -4,7 +4,8 @@
 	font-weight: 500;
 }
 .ere-agent h2 a {
-	color: #fff;
+	color: #71818c;
+	font-size: 12px;
 	border: none;
 	text-decoration: none;
 	-webkit-transition: all 0.3s;
@@ -25,12 +26,16 @@
 .ere-agent .agent-item {
 	position: relative;
 	margin-bottom: 43px;
+	padding: 10px;
+	/*border: 1px solid black;*/
 }
 .ere-agent .agent-avatar {
 	margin: auto;
 }
 .ere-agent .agent-avatar img {
 	width: 100%;
+	max-height: 250px;
+    object-fit: cover;
 }
 .ere-agent .agent-avatar-bg {
 	background-size: cover;
@@ -63,7 +68,26 @@
 .ere-agent.agent-slider .agent-info {
 	padding-top: 18px;
 	padding-bottom: 32px;
-	background: #222;
+}
+.ere-agent.agent-grid .agent-info .agent-info-section-left,
+.ere-agent.agent-slider .agent-info .agent-info-section-left {
+	width: 50%;
+	float: left;
+	text-align: left;
+}
+.agent-info h2.agent-name {
+	border-bottom: 1px solid;
+}
+.ere-agent.agent-grid .agent-info .agent-info-section-right,
+.ere-agent.agent-slider .agent-info .agent-info-section-right {
+	width: 50%;
+	float: left;
+	text-align: right;
+}
+.ere-agent.agent-grid .agent-info .agent-info-section-right .property-price,
+.ere-agent.agent-slider .agent-info .agent-info-section-right .property-price {
+	color: #97145A;
+	font-weight: bold;
 }
 .ere-agent.agent-grid .agent-social,
 .ere-agent.agent-slider .agent-social {
