@@ -127,11 +127,13 @@ $verso_lite_settings = verso_lite_get_theme_options();
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
+                    <?php /*
                     <div class="site-footer-info">
                         <span><?php esc_html_e('Copyright &copy; ', 'verso-lite'); ?> <?php echo date('Y ') . '<a href="' . esc_url( home_url( '/' ) ) .'" >' . esc_attr( get_bloginfo('name')) . '</a>';?></span>
                         <span><?php esc_html_e(' All Rights Reserved', 'verso-lite'); ?></span>
                         <span><?php esc_html_e(' Designed by', 'verso-lite'); ?><a href="<?php echo esc_url('http://themeparrot.com', 'verso-lite'); ?>"> <?php esc_html_e('ThemeParrot', 'verso-lite'); ?></a></span>
                     </div>
+                    */ ?>
                 </div>
                 <div class="col-sm-6">
                     <div class="site-footer-links pull-right">
