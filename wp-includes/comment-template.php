@@ -2178,6 +2178,9 @@ function wp_list_comments( $args = array(), $comments = null ) {
  * @param int|WP_Post $post_id Post ID or WP_Post object to generate the form for. Default current post.
  */
 function comment_form( $args = array(), $post_id = null ) {
+	
+	return;
+
 	if ( null === $post_id )
 		$post_id = get_the_ID();
 
