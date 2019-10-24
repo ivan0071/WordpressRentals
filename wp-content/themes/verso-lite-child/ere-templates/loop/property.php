@@ -49,16 +49,18 @@ $excerpt = get_the_excerpt();
 $property_rent_price = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_price']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rent_price'][0] : '';
 $property_rent_charges = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_rent_charges']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_rent_charges'][0] : '';
 $property_sale_price= isset($property_meta_data[ERE_METABOX_PREFIX . 'property_sale_price']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_sale_price'][0] : '';
-// $price = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price'][0] : '';
-// $price_short = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_short']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_short'][0] : '';
-// $price_unit = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_unit']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_unit'][0] : '';
-// $price_prefix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_prefix']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_prefix'][0] : '';
-// $price_postfix = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_price_postfix'][0] : '';
 $property_address = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_address']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_address'][0] : '';
 $property_size = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_size']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_size'][0] : '';
 $property_bedrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms'][0] : '0';
 $property_bathrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms'][0] : '0';
 $property_featured = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_featured']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_featured'][0] : '0';
+
+$property_location_zip = isset($property_meta_data[ ERE_METABOX_PREFIX . 'property_location_zip' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_location_zip' ][0] : '';
+$property_price_prefix = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ][0] : '';
+$property_price_postfix = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_postfix' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_postfix' ][0] : '';
+$property_price = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price' ][0] : '';
+$property_price_short = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_short' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_short' ][0] : '';
+$property_price_unit = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_unit' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_unit' ][0] : '';
 
 // Get Agent name
 $agent_display_option = isset($property_meta_data[ERE_METABOX_PREFIX . 'agent_display_option']) ? $property_meta_data[ERE_METABOX_PREFIX . 'agent_display_option'][0] : '';
@@ -99,6 +101,7 @@ $property_item_label = get_the_terms($property_id, 'property-label');
 $property_item_status = get_the_terms($property_id, 'property-status');
 
 $property_link = get_the_permalink();
+
 if($property_featured)
 {
     $property_item_class[] = 'ere-property-featured';
@@ -170,6 +173,19 @@ if($property_featured)
                 <h2 class="property-title"><a href="<?php echo esc_url($property_link); ?>"
                                                     title="<?php the_title(); ?>"><?php the_title() ?></a>
                 </h2>
+                <div class="property-price">
+<?php if (!empty( $property_price ) ): ?>
+	<span class="property-price">
+	<?php if(!empty( $property_price_prefix )) {echo '<span class="property-price-prefix">'.$property_price_prefix.' </span>';} ?>
+	<?php
+	echo ere_get_format_money( $property_price_short,$property_price_unit );
+	?>
+	<?php if(!empty( $property_price_postfix )) {echo '<span class="property-price-postfix"> / '.$property_price_postfix.'</span>';} ?>
+</span>
+<?php elseif (ere_get_option( 'empty_price_text', '' )!='' ): ?>
+	<span class="property-price"><?php echo ere_get_option( 'empty_price_text', '' ) ?></span>
+<?php endif; ?>
+                </div>
                 <?php /*if (!empty($price)): ?>
                     <div class="property-price">
                         <span>
@@ -186,9 +202,9 @@ if($property_featured)
                     <div class="property-price">
                         <span><?php echo ere_get_option('empty_price_text', '') ?></span>
                     </div>
-                <?php endif; */?>
+                <?php endif; 
             </div>
-            <?php if (!empty($property_address)):
+            if (!empty($property_address)):
                 $property_location = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_location', true);
                 if($property_location)
                 {
@@ -225,7 +241,7 @@ if($property_featured)
                         <span><?php echo esc_html($agent_name) ?></span>
                         <?php echo !empty($agent_link) ? ('</a>') : ''; ?>
                     </div>
-                <?php endif; ?>
+                <?php endif; 
                 <div
                     class="property-date">
                     <i class="fa fa-calendar"></i>
@@ -234,12 +250,16 @@ if($property_featured)
                     $current_time=current_time('timestamp');
                     $human_time_diff=human_time_diff($get_the_time, $current_time);
                     printf(_x(' %s ago', '%s = human-readable time difference', 'essential-real-estate'), $human_time_diff); ?></div>
-            </div>
-            <?php if (isset($excerpt) && !empty($excerpt)): ?>
+                */ ?>
+                <?php if (!empty($property_location_zip)): ?>
+                    <p><?php echo esc_html($property_location_zip) ?></p>
+                <?php endif; ?>
+                </div>
+            <?php /* if (isset($excerpt) && !empty($excerpt)): ?>
                 <div class="property-excerpt">
                     <p><?php echo esc_html($excerpt) ?></p>
                 </div>
-            <?php endif; ?>
+            <?php endif; */ ?>
             <div class="property-info">
                 <div class="property-info-inner">
                     <?php if (!empty($property_size)): ?>

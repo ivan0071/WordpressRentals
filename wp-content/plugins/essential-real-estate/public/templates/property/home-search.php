@@ -753,7 +753,8 @@ wp_print_styles( ERE_PLUGIN_PREFIX . 'property');
 wp_print_styles( ERE_PLUGIN_PREFIX . 'archive-property');
 wp_enqueue_script(ERE_PLUGIN_PREFIX . 'archive-property', ERE_PLUGIN_URL . 'public/assets/js/property/ere-archive-property' . $min_suffix_js . '.js', array('jquery'), ERE_PLUGIN_VER, true);
 ?>
-<div class="ere-advanced-search-wrap ere-property-wrap">
+<div id="home-search-wrap" class="ere-advanced-search-wrap ere-property-wrap">
+    <b><span class="search-title-text">SEARCH PROPERTIES</span></b>
     <?php do_action('ere_home_search_before_main_content');
     $enable_saved_search = ere_get_option('enable_saved_search', 1);
     if($enable_saved_search==1):
@@ -772,10 +773,6 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'archive-property', ERE_PLUGIN_URL . 'publ
     endif; ?>
     <div class="ere-archive-property">
         <div class="above-archive-property">
-            <div class="ere-heading">
-                <h2><?php esc_html_e('Results', 'essential-real-estate') ?>
-                    <sub>(<?php echo ere_get_format_number($total_post); ?>)</sub></h2>
-            </div>
             <div class="archive-property-action sort-view-property">
                 <div class="sort-property property-filter property-dropdown">
                     <span class="property-filter-placeholder"><?php esc_html_e( 'Sort By', 'essential-real-estate' ); ?></span>
@@ -904,6 +901,10 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'archive-property', ERE_PLUGIN_URL . 'publ
 
             </div>
         <?php endif; ?>
+        <div class="ere-heading">                
+            <?php echo ere_get_format_number($total_post); ?>
+            <?php esc_html_e(' results', 'essential-real-estate') ?>
+        </div>
     </div>
     <?php do_action('ere_home_search_after_main_content'); ?>
 </div>

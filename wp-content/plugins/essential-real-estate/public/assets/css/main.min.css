@@ -1011,15 +1011,6 @@
     transform: skew(0deg, -150deg);
 }
 
-.ere-heading:after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 4px;
-    background-color: #fb6a19;
-    margin-top: 16px;
-}
-
 .ere-heading:after,
 .ere-heading span {
     margin-left: 0;
