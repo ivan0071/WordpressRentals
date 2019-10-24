@@ -442,8 +442,8 @@ if ($column == '1') {
                         endif;
                         ?>
                         <div class="<?php echo esc_attr($css_class_field); ?> form-group submit-search-form pull-right">
-                            <button type="button" class="ere-advanced-search-btn"><i class="fa fa-search"></i>
-                                <?php esc_html_e('Search', 'essential-real-estate') ?>
+                            <button id="home-btn-search" type="button" class="ere-advanced-search-btn">
+                                <?php esc_html_e('SEARCH', 'essential-real-estate') ?>
                             </button>
                             <input id="search-url" type="hidden" value="<?php echo get_permalink(4025); ?>"/> <?php //to do ?>
                         </div>

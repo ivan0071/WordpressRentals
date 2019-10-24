@@ -258,3 +258,30 @@
 .ere-property-advanced-search.ere-show-status-tab .form-search-wrap {
     padding-top: 0 !important;
 }
+
+.search-title-text {
+    font-size: 18px;
+}
+
+#home-search-wrap {
+    position: absolute;
+    top: 20%;
+    z-index: 10;
+    background-color: rgb(255, 255, 255, 0.5);
+    width: 100%;
+  }
+
+#home-search-wrap #home-btn-search {
+    color: white;
+    border: none;
+    padding: 5px;
+    background-color:#97145A;
+}
+
+#home-search-wrap button, 
+#home-search-wrap input[type="text"],
+#home-search-wrap input[type="text"]::placeholder {
+    background-color: white;
+    border-color: black;
+    color: black;
+}

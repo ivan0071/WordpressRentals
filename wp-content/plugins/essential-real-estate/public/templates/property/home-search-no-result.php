@@ -753,7 +753,8 @@ wp_print_styles( ERE_PLUGIN_PREFIX . 'property');
 wp_print_styles( ERE_PLUGIN_PREFIX . 'archive-property');
 wp_enqueue_script(ERE_PLUGIN_PREFIX . 'archive-property', ERE_PLUGIN_URL . 'public/assets/js/property/ere-archive-property' . $min_suffix_js . '.js', array('jquery'), ERE_PLUGIN_VER, true);
 ?>
-<div class="ere-advanced-search-wrap ere-property-wrap">
+<div id="home-search-wrap" class="ere-advanced-search-wrap ere-property-wrap">
+    <b><span class="search-title-text">SEARCH PROPERTIES</span></b>
     <?php 
         do_action('ere_home_search_before_main_content');
         do_action('ere_home_search_after_main_content'); 

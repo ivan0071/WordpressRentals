@@ -135,12 +135,7 @@
                                      </a>
                                  </div>
                                  <div class="head-search pull-right">
-                                      <div id="search-toggle" class="toggle-search head-search-toggle"><i class="icon-search"></i></div>
-                                      <div class="search-expand">
-                                          <div class="search-expand-inner">
-                                              <?php get_search_form(); ?>
-                                          </div>
-                                      </div>
+                                      <div id="search-toggle"><?php get_search_form(); ?></div>
                                       <div class="search-overlay head-search-toggle"></div>
                                  </div><!--/.head-search-->
                                  <?php if ( class_exists( 'WooCommerce' ) ):

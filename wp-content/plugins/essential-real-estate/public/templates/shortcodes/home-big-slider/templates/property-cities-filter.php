@@ -171,7 +171,11 @@ $property_content_attributes[] = 'data-layout="filter"';
                     ?>
                     <div class="<?php echo join(' ', $property_item_class); ?>">
                         <div class="property-inner">
-                            <div class="property-image">
+                            <div class="property-image text-over-image-home-container">
+                                <div class="text-over-image-home">
+                                    <h2><?php echo $attachment_title; ?></h2>
+                                    <div><?php echo $attachment_content; ?></div>
+                                </div>
                                 <a href="<?php echo esc_url($property_link); ?>"
                                    title="<?php the_title(); ?>"></a>
                                 <img width="<?php echo esc_attr($width) ?>" height="<?php echo esc_attr($height) ?>"
@@ -181,11 +185,8 @@ $property_content_attributes[] = 'data-layout="filter"';
                                      title="<?php the_title(); ?>">
                             </div>
                         </div>
-                        <h2><?php echo $attachment_title; ?></h2>
-                        <div><?php echo $attachment_content; ?></div>
                     </div>
                 <?php endwhile;
-
             else: ?>
                 <div class="item-not-found"><?php esc_html_e('No item found', 'essential-real-estate'); ?></div>
             <?php endif; ?>
