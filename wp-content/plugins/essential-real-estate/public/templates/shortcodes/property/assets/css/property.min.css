@@ -206,7 +206,7 @@
 	font-size: 11px;
 	font-weight: 500;
 	padding: 1.5px 5px;
-	background-color: #fb6a19;
+	background-color: #97145A;
 	color: #fff;
 	margin-left: 5px;
 	position: relative;
@@ -226,17 +226,22 @@
 }
 .ere-property:not(.property-zigzac) .property-inner {
 	padding: 15px;
-	background-color: #f8f8f8;
+	height: 320px;
+	background-color: #E1E1E1;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	-ms-transition: all 0.3s;
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
 	overflow: auto;
+
+	background-color: white;
+    border: 8px solid #E1E1E1;
+    box-sizing: border-box;
 }
 .ere-property:not(.property-zigzac) .property-price {
-	padding-right: 20px;
-	white-space: nowrap;
+	/*padding-right: 20px;
+	white-space: nowrap;*/
 }
 .ere-property:not(.property-zigzac) .property-location {
 	overflow: hidden;
@@ -259,7 +264,7 @@
 	color: #FFF;
 }
 .ere-property .property-view-gallery-wrap:hover a {
-	color: #fb6a19;
+	color: #97145A;
 }
 .ere-property .social-share,
 .ere-property .property-view-gallery-wrap,
@@ -268,7 +273,7 @@
 	float: left;
 	width: 34px;
 	height: 34px;
-	background-color: #fb6a19;
+	background-color: #97145A;
 	-webkit-border-radius: 50%;
 	-webkit-background-clip: padding-box;
 	-moz-border-radius: 50%;
@@ -287,7 +292,7 @@
 .ere-property .social-share:hover,
 .ere-property .property-view-gallery-wrap:hover,
 .ere-property .block-center-inner > a:hover {
-	color: #fb6a19;
+	color: #97145A;
 	background-color: #fff;
 }
 .ere-property .property-view-gallery-wrap > a:last-of-type,
@@ -328,7 +333,7 @@
 	white-space: nowrap;
 }
 .ere-property .social-share-hover .social-share-list a {
-	color: #fb6a19;
+	color: #97145A;
 	margin-right: 10px;
 	font-size: 12px;
 }
@@ -356,7 +361,7 @@
 	z-index: 1;
 }
 .ere-property .property-item-content {
-	padding-top: 17px;
+	/*padding-top: 17px;*/
 }
 .ere-property .property-item-content .property-title {
 	font-weight: 600;
@@ -367,15 +372,16 @@
 	white-space: nowrap;
 }
 .ere-property .property-item-content .property-title a {
-	color: #222;
+	color: #71818c;
+    font-size: 12px;
 }
 .ere-property .property-item-content .property-title a:hover {
-	color: #fb6a19;
+	color: #97145A;
 }
 .ere-property .property-item-content .property-price {
 	font-size: 16px;
 	font-weight: 600;
-	color: #222;
+	color: #71818c;
 }
 .ere-property .property-item-content .property-location i {
 	margin-right: 5px;
@@ -490,13 +496,13 @@
 	color: #222;
 }
 .ere-property.property-list.property-list-two-columns .property-link-detail a:hover {
-	color: #fb6a19;
+	color: #97145A;
 }
 .ere-property.property-list.property-list-two-columns .property-link-detail a:hover i {
 	margin-left: 10px;
 }
 .ere-property.property-list.property-list-two-columns .property-link-detail i {
-	color: #fb6a19;
+	color: #97145A;
 	margin-left: 5px;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
@@ -548,7 +554,7 @@
 	font-size: 0;
 }
 .ere-property.property-zigzac .property-item-content .property-info-inner span:not(.property-info-value) {
-	color: #fb6a19;
+	color: #97145A;
 }
 .ere-property.property-zigzac .property-item-content .property-info-inner .property-info-value {
 	color: #222;
@@ -562,20 +568,50 @@
 	border-left: 20px solid #fff;
 	border-right: none;
 }
-.ere-property.property-grid .property-info,
-.ere-property.property-list .property-info,
 .ere-property.property-carousel .owl-item:nth-child(2n-1) .property-info {
-	background-color: #fb6a19;
+	background-color: #000;
+}
+.ere-property.property-grid .property-info,
+.ere-property.property-list .property-info {
+	color: black;
 }
 .ere-property.property-grid .property-inner:hover,
 .ere-property.property-list .property-inner:hover,
 .ere-property.property-carousel .owl-item:nth-child(2n) .property-inner {
 	background-color: #f6f6f6;
 }
-.ere-property.property-grid .property-inner:hover .property-info,
-.ere-property.property-list .property-inner:hover .property-info,
 .ere-property.property-carousel .owl-item:nth-child(2n) .property-inner .property-info {
 	background-color: #222;
+}
+.ere-property.property-grid .property-inner:hover .property-info,
+.ere-property.property-list .property-inner:hover .property-info {
+	color: black;
+}
+.ere-property.property-grid .property-info .property-info-section-left,
+.ere-property.property-slider .property-info .property-info-section-left {
+	width: 50%;
+	float: left;
+	text-align: left;
+}
+.property-info h2.property-title {
+	border-bottom: 1px solid;
+}
+.ere-property.property-grid .property-info .property-info-section-right,
+.ere-property.property-slider .property-info .property-info-section-right {
+	width: 50%;
+	float: left;
+	text-align: right;
+}
+.ere-property.property-grid .property-info .property-info-section-right .property-rooms,
+.ere-property.property-slider .property-info .property-info-section-right .property-rooms {
+	font-size: 15px;
+    color: #71818c;
+}
+.ere-property.property-grid .property-info .property-info-section-right .property-price,
+.ere-property.property-slider .property-info .property-info-section-right .property-price {
+	color: #97145A;
+	font-weight: bold;
+	font-size: 15px;
 }
 .ere-property .property-inner:hover .property-action,
 .ere-property .property-active-hover .property-action {
@@ -595,7 +631,7 @@
 }
 .ere-property .property-label p .property-label-bg {
 	display: inline-block;
-	background-color: #fb6a19;
+	background-color: #97145A;
 	padding-left: 10px;
 	padding-right: 5px;
 	position: relative;
@@ -611,8 +647,8 @@
 	border-top: 10px solid transparent;
 	border-bottom: 9px solid transparent;
 	border-left: 7px solid;
-	border-left-color: #fb6a19;
-	border-right-color: #fb6a19;
+	border-left-color: #97145A;
+	border-right-color: #97145A;
 }
 .ere-property .property-status {
 	position: absolute;
@@ -628,7 +664,7 @@
 }
 .ere-property .property-status p .property-status-bg {
 	display: inline-block;
-	background-color: #fb6a19;
+	background-color: #97145A;
 	padding-left: 10px;
 	padding-right: 5px;
 	position: relative;
@@ -644,8 +680,8 @@
 	border-top: 10px solid transparent;
 	border-bottom: 9px solid transparent;
 	border-right: 7px solid;
-	border-left-color: #fb6a19;
-	border-right-color: #fb6a19;
+	border-left-color: #97145A;
+	border-right-color: #97145A;
 }
 .heading-contain-owl-nav {
 	position: relative;

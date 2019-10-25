@@ -169,11 +169,28 @@ if($property_featured)
 
         </div>
         <div class="property-item-content">
-            <div class="property-heading">
-                <h2 class="property-title"><a href="<?php echo esc_url($property_link); ?>"
+            <div class="property-info">
+                <div class="property-info-section-left">
+                    <?php if (!empty($property_link)): ?>
+                        <h2 class="property-title"><a href="<?php echo esc_url($property_link); ?>"
                                                     title="<?php the_title(); ?>"><?php the_title() ?></a>
-                </h2>
-                <div class="property-price">
+                        </h2>
+                    <?php endif; ?>
+                    <?php if (!empty($property_location_zip)): ?>
+                        <p><?php echo esc_html($property_location_zip) ?></p>
+                    <?php endif; ?>
+                </div>
+                <div class="property-info-section-right">
+                    <div class="property-rooms">
+                        <?php if (!empty($property_bedrooms)): ?>										
+                            <span class="fa fa-hotel"> <?php echo esc_html($property_bedrooms) ?></span>
+                        <?php endif; ?>
+                        &nbsp;
+                        <?php if (!empty($property_bathrooms)): ?>
+                            <span class="fa fa-bath"> <?php echo esc_html($property_bathrooms) ?></span>
+                        <?php endif; ?>
+                    </div>
+                    <div class="property-price">
 <?php if (!empty( $property_price ) ): ?>
 	<span class="property-price">
 	<?php if(!empty( $property_price_prefix )) {echo '<span class="property-price-prefix">'.$property_price_prefix.' </span>';} ?>
@@ -185,6 +202,7 @@ if($property_featured)
 <?php elseif (ere_get_option( 'empty_price_text', '' )!='' ): ?>
 	<span class="property-price"><?php echo ere_get_option( 'empty_price_text', '' ) ?></span>
 <?php endif; ?>
+                    </div>
                 </div>
                 <?php /*if (!empty($price)): ?>
                     <div class="property-price">
@@ -250,17 +268,11 @@ if($property_featured)
                     $current_time=current_time('timestamp');
                     $human_time_diff=human_time_diff($get_the_time, $current_time);
                     printf(_x(' %s ago', '%s = human-readable time difference', 'essential-real-estate'), $human_time_diff); ?></div>
-                */ ?>
-                <?php if (!empty($property_location_zip)): ?>
-                    <p><?php echo esc_html($property_location_zip) ?></p>
-                <?php endif; ?>
-                </div>
-            <?php /* if (isset($excerpt) && !empty($excerpt)): ?>
+            <?php if (isset($excerpt) && !empty($excerpt)): ?>
                 <div class="property-excerpt">
                     <p><?php echo esc_html($excerpt) ?></p>
                 </div>
-            <?php endif; */ ?>
-            <div class="property-info">
+            <?php endif; ?>            
                 <div class="property-info-inner">
                     <?php if (!empty($property_size)): ?>
                         <div class="property-area">
@@ -293,6 +305,7 @@ if($property_featured)
                         </div>
                     <?php endif; ?>
                 </div>
+            <?php */ ?>
             </div>
         </div>
     </div>
