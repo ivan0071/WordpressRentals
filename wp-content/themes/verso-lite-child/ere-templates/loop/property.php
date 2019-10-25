@@ -54,6 +54,7 @@ $property_size = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_size']
 $property_bedrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bedrooms'][0] : '0';
 $property_bathrooms = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_bathrooms'][0] : '0';
 $property_featured = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_featured']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_featured'][0] : '0';
+$property_short_des = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_short_des']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_short_des'][0] : '0';
 
 $property_location_zip = isset($property_meta_data[ ERE_METABOX_PREFIX . 'property_location_zip' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_location_zip' ][0] : '';
 $property_price_prefix = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ][0] : '';
@@ -167,7 +168,7 @@ if($property_featured)
                 </div>
             <?php endif; ?>
         </div>
-        <div class="property-item-content">
+        <div class="property-item-content property-item-content-grid">
             <div class="property-info">
                 <div class="property-info-section-left">
                     <?php if (!empty($property_link)): ?>
@@ -177,6 +178,8 @@ if($property_featured)
                     <?php endif; ?>
                     <?php if (!empty($property_location_zip)): ?>
                         <p><?php echo esc_html($property_location_zip) ?></p>
+                    <?php else: ?>
+                        <p>&nbsp;</p>
                     <?php endif; ?>
                 </div>
                 <div class="property-info-section-right">
@@ -201,6 +204,51 @@ if($property_featured)
 <?php elseif (ere_get_option( 'empty_price_text', '' )!='' ): ?>
 	<span class="property-price"><?php echo ere_get_option( 'empty_price_text', '' ) ?></span>
 <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="property-item-content property-item-content-list">
+            <div class="property-info-section-left-list">
+                <?php if (!empty($property_link)): ?>
+                    <h2 class="property-title-list"><a href="<?php echo esc_url($property_link); ?>"
+                                                title="<?php the_title(); ?>"><?php the_title() ?></a>
+                    </h2>
+                <?php endif; ?>
+                <?php if ((!empty($property_bedrooms)) || (!empty($property_bathrooms))): ?>
+                    <div class="property-rooms-list">
+                    <?php if (!empty($property_bedrooms)): ?>										
+                        <span><?php echo esc_html($property_bedrooms) ?> Bedrooms</span>
+                    <?php endif; ?>
+                    / 
+                    <?php if (!empty($property_bathrooms)): ?>
+                        <span><?php echo esc_html($property_bathrooms) ?> Bathrooms</span>
+                    <?php endif; ?>
+                    </div>
+                <?php else: ?>
+                    <br>
+                <?php endif; ?>
+                <?php if (!empty($property_short_des)): ?>
+                    <p><?php echo esc_html($property_short_des) ?></p>
+                <?php else: ?>
+                    <br>
+                <?php endif; ?>
+                <div class="list-view-bottom">
+                    <div class="btn-view-property">
+                        <a target="_blank" href="<?php echo esc_url($property_link); ?>">VIEW PROPERTY</a>
+                    </div>
+                    <div class="list-view-price-bottom">
+<?php if (!empty( $property_price ) ): ?>
+	<span class="property-price-list">
+	<?php if(!empty( $property_price_prefix )) {echo '<span class="property-price-prefix">'.$property_price_prefix.' </span>';} ?>
+	<?php
+	echo ere_get_format_money( $property_price_short,$property_price_unit );
+	?>
+	<?php if(!empty( $property_price_postfix )) {echo '<span class="property-price-postfix"> / '.$property_price_postfix.'</span>';} ?>
+</span>
+<?php elseif (ere_get_option( 'empty_price_text', '' )!='' ): ?>
+	<span class="property-price-list"><?php echo ere_get_option( 'empty_price_text', '' ) ?></span>
+<?php endif; ?>                    
                     </div>
                 </div>
             </div>

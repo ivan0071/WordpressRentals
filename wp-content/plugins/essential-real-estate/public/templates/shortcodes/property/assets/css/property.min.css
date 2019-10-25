@@ -226,7 +226,7 @@
 }
 .ere-property:not(.property-zigzac) .property-inner {
 	padding: 15px;
-	height: 320px;
+	/*height: 320px;*/
 	background-color: #E1E1E1;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
@@ -363,6 +363,21 @@
 .ere-property .property-item-content {
 	/*padding-top: 17px;*/
 }
+.ere-property .property-item-content .property-title-list {
+	font-weight: 600;
+	margin-bottom: 10px;
+	margin-top: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.ere-property .property-item-content .property-title-list a {
+	color: #71818c;
+    font-size: 16px;
+}
+.ere-property .property-item-content .property-title-list a:hover {
+	color: #97145A;
+}
 .ere-property .property-item-content .property-title {
 	font-weight: 600;
 	margin-bottom: 10px;
@@ -382,6 +397,11 @@
 	font-size: 16px;
 	font-weight: 600;
 	color: #71818c;
+}
+.ere-property .property-item-content .property-price-list {
+	font-size: 18px;
+	font-weight: 600;
+	color: #97145A;
 }
 .ere-property .property-item-content .property-location i {
 	margin-right: 5px;
@@ -606,6 +626,35 @@
 .ere-property.property-slider .property-info .property-info-section-right .property-rooms {
 	font-size: 15px;
     color: #71818c;
+}
+.property-info-section-left-list .property-rooms-list {
+	font-size: 12px;
+	color: #71818c;
+	border-bottom: 1px solid #97145A;
+}
+.property-info-section-left-list .list-view-bottom {
+	width: 100%;
+}
+.property-info-section-left-list .btn-view-property {	
+	text-decoration: none;
+	text-align: center;
+	float: left;
+	width: 50%;
+}
+.property-info-section-left-list .list-view-price-bottom {
+	color: #97145A;
+	float: left;
+	text-align: right;
+	width: 50%;
+}
+.property-info-section-left-list .btn-view-property a,
+.property-info-section-left-list .btn-view-property a:hover {
+	color: white;
+	display: block;
+	width: 200px;
+	padding: 10px;
+	cursor: pointer;
+	background-color: #97145A;
 }
 .ere-property.property-grid .property-info .property-info-section-right .property-price,
 .ere-property.property-slider .property-info .property-info-section-right .property-price {

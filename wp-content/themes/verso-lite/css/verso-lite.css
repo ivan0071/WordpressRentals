@@ -515,7 +515,8 @@ dl.wp-caption {
     text-align: center; }
 
 .header-container { background: #333E52; color: white }
-  .header-container .nav-container {
+  .header-container .nav-container,
+  .header-container .nav-container .container {
     width: 100%; }
     .header-container .nav-container .site-branding {
       margin: 20px 0; }
