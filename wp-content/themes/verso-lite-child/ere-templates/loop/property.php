@@ -110,63 +110,62 @@ if($property_featured)
 <div class="<?php echo join(' ', $property_item_class); ?>">
     <div class="property-inner">
         <div class="property-image">
-                <img width="<?php echo esc_attr($width) ?>"
-                     height="<?php echo esc_attr($height) ?>"
-                     src="<?php echo esc_url($image_src) ?>" onerror="this.src = '<?php echo esc_url($no_image_src) ?>';" alt="<?php the_title(); ?>"
-                     title="<?php the_title(); ?>">
-                <div class="property-action block-center">
-                    <div class="block-center-inner">
-                        <?php
-                        /**
-                         * ere_property_action hook.
-                         *
-                         * @hooked property_social_share - 5
-                         * @hooked property_favorite - 10
-                         * @hooked property_compare - 15
-                         */
-                        do_action('ere_property_action'); ?>
-                    </div>
-                    <a class="property-link" href="<?php echo esc_url($property_link); ?>"
-                       title="<?php the_title(); ?>"></a>
+            <img width="<?php echo esc_attr($width) ?>"
+                    height="<?php echo esc_attr($height) ?>"
+                    src="<?php echo esc_url($image_src) ?>" onerror="this.src = '<?php echo esc_url($no_image_src) ?>';" alt="<?php the_title(); ?>"
+                    title="<?php the_title(); ?>">
+            <div class="property-action block-center">
+                <div class="block-center-inner">
+                    <?php
+                    /**
+                     * ere_property_action hook.
+                     *
+                     * @hooked property_social_share - 5
+                     * @hooked property_favorite - 10
+                     * @hooked property_compare - 15
+                     */
+                    do_action('ere_property_action'); ?>
                 </div>
-                <?php if ($property_item_label || $property_featured): ?>
-                    <div class="property-label property-featured">
-                        <?php if ($property_featured): ?>
+                <a class="property-link" href="<?php echo esc_url($property_link); ?>"
+                    title="<?php the_title(); ?>"></a>
+            </div>
+            <?php if ($property_item_label || $property_featured): ?>
+                <div class="property-label property-featured">
+                    <?php if ($property_featured): ?>
+                        <p class="label-item">
+                            <span
+                                class="property-label-bg"><?php esc_html_e('Featured', 'essential-real-estate'); ?>
+                                <span class="property-arrow"></span></span>
+                        </p>
+                    <?php endif; ?>
+                    <?php if ($property_item_label): ?>
+                        <?php foreach ($property_item_label as $label_item): ?>
+                            <?php $label_color = get_term_meta($label_item->term_id, 'property_label_color', true); ?>
                             <p class="label-item">
-                                <span
-                                    class="property-label-bg"><?php esc_html_e('Featured', 'essential-real-estate'); ?>
-                                    <span class="property-arrow"></span></span>
-                            </p>
-                        <?php endif; ?>
-                        <?php if ($property_item_label): ?>
-                            <?php foreach ($property_item_label as $label_item): ?>
-                                <?php $label_color = get_term_meta($label_item->term_id, 'property_label_color', true); ?>
-                                <p class="label-item">
-														<span class="property-label-bg"
-                                                              style="background-color: <?php echo esc_attr($label_color) ?>"><?php echo esc_html($label_item->name) ?>
-                                                            <span class="property-arrow"
-                                                                  style="border-left-color: <?php echo esc_attr($label_color) ?>; border-right-color: <?php echo esc_attr($label_color) ?>"></span>
-														</span>
-                                </p>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </div>
-                <?php endif; ?>
-                <?php if ($property_item_status): ?>
-                    <div class="property-status">
-                        <?php foreach ($property_item_status as $status): ?>
-                            <?php $status_color = get_term_meta($status->term_id, 'property_status_color', true); ?>
-                            <p class="status-item">
-											<span class="property-status-bg"
-                                                  style="background-color: <?php echo esc_attr($status_color) ?>"><?php echo esc_html($status->name) ?>
-                                                <span class="property-arrow"
-                                                      style="border-left-color: <?php echo esc_attr($status_color) ?>; border-right-color: <?php echo esc_attr($status_color) ?>"></span>
-											</span>
+                                                    <span class="property-label-bg"
+                                                            style="background-color: <?php echo esc_attr($label_color) ?>"><?php echo esc_html($label_item->name) ?>
+                                                        <span class="property-arrow"
+                                                                style="border-left-color: <?php echo esc_attr($label_color) ?>; border-right-color: <?php echo esc_attr($label_color) ?>"></span>
+                                                    </span>
                             </p>
                         <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
-
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+            <?php if ($property_item_status): ?>
+                <div class="property-status">
+                    <?php foreach ($property_item_status as $status): ?>
+                        <?php $status_color = get_term_meta($status->term_id, 'property_status_color', true); ?>
+                        <p class="status-item">
+                                        <span class="property-status-bg"
+                                                style="background-color: <?php echo esc_attr($status_color) ?>"><?php echo esc_html($status->name) ?>
+                                            <span class="property-arrow"
+                                                    style="border-left-color: <?php echo esc_attr($status_color) ?>; border-right-color: <?php echo esc_attr($status_color) ?>"></span>
+                                        </span>
+                        </p>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         </div>
         <div class="property-item-content">
             <div class="property-info">
@@ -204,6 +203,8 @@ if($property_featured)
 <?php endif; ?>
                     </div>
                 </div>
+            </div>
+        </div>
                 <?php /*if (!empty($price)): ?>
                     <div class="property-price">
                         <span>
@@ -306,7 +307,5 @@ if($property_featured)
                     <?php endif; ?>
                 </div>
             <?php */ ?>
-            </div>
-        </div>
     </div>
 </div>
