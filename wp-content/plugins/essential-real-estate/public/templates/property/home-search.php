@@ -870,10 +870,12 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'archive-property', ERE_PLUGIN_URL . 'publ
                             $property_location = get_post_meta( $post->ID, ERE_METABOX_PREFIX . 'property_location', true );
                             $property_map_address = isset($property_location['address']) ? $property_location['address'] : '';
                             list( $latTmp, $longTmp ) =  isset($property_location['location']) ? explode( ',', $property_location['location'] ) : array('', '');
-                            $latArr[] = $latTmp;
-                            $longArr[] = $longTmp;
-                            $latArrSum += $latTmp;
-                            $longArrSum += $longTmp;
+                            if (is_float((float)$latTmp) && is_float((float)$longTmp)) {
+                                $latArr[] = $latTmp;
+                                $longArr[] = $longTmp;
+                                $latArrSum += $latTmp;
+                                $longArrSum += $longTmp;
+                            }
                         endwhile;
                     }
                     $arrayCountLatLong = count($latArr);
