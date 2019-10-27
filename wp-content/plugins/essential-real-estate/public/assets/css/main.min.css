@@ -618,7 +618,6 @@
     padding: 0 19px;
     line-height: 35px;
     text-align: center;
-    color: #fff;
     font-size: 12px;
     font-weight: 500;
     display: inline-block;
@@ -627,15 +626,26 @@
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-    background-color: #222;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+}
+
+.paging-navigation {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
 }
 
 .paging-navigation .page-numbers.current,
 .paging-navigation .page-numbers:hover,
 .paging-navigation .page-numbers:focus {
-    background-color: #fb6a19;
-    color: #fff;
-    border-color: transparent;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
 }
 
 .paging-navigation .page-numbers.prev,
@@ -2040,6 +2050,11 @@ span.total-properties,.ere-dashboard-logout i,.attachment-file-type,.open-on-goo
 .ere-heading
 {
     margin-bottom: 30px;
+}
+#home-search-wrap .ere-heading
+{
+    width: 100%;
+    text-align: center;
 }
 .ere-heading h2{
     margin-bottom: 10px !important;

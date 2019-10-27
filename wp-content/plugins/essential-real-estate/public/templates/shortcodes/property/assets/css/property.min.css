@@ -595,6 +595,12 @@
 .ere-property.property-list .property-info {
 	color: black;
 }
+.ere-property.property-grid img,
+.ere-property.property-list img {
+	max-height: 180px;
+	object-fit: cover;
+	min-width: 330px;
+}
 .ere-property.property-grid .property-inner:hover,
 .ere-property.property-list .property-inner:hover,
 .ere-property.property-carousel .owl-item:nth-child(2n) .property-inner {
