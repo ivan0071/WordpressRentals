@@ -28,7 +28,7 @@ $pagenum_link = esc_url(remove_query_arg( array_keys( $query_args ), $pagenum_li
 $pagenum_link = trailingslashit( $pagenum_link ) . '%_%';
 
 $format  = $wp_rewrite->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
-$format .= $wp_rewrite->using_permalinks() ? user_trailingslashit( $wp_rewrite->pagination_base . '/%#%', 'paged' ) : '?paged=%#%';
+$format .= ($wp_rewrite->using_permalinks() && false) ? user_trailingslashit( $wp_rewrite->pagination_base . '/%#%', 'paged' ) : '?paged=%#%';
 ?>
 <div class="paging-navigation clearfix">
 	<?php echo  paginate_links( apply_filters( 'ere_pagination_args', array(
