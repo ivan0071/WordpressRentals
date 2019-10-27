@@ -4,9 +4,13 @@ if (!defined('ABSPATH')) {
 }
 global $post;
 ?>
+<br>
 <div class="single-property-element property-info-footer">
     <div class="ere-property-element">
-        <?php $enable_create_date = ere_get_option('enable_create_date', 1);
+        <br>
+        Copyright statement and address and or contact@primerdomain.com
+        <br><br>
+        <?php /* $enable_create_date = ere_get_option('enable_create_date', 1);
         if ($enable_create_date == 1):?>
             <span class="property-date">
 		        <i class="fa fa-calendar"></i> <?php echo get_the_time(get_option('date_format')); ?>
@@ -22,6 +26,6 @@ global $post;
                 printf(_n('%s view', '%s views', $total_views, 'essential-real-estate'), ere_get_format_number($total_views));
                 ?>
 	        </span>
-        <?php endif; ?>
+        <?php endif; */ ?>
     </div>
 </div>

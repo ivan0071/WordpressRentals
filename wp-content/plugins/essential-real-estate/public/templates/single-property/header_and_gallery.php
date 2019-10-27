@@ -119,7 +119,7 @@ $property_gallery = get_post_meta(get_the_ID(), ERE_METABOX_PREFIX . 'property_i
 wp_enqueue_style('owl.carousel');
 wp_enqueue_script('owl.carousel');
 ?>
-<div class="title-heading">
+<div class="title-heading width-80-percentage">
 	<div class="title-heading-left">
 		<?php if ( ! empty( $property_title ) ): ?>
 			<h2><?php echo $property_title ?></h2>	
@@ -130,7 +130,7 @@ wp_enqueue_script('owl.carousel');
 	</div>
 </div>
 <div class="clearfix"></div>
-<div class="property-gallery-and-info">
+<div class="property-gallery-and-info width-80-percentage">
   <div class="single-property-element property-gallery-wrap property-gallery-left">
 <?php
 	if ($property_gallery):
@@ -253,7 +253,7 @@ wp_enqueue_script('owl.carousel');
 						<?php } ?>
 						<?php if (count($property_residential_type_arr) > 0) { ?>
 							<div class="prop-details-container-left">
-								<?php esc_html_e('Resid. Type: ', 'essential-real-estate'); ?>
+								<?php esc_html_e('Type: ', 'essential-real-estate'); ?>
 							</div>
 							<div class="prop-details-container-right">
 								<?php echo join(', ', $property_residential_type_arr) ?>
@@ -262,7 +262,7 @@ wp_enqueue_script('owl.carousel');
 						<?php } ?>
 						<?php if (count($property_residential_furnished_type_arr) > 0) { ?>
 							<div class="prop-details-container-left">
-								<?php esc_html_e('Resid. Furnished Type: ', 'essential-real-estate'); ?>
+								<?php esc_html_e('Furnished Type: ', 'essential-real-estate'); ?>
 							</div>
 							<div class="prop-details-container-right">
 								<?php echo join(', ', $property_residential_furnished_type_arr) ?>
@@ -271,7 +271,7 @@ wp_enqueue_script('owl.carousel');
 						<?php } ?>
 						<?php if (count($property_commer_offices_arr) > 0) { ?>
 							<div class="prop-details-container-left">
-								<?php esc_html_e('Commer. Offices: ', 'essential-real-estate'); ?>
+								<?php esc_html_e('Offices: ', 'essential-real-estate'); ?>
 							</div>
 							<div class="prop-details-container-right">
 								<?php echo join(', ', $property_commer_offices_arr) ?>
@@ -280,7 +280,7 @@ wp_enqueue_script('owl.carousel');
 						<?php } ?>
 						<?php if (count($property_commer_retail_arr) > 0) { ?>
 							<div class="prop-details-container-left">
-								<?php esc_html_e('Commer. Retail: ', 'essential-real-estate'); ?>
+								<?php esc_html_e('Retail: ', 'essential-real-estate'); ?>
 							</div>
 							<div class="prop-details-container-right">
 								<?php echo join(', ', $property_commer_retail_arr) ?>
@@ -289,7 +289,7 @@ wp_enqueue_script('owl.carousel');
 						<?php } ?>
 						<?php if (count($property_commer_leisure_arr) > 0) { ?>
 							<div class="prop-details-container-left">
-								<?php esc_html_e('Commer. Leisure/Hospitality: ', 'essential-real-estate'); ?>
+								<?php esc_html_e('Leisure/Hospitality: ', 'essential-real-estate'); ?>
 							</div>
 							<div class="prop-details-container-right">
 								<?php echo join(', ', $property_commer_leisure_arr) ?>
@@ -298,7 +298,7 @@ wp_enqueue_script('owl.carousel');
 						<?php } ?>
 						<?php if (count($property_commer_industrial_arr) > 0) { ?>
 							<div class="prop-details-container-left">
-								<?php esc_html_e('Commer. Industrial/Warehousing: ', 'essential-real-estate'); ?>
+								<?php esc_html_e('Industrial/Warehousing: ', 'essential-real-estate'); ?>
 							</div>
 							<div class="prop-details-container-right">
 								<?php echo join(', ', $property_commer_industrial_arr) ?>
@@ -307,7 +307,7 @@ wp_enqueue_script('owl.carousel');
 						<?php } ?>
 						<?php if (count($property_commer_land_arr) > 0) { ?>
 							<div class="prop-details-container-left">
-								<?php esc_html_e('Commer. Land/Development: ', 'essential-real-estate'); ?>
+								<?php esc_html_e('Land/Development: ', 'essential-real-estate'); ?>
 							</div>
 							<div class="prop-details-container-right">
 								<?php echo join(', ', $property_commer_land_arr) ?>
@@ -316,7 +316,7 @@ wp_enqueue_script('owl.carousel');
 						<?php } ?>
 						<?php if (count($property_commer_other_arr) > 0) { ?>
 							<div class="prop-details-container-left">
-								<?php esc_html_e('Commer. Other: ', 'essential-real-estate'); ?>
+								<?php esc_html_e('Other: ', 'essential-real-estate'); ?>
 							</div>
 							<div class="prop-details-container-right">
 								<?php echo join(', ', $property_commer_other_arr) ?>

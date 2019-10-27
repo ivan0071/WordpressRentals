@@ -359,7 +359,7 @@
 
 .single-property-area .property-tab .nav-tabs {
 	border-bottom: none;
-	background-color: #222;
+	/*background-color: #222;*/
 	margin: 0;
 }
 
@@ -369,8 +369,9 @@
 
 .single-property-area .property-tab .nav-tabs li a {
 	margin-right: 0;
-	border: none;
-	color: #8f8f8f;
+	border: 3px solid white;
+	color: black;
+	background-color: #DEDEDE;
 	padding: 19px 30px;
 	-webkit-border-radius: 0;
 	-webkit-background-clip: padding-box;
@@ -386,10 +387,17 @@
 	font-weight: 500;
 }
 
-.single-property-area .property-tab .nav-tabs li.active a,
 .single-property-area .property-tab .nav-tabs li:hover a {
-	background-color: #fb6a19;
+	background-color: white;
+	cursor: pointer;
+	border: 1px solid#DEDEDE;
+}
+
+.single-property-area .property-tab .nav-tabs li.active a {
+	/*background-color: #fb6a19;
 	color: #fff;
+	background-color: white;
+    color: black;*/
 }
 
 .single-property-area .property-tab .tab-content > div {
@@ -422,6 +430,11 @@
 .single-property-area .property-tab .tab-content table td {
 	font-weight: 400;
 	color: #8f8f8f;
+}
+
+.single-property-area .property-tab .tab-content {
+	border: 1px solid #DEDEDE;;
+    padding: 5px;
 }
 
 .single-property-area .property-tab .floor-info {
@@ -568,6 +581,8 @@
 	-moz-background-clip: padding;
 	border-radius: 0;
 	background-clip: padding-box;
+	color: white;
+	background-color: #97145A;
 }
 
 .single-property-area #comments {
@@ -1141,13 +1156,25 @@ ul.walkscore-list li:last-child
 .single-property-element
 {
 	margin-bottom: 60px;
-	width: 80%;
-    margin: auto;
+	margin: auto;
+    padding: 5px;
 }
+.property-contact-right .single-property-element 
+{
+	border: 1px solid #DEDEDE;
+}
+
+.width-80-percentage {
+	width: 80%;
+}
+
 @media screen and (max-width: 768px) {
 	.single-property-element
 	{
 		margin-bottom: 40px;
+	}
+	.width-80-percentage {
+		width: 100%;
 	}
 }
 .single-property-element .agent-info
@@ -1170,13 +1197,11 @@ ul.walkscore-list li:last-child
 
 .property-gallery-and-info {
 	/*display: flex;*/
-	width: 80%;
     margin: auto;
 }
 
 .title-heading {
 	/*width: 100%;*/
-	width: 80%;
     margin: auto;
 }
 
@@ -1212,6 +1237,6 @@ ul.walkscore-list li:last-child
 .display-flex
 {
 	display: flex;
-	width: 80%;
-    margin: auto;
+	margin: auto;
+	padding-top: 8px;
 }

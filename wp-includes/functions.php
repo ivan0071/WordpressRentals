@@ -6188,7 +6188,10 @@ function nav_items( $items, $menu, $args )
 		} else if ($item->post_title == 'International' ) {
 			$item->url .= '?city=international';
 			$internationalMenuID = $item->ID;
-		}		
+		} else if ($item->post_title == 'Logout' ) {
+			$permalink = get_permalink();
+			$item->url = wp_logout_url($permalink);
+		}
 	}
 	
 	foreach( $items as $item ) 

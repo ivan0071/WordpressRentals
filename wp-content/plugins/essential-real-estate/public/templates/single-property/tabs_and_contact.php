@@ -88,7 +88,7 @@ $agent_display_option = isset($property_meta_data[ ERE_METABOX_PREFIX . 'agent_d
 wp_enqueue_script('bootstrap-tabcollapse');
 ?>
 
-<div class="single-property-element property-info-tabs property-tab display-flex">
+<div class="single-property-element property-info-tabs property-tab display-flex width-80-percentage">
     <div class="ere-property-element property-tabs-left">
         <ul id="ere-features-tabs" class="nav nav-tabs">
             <li class="active">
@@ -115,8 +115,6 @@ wp_enqueue_script('bootstrap-tabcollapse');
         </ul>
         <div class="tab-content">
             <div id="ere-description" class="tab-pane fade in active">
-				<strong><?php esc_html_e('Property full description', 'essential-real-estate'); ?></strong>
-				<br>
 				<?php the_content(); ?>
 				<?php
                     $features_terms_id = array();
@@ -128,7 +126,7 @@ wp_enqueue_script('bootstrap-tabcollapse');
 					if (count($features_terms_id) > 0) {
 				?>
 					<br>
-					<strong><?php esc_html_e('Property Featues', 'essential-real-estate'); ?></strong>
+					<strong><?php esc_html_e('Property featues', 'essential-real-estate'); ?></strong>
 					<br>
 				<?php
 					}
@@ -155,15 +153,20 @@ wp_enqueue_script('bootstrap-tabcollapse');
                                         $term_link = get_term_link($child_item, 'property-feature');
 
                                         if (in_array($child_item->term_id, $features_terms_id)) {
-                                            echo '<div class="col-md-3 col-xs-6 col-mb-12 property-feature-wrap"><a href="' . esc_url($term_link) . '" class="feature-checked"><i class="fa fa-check-square-o"></i> ' . $child_item->name . '</a></div>';
-                                        } else {
+                                            echo '<div class="col-md-3 col-xs-6 col-mb-12 property-feature-wrap">' . /*<a href="' . esc_url($term_link) . '" class="feature-checked"><i class="fa fa-check-square-o"></i> ' . */ $parents_item->name . /* '</a>' */ '</div>';
+                                        } /*else {
                                             $hide_empty_features = ere_get_option('hide_empty_features', 1);
                                             if ($hide_empty_features != 1) {
                                                 echo '<div class="col-md-3 col-xs-6 col-mb-12 property-feature-wrap"><a href="' . esc_url($term_link) . '" class="feature-unchecked"><i class="fa fa-square-o"></i> ' . $child_item->name . '</a></div>';
                                             }
-                                        }
+                                        }*/
                                     };
                                 };
+                                for ($i = 0; $i < $additional_features; $i++) { ?>
+                                    <?php if (!empty($additional_feature_title[$i]) && !empty($additional_feature_value[$i])):
+                                        echo '<div class="col-md-3 col-xs-6 col-mb-12 property-feature-wrap">' . $additional_feature_value[$i] . '</div>';
+                                    endif; ?>
+                                <?php } 
                                 echo '</div>';
                             };
                         } else {
@@ -172,14 +175,19 @@ wp_enqueue_script('bootstrap-tabcollapse');
                                 $term_link = get_term_link($parents_item, 'property-feature');
 
                                 if (in_array($parents_item->term_id, $features_terms_id)) {
-                                    echo '<div class="col-md-3 col-xs-6 col-mb-12 property-feature-wrap"><a href="' . esc_url($term_link) . '" class="feature-checked"><i class="fa fa-check-square-o"></i> ' . $parents_item->name . '</a></div>';
-                                } else {
+                                    echo '<div class="col-md-3 col-xs-6 col-mb-12 property-feature-wrap">' . /*<a href="' . esc_url($term_link) . '" class="feature-checked"><i class="fa fa-check-square-o"></i> ' . */ $parents_item->name . /* '</a>' */ '</div>';
+                                } /* else {
                                     $hide_empty_features = ere_get_option('hide_empty_features', 1);
                                     if ($hide_empty_features != 1) {
                                         echo '<div class="col-md-3 col-xs-6 col-mb-12 property-feature-wrap"><a href="' . esc_url($term_link) . '" class="feature-unchecked"><i class="fa fa-square-o"></i> ' . $parents_item->name . '</a></div>';
                                     }
-                                }
+                                }*/
                             };
+                            for ($i = 0; $i < $additional_features; $i++) { ?>
+                                <?php if (!empty($additional_feature_title[$i]) && !empty($additional_feature_value[$i])):
+                                    echo '<div class="col-md-3 col-xs-6 col-mb-12 property-feature-wrap">' . $additional_feature_value[$i] . '</div>';
+                                endif; ?>
+                            <?php } 
                             echo '</div>';
                         };
                     };
@@ -311,16 +319,7 @@ wp_enqueue_script('bootstrap-tabcollapse');
                                 <?php
                             endif;
                         endforeach;
-                    endif; ?>
-
-                    <?php for ($i = 0; $i < $additional_features; $i++) { ?>
-                        <?php if (!empty($additional_feature_title[$i]) && !empty($additional_feature_value[$i])): ?>
-                            <li>
-                                <strong><?php echo esc_html($additional_feature_title[$i]); ?></strong>
-                                <span><?php echo esc_html($additional_feature_value[$i]) ?></span>
-                            </li>
-                        <?php endif; ?>
-					<?php } 
+                    endif; ?>                    
 				</ul>
 				*/ ?>                
             </div>
@@ -337,7 +336,7 @@ wp_enqueue_script('bootstrap-tabcollapse');
                                 $thumb_url = ERE_PLUGIN_URL . 'public/assets/images/attachment/attach-' . $file_type_name . '.png';
                                 $file_name = basename($attach_url);
                                 ?>
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 media-thumb-wrap">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 media-thumb-wrap">
                                     <figure class="media-thumb">
                                         <img src="<?php echo esc_url($thumb_url); ?>" alt="">
                                     </figure>
@@ -409,9 +408,9 @@ wp_enqueue_script('bootstrap-tabcollapse');
         </div>
 	</div>
 	<div class="ere-property-element property-contact-right" style="100%">
-
-    Contact Agent
+    
     <div class="single-property-element property-contact-agent">
+        Contact Agent
         <div class="ere-property-element">
         <?php
         $property_agent       = isset($property_meta_data[ ERE_METABOX_PREFIX . 'property_agent' ]) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_agent' ][0] : '';
