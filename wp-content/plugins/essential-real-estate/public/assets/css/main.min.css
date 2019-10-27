@@ -679,7 +679,6 @@
     height: 60px;
     top: 50%;
     margin-top: -30px;
-    background-color: #f6f6f6;
     text-align: center;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
@@ -688,16 +687,30 @@
     transition: all 0.3s;
 }
 
+.ere-agent-wrap .owl-prev,
+.ere-agent-wrap .owl-nav .owl-next {
+    background-color: #f6f6f6;
+}
+
 .owl-nav .owl-prev i,
-.owl-nav .owl-next i {
-    color: #222;
-    font-size: 31px;
+.owl-nav .owl-next i {    
+    font-size: 55px;
     line-height: 60px;
 }
 
-.owl-nav .owl-prev:hover,
-.owl-nav .owl-next:hover {
-    background-color: #fb6a19;
+.ere-agent-wrap .owl-prev,
+.ere-agent-wrap .owl-nav .owl-next {
+    color: #E1E1E1
+}
+
+.single-property-element .owl-prev,
+.single-property-element .owl-nav .owl-next {
+    color: white;
+}
+
+.ere-agent-wrap .owl-nav .owl-prev:hover,
+.ere-agent-wrap .owl-nav .owl-next:hover {
+    background-color: #97145A
 }
 
 .owl-nav .owl-prev:hover i,
@@ -715,7 +728,7 @@
 
 .owl-nav .owl-prev:after,
 .owl-nav .owl-next:after {
-    content: '';
+    /*content: '';*/
     display: block;
     position: absolute;
     top: 0;

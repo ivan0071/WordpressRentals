@@ -119,6 +119,17 @@ $property_gallery = get_post_meta(get_the_ID(), ERE_METABOX_PREFIX . 'property_i
 wp_enqueue_style('owl.carousel');
 wp_enqueue_script('owl.carousel');
 ?>
+<div class="title-heading">
+	<div class="title-heading-left">
+		<?php if ( ! empty( $property_title ) ): ?>
+			<h2><?php echo $property_title ?></h2>	
+		<?php endif; ?>
+	</div>
+	<div class="title-heading-right">
+		<p><a href="javascript:history.back()">< back to search results</a></p>
+	</div>
+</div>
+<div class="clearfix"></div>
 <div class="property-gallery-and-info">
   <div class="single-property-element property-gallery-wrap property-gallery-left">
 <?php
@@ -127,8 +138,10 @@ wp_enqueue_script('owl.carousel');
         <div class="ere-property-element">
             <div class="single-property-image-main owl-carousel manual ere-carousel-manual">
                 <?php
-                $gallery_id = 'ere_gallery-' . rand();
-                foreach ($property_gallery as $image):
+				$gallery_id = 'ere_gallery-' . rand();
+				$count = 0;
+				foreach ($property_gallery as $image):
+					$count++;
                     $image_src = ere_image_resize_id($image, 870, 420, true);
                     $image_full_src = wp_get_attachment_image_src($image, 'full');
                     if (!empty($image_src)) {
@@ -140,11 +153,12 @@ wp_enqueue_script('owl.carousel');
                                data-gallery-id="<?php echo esc_attr($gallery_id); ?>"
                                data-rel="ere_light_gallery" href="<?php echo esc_url($image_full_src[0]); ?>"
                                class="zoomGallery"><i
-                                    class="fa fa-expand"></i></a>
-                        </div>
-                    <?php } ?>
+									class="fa fa-expand"></i></a>
+							<div class="slider-divider"><span>Image <?php echo $count ?> of <?php echo count($property_gallery) ?></span></div>
+						</div>						
+					<?php } ?>					
                 <?php endforeach; ?>
-            </div>
+			</div>			
             <div class="single-property-image-thumb owl-carousel manual ere-carousel-manual">
                 <?php
                 foreach ($property_gallery as $image):
@@ -163,10 +177,34 @@ wp_enqueue_script('owl.carousel');
   <div class="single-property-element property-info-header property-info-action property-info-right">
 	<div class="property-main-info">
 		<div class="property-heading">
-			<?php if ( ! empty( $property_title ) ): ?>
-				<h2><?php the_title(); ?></h2>				
-				Short Desc: <?php echo $property_short_des; ?>
+			<?php if ( $property_status ) : ?>
+				<div class="property-status">
+					<?php 
+					$status_combined = ' ';
+					$counter_status = 0;
+					/*var_dump($property_status);*/
+					foreach ( $property_status as $status ) : 
+						$counter_status++;
+						if ((count($property_status) > 1) && ($counter_status == count($property_status))) {	
+							$status_combined .= 'and ';
+						}
+						$status_combined .= $status->name;
+						if ((count($property_status) > 1) && ($counter_status < (count($property_status) - 1))) {	
+							$status_combined .= ',';
+						}
+						$status_combined .= ' ';
+					?>
+					<?php endforeach; ?>
+					<?php
+						$prop_group = '';
+						if (count($property_group_map) > intval($property_group)) :
+							$prop_group = $property_group_map[intval($property_group)];
+						endif; 
+					?>
+					<span><?php echo esc_html( $prop_group . $status_combined ); ?></span>
+				</div>
 			<?php endif; ?>
+		</div>
 			<div class="property-info-block-inline">
 				<div>
 					<?php if (!empty( $property_price ) ): ?>
@@ -179,64 +217,174 @@ wp_enqueue_script('owl.carousel');
 					</span>
 					<?php elseif (ere_get_option( 'empty_price_text', '' )!='' ): ?>
 						<span class="property-price"><?php echo ere_get_option( 'empty_price_text', '' ) ?></span>
+					<?php endif; ?>					
+					<hr class="single-hr">
+					<?php if ( ! empty( $property_short_des ) ): ?>			
+						<p><?php echo $property_short_des; ?></p>
 					<?php endif; ?>
-					<?php
-					if ( $property_status ) : ?>
-						<div class="property-status">
-							<?php foreach ( $property_status as $status ) :
-								$status_color = get_term_meta($status->term_id, 'property_status_color', true);?>
-								<span class="" style="background-color: <?php echo esc_attr($status_color) ?>"><?php echo esc_html( $status->name ); ?></span>
-							<?php endforeach; ?>
-						</div>
-					<?php endif; ?>
-					<?php if (count($property_group_map) > intval($property_group)) : ?>
-						<div class="property-group">
-							<?php echo $property_group_map[intval($property_group)]; ?>
-						</div>
-					<?php endif; ?>
-					<br>
-                    <?php if (count($property_residential_type_arr) > 0): ?>
-						<strong><?php esc_html_e('Residential Type: ', 'essential-real-estate'); ?></strong>
-						<span><?php echo join(', ', $property_residential_type_arr) ?></span>
-					<?php endif; ?>
-					<br>
-                    <?php if (count($property_residential_furnished_type_arr) > 0): ?>
-						<strong><?php esc_html_e('Residential Furnished Type: ', 'essential-real-estate'); ?></strong>
-						<span><?php echo join(', ', $property_residential_furnished_type_arr) ?></span>
-					<?php endif; ?>
-					<br>
-                    <?php if (count($property_commer_offices_arr) > 0): ?>
-						<strong><?php esc_html_e('Commercial Offices: ', 'essential-real-estate'); ?></strong>
-						<span><?php echo join(', ', $property_commer_offices_arr) ?></span>
-					<?php endif; ?>
-					<br>
-                    <?php if (count($property_commer_retail_arr) > 0): ?>
-						<strong><?php esc_html_e('Commercial Retail: ', 'essential-real-estate'); ?></strong>
-						<span><?php echo join(', ', $property_commer_retail_arr) ?></span>
-					<?php endif; ?>
-					<br>
-                    <?php if (count($property_commer_leisure_arr) > 0): ?>
-						<strong><?php esc_html_e('Commercial Leisure/Hospitality: ', 'essential-real-estate'); ?></strong>
-						<span><?php echo join(', ', $property_commer_leisure_arr) ?></span>
-					<?php endif; ?>
-					<br>
-                    <?php if (count($property_commer_industrial_arr) > 0): ?>
-						<strong><?php esc_html_e('Commercial Industrial/Warehousing: ', 'essential-real-estate'); ?></strong>
-						<span><?php echo join(', ', $property_commer_industrial_arr) ?></span>
-					<?php endif; ?>
-					<br>
-                    <?php if (count($property_commer_land_arr) > 0): ?>
-						<strong><?php esc_html_e('Land/Development: ', 'essential-real-estate'); ?></strong>
-						<span><?php echo join(', ', $property_commer_land_arr) ?></span>
-					<?php endif; ?>
-					<br>
-                    <?php if (count($property_commer_other_arr) > 0): ?>
-						<strong><?php esc_html_e('Other: ', 'essential-real-estate'); ?></strong>
-						<span><?php echo join(', ', $property_commer_other_arr) ?></span>
-					<?php endif; ?>
-					<br>
+
+					<?php 
+						$propID = null;
+						if ( ! empty( $property_identity ) ) {
+							$propID = $property_identity;
+						} else {
+							$propID = $property_id;
+						}
+					?>
+
+					<div class="prop-details-container">
+						<?php if ( $propID != null) { ?>
+							<div class="prop-details-container-left single-id-div">
+								<?php echo 'ID#:' . $propID; ?>
+							</div>
+							<div class="prop-details-container-right">
+								&nbsp;
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<?php if (!empty($property_location_zip)) { ?>
+							<div class="prop-details-container-left">
+								<?php echo 'Postcode:'; ?>
+							</div>
+							<div class="prop-details-container-right">
+								<?php echo $property_location_zip; ?>
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<?php if (count($property_residential_type_arr) > 0) { ?>
+							<div class="prop-details-container-left">
+								<?php esc_html_e('Resid. Type: ', 'essential-real-estate'); ?>
+							</div>
+							<div class="prop-details-container-right">
+								<?php echo join(', ', $property_residential_type_arr) ?>
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<?php if (count($property_residential_furnished_type_arr) > 0) { ?>
+							<div class="prop-details-container-left">
+								<?php esc_html_e('Resid. Furnished Type: ', 'essential-real-estate'); ?>
+							</div>
+							<div class="prop-details-container-right">
+								<?php echo join(', ', $property_residential_furnished_type_arr) ?>
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<?php if (count($property_commer_offices_arr) > 0) { ?>
+							<div class="prop-details-container-left">
+								<?php esc_html_e('Commer. Offices: ', 'essential-real-estate'); ?>
+							</div>
+							<div class="prop-details-container-right">
+								<?php echo join(', ', $property_commer_offices_arr) ?>
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<?php if (count($property_commer_retail_arr) > 0) { ?>
+							<div class="prop-details-container-left">
+								<?php esc_html_e('Commer. Retail: ', 'essential-real-estate'); ?>
+							</div>
+							<div class="prop-details-container-right">
+								<?php echo join(', ', $property_commer_retail_arr) ?>
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<?php if (count($property_commer_leisure_arr) > 0) { ?>
+							<div class="prop-details-container-left">
+								<?php esc_html_e('Commer. Leisure/Hospitality: ', 'essential-real-estate'); ?>
+							</div>
+							<div class="prop-details-container-right">
+								<?php echo join(', ', $property_commer_leisure_arr) ?>
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<?php if (count($property_commer_industrial_arr) > 0) { ?>
+							<div class="prop-details-container-left">
+								<?php esc_html_e('Commer. Industrial/Warehousing: ', 'essential-real-estate'); ?>
+							</div>
+							<div class="prop-details-container-right">
+								<?php echo join(', ', $property_commer_industrial_arr) ?>
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<?php if (count($property_commer_land_arr) > 0) { ?>
+							<div class="prop-details-container-left">
+								<?php esc_html_e('Commer. Land/Development: ', 'essential-real-estate'); ?>
+							</div>
+							<div class="prop-details-container-right">
+								<?php echo join(', ', $property_commer_land_arr) ?>
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<?php if (count($property_commer_other_arr) > 0) { ?>
+							<div class="prop-details-container-left">
+								<?php esc_html_e('Commer. Other: ', 'essential-real-estate'); ?>
+							</div>
+							<div class="prop-details-container-right">
+								<?php echo join(', ', $property_commer_other_arr) ?>
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<?php if ((!empty($property_pet)) && ($property_is_residential == true)) { ?>
+							<div class="prop-details-container-left">
+								<?php esc_html_e('Pet: ', 'essential-real-estate'); ?>
+							</div>
+							<div class="prop-details-container-right">
+								<?php echo esc_html($property_pet); ?>
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<?php if ((!empty($property_rooms)) && ($property_is_residential == true)) { ?>
+							<div class="prop-details-container-left">
+								<?php esc_html_e('Rooms: ', 'essential-real-estate'); ?>
+							</div>
+							<div class="prop-details-container-right">
+								<?php echo esc_html($property_rooms); ?>
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<?php if ((!empty($property_bedrooms)) && ($property_is_residential == true)) { ?>
+							<div class="prop-details-container-left">
+								<?php echo ere_get_number_text($property_bedrooms, esc_html__( 'Bedrooms', 'essential-real-estate' ), esc_html__( 'Bedroom', 'essential-real-estate' )); ?>
+							</div>
+							<div class="prop-details-container-right">
+								<?php echo esc_html($property_bedrooms); ?>
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<?php if ((!empty($property_bathrooms)) && ($property_is_residential == true)) { ?>
+							<div class="prop-details-container-left">
+								<?php echo ere_get_number_text($property_bathrooms, esc_html__( 'Bathrooms', 'essential-real-estate' ), esc_html__( 'Bathroom', 'essential-real-estate' )); ?>
+							</div>
+							<div class="prop-details-container-right">
+								<?php echo esc_html($property_bathrooms); ?>
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<?php if ( ! empty( $property_size ) ) { ?>
+							<div class="prop-details-container-left">
+								<?php esc_html_e( 'Aprox. size', 'essential-real-estate' ); ?>
+							</div>
+							<div class="prop-details-container-right">
+								<?php echo ere_get_format_number( $property_size ); ?>
+								<span><?php $measurement_units = ere_get_measurement_units();
+									echo esc_html($measurement_units); ?>
+								</span>
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<?php if ( !empty( $property_story ) ) { ?>
+							<div class="prop-details-container-left">
+								<?php esc_html_e('Story: ', 'essential-real-estate'); ?>
+							</div>
+							<div class="prop-details-container-right">
+								<?php echo esc_html($property_story); ?>
+							</div>
+							<div class="clearfix"></div>
+						<?php } ?>
+						<hr class="single-hr">
+
+					</div>
 				</div>
-				<?php if ( ! empty( $property_address ) ):
+				<?php /* if ( ! empty( $property_address ) ):
 					$property_location = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_location', true);
 					if($property_location)
 					{
@@ -252,11 +400,11 @@ wp_enqueue_script('owl.carousel');
 						<a target="_blank"
 						   href="<?php echo esc_url($google_map_address_url); ?>"><span><?php echo esc_attr($property_address) ?></span></a>
 					</div>
-				<?php endif; ?>
+				<?php endif; */ ?>
 			</div>
-		</div>
 	</div>
-	<div class="property-info">
+	<?php /*
+	<div class="property-info">		
 		<div class="property-id">
 			<span class="fa fa-barcode"></span>
 			<div class="content-property-info">
@@ -273,74 +421,14 @@ wp_enqueue_script('owl.carousel');
 				<p class="property-info-title"><?php esc_html_e( 'Property ID', 'essential-real-estate' ); ?></p>
 			</div>
 		</div>
-		<?php if ( !empty( $property_story ) ): ?>
-			<div>
-				Story: <?php echo esc_html($property_story); ?>
-			</div>
-		<?php endif; ?>
-		<?php if ((!empty($property_pet)) && ($property_is_residential == true)): ?>	
-			<div>
-				Pet: <?php echo esc_html($property_pet); ?>
-			</div>
-		<?php endif; ?>	
-		<?php if ((!empty($property_rooms)) && ($property_is_residential == true)): ?>
-			<div>
-				Rooms: <?php echo esc_html($property_rooms); ?>
-			</div>
-		<?php endif; ?>	
-		<?php if ((!empty($property_bedrooms)) && ($property_is_residential == true)): ?>
-			<div class="property-bedrooms">
-				<span class="fa fa-hotel"></span>
-				<div class="content-property-info">
-					<p class="property-info-value"><?php echo esc_html( $property_bedrooms ) ?></p>
-					<p class="property-info-title"><?php
-						echo ere_get_number_text($property_bedrooms, esc_html__( 'Bedrooms', 'essential-real-estate' ), esc_html__( 'Bedroom', 'essential-real-estate' ));
-						?></p>
-				</div>
-			</div>
-		<?php endif; ?>
-		<?php if ((!empty($property_bathrooms)) && ($property_is_residential == true)): ?>
-			<div class="property-bathrooms">
-				<span class="fa fa-bath"></span>
-				<div class="content-property-info">
-					<p class="property-info-value"><?php echo esc_html( $property_bathrooms ) ?></p>
-					<p class="property-info-title"><?php
-						echo ere_get_number_text($property_bathrooms, esc_html__( 'Bathrooms', 'essential-real-estate' ), esc_html__( 'Bathroom', 'essential-real-estate' ));
-						?></p>
-				</div>
-			</div>
-		<?php endif; ?>
-		<?php if ( ! empty( $property_size ) ): ?>
-			<div class="property-area">
-				<span class="fa fa-arrows"></span>
-				<div class="content-property-info">
-					<p class="property-info-value"><?php
-						echo ere_get_format_number( $property_size ); ?>
-							<span><?php
-								$measurement_units = ere_get_measurement_units();
-								echo esc_html($measurement_units); ?></span>
-					</p>
-					<p class="property-info-title"><?php esc_html_e( 'Size', 'essential-real-estate' ); ?></p>
-				</div>
-			</div>
-		<?php endif; ?>
-		
-		<?php /* if (!empty($property_city_name)): ?>
+		<?php if (!empty($property_city_name)): ?>
 			<div class="property-city-name">
 				<div class="content-property-info">
 					City: <p><?php echo esc_html( $property_city_name ) ?></p>
 				</div>
 			</div>
-		<?php endif; */ ?>
-		<?php /* if (!empty($property_location_zip)): ?>
-			<div class="property-postcode">
-				<div class="content-property-info">
-					Postcode: <p><?php echo esc_html( $property_location_zip ) ?></p>
-				</div>
-			</div>
-		<?php endif; */ ?>
-
-	</div>
+		<?php endif; 
+	</div> */ ?>
 	<div class="property-action">
 		<div class="property-action-inner clearfix">
 			<?php
@@ -349,21 +437,23 @@ wp_enqueue_script('owl.carousel');
 			// }
 
 			if (ere_get_option('enable_favorite_property', '1') == '1') {
-				ere_get_template('property/favorite.php');
+				ere_get_template('property/favorite-single-prop.php');
 			}
-			if (ere_get_option('enable_compare_properties', '1') == '1'):?>
-				<a class="compare-property" href="javascript:void(0)"
-				   data-property-id="<?php the_ID() ?>" data-toggle="tooltip"
-				   title="<?php esc_html_e('Compare', 'essential-real-estate') ?>">
-					<i class="fa fa-plus"></i>
-				</a>
-			<?php endif;
+
 			if(ere_get_option('enable_print_property','1')=='1'):?>
 			<a href="javascript:void(0)" id="property-print"
 			   data-ajax-url="<?php echo ERE_AJAX_URL; ?>" data-toggle="tooltip"
 			   data-original-title="<?php esc_html_e( 'Print', 'essential-real-estate' ); ?>"
-			   data-property-id="<?php echo esc_attr( $property_id ); ?>"><i class="fa fa-print"></i></a>
-			<?php endif;?>
+			   data-property-id="<?php echo esc_attr( $property_id ); ?>"><?php esc_html_e( 'Print', 'essential-real-estate' ); ?></a>
+			<?php endif;
+
+			if (ere_get_option('enable_compare_properties', '1') == '1'):?>
+				<a class="compare-property" href="javascript:void(0)"
+				   data-property-id="<?php the_ID() ?>" data-toggle="tooltip"
+				   title="<?php esc_html_e('Compare', 'essential-real-estate') ?>">
+				   <?php esc_html_e('Compare', 'essential-real-estate') ?>
+				</a>
+			<?php endif; ?>
 		</div>
 	</div>
   </div>

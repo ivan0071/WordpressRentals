@@ -53,9 +53,9 @@
 }
 
 .property-info-action .property-action {
-	float: right;
+	/*float: right;
 	position: relative;
-	top: 6px;
+	top: 6px;*/
 }
 
 .property-info-action .property-action .property-action-inner {
@@ -85,12 +85,36 @@
 	transition: all 0.3s;
 	text-align: center;
 }
-
+.property-info-action .property-action .social-share, .property-info-action .property-action .property-action-inner > a {
+    display: block;
+    float: left;
+    width: 150px;
+    height: 30px;
+    background-color: #97145A;
+    -webkit-border-radius: 50%;
+    /* -webkit-background-clip: padding-box; */
+    -moz-border-radius: 50%;
+    -moz-background-clip: padding;
+    border-radius: 0px;
+    /* background-clip: padding-box; */
+    margin-right: 10px;
+    color: #fff;
+    font-size: 16px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    /* transition: all 0.3s; */
+    text-align: center;
+}
 .property-info-action .property-action .social-share:hover,
 .property-info-action .property-action .property-action-inner > a:hover {
 	background-color: #fb6a19;
 }
-
+.property-info-action .property-action .social-share:hover,
+.property-info-action .property-action .property-action-inner > a:hover {
+	background-color: #97145A;
+}
 .property-info-action .property-action .property-action-inner > a:last-of-type {
 	margin-right: 0;
 }
@@ -163,9 +187,10 @@
 	position: static;
 	width: 100%;
 }
-.property-info-action .property-main-info {
-	padding: 19px 20px 10px 23px;
-	background-color: rgba(34, 34, 34, 0.9);
+.property-info-action .property-main-info {	
+	padding: 0px 0px 10px 0px;
+	/*background-color: rgba(34, 34, 34, 0.9);*/
+	color: black;
 }
 .property-info-action .property-main-info .property-heading h2 {
 	position: relative;
@@ -184,6 +209,7 @@
 .property-info-action .property-main-info .property-info-block-inline {
 	display: table;
 	width: 100%;
+	padding: 19px 20px 10px 23px;
 }
 .property-info-action .property-main-info .property-info-block-inline > div {
 	display: table-cell;
@@ -199,6 +225,26 @@
 .property-info-action .property-main-info .property-status {
 	display: inline-block;
 }
+.single-property-element.property-info-action .property-main-info .property-price {
+	color: #97145A;
+}
+.single-property-element.property-info-action .property-main-info .single-hr {
+	border: 0.4px solid #979EA8;
+}
+.single-property-element.property-info-action .property-main-info .prop-details-container {
+	width: 100%;
+}
+.single-property-element.property-info-action .property-main-info .prop-details-container-left.single-id-div {
+	color: #97145A;
+}
+.single-property-element.property-info-action .property-main-info .prop-details-container-left {
+	float: left;
+	width: 50%;
+}
+.single-property-element.property-info-action .property-main-info .prop-details-container-right {
+	float: left;
+	width: 50%;
+}
 .property-info-action .property-main-info .property-location {
 	text-align: right;
 	padding-left: 20px;
@@ -211,19 +257,17 @@
 	font-weight: 400;
 }
 .property-info-action .property-main-info .property-status {
-	position: relative;
-	top: -3px;
+	padding: 5px;
 }
 .property-info-action .property-main-info .property-status span {
-	display: inline-block;
-	color: #fff;
-	font-weight: 400;
-	background-color: #fb6a19;
-	padding-left: 15px;
-	padding-right: 15px;
+    color: #fff;
+    font-weight: 400;
 	position: relative;
-	line-height: 23px;
-	height: 23px;
+	text-transform: lowercase;
+}
+.property-info-action .property-heading {
+	background-color: #979EA8;
+	text-align: center;
 }
 
 @media (max-width: 767px) {
@@ -238,6 +282,13 @@
 
 .single-property-area .single-property-image-main {
 	margin-bottom: 8px;
+}
+
+.single-property-area .slider-divider {
+	width: 100%;
+	background-color: #333E52;
+	color: white;
+	text-align: center;
 }
 
 .single-property-area .video img {
@@ -267,11 +318,10 @@
 }
 
 .single-property-area .single-property-image-main .owl-next {
-	right: auto;
-	left: 73px !important;
+	right: 10px !important;
 	top: auto;
 	bottom: 10px;
-	background-color: #fb6a19;
+	/*background-color: #fb6a19;*/
 }
 
 .single-property-area .single-property-image-main .owl-next i {
@@ -1116,6 +1166,27 @@ ul.walkscore-list li:last-child
 
 .property-gallery-and-info {
 	display: flex;
+}
+
+.title-heading {
+	width: 100%;
+}
+
+.title-heading-left {
+	float: left;
+}
+
+.title-heading-right {
+	float: right;
+}
+
+.title-heading-right a {
+	text-decoration: none;
+	color: black;
+}
+
+.clearfix {
+	clear: both;
 }
 
 .property-gallery-left, .property-tabs-left
