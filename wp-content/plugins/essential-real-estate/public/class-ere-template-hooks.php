@@ -68,6 +68,7 @@ if (!class_exists('ERE_Template_Hooks')) {
             //$this->loader->add_action('ere_single_property_summary', $this, 'single_property_gallery', 10);
             $this->loader->add_action('ere_single_property_summary', $this, 'single_property_header_and_gallery', 5);
             $this->loader->add_action('ere_single_property_summary', $this, 'single_property_tabs_and_contact', 10);
+            $this->loader->add_action('ere_single_property_summary', $this, 'single_property_footer', 15);
             //$this->loader->add_action('ere_single_property_summary', $this, 'single_property_description', 15);
             //$this->loader->add_action('ere_single_property_summary', $this, 'single_property_location', 20);
             //$this->loader->add_action('ere_single_property_summary', $this, 'single_property_features', 25);
@@ -77,7 +78,6 @@ if (!class_exists('ERE_Template_Hooks')) {
             //$this->loader->add_action('ere_single_property_summary', $this, 'single_property_nearby_places', 45);
             //$this->loader->add_action('ere_single_property_summary', $this, 'single_property_walk_score', 50);
             ////$this->loader->add_action('ere_single_property_summary', $this, 'single_property_contact_agent', 15);
-            $this->loader->add_action('ere_single_property_summary', $this, 'single_property_footer', 20);
 
             // $enable_comments_reviews_property = ere_get_option('enable_comments_reviews_property', 1);
             // if ($enable_comments_reviews_property == 1) {

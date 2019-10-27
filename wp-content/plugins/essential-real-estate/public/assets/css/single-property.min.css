@@ -53,6 +53,7 @@
 }
 
 .property-info-action .property-action {
+	width: 100%;
 	/*float: right;
 	position: relative;
 	top: 6px;*/
@@ -87,8 +88,9 @@
 }
 .property-info-action .property-action .social-share, .property-info-action .property-action .property-action-inner > a {
     display: block;
-    float: left;
-    width: 150px;
+	float: left;
+	width: 25%;
+    max-width: 150px;
     height: 30px;
     background-color: #97145A;
     -webkit-border-radius: 50%;
@@ -1139,6 +1141,8 @@ ul.walkscore-list li:last-child
 .single-property-element
 {
 	margin-bottom: 60px;
+	width: 80%;
+    margin: auto;
 }
 @media screen and (max-width: 768px) {
 	.single-property-element
@@ -1165,11 +1169,15 @@ ul.walkscore-list li:last-child
 }
 
 .property-gallery-and-info {
-	display: flex;
+	/*display: flex;*/
+	width: 80%;
+    margin: auto;
 }
 
 .title-heading {
-	width: 100%;
+	/*width: 100%;*/
+	width: 80%;
+    margin: auto;
 }
 
 .title-heading-left {
@@ -1204,4 +1212,6 @@ ul.walkscore-list li:last-child
 .display-flex
 {
 	display: flex;
+	width: 80%;
+    margin: auto;
 }
