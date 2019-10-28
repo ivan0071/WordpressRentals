@@ -403,6 +403,9 @@
 	font-weight: 600;
 	color: #97145A;
 }
+.ere-property .property-item-content .property-price-div {
+	font-size: 18px;
+}
 .ere-property .property-item-content .property-location i {
 	margin-right: 5px;
 }
