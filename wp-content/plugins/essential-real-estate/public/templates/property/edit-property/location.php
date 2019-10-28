@@ -12,7 +12,9 @@ global $property_meta_data, $property_data,$hide_property_fields;
 $location_dropdowns = ere_get_option('location_dropdowns',1);
 $property_location = get_post_meta( $property_data->ID, ERE_METABOX_PREFIX . 'property_location', true );
 $property_map_address = isset($property_location['address']) ? $property_location['address'] : '';
-list( $lat, $long ) =  isset($property_location['location']) ? explode( ',', $property_location['location'] ) : array('', '');
+//list( $lat, $long ) =  isset($property_location['location']) ? explode( ',', $property_location['location'] ) : array('', '');
+$lat = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_location_latitude']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_location_latitude'][0] : '';
+$long = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_location_longitude']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_location_longitude'][0] : '';
 wp_enqueue_style( 'select2_css');
 wp_enqueue_script('select2_js');
 ?>

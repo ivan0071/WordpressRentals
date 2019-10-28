@@ -22,7 +22,7 @@ $paramtersDefault = array(
 $location_dropdowns = ere_get_option('location_dropdowns',1);
 $property_location = get_post_meta( $property_data->ID, ERE_METABOX_PREFIX . 'property_location', true );
 $property_map_address = isset($property_location['address']) ? $property_location['address'] : '';
-list( $lat, $long ) =  isset($property_location['location']) ? explode( ',', $property_location['location'] ) : array('', '');
+//list( $lat, $long ) =  isset($property_location['location']) ? explode( ',', $property_location['location'] ) : array('', '');
 wp_enqueue_style( 'select2_css');
 wp_enqueue_script('select2_js');
 ?>

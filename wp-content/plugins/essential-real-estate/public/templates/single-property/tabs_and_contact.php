@@ -81,7 +81,9 @@ if ($property_attach_floorplan_arg && !empty($property_attach_floorplans[0])) {
 
 $property_location = get_post_meta( get_the_ID(), ERE_METABOX_PREFIX . 'property_location', true );
 $property_map_address = isset($property_location['address']) ? $property_location['address'] : '';
-list( $propertyLat, $propertyLong ) =  isset($property_location['location']) ? explode( ',', $property_location['location'] ) : array('', '');
+//list( $propertyLat, $propertyLong ) =  isset($property_location['location']) ? explode( ',', $property_location['location'] ) : array('', '');
+$propertyLat = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_location_latitude']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_location_latitude'][0] : '';
+$propertyLong = isset($property_meta_data[ERE_METABOX_PREFIX . 'property_location_longitude']) ? $property_meta_data[ERE_METABOX_PREFIX . 'property_location_longitude'][0] : '';
 
 $agent_display_option = isset($property_meta_data[ ERE_METABOX_PREFIX . 'agent_display_option' ]) ? $property_meta_data[ ERE_METABOX_PREFIX . 'agent_display_option' ][0] : '';
 
