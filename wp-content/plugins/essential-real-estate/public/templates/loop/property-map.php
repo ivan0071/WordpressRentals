@@ -1,7 +1,7 @@
 <?php
 /**
  * @var $dataMap
- * @var $latLongData ( 'titleArr', 'latArr', 'longArr', 'latArrSum', 'longArrSum', 'arrayCountLatLong', 'latAverageView', 'longAverageView' )
+ * @var $latLongData ( 'titleArr', 'latArr', 'longArr', 'latArrSum', 'longArrSum', 'arrayCountLatLong', 'latAverageView', 'longAverageView', 'mapDefaultZoom' )
  * @var $custom_property_image_size
  * @var $property_item_class
  */
@@ -26,7 +26,13 @@ $mapDefaultZoom = 10;
 
     /* OSM & OL example code provided by https://mediarealm.com.au/ */
     var map;
+    var mapDefaultZoomParam = <?php echo json_encode($latLongData['mapDefaultZoom']); ?>;
     var mapDefaultZoom = <?php echo $mapDefaultZoom; ?>;
+    if (mapDefaultZoomParam != null && mapDefaultZoomParam !== undefined &&
+        parseInt(mapDefaultZoomParam) > 0) 
+    {
+        mapDefaultZoom = parseInt(mapDefaultZoomParam);
+    }
     var titleArr = <?php echo json_encode($latLongData['titleArr']); ?>;
     var latArr = <?php echo json_encode($latLongData['latArr']); ?>;
     var longArr = <?php echo json_encode($latLongData['longArr']); ?>;

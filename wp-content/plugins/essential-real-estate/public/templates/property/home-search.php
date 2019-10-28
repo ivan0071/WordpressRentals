@@ -884,8 +884,22 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'archive-property', ERE_PLUGIN_URL . 'publ
                         endwhile;
                     }
                     $arrayCountLatLong = count($latArr);
-                    $latAverageView = $latArrSum / $arrayCountLatLong;
-                    $longAverageView = $longArrSum / $arrayCountLatLong;
+                    if ($arrayCountLatLong > 0) {
+                        $latAverageView = $latArrSum / $arrayCountLatLong;
+                        $longAverageView = $longArrSum / $arrayCountLatLong;   
+                    } else {
+                        $latAverageView = 51.507351;
+                        $longAverageView = -0.127758;   
+                    }
+                    $mapDefaultZoom = 10;
+
+                    if (isset($city_name) && !empty($city_name)) {
+                        if ($city_name == 'international') {
+                            $latAverageView = 37.0902;
+                            $longAverageView = -95.7129;
+                            $mapDefaultZoom = 4;
+                        }
+                    }                                   
 
                     $latLongData = array(
                         'titleArr' => $titleArr,
@@ -895,7 +909,8 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'archive-property', ERE_PLUGIN_URL . 'publ
                         'longArrSum' => $longArrSum,
                         'arrayCountLatLong' => $arrayCountLatLong,
                         'latAverageView' => $latAverageView,
-                        'longAverageView' => $longAverageView
+                        'longAverageView' => $longAverageView,
+                        'mapDefaultZoom' => $mapDefaultZoom
                     );
                 ?>
 
