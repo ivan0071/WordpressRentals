@@ -215,7 +215,7 @@
 }
 .property-info-action .property-main-info .property-info-block-inline > div {
 	display: table-cell;
-	white-space: nowrap;
+	/*white-space: nowrap;*/
 }
 .property-info-action .property-main-info .property-price {
 	font-size: 24px;
