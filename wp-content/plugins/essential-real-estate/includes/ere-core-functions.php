@@ -204,6 +204,44 @@ if (!function_exists('ere_get_permalink')) {
     }
 }
 /**
+ * Get currency symbol
+ */
+if (!function_exists('ere_get_currency_symbol')) {
+    function ere_get_currency_symbol($currency_value)
+    {
+        if ($currency_value == "USD") {
+            return '$';
+        } else if ($currency_value == "EUR") {
+            return '€';
+        } else if ($currency_value == "GBP") {
+            return '£';
+        }
+        return '';
+    }
+}
+/**
+ * Get money with currency symbol
+ */
+if (!function_exists('ere_get_money_with_currency_symbol')) {
+    function ere_get_money_with_currency_symbol($value)
+    {
+        $currency = ere_get_option('currency_sign', esc_html__('USD', 'essential-real-estate'));
+        $currency_position = ere_get_option('currency_position', 'before');
+        $currency_symbol = ere_get_currency_symbol($currency);
+
+        $return_text = "";
+        if ($currency_position == 'before')
+            $return_text .= $currency_symbol;
+
+        $return_text .= $value;
+
+        if ($currency_position == 'after')
+            $return_text .= $currency_symbol;
+
+        return $return_text;
+    }
+}
+/**
  * Format money
  */
 if (!function_exists('ere_get_format_money')) {

@@ -22,9 +22,12 @@ $property_address     = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'proper
 $property_price              = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price' ][0] : '';
 $property_price_short              = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_short' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_short' ][0] : '';
 $property_price_unit             = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_unit' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_unit' ][0] : '';
-
 $property_price_prefix      = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ][0] : '';
 $property_price_postfix      = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_postfix' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_price_postfix' ][0] : '';
+
+$property_rent_price         = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_rent_price' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_rent_price' ][0] : '';
+$property_rent_charges         = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_rent_charges' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_rent_charges' ][0] : '';
+$property_sale_price         = isset( $property_meta_data[ ERE_METABOX_PREFIX . 'property_sale_price' ] ) ? $property_meta_data[ ERE_METABOX_PREFIX . 'property_sale_price' ][0] : '';
 
 $property_group = get_post_meta($property_id, ERE_METABOX_PREFIX . 'property_group', true);
 $property_group_map = array(
@@ -207,8 +210,49 @@ wp_enqueue_script('owl.carousel');
 		</div>
 			<div class="property-info-block-inline">
 				<div>
+					<?php if (true || (!empty( $property_rent_price ) && ($for_rent == true)) || (!empty( $property_sale_price ) && ($for_sale == true))) : ?>
+						<?php if ($for_rent == true && $for_sale == true) { ?>
+							<div class="property-price-div">			
+								Rent Price: 
+								<?php if (!empty( $property_rent_price )): ?>
+									<span class="property-price"><?php echo ere_get_money_with_currency_symbol($property_rent_price); ?></span>
+								<?php else: ?>
+									<span class="property-price"><?php echo ere_get_money_with_currency_symbol(ere_get_option( 'empty_price_text', 'POA' )) ?></span>
+								<?php endif; ?>	
+								<?php if (!empty( $property_rent_charges )): ?>
+									<?php echo "(+" . ere_get_money_with_currency_symbol($property_rent_charges) . " for charges)"; ?>
+								<?php endif; ?>
+								<br>
+								Sale Price: 
+								<?php if (!empty( $property_sale_price )): ?>
+									<span class="property-price"><?php echo ere_get_money_with_currency_symbol($property_sale_price); ?></span>
+								<?php else: ?>
+									<span class="property-price"><?php echo ere_get_money_with_currency_symbol(ere_get_option( 'empty_price_text', 'POA' )) ?></span>
+								<?php endif; ?>	
+							</div>
+						<?php } else if ($for_rent == true) { ?>
+							<div class="property-price-div">
+								<?php if (!empty( $property_rent_price )): ?>
+									<span class="property-price"><?php echo ere_get_money_with_currency_symbol($property_rent_price); ?></span>
+								<?php else: ?>
+									<span class="property-price"><?php echo ere_get_money_with_currency_symbol(ere_get_option( 'empty_price_text', 'POA' )) ?></span>
+								<?php endif; ?>	
+								<?php if (!empty( $property_rent_charges )): ?>
+									<?php echo "(+" . ere_get_money_with_currency_symbol($property_rent_charges) . " for charges)"; ?>
+								<?php endif; ?>
+							</div>
+						<?php } else if ($for_sale == true) { ?>
+							<?php if (!empty( $property_sale_price )): ?>
+								<span class="property-price"><?php echo ere_get_money_with_currency_symbol($property_sale_price); ?></span>
+								<?php else: ?>
+								<span class="property-price"><?php echo ere_get_money_with_currency_symbol(ere_get_option( 'empty_price_text', 'POA' )) ?></span>
+							<?php endif; ?>	
+						<?php } ?>
+					<?php endif; ?>
+
+					<?php /*
 					<?php if (!empty( $property_price ) ): ?>
-						<span class="property-price">
+					<span class="property-price">
 						<?php if(!empty( $property_price_prefix )) {echo '<span class="property-price-prefix">'.$property_price_prefix.' </span>';} ?>
 						<?php
 						echo ere_get_format_money( $property_price_short,$property_price_unit );
@@ -217,7 +261,9 @@ wp_enqueue_script('owl.carousel');
 					</span>
 					<?php elseif (ere_get_option( 'empty_price_text', '' )!='' ): ?>
 						<span class="property-price"><?php echo ere_get_option( 'empty_price_text', '' ) ?></span>
-					<?php endif; ?>					
+					<?php endif; ?>		
+					*/ ?>
+
 					<hr class="single-hr">
 					<?php if ( ! empty( $property_short_des ) ): ?>			
 						<p><?php echo $property_short_des; ?></p>
