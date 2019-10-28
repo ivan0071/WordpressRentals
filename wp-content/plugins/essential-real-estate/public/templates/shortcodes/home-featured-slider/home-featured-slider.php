@@ -190,12 +190,30 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'home-featured-slider', ERE_PLUGIN_URL . '
 					$property_post_meta_data = get_post_custom($agent_id);
 
 					$property_location_zip = isset($property_post_meta_data[ ERE_METABOX_PREFIX . 'property_location_zip' ] ) ? $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_location_zip' ][0] : '';
+					
 					$property_price_prefix      = isset( $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ] ) ? $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_prefix' ][0] : '';
 					$property_price_postfix      = isset( $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_postfix' ] ) ? $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_postfix' ][0] : '';
 					$property_price              = isset( $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price' ] ) ? $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price' ][0] : '';
 					$property_price_short              = isset( $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_short' ] ) ? $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_short' ][0] : '';
 					$property_price_unit             = isset( $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_unit' ] ) ? $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_price_unit' ][0] : '';
 					
+					$property_rent_price         = isset( $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_rent_price' ] ) ? $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_rent_price' ][0] : '';
+					$property_rent_charges         = isset( $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_rent_charges' ] ) ? $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_rent_charges' ][0] : '';
+					$property_sale_price         = isset( $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_sale_price' ] ) ? $property_post_meta_data[ ERE_METABOX_PREFIX . 'property_sale_price' ][0] : '';
+					
+					$property_status = get_the_terms( $agent_id, 'property-status' );
+					$for_rent = false;
+					$for_sale = false;
+					if ( $property_status ) :
+						foreach ( $property_status as $status ) :
+							if ($status->slug == "for-rent") :
+								$for_rent = true;
+							elseif ($status->slug == "for-sale") :
+								$for_sale = true;
+							endif;
+						endforeach;
+					endif;
+
 					$agent_position = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_position']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_position'][0] : '';
 					$agent_description = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_description']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_description'][0] : '';
 					$email = isset($property_post_meta_data[ERE_METABOX_PREFIX . 'agent_email']) ? $property_post_meta_data[ERE_METABOX_PREFIX . 'agent_email'][0] : '';
@@ -271,19 +289,62 @@ wp_enqueue_script(ERE_PLUGIN_PREFIX . 'home-featured-slider', ERE_PLUGIN_URL . '
 											<span class="fa fa-bath"> <?php echo esc_html($property_bathrooms) ?></span>
 										<?php endif; ?>
 									</div>
-									<div class="property-price">
-<?php if (!empty( $property_price ) ): ?>
-	<span class="property-price">
-	<?php if(!empty( $property_price_prefix )) {echo '<span class="property-price-prefix">'.$property_price_prefix.' </span>';} ?>
-	<?php
-	echo ere_get_format_money( $property_price_short,$property_price_unit );
-	?>
-	<?php if(!empty( $property_price_postfix )) {echo '<span class="property-price-postfix"> / '.$property_price_postfix.'</span>';} ?>
-</span>
-<?php elseif (ere_get_option( 'empty_price_text', '' )!='' ): ?>
-	<span class="property-price"><?php echo ere_get_option( 'empty_price_text', '' ) ?></span>
-<?php endif; ?>
-									</div>
+
+									<?php if ($for_rent == true && $for_sale == true) { ?>
+										<div class="property-price-div">			
+											<?php if (!empty( $property_rent_price )): ?>
+												<?php 
+													$property_rent_price_total = (float)$property_rent_price;
+													if (!empty( $property_rent_charges )) {
+														$property_rent_price_total += (float)$property_rent_charges;
+													}
+												?>
+												<span title="Rent Price" class="property-price"><?php echo ere_get_money_with_currency_symbol($property_rent_price_total); ?></span>
+											<?php else: ?>
+												<span title="Rent Price" class="property-price"><?php echo ere_get_money_with_currency_symbol(ere_get_option( 'empty_price_text', 'POA' )) ?></span>
+											<?php endif; ?>	
+											/
+											<?php if (!empty( $property_sale_price )): ?>
+												<span title="Sale Price" class="property-price"><?php echo ere_get_money_with_currency_symbol($property_sale_price); ?></span>
+											<?php else: ?>
+												<span title="Sale Price" class="property-price"><?php echo ere_get_money_with_currency_symbol(ere_get_option( 'empty_price_text', 'POA' )) ?></span>
+											<?php endif; ?>	
+										</div>
+									<?php } else if ($for_rent == true) { ?>
+										<div class="property-price-div">
+											<?php if (!empty( $property_rent_price )): ?>
+												<?php 
+													$property_rent_price_total = (float)$property_rent_price;
+													if (!empty( $property_rent_charges )) {
+														$property_rent_price_total += (float)$property_rent_charges;
+													}
+												?>
+												<span title="Rent Price" class="property-price"><?php echo ere_get_money_with_currency_symbol($property_rent_price_total); ?></span>
+											<?php else: ?>
+												<span title="Rent Price" class="property-price"><?php echo ere_get_money_with_currency_symbol(ere_get_option( 'empty_price_text', 'POA' )) ?></span>
+											<?php endif; ?>	
+										</div>
+									<?php } else if ($for_sale == true) { ?>
+										<?php if (!empty( $property_sale_price )): ?>
+											<span title="Sale Price" class="property-price"><?php echo ere_get_money_with_currency_symbol($property_sale_price); ?></span>
+											<?php else: ?>
+											<span title="Sale Price" class="property-price"><?php echo ere_get_money_with_currency_symbol(ere_get_option( 'empty_price_text', 'POA' )) ?></span>
+										<?php endif; ?>	
+									<?php } ?>
+									<?php /*
+									<div class="property-price">111
+										<?php if (!empty( $property_price ) ): ?>
+											<span class="property-price">
+											<?php if(!empty( $property_price_prefix )) {echo '<span class="property-price-prefix">'.$property_price_prefix.' </span>';} ?>
+											<?php
+											echo ere_get_format_money( $property_price_short,$property_price_unit );
+											?>
+											<?php if(!empty( $property_price_postfix )) {echo '<span class="property-price-postfix"> / '.$property_price_postfix.'</span>';} ?>
+										</span>
+										<?php elseif (ere_get_option( 'empty_price_text', '' )!='' ): ?>
+											<span class="property-price"><?php echo ere_get_option( 'empty_price_text', '' ) ?></span>
+										<?php endif; ?>
+									</div> */ ?>
 								</div>
 								<br>
 								<!--

@@ -210,45 +210,43 @@ wp_enqueue_script('owl.carousel');
 		</div>
 			<div class="property-info-block-inline">
 				<div>
-					<?php if (true || (!empty( $property_rent_price ) && ($for_rent == true)) || (!empty( $property_sale_price ) && ($for_sale == true))) : ?>
-						<?php if ($for_rent == true && $for_sale == true) { ?>
-							<div class="property-price-div">			
-								Rent Price: 
-								<?php if (!empty( $property_rent_price )): ?>
-									<span class="property-price"><?php echo ere_get_money_with_currency_symbol($property_rent_price); ?></span>
-								<?php else: ?>
-									<span class="property-price"><?php echo ere_get_money_with_currency_symbol(ere_get_option( 'empty_price_text', 'POA' )) ?></span>
-								<?php endif; ?>	
-								<?php if (!empty( $property_rent_charges )): ?>
-									<?php echo "(+" . ere_get_money_with_currency_symbol($property_rent_charges) . " for charges)"; ?>
-								<?php endif; ?>
-								<br>
-								Sale Price: 
-								<?php if (!empty( $property_sale_price )): ?>
-									<span class="property-price"><?php echo ere_get_money_with_currency_symbol($property_sale_price); ?></span>
-								<?php else: ?>
-									<span class="property-price"><?php echo ere_get_money_with_currency_symbol(ere_get_option( 'empty_price_text', 'POA' )) ?></span>
-								<?php endif; ?>	
-							</div>
-						<?php } else if ($for_rent == true) { ?>
-							<div class="property-price-div">
-								<?php if (!empty( $property_rent_price )): ?>
-									<span class="property-price"><?php echo ere_get_money_with_currency_symbol($property_rent_price); ?></span>
-								<?php else: ?>
-									<span class="property-price"><?php echo ere_get_money_with_currency_symbol(ere_get_option( 'empty_price_text', 'POA' )) ?></span>
-								<?php endif; ?>	
-								<?php if (!empty( $property_rent_charges )): ?>
-									<?php echo "(+" . ere_get_money_with_currency_symbol($property_rent_charges) . " for charges)"; ?>
-								<?php endif; ?>
-							</div>
-						<?php } else if ($for_sale == true) { ?>
-							<?php if (!empty( $property_sale_price )): ?>
-								<span class="property-price"><?php echo ere_get_money_with_currency_symbol($property_sale_price); ?></span>
-								<?php else: ?>
+					<?php if ($for_rent == true && $for_sale == true) { ?>
+						<div class="property-price-div">			
+							Rent Price: 
+							<?php if (!empty( $property_rent_price )): ?>
+								<span class="property-price"><?php echo ere_get_money_with_currency_symbol($property_rent_price); ?></span>
+							<?php else: ?>
 								<span class="property-price"><?php echo ere_get_money_with_currency_symbol(ere_get_option( 'empty_price_text', 'POA' )) ?></span>
 							<?php endif; ?>	
-						<?php } ?>
-					<?php endif; ?>
+							<?php if (!empty( $property_rent_charges )): ?>
+								<?php echo "(+" . ere_get_money_with_currency_symbol($property_rent_charges) . " for charges)"; ?>
+							<?php endif; ?>
+							<br>
+							Sale Price: 
+							<?php if (!empty( $property_sale_price )): ?>
+								<span class="property-price"><?php echo ere_get_money_with_currency_symbol($property_sale_price); ?></span>
+							<?php else: ?>
+								<span class="property-price"><?php echo ere_get_money_with_currency_symbol(ere_get_option( 'empty_price_text', 'POA' )) ?></span>
+							<?php endif; ?>	
+						</div>
+					<?php } else if ($for_rent == true) { ?>
+						<div class="property-price-div">
+							<?php if (!empty( $property_rent_price )): ?>
+								<span class="property-price"><?php echo ere_get_money_with_currency_symbol($property_rent_price); ?></span>
+							<?php else: ?>
+								<span class="property-price"><?php echo ere_get_money_with_currency_symbol(ere_get_option( 'empty_price_text', 'POA' )) ?></span>
+							<?php endif; ?>	
+							<?php if (!empty( $property_rent_charges )): ?>
+								<?php echo "(+" . ere_get_money_with_currency_symbol($property_rent_charges) . " for charges)"; ?>
+							<?php endif; ?>
+						</div>
+					<?php } else if ($for_sale == true) { ?>
+						<?php if (!empty( $property_sale_price )): ?>
+							<span class="property-price"><?php echo ere_get_money_with_currency_symbol($property_sale_price); ?></span>
+							<?php else: ?>
+							<span class="property-price"><?php echo ere_get_money_with_currency_symbol(ere_get_option( 'empty_price_text', 'POA' )) ?></span>
+						<?php endif; ?>	
+					<?php } ?>
 
 					<?php /*
 					<?php if (!empty( $property_price ) ): ?>
