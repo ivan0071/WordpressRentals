@@ -6180,13 +6180,13 @@ function nav_items( $items, $menu, $args )
     foreach( $items as $item ) 
     {
 		if ($item->post_title == 'Residential' ) {
-			$item->url .= '?group=0&city=london';
+			$item->url .= '&group=0&city=london';
 			$residentialMenuID = $item->ID;
 		} else if ($item->post_title == 'Commercial' ) {
-			$item->url .= '?group=1&city=london';
+			$item->url .= '&group=1&city=london';
 			$commercialMenuID = $item->ID;
 		} else if ($item->post_title == 'International' ) {
-			$item->url .= '?city=international';
+			$item->url .= '&city=international';
 			$internationalMenuID = $item->ID;
 		} else if ($item->post_title == 'Logout' ) {
 			$permalink = get_permalink();
@@ -6198,19 +6198,19 @@ function nav_items( $items, $menu, $args )
     {
 		if ($item->post_title == 'Buy' ) {
 			if ($item->menu_item_parent == $residentialMenuID && $residentialMenuID != null ) {
-				$item->url .= '?group=0&status=for-sale&city=london';
+				$item->url .= '&group=0&status=for-sale&city=london';
 			} else if ($item->menu_item_parent == $commercialMenuID && $commercialMenuID != null ) {
-				$item->url .= '?group=1&status=for-sale&city=london';
+				$item->url .= '&group=1&status=for-sale&city=london';
 			} else if ($item->menu_item_parent == $internationalMenuID && $internationalMenuID != null ) {
-				$item->url .= '?status=for-sale&city=international';
+				$item->url .= '&status=for-sale&city=international';
 			}
 		} else if ($item->post_title == 'Rent' ) {
 			if ($item->menu_item_parent == $residentialMenuID && $residentialMenuID != null ) {
-				$item->url .= '?group=0&status=for-rent&city=london';
+				$item->url .= '&group=0&status=for-rent&city=london';
 			} else if ($item->menu_item_parent == $commercialMenuID && $commercialMenuID != null ) {
-				$item->url .= '?group=1&status=for-rent&city=london';
+				$item->url .= '&group=1&status=for-rent&city=london';
 			} else if ($item->menu_item_parent == $internationalMenuID && $internationalMenuID != null ) {
-				$item->url .= '?status=for-rent&city=international';
+				$item->url .= '&status=for-rent&city=international';
 			}
 		}
 	}
