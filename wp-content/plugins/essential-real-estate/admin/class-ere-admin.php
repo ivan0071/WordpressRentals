@@ -2513,22 +2513,22 @@ if (!class_exists('ERE_Admin')) {
                         $this->property_option(),
                         $this->additional_fields_option(),
                         $this->search_option(),
-                        $this->payment_option(),
-                        $this->payment_complete_option(),
-                        $this->invoices_option(),
+                        //$this->payment_option(),
+                        //$this->payment_complete_option(),
+                        //$this->invoices_option(),
                         $this->compare_option(),
                         $this->favorite_option(),
                         $this->social_share_option(),
                         $this->print_option(),
-                        $this->nearby_places_option(),
-                        $this->walk_score_option(),
+                        //$this->nearby_places_option(),
+                        //$this->walk_score_option(),
                         //$this->google_map_directions_option(),
                         $this->comments_reviews_option(),
                         //$this->google_map_option(),
                         $this->captcha_option(),
                         $this->property_page_option(),
-                        $this->agent_page_option(),
-                        $this->agency_page_option(),
+                        //$this->agent_page_option(),
+                        //$this->agency_page_option(),
                         $this->email_management_option(),
                     )),
                     apply_filters('ere_register_options_config_bottom', array())
@@ -4595,7 +4595,7 @@ if (!class_exists('ERE_Admin')) {
                             ),
                             'default' => '1',
                         ),
-                        array(
+                        /*array(
                             'id' => 'enable_print_invoice',
                             'title' => esc_html__('Enable Print Invoice', 'essential-real-estate'),
                             'type' => 'button_set',
@@ -4604,7 +4604,7 @@ if (!class_exists('ERE_Admin')) {
                                 '0' => esc_html__('No', 'essential-real-estate'),
                             ),
                             'default' => '1',
-                        ),
+                        ),*/
                         array(
                             'id' => 'print_logo',
                             'type' => 'image',
@@ -4926,7 +4926,7 @@ if (!class_exists('ERE_Admin')) {
                                 ),
                             )
                         ),
-                        array(
+                        /*array(
                             'id' => 'section_comments_reviews_agent',
                             'title' => esc_html__('Agent', 'essential-real-estate'),
                             'type' => 'group',
@@ -4954,7 +4954,7 @@ if (!class_exists('ERE_Admin')) {
                                     'required' => array('enable_comments_reviews_agent', '=', array('2'))
                                 ),
                             )
-                        ),
+                        ),*/
                     )),
                     apply_filters('ere_register_option_comments_reviews_bottom', array())
                 )
