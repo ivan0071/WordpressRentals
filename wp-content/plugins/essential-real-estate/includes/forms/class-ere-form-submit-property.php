@@ -129,7 +129,8 @@ if (!class_exists('ERE_Form_Submit_Property')) {
 			$admin_email = get_bloginfo('admin_email');
 			$args = array(
 				'listing_title'  =>  get_the_title($this->property_id),
-				'listing_id'     =>  $this->property_id
+				'listing_id'     =>  $this->property_id,
+				'listing_url'	 =>  get_permalink($this->property_id)
 			);
 			ere_send_email( $user_email, 'mail_new_submission_listing', $args);
 			ere_send_email( $admin_email, 'admin_mail_new_submission_listing', $args);

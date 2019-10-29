@@ -4288,6 +4288,7 @@ msgid ""
 "You have a new submission on  %website_url!\n"
 "Listing Title: %listing_title\n"
 "Listing ID:  %listing_id"
+"Listing Url: %listing_url"
 msgstr ""
 
 #: admin/class-ere-admin.php:5594

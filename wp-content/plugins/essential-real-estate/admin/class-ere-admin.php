@@ -190,7 +190,7 @@ if (!class_exists('ERE_Admin')) {
                 'capability_type' => 'agent',
                 'map_meta_cap' => true
             ));
-            $post_types ['package'] = apply_filters('ere_register_post_type_package', array(
+            /*$post_types ['package'] = apply_filters('ere_register_post_type_package', array(
                 'label' => esc_html__('Packages', 'essential-real-estate'),
                 'singular_name' => esc_html__('Package', 'essential-real-estate'),
                 'rewrite' => array(
@@ -235,7 +235,7 @@ if (!class_exists('ERE_Admin')) {
                 'can_export' => true,
                 'capabilities' => $this->get_trans_log_capabilities(),
                 'map_meta_cap' => true
-            ));
+            ));*/
             return apply_filters('ere_register_post_type', $post_types);
         }
 
@@ -6742,7 +6742,8 @@ Listing ID:  %listing_id', 'essential-real-estate'),
                                     'default' => esc_html__('Hi,
 You have a new submission on  %website_url!
 Listing Title: %listing_title
-Listing ID:  %listing_id', 'essential-real-estate'),
+Listing ID:  %listing_id
+Listing Url:  %listing_url', 'essential-real-estate'),
                                 )
                             )
                         ),
