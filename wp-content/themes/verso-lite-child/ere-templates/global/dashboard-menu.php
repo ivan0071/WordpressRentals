@@ -18,6 +18,11 @@ $total_favorite = $ere_property->get_total_favorite();
 $ere_save_search = new ERE_Save_Search();
 $total_save_search = $ere_save_search->get_total_save_search();
 $allow_submit = ere_allow_submit();
+
+$agent_id = get_the_author_meta(ERE_METABOX_PREFIX . 'author_agent_id', $user_id);
+$agent_status = get_post_status($agent_id);
+$allow_submit = $allow_submit && ($agent_status == 'publish');
+
 $user_custom_picture = get_the_author_meta(ERE_METABOX_PREFIX . 'author_custom_picture', $user_id);
 $author_picture_id = get_the_author_meta(ERE_METABOX_PREFIX . 'author_picture_id', $user_id);
 $no_avatar_src = ERE_PLUGIN_URL . 'public/assets/images/profile-avatar.png';
