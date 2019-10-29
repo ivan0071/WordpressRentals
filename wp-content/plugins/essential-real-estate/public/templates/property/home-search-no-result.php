@@ -170,15 +170,52 @@ $args = array(
     'post_status'         => 'publish',
 );
 
+$for_rent = false;
+$for_sale = false;
+if (isset($status) && !empty($status)) {
+    $statuses_list = explode(",", $status);
+    if (count($statuses_list) == 1) {
+        if ($status == "for-rent") {
+            $for_rent = true;
+        } else if ($status == "for-sale") {
+            $for_sale = true;
+        }
+    } else if (count($statuses_list) > 1) {
+        foreach($statuses_list as $statuses_list_item){
+            if ($statuses_list_item == "for-rent") {
+                $for_rent = true;
+            } else if ($statuses_list_item == "for-sale") {
+                $for_sale = true;
+            }
+        }
+    }
+}
+if ($for_rent == false &&  $for_sale == false) {
+    $for_rent = true;
+    $for_sale = true;
+}
+
 if (isset($_GET['sortby']) && in_array($_GET['sortby'], array('a_price', 'd_price', 'a_date', 'd_date', 'featured', 'most_viewed'))) {
     if ($_GET['sortby'] == 'a_price') {
         $args['orderby'] = 'meta_value_num';
-        $args['meta_key'] = ERE_METABOX_PREFIX . 'property_price';
         $args['order'] = 'ASC';
+
+        if ($for_rent == true) {
+            $args['meta_key'] = ERE_METABOX_PREFIX . 'property_rent_price';
+        }
+        if ($for_sale == true) {
+            $args['meta_key'] = ERE_METABOX_PREFIX . 'property_sale_price';
+        }
     } else if ($_GET['sortby'] == 'd_price') {
-        $args['orderby'] = 'meta_value_num';
-        $args['meta_key'] = ERE_METABOX_PREFIX . 'property_price';
+        $args['orderby'] = 'meta_value_num';        
         $args['order'] = 'DESC';
+
+        if ($for_rent == true) {
+            $args['meta_key'] = ERE_METABOX_PREFIX . 'property_rent_price';
+        }
+        if ($for_sale == true) {
+            $args['meta_key'] = ERE_METABOX_PREFIX . 'property_sale_price';
+        }
     } else if ($_GET['sortby'] == 'featured') {
         $args['orderby'] = array(
             'meta_value_num' => 'DESC',
@@ -374,34 +411,121 @@ if (!empty($min_price) && !empty($max_price)) {
     $max_price = doubleval(ere_clean($max_price));
 
     if ($min_price >= 0 && $max_price >= $min_price) {
-        $meta_query[] = array(
-            'key' => ERE_METABOX_PREFIX. 'property_price',
-            'value' => array($min_price, $max_price),
-            'type' => 'NUMERIC',
-            'compare' => 'BETWEEN',
-        );
+        if ($for_rent == true && $for_sale == true) {
+            $nested_query = array(
+                'relation' => 'OR',
+            );
+            $nested_query[] = array(
+                'key' => ERE_METABOX_PREFIX. 'property_rent_price',
+                'value' => array($min_price, $max_price),
+                'type' => 'NUMERIC',
+                'compare' => 'BETWEEN',
+            );
+            $nested_query[] = array(
+                'key' => ERE_METABOX_PREFIX. 'property_sale_price',
+                'value' => array($min_price, $max_price),
+                'type' => 'NUMERIC',
+                'compare' => 'BETWEEN',
+            );
+            $meta_query[] = $nested_query;            
+        } else {
+            if ($for_rent == true) {
+                $meta_query[] = array(
+                    'key' => ERE_METABOX_PREFIX. 'property_rent_price',
+                    'value' => array($min_price, $max_price),
+                    'type' => 'NUMERIC',
+                    'compare' => 'BETWEEN',
+                );
+            }
+            if ($for_sale == true) {
+                $meta_query[] = array(
+                    'key' => ERE_METABOX_PREFIX. 'property_sale_price',
+                    'value' => array($min_price, $max_price),
+                    'type' => 'NUMERIC',
+                    'compare' => 'BETWEEN',
+                );
+            }
+        }
         $parameters.=sprintf( __('Price: <strong>%s - %s</strong>; ', 'essential-real-estate'), $min_price, $max_price);
     }
 } else if (!empty($min_price)) {
     $min_price = doubleval(ere_clean($min_price));
     if ($min_price >= 0) {
-        $meta_query[] = array(
-            'key' => ERE_METABOX_PREFIX. 'property_price',
-            'value' => $min_price,
-            'type' => 'NUMERIC',
-            'compare' => '>=',
-        );
+        if ($for_rent == true && $for_sale == true) {
+            $nested_query = array(
+                'relation' => 'OR',
+            );
+            $nested_query[] = array(
+                'key' => ERE_METABOX_PREFIX. 'property_rent_price',
+                'value' => $min_price,
+                'type' => 'NUMERIC',
+                'compare' => '>=',
+            );
+            $nested_query[] = array(
+                'key' => ERE_METABOX_PREFIX. 'property_sale_price',
+                'value' => $min_price,
+                'type' => 'NUMERIC',
+                'compare' => '>=',
+            );
+            $meta_query[] = $nested_query;            
+        } else {
+            if ($for_rent == true) {
+                $meta_query[] = array(
+                    'key' => ERE_METABOX_PREFIX. 'property_rent_price',
+                    'value' => $min_price,
+                    'type' => 'NUMERIC',
+                    'compare' => '>=',
+                );
+            }
+            if ($for_sale == true) {
+                $meta_query[] = array(
+                    'key' => ERE_METABOX_PREFIX. 'property_sale_price',
+                    'value' => $min_price,
+                    'type' => 'NUMERIC',
+                    'compare' => '>=',
+                );
+            }
+        }
         $parameters.=sprintf( __('Min Price: <strong>%s</strong>; ', 'essential-real-estate'), $min_price);
     }
 } else if (!empty($max_price)) {
     $max_price = doubleval(ere_clean($max_price));
     if ($max_price >= 0) {
-        $meta_query[] = array(
-            'key' => ERE_METABOX_PREFIX. 'property_price',
-            'value' => $max_price,
-            'type' => 'NUMERIC',
-            'compare' => '<=',
-        );
+        if ($for_rent == true && $for_sale == true) {
+            $nested_query = array(
+                'relation' => 'OR',
+            );
+            $nested_query[] = array(
+                'key' => ERE_METABOX_PREFIX. 'property_rent_price',
+                'value' => $max_price,
+                'type' => 'NUMERIC',
+                'compare' => '<=',
+            );
+            $nested_query[] = array(
+                'key' => ERE_METABOX_PREFIX. 'property_sale_price',
+                'value' => $max_price,
+                'type' => 'NUMERIC',
+                'compare' => '<=',
+            );
+            $meta_query[] = $nested_query;
+        } else {
+            if ($for_rent == true) {
+                $meta_query[] = array(
+                    'key' => ERE_METABOX_PREFIX. 'property_rent_price',
+                    'value' => $max_price,
+                    'type' => 'NUMERIC',
+                    'compare' => '<=',
+                );
+            }
+            if ($for_sale == true) {
+                $meta_query[] = array(
+                    'key' => ERE_METABOX_PREFIX. 'property_sale_price',
+                    'value' => $max_price,
+                    'type' => 'NUMERIC',
+                    'compare' => '<=',
+                );
+            }
+        }
         $parameters.=sprintf( __('Max Price: <strong>%s</strong>; ', 'essential-real-estate'), $max_price);
     }
 }
