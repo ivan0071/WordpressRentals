@@ -73,6 +73,7 @@ $user_id = $current_user->ID;
         <div class="panel panel-default ere-my-properties">
             <div class="panel-heading"><?php esc_html_e('My Properties', 'essential-real-estate'); ?></div>
             <div class="panel-body">
+                <?php /*
                 <form method="get" action="<?php echo get_page_link(); ?>" class="ere-my-properties-search">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -122,7 +123,7 @@ $user_id = $current_user->ID;
                             </div>
                         </div>
                     </div>
-                </form>
+                </form> */ ?>
                 <ul class="ere-my-properties-filter">
                     <li class="ere-status-all<?php if (is_array($post_status)) echo ' active' ?>"><a
                             href="<?php echo esc_url($my_properties_page_link); ?>"><?php printf(__('All (%s)', 'essential-real-estate'), $total_properties); ?></a>
