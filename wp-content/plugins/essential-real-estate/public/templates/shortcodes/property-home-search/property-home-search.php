@@ -11,9 +11,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
-$layout = $column = /*$address_enable =*/ $title_enable = $city_enable = $type_enable = $group_enable = $status_enable = $postcode_enable = /*$bedrooms_enable =*/
+$layout = $column = /*$address_enable =*/ $title_enable = $city_enable = $is_exclusive_enable = $type_enable = $group_enable = $status_enable = $postcode_enable = /*$bedrooms_enable =*/
 /*$bathrooms_enable =*/ $price_enable = $price_is_slider = $area_enable = $area_is_slider = /*$land_area_enable =*/ $land_area_is_slider = $country_enable = $state_enable = /*$neighborhood_enable = $label_enable = */ $garage_enable =
-/*$property_identity_enable =*/ $other_features_enable = $resid_type_enable = $color_scheme = $el_class = $request_city = 
+/*$property_identity_enable =*/ $other_features_enable = $resid_type_enable = $color_scheme = $el_class = $request_city = $request_is_exclusive =
 $resid_furnished_type_enable = $commer_offices_enable = $commer_retail_enable = $commer_leisure_enable = $commer_industrial_enable = $commer_land_enable = $commer_other_enable = '';
 extract(shortcode_atts(array(
     'layout' => 'tab',
@@ -27,6 +27,7 @@ extract(shortcode_atts(array(
     'country_enable' => '',
     'state_enable' => '',
     'city_enable' => 'true',
+    'is_exclusive_enable' => 'true',    
     //'neighborhood_enable' => '',
     //'bedrooms_enable' => '',
     //'bathrooms_enable' => '',
@@ -56,6 +57,8 @@ $status_default='';//ere_get_property_status_default_value();
 $postcode_default='';
 $city_default='';
 $request_city = isset($_GET['city']) ? $_GET['city'] : $city_default;
+$is_exclusive_default='';
+$request_is_exclusive = isset($_GET['excl']) ? $_GET['excl'] : $is_exclusive_default;
 $request_title = isset($_GET['title']) ? $_GET['title'] : '';
 //$request_address = isset($_GET['address']) ? $_GET['address'] : '';
 $request_type = isset($_GET['type']) ? $_GET['type'] : '';
@@ -197,7 +200,7 @@ if ($column == '1') {
                     <?php endif; */ ?>
                     <div class="row">
                         <?php
-                        $search_fields = ere_get_option('search_fields', array('property_group', 'property_status', 'property_postcode', /*'property_type',*/ 'property_title', /*'property_address', 'property_country', 'property_state', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', /*'property_size', 'property_land', 'property_label', 'property_garage', 'property_identity',*/ 'property_city', 'property_feature', 
+                        $search_fields = ere_get_option('search_fields', array('property_group', 'property_status', 'property_postcode', /*'property_type',*/ 'property_title', /*'property_address', 'property_country', 'property_state', 'property_neighborhood', 'property_bedrooms', 'property_bathrooms',*/ 'property_price', /*'property_size', 'property_land', 'property_label', 'property_garage', 'property_identity',*/ 'property_city', 'property_is_exclusive', 'property_feature', 
                             'property_resid_type', 'property_resid_furnished_type', 'property_commer_offices', 'property_commer_retail', 'property_commer_leisure', 'property_commer_industrial', 'property_commer_land', 'property_commer_other'));
                         if ($search_fields): foreach ($search_fields as $field) {
                             switch ($field) {
@@ -353,6 +356,14 @@ if ($column == '1') {
                                         ere_get_template('property/search-fields/' . $field . '.php', array(
                                             'css_class_field' => $css_class_field,
                                             'request_city' => $request_city
+                                        ));
+                                    }
+                                    break;
+                                case 'property_is_exclusive':
+                                    if ($is_exclusive_enable == 'true') {
+                                        ere_get_template('property/search-fields/' . $field . '.php', array(
+                                            'css_class_field' => $css_class_field,
+                                            'request_is_exclusive' => $request_is_exclusive
                                         ));
                                     }
                                     break;
