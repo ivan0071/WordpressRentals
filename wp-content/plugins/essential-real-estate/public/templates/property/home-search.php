@@ -21,6 +21,8 @@ $commer_other = '';
 $title = isset($_GET['title']) ? $_GET['title'] : '';
 $address = isset($_GET['address']) ? $_GET['address'] : '';
 $city_name = isset($_GET['city']) ? $_GET['city'] : '';
+$is_exclusive_default = '';
+$is_exclusive = isset($_GET['excl']) ? $_GET['excl'] :$is_exclusive_default;
 $status_default = ''; //ere_get_property_status_default_value();
 $status = isset($_GET['status']) ? $_GET['status'] :$status_default;
 $type = isset($_GET['type']) ? $_GET['type'] : '';
@@ -366,6 +368,16 @@ if (isset($city_name) && !empty($city_name)) {
             'compare' => '=',
         );
     }
+}
+
+//Query get properties with keyword property_is_exclusive
+if ($is_exclusive != '') {
+    $meta_query[] = array(
+        'key' => ERE_METABOX_PREFIX. 'property_is_exclusive',
+        'value' => $is_exclusive,
+        'type' => 'CHAR',
+        'compare' => '=',
+    );
 }
 
 //bathroom check

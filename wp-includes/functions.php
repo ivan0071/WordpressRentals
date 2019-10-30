@@ -6177,6 +6177,7 @@ function nav_items( $items, $menu, $args )
 	$residentialMenuID = null;
 	$commercialMenuID = null;
 	$internationalMenuID = null;
+	$exclusiveMenuID = null;
     foreach( $items as $item ) 
     {
 		if ($item->post_title == 'Residential' ) {
@@ -6188,6 +6189,9 @@ function nav_items( $items, $menu, $args )
 		} else if ($item->post_title == 'International' ) {
 			$item->url .= '&city=international';
 			$internationalMenuID = $item->ID;
+		} else if ($item->post_title == 'Exclusive' ) {
+			$item->url .= '&excl=1';
+			$exclusiveMenuID = $item->ID;
 		} else if ($item->post_title == 'Logout' ) {
 			$permalink = get_permalink();
 			$item->url = wp_logout_url($permalink);
@@ -6203,6 +6207,8 @@ function nav_items( $items, $menu, $args )
 				$item->url .= '&group=1&status=for-sale&city=london';
 			} else if ($item->menu_item_parent == $internationalMenuID && $internationalMenuID != null ) {
 				$item->url .= '&status=for-sale&city=international';
+			} else if ($item->menu_item_parent == $exclusiveMenuID && $exclusiveMenuID != null ) {
+				$item->url .= '&status=for-sale&excl=1';
 			}
 		} else if ($item->post_title == 'Rent' ) {
 			if ($item->menu_item_parent == $residentialMenuID && $residentialMenuID != null ) {
@@ -6211,6 +6217,8 @@ function nav_items( $items, $menu, $args )
 				$item->url .= '&group=1&status=for-rent&city=london';
 			} else if ($item->menu_item_parent == $internationalMenuID && $internationalMenuID != null ) {
 				$item->url .= '&status=for-rent&city=international';
+			} else if ($item->menu_item_parent == $exclusiveMenuID && $exclusiveMenuID != null ) {
+				$item->url .= '&status=for-rent&excl=1';
 			}
 		}
 	}
